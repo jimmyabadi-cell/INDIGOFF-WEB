@@ -1,0 +1,22 @@
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:2px;z-index:200;pointer-events:none;background:linear-gradient(90deg,#1E125C 0%,#645DC5 55%,#B5B7DD 100%)}
+body{margin:0}
+
+::selection{background:#645DC5;color:#F4F1EB}
+html{scrollbar-color:#C9C4BA transparent;scrollbar-width:thin;-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+input,textarea{caret-color:#645DC5}
+:where(a,button,input,select,summary,[tabindex]):focus-visible{outline:2px solid #645DC5;outline-offset:3px}
+h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}
+a{text-underline-offset:4px}
+header a,header button{min-height:44px;display:inline-flex;align-items:center}
+footer a{display:inline-flex;align-items:center;min-height:28px}
+input[type=email],input[type=search]{border-radius:0}
+input[type=email]:focus-visible,input[type=search]:focus-visible{outline:0;border-bottom-color:#645DC5!important;box-shadow:0 1px 0 0 #645DC5}
+.tnum{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){.cat-panel,.cat-cta,.fin-tile img,.proj-img img{transition:none!important}.fin-tile:hover img,button:hover .proj-img img{transform:none!important}}
+
+.site-hd{position:sticky;top:0;z-index:40}
+html{scroll-behavior:smooth}section[id]{scroll-margin-top:96px}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;padding:12px 18px;background:#111111;color:#FFFFFF!important;font-family:Urbanist,sans-serif;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:top .2s ease}.skip:focus{top:12px}
+@media (hover:none){.cat-cta{opacity:1!important;transform:none!important}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.cl-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 10px;margin-top:28px}.cl-lab{font-family:Urbanist,sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#6B675F;margin-right:8px}.cl-b{min-height:36px;padding:0 18px;border:1px solid #DCD8D0;border-radius:999px;background:transparent;cursor:pointer;font-family:Urbanist,sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#3A3935;transition:background .25s ease,color .25s ease,border-color .25s ease}.cl-b:hover{border-color:#111111;color:#111111}.cl-b.on{background:#645DC5;border-color:#645DC5;color:#FFFFFF}@media (max-width:640px){.pgal>button{flex-basis:calc((100% - 8px) / 2)!important}}
