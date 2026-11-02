@@ -1,0 +1,656 @@
+[
+  {
+    "name": "American Express",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/4acd13b8efaa4fa23b31c2d13651a9a4.jpg",
+      "/img/068f216c2b9d28e3e78dae7c7251e4a8.jpg",
+      "/img/c39488a956c8fc1561275fabc5c078dd.jpg",
+      "/img/90971070eb8cc1921763618e4885f518.jpg",
+      "/img/520ea4f91e04ae8b2345232a9efc2966.jpg",
+      "/img/77372092ff172d4b87630bc4bb6b57e9.jpg"
+    ]
+  },
+  {
+    "name": "Netflix",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/3f63c13d99b07d2178ac649be4309a1a.jpg",
+      "/img/ea4535c36546e3481570089a53c4ddbb.jpg",
+      "/img/8313d1050cd176035bf84a23a8ca94ff.jpg"
+    ]
+  },
+  {
+    "name": "Adidas",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/6d50a1c2eaa881d28d5f262e702e1530.jpg",
+      "/img/a0157eb086d410d711025b5af44d6629.jpg",
+      "/img/ea6441c61a2788c6197a5828df7b93fe.jpg",
+      "/img/faefc710fabcd2703645801d1a016114.jpg"
+    ]
+  },
+  {
+    "name": "Pokémon",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/8b459582623ddde35004a8576145d10d.jpg",
+      "/img/3cf11731522038f2a7f06e20823a5dbd.jpg",
+      "/img/18dca1e04ee5d08b816626bf8f838273.jpg",
+      "/img/46f36d06ae38a3ca77050060700be15a.jpg"
+    ]
+  },
+  {
+    "name": "Cisco",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/34996b95fa31e60955541fc9ecf99d4a.jpg",
+      "/img/8034e41a97d239f27238a5d19c6b6d2d.jpg",
+      "/img/96cf460d0c5e23bb9f46f156f834ebad.jpg",
+      "/img/8c97505ceb7a0593d613f5e2d607b3e9.jpg"
+    ]
+  },
+  {
+    "name": "Citibank",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/fe8d97e34f5ec0739a7eff58f5d40514.jpg",
+      "/img/ae2d0a7cb53de3bf0f5686f2a0125726.jpg",
+      "/img/3f5e557afc5a56fbd5fc5be59f8dbf5b.jpg",
+      "/img/23aad468138ef7ca4de535005d3506c9.jpg"
+    ]
+  },
+  {
+    "name": "L'Oréal",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/05e2dc9f5646848daefc11bd83217088.jpg",
+      "/img/346a247ba2a68669655c463100b305c8.jpg",
+      "/img/b56c12abe006c81a7aaab8900dddca5a.jpg",
+      "/img/727c4736f90eb8b4bd6c3a5d8ee30f35.jpg"
+    ]
+  },
+  {
+    "name": "Nissan",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/ac2f5078c35231f8f8996c6baa9c44aa.jpg",
+      "/img/7d9c3f9cfe9d3c24f9835a9453f77fdd.jpg",
+      "/img/0dae02832e1739012714492d1c951752.jpg"
+    ]
+  },
+  {
+    "name": "Bloomberg",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/c4757270e77ef9c931c8ea1e692d38d8.jpg"
+    ]
+  },
+  {
+    "name": "Stripe",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/3956d9462f076c70f8925dbe327874f5.jpg",
+      "/img/af0a5836d19c93f377eabc6b09897678.jpg",
+      "/img/608afc7d96a3ac5b5029066c02dd8c89.jpg",
+      "/img/f1a75bc336f7d3b6fb457d0013206971.jpg"
+    ]
+  },
+  {
+    "name": "Volvo",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/6f78aced727ad8ac1838f9b5290fc26d.jpg",
+      "/img/0b10e3736f56601026269714b18efad6.jpg",
+      "/img/ec65625b4362217395ce023217ffe85e.jpg",
+      "/img/32a3d756f3806eacd30b63ef633211ae.jpg"
+    ]
+  },
+  {
+    "name": "Kraft",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/400e4ed2e52de7c5c417a0774dde0336.jpg",
+      "/img/fc5c26d6e335d92f45690cc0bd411e41.jpg",
+      "/img/68950c4a45dade6c96d9a924fc4b8209.jpg",
+      "/img/d3ac954c5421ac3f21767c5f3fe9914c.jpg"
+    ]
+  },
+  {
+    "name": "Henkel",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/dce103383ef0f43ed9ed25a919ab60d5.jpg",
+      "/img/69fcbcf8f7ef15a07e6626fe53dde221.jpg",
+      "/img/a2748c0f2c385645bd7bb49965b265b2.jpg",
+      "/img/3245cf83ed7c3feeb1a9288a934acbcd.jpg"
+    ]
+  },
+  {
+    "name": "Holiday Inn",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/45db49fcee8307c208fcfae69a0ad4f0.jpg",
+      "/img/cbcf850f834db96edd6b74900581737e.jpg",
+      "/img/ad0d7ba6f15beccdc470d1e6acf01cba.jpg",
+      "/img/f7b0ff5fd8ce2233dc1823145c33a8da.jpg"
+    ]
+  },
+  {
+    "name": "BBVA",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/16eaf9c9c808a2c05f5e923acae5e140.jpg",
+      "/img/5a7ccedb55a5ce1455f13f538dc14615.jpg",
+      "/img/6b1ce8c824f2c06006aa606079f990ae.jpg",
+      "/img/3e9da03ad279895fc09e4b8a10f7203a.jpg",
+      "/img/dfe52e7a527030e7b200b1abed9ff728.jpg"
+    ]
+  },
+  {
+    "name": "Lenovo",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/e3579fa60753793b39ef692c5f587fd0.jpg",
+      "/img/b23dae7e88b1eaa80db2e3b0e6aed252.jpg",
+      "/img/6fdbe149b7bc036c90d147dde8a816c4.jpg",
+      "/img/85c966ef8461c07afbca4c6fc83919b2.jpg",
+      "/img/74c77d396dd8c8c0dac6cac23974ff5e.jpg"
+    ]
+  },
+  {
+    "name": "SAP",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/e9a2de7b8774e93b374b516be8eda38e.jpg",
+      "/img/4d537244ebe33a47d91c35acefa34c2e.jpg",
+      "/img/17d57ed34bbab05baeea0a1951f3495d.jpg",
+      "/img/67c35a04b4169cb7166b7dc6ad88089a.jpg",
+      "/img/2c0a69f65f632f620fb16efd636841d8.jpg",
+      "/img/e47f8f9b9a1257672dc823b557daa2a4.jpg"
+    ]
+  },
+  {
+    "name": "Nivea",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/491ea902a097eab8920175da9df92e23.jpg",
+      "/img/14de4db1ec75233a171779f36192d18d.jpg",
+      "/img/ec86796d1c35d87b216c7cb26edf92b0.jpg",
+      "/img/8c34807b01f183f43282585bfb1a70bd.jpg"
+    ]
+  },
+  {
+    "name": "Zurich",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/63b880dcf50501676e07371b52b7c140.jpg",
+      "/img/27a8e2bd87fe737129b5f9953e1c9db9.jpg",
+      "/img/58270ddd86e086222d44f9644cc99e80.jpg",
+      "/img/9065d602b0f06d2e2395cfa6c2ee410b.jpg"
+    ]
+  },
+  {
+    "name": "Chubb",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/ce6d131a3152e89425c2d3352483f13a.jpg",
+      "/img/3b0cfc26877c6d5895ae04af766c5773.jpg",
+      "/img/c33bb5f1f7b1bfa7d4b89aef1d956ad0.jpg",
+      "/img/3e41b8c1f113ab7357799e437a0229da.jpg",
+      "/img/d1eb0e8a2a255f8ac7bca860f8d37a02.jpg"
+    ]
+  },
+  {
+    "name": "Novo Nordisk",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/1c3c2f08967a15c57a70dcf77571a436.jpg",
+      "/img/ec474145411cb004dee9ad1e1b376d4e.jpg",
+      "/img/9ad474e90770c7d8febd278c6e526585.jpg",
+      "/img/764750018a5593f786ae5ac7e81c5ad0.jpg"
+    ]
+  },
+  {
+    "name": "Scotiabank",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/864c8386c865b2778b726b9c75ce4eee.jpg",
+      "/img/6ed775a83760161d89e2f6fa3fcba9da.jpg",
+      "/img/cad4ba4971e666d88b0b6617b676ca9c.jpg",
+      "/img/31055e1b4138031b4a2e9cdb6a790d46.jpg",
+      "/img/7b6bfb2ce0616dbf9725f734dfc2016f.jpg"
+    ]
+  },
+  {
+    "name": "Diageo",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/b86a4cdd27314efb839aee933a7b369d.jpg",
+      "/img/b4780048f56885807eb5b2c104ed5952.jpg",
+      "/img/52858fc942a4f3753cb2b7997dc338ae.jpg",
+      "/img/06fd4d3ef2acfe1af84ce8b0520432de.jpg",
+      "/img/d1bcdb1b3bc746c56b54e87f1d49e08b.jpg"
+    ]
+  },
+  {
+    "name": "Maersk",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/64f22526ec833fabf18827cb3f201ba4.jpg",
+      "/img/86463671a6a669df7aa9806e0b905a1f.jpg",
+      "/img/58eb2aefe38bc261c3a47a4d45298b65.jpg",
+      "/img/581506d1f09167c151926d8462cf061e.jpg",
+      "/img/49809cb4ade280941de8c24b12fb7269.jpg"
+    ]
+  },
+  {
+    "name": "CBRE",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/e6e55d743ec6bcae5c033fb019d1db76.jpg",
+      "/img/85a355753cd82c2e9f95433e6f66740d.jpg",
+      "/img/3c3a30dc2232729d2a3a9ea1ce1d0bde.jpg",
+      "/img/bc1e9ba8254faed2b07e78b8689c94ee.jpg"
+    ]
+  },
+  {
+    "name": "Softbank",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/ae6a3face9c48f24a72cf2d17de13672.jpg",
+      "/img/5139b43e902cc5c59691b51652cf9342.jpg",
+      "/img/e38cf942cf837635d62d38cb9b6bbf98.jpg",
+      "/img/19b851ef085397a7d94b790c9d90dcdd.jpg",
+      "/img/b04b73ec7014ae06b8fceb014327a16f.jpg"
+    ]
+  },
+  {
+    "name": "Nubank",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/e8632e8ac7700c2c2df0a9cdca4a96b0.jpg",
+      "/img/0592824d886c1a6241ffd3c23db18b9c.jpg",
+      "/img/333509e425b9e0f1001e6989ab7dde06.jpg",
+      "/img/f3b6ff95c2e0db76294aac5e36089aa9.jpg"
+    ]
+  },
+  {
+    "name": "Banxico",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/e863b04dab2fef2704e0dbaf3114933d.jpg",
+      "/img/8d0b31c3984612e7c616de5fbaa94418.jpg",
+      "/img/deddf8bf7e064de9db9523473551752e.jpg"
+    ]
+  },
+  {
+    "name": "BorgWarner",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/811d73328c6c9ba352a9e5d99b733791.jpg",
+      "/img/737febb1bc656b96b13d1b21cdc2de71.jpg",
+      "/img/4af3ce31710cc4cbb62af0c158f1958b.jpg",
+      "/img/3ff51eecaa59ec054af0c78488c51ff1.jpg",
+      "/img/6a6ffcaadf35179e29029107b6bf6057.jpg"
+    ]
+  },
+  {
+    "name": "JAC",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/3ca6c14dc1ad4c799559f62efa18c30a.jpg",
+      "/img/9e197bf355c82ab00903515d0bbcf05c.jpg",
+      "/img/26a28f09eb99d7c7c605d27f903f3a69.jpg",
+      "/img/1e962d4e33a945919c9c3f914a67feb6.jpg"
+    ]
+  },
+  {
+    "name": "Arkema",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/35b34776cc7944f37539434cafd4bec0.jpg",
+      "/img/09d492aece1e8fe19a9294285bb1965d.jpg",
+      "/img/9263392a9837ab35da2e6d9e77aa3dea.jpg",
+      "/img/0af8ae8455258805971786ae7a0512ba.jpg"
+    ]
+  },
+  {
+    "name": "Blum",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/d76f93f72d1b4f0fd158294a76d14b02.jpg",
+      "/img/6bad342cb7c4ce801451d070f9f969f9.jpg",
+      "/img/f76ae8cd021b03147708a0d09380b374.jpg",
+      "/img/cce02b3f4327b29339774248c1ef44f8.jpg"
+    ]
+  },
+  {
+    "name": "Avnet",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/fe387f910e6fa985cd6c417b62d605c5.jpg",
+      "/img/5f1cfab8d22dadb9a9a795a3d51504e0.jpg",
+      "/img/7724ac589126a8eac384c5d8aa4b3bdd.jpg",
+      "/img/8a85775ee1fc189b0a0438652566dd20.jpg"
+    ]
+  },
+  {
+    "name": "Nutanix",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/7695458f1f2d416157a7a2512e5f7289.jpg",
+      "/img/e2d6caf5030d312b2b8e715d0f5033a1.jpg",
+      "/img/91fc7540b037f78ba91e5286f572c3e3.jpg",
+      "/img/395c214a7bf81908655a9c78a5a393d9.jpg",
+      "/img/a829f49f0401cb6718a520dba21e34e5.jpg",
+      "/img/bc51042a8a4fa76b15f5d190dc83e2a6.jpg"
+    ]
+  },
+  {
+    "name": "Hines",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/8a0c397f67d5c9c96d17f77c753ea950.jpg",
+      "/img/207052e815c00ce147abd6c8b78a7a5d.jpg",
+      "/img/736cad67e2be00188b66deba239769b5.jpg",
+      "/img/1b318f32f635fea3c9ce900b937b8780.jpg",
+      "/img/c4b047a6c09b2e7467bc89d9915aa894.jpg"
+    ]
+  },
+  {
+    "name": "Sempra",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/adf2de3b3febf8b40929fdc18c880ed1.jpg"
+    ]
+  },
+  {
+    "name": "Solidigm",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/71913ed6dbe4bb133c8336de3b1c720e.jpg",
+      "/img/d28aac53ca404d68a1d1a8c753b20f77.jpg",
+      "/img/f90ae6448747b9b3f8fb9ce9df80ad75.jpg",
+      "/img/206f713573d5f3ae8b87598c5e72aaaa.jpg"
+    ]
+  },
+  {
+    "name": "Skandia",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/67c7e387aee2df1a31ad941e405a5bc9.jpg",
+      "/img/bb5fd6a96417b1b6e83906fa7b74d80c.jpg",
+      "/img/589ac798a7f2a51b533081c879b3cb30.jpg",
+      "/img/9da2b858a229fcd88fc28192e604dcdd.jpg",
+      "/img/dbf826e9167477729be0389688a77f14.jpg"
+    ]
+  },
+  {
+    "name": "Ireland Embassy",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/866968503b9816dc6cc94f6e1a9930cb.jpg",
+      "/img/6c22780db28f98918974ef324f47d74a.jpg",
+      "/img/dfbe5481b868ccd31a1bc07d47674487.jpg",
+      "/img/62438751515aa22743bf280d5b6f094c.jpg"
+    ]
+  },
+  {
+    "name": "Hogan",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/6be165b53181bfbc6df3eb904a2909fb.jpg",
+      "/img/27f1791127d0cbd1af3d227deb26416a.jpg",
+      "/img/47174fc88b27e7e28a2560a2a6a3a20b.jpg",
+      "/img/b756d26c0e1ede86460b99168f453410.jpg"
+    ]
+  },
+  {
+    "name": "Landmark Corporate Tower",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/0caf9dbc5c433e9dbccb8d29cbff62a1.jpg",
+      "/img/efff7fe0472305c53302e83bb1002ebb.jpg",
+      "/img/27cb522da6b11c9bca69bb9f78a81bf3.jpg",
+      "/img/13b6262145745f35ee997b4cb33cc25c.jpg"
+    ]
+  },
+  {
+    "name": "Nexa Corporate",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/15d46f45e28c5311a8defb5be1a37738.jpg",
+      "/img/de0e67e077d96a7aea45a9bb68ed6d24.jpg",
+      "/img/74170ca7c037e1fbcc4adf5bb039c85d.jpg",
+      "/img/d6cb6f07accac41bbe12b17de5f093d4.jpg"
+    ]
+  },
+  {
+    "name": "NH",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/c2e0e777240851bf52bb0306dfbc733c.jpg",
+      "/img/00dd747bd0bb59701a3c661b2325c743.jpg",
+      "/img/c49c10b7f814142218c3e56c929e5128.jpg",
+      "/img/f7d6e3a06e0b0dae6072fa9d84229fa7.jpg"
+    ]
+  },
+  {
+    "name": "Royalton",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/44694a7a238769c072d880fc7cd1c513.jpg",
+      "/img/2f4e7f6e1ca5e71ef87602c687328580.jpg",
+      "/img/94a07ce4661287ed6b7ea7ba33ba32be.jpg",
+      "/img/2af34dacc629f726848dc37afa3fc88f.jpg"
+    ]
+  },
+  {
+    "name": "Tec",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/87737fb49761a72c6bedba438733c1a9.jpg",
+      "/img/7c7738b7235a8985252f81dd52c01b77.jpg",
+      "/img/4f99f579e78e2a8a8ff7fa2ce03582db.jpg",
+      "/img/a169c28dbdbeb83e81b4864ef1022c66.jpg",
+      "/img/08d099c5ec431b60829dd4479db67a08.jpg"
+    ]
+  },
+  {
+    "name": "Tec",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/0eb6bdd895aa2fe9a4eb249039b1eecc.jpg",
+      "/img/682f4a994208267dbad95460bf294081.jpg",
+      "/img/a9391b3b9ccd37be40410a2252ea0a5d.jpg",
+      "/img/bff9deb6acbef3dc63395e3d76c95008.jpg"
+    ]
+  },
+  {
+    "name": "OMA",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/86d763d6aeb0fa5c4c755706ca8370a0.jpg",
+      "/img/b1c6c6258074674fc7bc189f497055a3.jpg",
+      "/img/4b66fbe09984f7ed31cb6e39b98485c5.jpg",
+      "/img/8a3721cd36f1cb99a307c95b24932a38.jpg"
+    ]
+  },
+  {
+    "name": "MPA",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/303d298197bce9954ec6ac48ef9bd9e4.jpg",
+      "/img/f80d1a3cc52f59636a25749183343500.jpg",
+      "/img/54c7a4afc0ea1220e7d56f8e1d49904c.jpg",
+      "/img/8d7feba4afc63621db8a7d83e9906f74.jpg"
+    ]
+  },
+  {
+    "name": "Heartland",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/0929807ff44a48a5106483e745a59832.jpg",
+      "/img/97f22ac6655e472fd3ad337188e3a33f.jpg",
+      "/img/1607280bdcb3242b15f8a9c3b38ea398.jpg",
+      "/img/ba5ac5dbb74b7859adece4a03bea2fa1.jpg"
+    ]
+  },
+  {
+    "name": "Koltin",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/569ab9d06a4229d735b26e974e057cea.jpg"
+    ]
+  },
+  {
+    "name": "JSF",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/d849dd9badf2823fd7126370edd5c7db.jpg"
+    ]
+  },
+  {
+    "name": "Arkansas",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/2d7ebe48f1f049c75bc449fab94fce71.jpg"
+    ]
+  },
+  {
+    "name": "High Park",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/a7e103c02242caf0d3114e839e7f9b06.jpg"
+    ]
+  },
+  {
+    "name": "The Square",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/46371e973b1690fdd76116de43781b35.jpg",
+      "/img/6b1cf46a0b6933337e8ad3c154a21b75.jpg",
+      "/img/de14ab3fbc0c25a83313149bdcca89c6.jpg",
+      "/img/483cfa11e3fdd097f1fdbaba3bd7b481.jpg"
+    ]
+  },
+  {
+    "name": "Atria",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/119a57b0c8d33e51a5e88a612d135849.jpg",
+      "/img/c46dc83c40408d806831e4ef9d80a298.jpg",
+      "/img/10f4c5970bbdd8ff145973f5173b8acc.jpg",
+      "/img/40fde7373a4014c8d8607ba6ebf776a7.jpg"
+    ]
+  },
+  {
+    "name": "Arterra",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/f30b1c1faf529f5a49645c2b9ee5a475.jpg",
+      "/img/d7963ba3ead0bbc95cf19ec142d6f3e2.jpg",
+      "/img/aa53753a6828042782d63b349e445a2e.jpg"
+    ]
+  },
+  {
+    "name": "Chromara",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/6101fb81078955104fc2096b3e6cf369.jpg",
+      "/img/c72dad5352854df257d503d2156b6759.jpg",
+      "/img/fedb3b82f42dd2d9a2bac53ae23e019c.jpg",
+      "/img/fbae19a475fa305ec440d25bee21d1cf.jpg"
+    ]
+  },
+  {
+    "name": "Conecta",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/342d9ea59494ac37650f5eb04c91c5b2.jpg",
+      "/img/5b9d971e1cf77c9002e66fae96d35ed2.jpg",
+      "/img/3dfb03fea3318f2c992fa361ac2c0c41.jpg"
+    ]
+  },
+  {
+    "name": "Conqr",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/92f111989fcb4c7870294910b335dc94.jpg",
+      "/img/7bf91a8bf753979f3fe2a87b6813c46f.jpg",
+      "/img/5830b461828037b09225736ee9366a06.jpg",
+      "/img/b66702f9259a87f43e2b1049e8cff764.jpg"
+    ]
+  },
+  {
+    "name": "BGBG",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/b6d24c1320f30fe99e93ee6aeac6e808.jpg",
+      "/img/318421e6c02457ca75db6a513f26a0ba.jpg",
+      "/img/6dab83613d89059671005e7b1e89cd2d.jpg",
+      "/img/51d10e47449f2f1a93b2e6d5e01df851.jpg"
+    ]
+  },
+  {
+    "name": "TS Trucking",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/e9e14ad2b747587d16d5fb332b779478.jpg",
+      "/img/96853d2cf10422465102b726c7a6e8d8.jpg",
+      "/img/396de495880ad683b85bbdfed408a263.jpg",
+      "/img/26cb04201b92176288a87a9240e44552.jpg"
+    ]
+  },
+  {
+    "name": "Warmline Offices",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/c3b61b443be33934db6cdf30e12e1801.jpg",
+      "/img/92277f9c147d1bdd34f1590d28252e54.jpg",
+      "/img/c96da74a2f7a85459e5040a9e081a700.jpg",
+      "/img/36e624e5f308d03e66a57eda67516b00.jpg"
+    ]
+  },
+  {
+    "name": "Petrarca 239",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/a2b298580f4e03fcc98c05b173534532.jpg",
+      "/img/021055ec56c45b7a905c05a5d99600f5.jpg",
+      "/img/958c4cc052993c92b82f29fdad55f3d3.jpg",
+      "/img/652a1c2719e8ded4d329cd0784e84bec.jpg"
+    ]
+  },
+  {
+    "name": "Petrarca Showroom",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/03addc166412ce4ea4c59fb984e9bf60.jpg",
+      "/img/67ac9fc9f75098a581c942cdc9d66ab2.jpg",
+      "/img/37046991f7947f20cd45a2e4865bb647.jpg",
+      "/img/2fb0557a83b3bca9117f33a09a5561ee.jpg"
+    ]
+  },
+  {
+    "name": "Casa Madina",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/4ccacb6d3178819ef29d3ebba9327611.jpg",
+      "/img/ace3853f16ad142ab20d77459d002591.jpg",
+      "/img/d68b197a3ec94f7ceefc3e37315a3494.jpg",
+      "/img/7c7195cca9b625cd754196617ff20e42.jpg",
+      "/img/2fa812ae1eda320d68285a72a2bb4e58.jpg"
+    ]
+  },
+  {
+    "name": "Temple",
+    "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
+    "imgs": [
+      "/img/2e0855c1cef12dbc6f22a6baf1bc6fb6.jpg",
+      "/img/a798dcc62eff1506ff99f90570721ee7.jpg",
+      "/img/311e18b0a580c565812fef1538b7bb8d.jpg"
+    ]
+  }
+]

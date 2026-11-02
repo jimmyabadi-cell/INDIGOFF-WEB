@@ -1,10 +1,10 @@
 import React, { Suspense, lazy } from 'react';
 
-const Main = lazy(() => import('./pages/Main.jsx'));
-const CollectionPage = lazy(() => import('./pages/CollectionPage.jsx'));
-const Downloads = lazy(() => import('./pages/Downloads.jsx'));
-const OnoffStudio = lazy(() => import('./pages/OnoffStudio.jsx'));
-const FindRep = lazy(() => import('./pages/FindRep.jsx'));
+const Main = lazy(() => import('./pages/Main/Main.jsx'));
+const CollectionPage = lazy(() => import('./pages/Collection/CollectionPage.jsx'));
+const Downloads = lazy(() => import('./pages/Downloads/Downloads.jsx'));
+const OnoffStudio = lazy(() => import('./pages/OnoffStudio/OnoffStudio.jsx'));
+const FindRep = lazy(() => import('./pages/FindRep/FindRep.jsx'));
 
 const COLLECTIONS = ['ceilings', 'walls', 'lights', 'dividers', 'podcaster'];
 const TITLES = { '/': 'Indigoff', '/downloads': 'Downloads — Indigoff', '/find-a-rep': 'Find a rep — Indigoff', '/onoff-studio': 'onoff studio — Indigoff' };

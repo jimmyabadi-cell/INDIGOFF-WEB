@@ -1,0 +1,224 @@
+{
+  "txt": {
+    "h1": "Acoustic and lighting design, as one.",
+    "sub": "onoff studio is the Indigoff design studio for spaces that need to sound as good as they look.",
+    "whatH": "We design how a space sounds and how it is lit — together.",
+    "whatP1": "Most projects treat acoustics and lighting as two separate problems. At onoff studio we solve them as one: every fixture we design absorbs sound and shapes light at the same time, so ceilings and walls stay clean and the room feels calm.",
+    "whatP2": "We work with architects, interior designers and end clients on offices, hospitality, education and retail — from a single statement piece to the full acoustic and lighting plan of a building.",
+    "procH": "How we work",
+    "desH": "onoff studio designs",
+    "desP": "Acoustic lighting designed by onoff studio and made by Indigoff from recycled PET felt.",
+    "ctaH": "Let’s design your space.",
+    "ctaP": "Tell us about your project and the onoff studio team will propose an acoustic and lighting concept.",
+    "cta1": "Start a project",
+    "cta2": "Talk to a rep"
+  },
+  "sv": [
+    [
+      "01",
+      "Acoustic design",
+      "Reverberation and noise analysis of your space, with a clear recommendation of what to treat and where."
+    ],
+    [
+      "02",
+      "Lighting design",
+      "Lighting plans and fixture layouts that balance mood, function and energy use."
+    ],
+    [
+      "03",
+      "Custom acoustic fixtures",
+      "One-of-a-kind acoustic lights designed for your project, in any shape, size and color."
+    ],
+    [
+      "04",
+      "Coordination and installation",
+      "Shop drawings, samples, production and on-site support until the space is finished."
+    ]
+  ],
+  "steps": [
+    [
+      "01",
+      "Listen",
+      "We study the space, its use and its sound."
+    ],
+    [
+      "02",
+      "Design",
+      "We propose the acoustic and lighting concept, with renders and simulations."
+    ],
+    [
+      "03",
+      "Make",
+      "Indigoff produces each piece from recycled PET felt with integrated LED."
+    ],
+    [
+      "04",
+      "Install",
+      "We coordinate delivery and installation with your team."
+    ]
+  ],
+  "designs": [
+    {
+      "slug": "onfoldedwaveacousticchandelier",
+      "name": "Folded Wave Acoustic Chandelier",
+      "kind": "Pendant Lights",
+      "img": "/img/dc6b194e8cfae848cc1e1424d739f8cb.jpg"
+    },
+    {
+      "slug": "onacousticleafcanopy",
+      "name": "Acoustic Leaf Canopy",
+      "kind": "Pendant Lights",
+      "img": "/img/9d3fd937d8ba1cc27ab5015f8b0f82c6.jpg"
+    },
+    {
+      "slug": "onhaloarrayceiling",
+      "name": "Halo Array Ceiling",
+      "kind": "Pendant Lights",
+      "img": "/img/25ca2a5f40847b1c17dd7cfa675f89ab.jpg"
+    },
+    {
+      "slug": "onacousticbeamarch",
+      "name": "Acoustic Beam Arch",
+      "kind": "Pendant Lights",
+      "img": "/img/72302a7768fe332ae256ae3b833c7ccb.jpg"
+    },
+    {
+      "slug": "onsuspendedacousticribbonlight",
+      "name": "Suspended Acoustic Ribbon Light",
+      "kind": "Pendant Lights",
+      "img": "/img/0f48bb644b82afe967ce6b37d1ad7ca7.jpg"
+    },
+    {
+      "slug": "onhelixbraidacousticceiling",
+      "name": "Helix Braid Acoustic Ceiling",
+      "kind": "Pendant Lights",
+      "img": "/img/81bad84b51f5e8547d366f9e49ac5f30.jpg"
+    },
+    {
+      "slug": "onlumenringsarray",
+      "name": "Lumen Rings Array",
+      "kind": "Wall Lights",
+      "img": "/img/de40a00c534c4312c324dc8f4715c0cf.jpg"
+    },
+    {
+      "slug": "onechoplaneceiling",
+      "name": "Echo Plane Ceiling",
+      "kind": "Pendant Lights",
+      "img": "/img/47bd47c16f07e65d56a1e2b539589aa5.jpg"
+    },
+    {
+      "slug": "onacoustictotemcolumn",
+      "name": "Acoustic Totem Column",
+      "kind": "Floor Lights",
+      "img": "/img/dd6b1979d638259add654f200489c2f3.jpg"
+    },
+    {
+      "slug": "onhelixtotemglow",
+      "name": "Helix Totem Glow",
+      "kind": "Floor Lights",
+      "img": "/img/f40ed11b15958ffaedbbf3cb113f5296.jpg"
+    },
+    {
+      "slug": "onacousticbladeline",
+      "name": "Acoustic Blade Line",
+      "kind": "Pendant Lights",
+      "img": "/img/ceec9b22009ec725b2eca404bbb13cb1.jpg"
+    },
+    {
+      "slug": "onacousticgriddom",
+      "name": "Acoustic Grid Dom",
+      "kind": "Pendant Lights",
+      "img": "/img/d01e7e2c87c07e3d63678deb650e45a8.jpg"
+    },
+    {
+      "slug": "onacoustichalotower",
+      "name": "Acoustic Halo Tower",
+      "kind": "Pendant Lights",
+      "img": "/img/62bfb403562728bbc4cbdd9d13059c62.jpg"
+    },
+    {
+      "slug": "onacousticspirallux",
+      "name": "Acoustic Spiral Lux",
+      "kind": "Pendant Lights",
+      "img": "/img/026bfa9022eebfc5e6c2e9f72e4616bc.jpg"
+    },
+    {
+      "slug": "onaerofinlight",
+      "name": "Aero Fin Light",
+      "kind": "Pendant Lights",
+      "img": "/img/3299caecf5ac0b036c8187e8054ec0ef.jpg"
+    },
+    {
+      "slug": "onaxislinestructure",
+      "name": "Axis Line Structure",
+      "kind": "Pendant Lights",
+      "img": "/img/73a80e032efe05e7eddf28680e720340.jpg"
+    },
+    {
+      "slug": "onbloompendant",
+      "name": "Bloom Pendant",
+      "kind": "Pendant Lights",
+      "img": "/img/cbb4541928f23ac949859ffb9b9fca6c.jpg"
+    },
+    {
+      "slug": "oncontourhalopendant",
+      "name": "Contour Halo Pendant",
+      "kind": "Pendant Lights",
+      "img": "/img/1c5dc61cc920eda35e1e9c2e31ae065f.jpg"
+    },
+    {
+      "slug": "onhaloacoustictablelight",
+      "name": "Halo Acoustic Table Light",
+      "kind": "Table Lights",
+      "img": "/img/34560c286c56e3068095a0476bfe60f6.jpg"
+    },
+    {
+      "slug": "onnestdomependant",
+      "name": "Nest Dome Pendant",
+      "kind": "Pendant Lights",
+      "img": "/img/701d9571cd32f700f0d097126d07955c.jpg"
+    },
+    {
+      "slug": "onsuspendedcrosslinesystem",
+      "name": "Suspended Crossline System",
+      "kind": "Pendant Lights",
+      "img": "/img/9213285205965b6728fa67e7b27e6aed.jpg"
+    },
+    {
+      "slug": "onacousticeclipsedisc",
+      "name": "Acoustic Eclipse Disc",
+      "kind": "Wall Lights",
+      "img": "/img/8523e6842e7a4deadf849cd2afe8ad88.jpg"
+    },
+    {
+      "slug": "onacousticribbonwall",
+      "name": "Acoustic Ribbon Wall",
+      "kind": "Wall Lights",
+      "img": "/img/09be4ebba4598bd47c2063af26b9ed5a.jpg"
+    },
+    {
+      "slug": "onacousticwallveil",
+      "name": "Acoustic Wall Veil",
+      "kind": "Wall Lights",
+      "img": "/img/b19fcff3e6a06f1e1c8c3c61fb20a9c5.jpg"
+    },
+    {
+      "slug": "ondriftwallpanellight",
+      "name": "Drift Wall Panel Light",
+      "kind": "Wall Lights",
+      "img": "/img/69aed450d475768215de887190a6ee4a.jpg"
+    },
+    {
+      "slug": "onstoneglowwalltiles",
+      "name": "Stone Glow Wall Tiles",
+      "kind": "Wall Lights",
+      "img": "/img/f37b871eefa48db142b1f238d18634f6.jpg"
+    },
+    {
+      "slug": "onvortex",
+      "name": "Vortex",
+      "kind": "Wall Lights",
+      "img": "/img/80b6daeba61536b2014cdc7d5201b593.jpg"
+    }
+  ]
+}

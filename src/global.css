@@ -1,0 +1,20 @@
+:root {
+  /* Foreground */
+  --color-ink:        #111111;  /* texto principal */
+  --color-dark:       #3A3935;  /* encabezados oscuros */
+  --color-secondary:  #5E5A53;  /* texto secundario */
+  --color-muted:      #6B675F;  /* texto atenuado / UI inactivo */
+  --color-border:     #C9C4BA;  /* bordes y separadores */
+
+  /* Background */
+  --color-white:      #FFFFFF;
+  --color-bg:         #F4F1EB;  /* fondo de página */
+  --color-surface:    #ECE9E4;  /* superficie / tarjeta */
+  --color-surface-2:  #EEEBE6;  /* superficie sutil */
+  --color-surface-3:  #F1EEE9;  /* superficie más clara */
+
+  /* Brand accent — púrpura Indigoff */
+  --color-accent:       #645DC5;  /* acento principal */
+  --color-accent-dark:  #1E125C;  /* acento oscuro */
+  --color-accent-light: #B5B7DD;  /* acento claro / tinte */
+}

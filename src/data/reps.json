@@ -1,0 +1,181 @@
+[
+  {
+    "name": "Northern Illumination Company",
+    "contact": "Kim Lindstrand",
+    "email": "klindstrand@nic-mail.com",
+    "phone": "503-893-1167",
+    "areas": [
+      "OR",
+      "WA_s"
+    ]
+  },
+  {
+    "name": "Grant Associates",
+    "contact": "Thomas Oechel",
+    "email": "thomas@ggrantassociates.com",
+    "phone": "858-327-3017",
+    "areas": [
+      "CA_n",
+      "CA_s",
+      "HI"
+    ]
+  },
+  {
+    "name": "Martin Design Lines",
+    "contact": "Robin Martin",
+    "email": "robin@martindesignlines.com",
+    "phone": "214-236-7272",
+    "areas": [
+      "OK",
+      "AR",
+      "TX_n"
+    ]
+  },
+  {
+    "name": "Trio-Esse Contract Group",
+    "contact": "Brenna Hoover",
+    "email": "brenna@trioesse.com",
+    "phone": "913-901-7067",
+    "areas": [
+      "KS",
+      "NE",
+      "IA",
+      "MO"
+    ]
+  },
+  {
+    "name": "CW Lighting, LLC",
+    "contact": "Samantha Russem",
+    "email": "srussem@cwlighting.com",
+    "phone": "713-690-9320",
+    "areas": [
+      "TX_s"
+    ]
+  },
+  {
+    "name": "Power & Lighting Systems, Inc.",
+    "contact": "Abraham Benguigui",
+    "email": "abenguigui@p-ls.com",
+    "phone": "305-444-8520",
+    "areas": [
+      "FL_s"
+    ]
+  },
+  {
+    "name": "Maximus",
+    "contact": "Mell Gage Smith",
+    "email": "mell@maximusarch.com",
+    "phone": "205-218-0541",
+    "areas": [
+      "AL"
+    ]
+  },
+  {
+    "name": "PSA",
+    "contact": "Bill Wilson",
+    "email": "bill@psareps.org",
+    "phone": "336-210-2756",
+    "areas": [
+      "NC",
+      "SC"
+    ]
+  },
+  {
+    "name": "ELA + Synergy",
+    "contact": "Laura Zimmerman",
+    "email": "lauraz@ses95.com",
+    "phone": "609-238-6128",
+    "areas": [
+      "NJ",
+      "PA_e"
+    ]
+  },
+  {
+    "name": "ELA (Electric Lighting Agencies)",
+    "contact": "Scott Prochazka",
+    "email": "scott@electriclighting.com",
+    "phone": "917-586-4116",
+    "areas": [
+      "NY_s"
+    ]
+  },
+  {
+    "name": "Stack Brogan Collective",
+    "contact": "Diana Brogan",
+    "email": "diana@stackbrogan.com",
+    "phone": "312-505-9884",
+    "areas": [
+      "IL",
+      "WI"
+    ]
+  },
+  {
+    "name": "Cait Solutions",
+    "contact": "Caitlin Cunningham",
+    "email": "caitlin@cait-solutions.com",
+    "phone": "513-503-8806",
+    "areas": [
+      "OH"
+    ]
+  },
+  {
+    "name": "MJ Solutions",
+    "contact": "Scott McCoy",
+    "email": "scott@mjsreps.com",
+    "phone": "317-417-6776",
+    "areas": [
+      "IN",
+      "KY",
+      "TN"
+    ]
+  },
+  {
+    "name": "Facilitech Solutions",
+    "contact": "Lisa Shumway",
+    "email": "lisa@facilitechsolutions.com",
+    "phone": "248-330-0814",
+    "areas": [
+      "MI"
+    ]
+  },
+  {
+    "name": "SP4C3S",
+    "contact": "Carolina Juaristi",
+    "email": "carolina.juaristi@sp4c3s.com",
+    "phone": "+52 55 5071 4116",
+    "areas": [
+      "MXZAC",
+      "MXYUC",
+      "MXVER",
+      "MXTLA",
+      "MXTAM",
+      "MXTAB",
+      "MXSON",
+      "MXSIN",
+      "MXSLP",
+      "MXROO",
+      "MXQUE",
+      "MXPUE",
+      "MXOAX",
+      "MXNLE",
+      "MXNAY",
+      "MXMOR",
+      "MXMIC",
+      "MXMEX",
+      "MXJAL",
+      "MXHID",
+      "MXGRO",
+      "MXGUA",
+      "MXDUR",
+      "MXCMX",
+      "MXCOL",
+      "MXCOA",
+      "MXCHH",
+      "MXCHP",
+      "MXCAM",
+      "MXBCS",
+      "MXBCN",
+      "MXAGU"
+    ]
+  }
+]
