@@ -17,4 +17,30 @@
   --color-accent:       #645DC5;  /* acento principal */
   --color-accent-dark:  #1E125C;  /* acento oscuro */
   --color-accent-light: #B5B7DD;  /* acento claro / tinte */
+
+  /* Layout — escalan por breakpoint */
+  --gutter: 40px;   /* margen lateral de contenedores */
+  --vs: 1;          /* escala del espaciado vertical entre secciones */
+  --mh: 1;          /* escala de alturas de imágenes grandes */
+  --hero-h: 900px;  /* alto del hero de la home */
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  :root {
+    --gutter: 32px;
+    --vs: 0.7;
+    --mh: 0.75;
+    --hero-h: 760px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  :root {
+    --gutter: 20px;
+    --vs: 0.5;
+    --mh: 0.56;
+    --hero-h: max(540px, calc(100svh - 60px));
+  }
 }

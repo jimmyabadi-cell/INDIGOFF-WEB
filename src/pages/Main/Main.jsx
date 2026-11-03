@@ -721,7 +721,7 @@ class Component extends DCLogic {
         },
         alt: "Concept " + c.code + ": " + c.name,
         imgStyle:
-          "display: block; width: 100%; height: 460px; object-fit: cover; outline: " +
+          "display: block; width: 100%; height: calc(460px * var(--mh)); object-fit: cover; outline: " +
           (on ? "2px solid " + accent : "0") +
           "; outline-offset: -2px",
         pick: function () {
@@ -1189,12 +1189,14 @@ Component.template = function (v, self) {
         </a>
         <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
           <div
+            className="hd-in"
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
+              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
             )}
           >
             <nav
               aria-label="Main"
+              className="hd-l"
               style={S(
                 "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
@@ -1205,6 +1207,7 @@ Component.template = function (v, self) {
                 aria-haspopup="dialog"
                 aria-expanded={v.menuOnStr}
                 className="hd-menu"
+                aria-label={v.dwMenuLbl}
               >
                 <svg
                   aria-hidden="true"
@@ -1221,10 +1224,11 @@ Component.template = function (v, self) {
                 </svg>
                 <span>{v.dwMenuLbl}</span>
               </button>
-              <a href="/downloads">{v.T.k7}</a>
+              <a href="/downloads" className="hd-opt">{v.T.k7}</a>
             </nav>
             <a
               href="#top"
+              className="hd-logo"
               style={S(
                 "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
               )}
@@ -1236,11 +1240,12 @@ Component.template = function (v, self) {
               />
             </a>
             <div
+              className="hd-r"
               style={S(
                 "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
             >
-              <span style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
+              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
                 <button
                   type="button"
                   onClick={v.setEn}
@@ -1265,18 +1270,20 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
-              <a href="/find-a-rep">{v.T.k8}</a>
+              <a href="/find-a-rep" className="hd-opt">{v.T.k8}</a>
               <button
                 type="button"
                 onClick={v.openList}
+                className="hd-list"
+                aria-label={v.T.k69 + " (" + v.listCount + ")"}
                 style={S(
                   "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: #111111",
                 )}
               >
-                {v.T.k69}
-                {" ("}
-                {v.listCount}
-                {")"}
+                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg>
+                <span className="hd-list-lbl">{v.T.k69}{" ("}</span>
+                <span className="hd-list-n">{v.listCount}</span>
+                <span className="hd-list-lbl">{")"}</span>
               </button>
               <button
                 type="button"
@@ -1302,7 +1309,7 @@ Component.template = function (v, self) {
             </div>
           </div>
         </header>
-        <section id="top" style={S("position: relative; height: 900px; overflow: hidden; background: #1A1917")}>
+        <section id="top" style={S("position: relative; height: var(--hero-h); overflow: hidden; background: #1A1917")}>
           <div className="hs" aria-hidden="false">
             <img
               className="hs-i hs-1"
@@ -1348,7 +1355,7 @@ Component.template = function (v, self) {
             </div>
           </div>
         </section>
-        <section id="categories" style={S("padding: 120px 0 0")}>
+        <section id="categories" style={S("padding: calc(120px * var(--vs)) 0 0")}>
           <div className="sec-hd" style={S("text-align: center; margin-bottom: 56px; padding: 0 24px")}>
             <h2
               style={S(
@@ -1358,7 +1365,7 @@ Component.template = function (v, self) {
               {v.T.k10}
             </h2>
           </div>
-          <div className="cat-row" style={S("max-width: 1440px; margin: 0 auto; padding: 0 40px")}>
+          <div className="cat-row" style={S("max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter)")}>
             <a href="/ceilings" className="cat-panel" style={S("background: #EEEBE6")}>
               <img
                 src="/img/a4f6a6e61e9f23429824023cd67d2a5f.jpg"
@@ -1506,7 +1513,7 @@ Component.template = function (v, self) {
             </a>
           </div>
         </section>
-        <section id="onoff" style={S("padding: 160px 0 0")}>
+        <section id="onoff" style={S("padding: calc(160px * var(--vs)) 0 0")}>
           <div style={S("display: flex; flex-wrap: wrap-reverse; align-items: stretch")}>
             <div style={S("flex: 1 1 520px; min-width: 0")}>
               <img
@@ -1514,12 +1521,12 @@ Component.template = function (v, self) {
                 alt="Folded acoustic light wave over a conference table"
                 loading="lazy"
                 decoding="async"
-                style={S("display: block; width: 100%; height: 760px; object-fit: cover")}
+                style={S("display: block; width: 100%; height: calc(760px * var(--mh)); object-fit: cover")}
               />
             </div>
             <div
               style={S(
-                "flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 48px; box-sizing: border-box; background: #F4F1EB; color: #111111",
+                "flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: calc(80px * var(--vs)) min(48px, var(--gutter)); box-sizing: border-box; background: #F4F1EB; color: #111111",
               )}
             >
               <span
@@ -1558,7 +1565,7 @@ Component.template = function (v, self) {
             </div>
           </div>
         </section>
-        <section id="finishes" style={S("max-width: 1440px; margin: 0 auto; padding: 160px 0 0")}>
+        <section id="finishes" style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) 0 0")}>
           <div className="sec-hd" style={S("text-align: center; margin-bottom: 56px; padding: 0 24px")}>
             <h2
               style={S(
@@ -1568,7 +1575,7 @@ Component.template = function (v, self) {
               {v.T.k21}
             </h2>
           </div>
-          <div className="fin-grid" style={S("padding: 0 40px")}>
+          <div className="fin-grid" style={S("padding: 0 var(--gutter)")}>
             <button
               type="button"
               className="fin-tile fin-a"
@@ -1759,7 +1766,7 @@ Component.template = function (v, self) {
             </a>
           </div>
         </section>
-        <section id="new" style={S("padding: 160px 0 0")}>
+        <section id="new" style={S("padding: calc(160px * var(--vs)) 0 0")}>
           <div style={S("display: flex; flex-wrap: wrap; align-items: stretch")}>
             <button
               type="button"
@@ -1772,12 +1779,12 @@ Component.template = function (v, self) {
               <img
                 src="/img/b45fdd3f48ffafe2e4c62af327a77568.jpg"
                 alt="Reception desk in front of a terracotta acoustic shelving wall"
-                style={S("display: block; width: 100%; height: 820px; object-fit: cover")}
+                style={S("display: block; width: 100%; height: calc(820px * var(--mh)); object-fit: cover")}
               />
             </button>
             <div
               style={S(
-                "flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 48px; box-sizing: border-box; background: #F4F1EB",
+                "flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: calc(80px * var(--vs)) min(48px, var(--gutter)); box-sizing: border-box; background: #F4F1EB",
               )}
             >
               <h2
@@ -1794,7 +1801,7 @@ Component.template = function (v, self) {
             </div>
           </div>
         </section>
-        <section id="concepts" style={S("max-width: 1440px; margin: 0 auto; padding: 180px 40px 0")}>
+        <section id="concepts" style={S("max-width: 1440px; margin: 0 auto; padding: calc(180px * var(--vs)) var(--gutter) 0")}>
           <div className="sec-hd" style={S("text-align: center; margin-bottom: 0")}>
             <h2
               style={S(
@@ -1872,7 +1879,7 @@ Component.template = function (v, self) {
             </a>
           </div>
         </section>
-        <section id="projects" style={S("padding: 180px 0 0")}>
+        <section id="projects" style={S("padding: calc(180px * var(--vs)) 0 0")}>
           <div className="sec-hd" style={S("text-align: center; margin-bottom: 56px; padding: 0 24px")}>
             <h2
               style={S(
@@ -1887,7 +1894,7 @@ Component.template = function (v, self) {
             onClick={v.openMM}
             aria-label="View Multimedios"
             style={S(
-              "display: block; width: 100%; position: relative; height: 820px; overflow: hidden; background: #1A1917; padding: 0; border: 0; cursor: pointer",
+              "display: block; width: 100%; position: relative; height: calc(820px * var(--mh)); overflow: hidden; background: #1A1917; padding: 0; border: 0; cursor: pointer",
             )}
           >
             <img
@@ -1908,7 +1915,7 @@ Component.template = function (v, self) {
               {"Multimedios"}
             </span>
           </button>
-          <div className="proj-grid" style={S("max-width: 1440px; margin: 0 auto; padding: 8px 40px 0")}>
+          <div className="proj-grid" style={S("max-width: 1440px; margin: 0 auto; padding: 8px var(--gutter) 0")}>
             {(v.projects || []).map((pj, pj__i) => (
               <React.Fragment key={pj__i}>
                 <button
@@ -1959,7 +1966,7 @@ Component.template = function (v, self) {
               </div>
             </>
           ) : null}
-          <div style={S("max-width: 1100px; margin: 0 auto; padding: 120px 40px 0; text-align: center")}>
+          <div style={S("max-width: 1100px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0; text-align: center")}>
             <h2
               style={S(
                 "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -2401,11 +2408,11 @@ Component.template = function (v, self) {
             </a>
           </div>
         </section>
-        <section id="acoustics" style={S("padding: 160px 0 0")}>
+        <section id="acoustics" style={S("padding: calc(160px * var(--vs)) 0 0")}>
           <div style={S("display: flex; flex-wrap: wrap; align-items: stretch")}>
             <div
               style={S(
-                "flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 48px; box-sizing: border-box; background: #1E125C; color: #FFFFFF",
+                "flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: calc(80px * var(--vs)) min(48px, var(--gutter)); box-sizing: border-box; background: #1E125C; color: #FFFFFF",
               )}
             >
               <h2
@@ -2436,12 +2443,12 @@ Component.template = function (v, self) {
               <img
                 src="/img/73e73590532bd1289f3c5d2c7884612e.jpg"
                 alt="Lounge with golden suspended baffles over a dark acoustic wall"
-                style={S("display: block; width: 100%; height: 760px; object-fit: cover")}
+                style={S("display: block; width: 100%; height: calc(760px * var(--mh)); object-fit: cover")}
               />
             </button>
           </div>
         </section>
-        <section id="specify" style={S("max-width: 1440px; margin: 0 auto; padding: 160px 40px 0")}>
+        <section id="specify" style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) 0")}>
           <h2
             style={S(
               "margin: 0 0 48px; text-align: center; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -2450,12 +2457,13 @@ Component.template = function (v, self) {
             {v.T.k41}
           </h2>
           <div
+            className="spec-row"
             style={S("display: flex; flex-wrap: wrap; border-top: 1px solid #ECE9E4; border-bottom: 1px solid #ECE9E4")}
           >
             <a
               href="#appointment"
               style={S(
-                "flex: 1 1 260px; padding: 48px 32px; text-align: center; display: flex; flex-direction: column; gap: 10px",
+                "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px",
               )}
             >
               <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k42}</span>
@@ -2464,7 +2472,7 @@ Component.template = function (v, self) {
             <a
               href="#acoustics"
               style={S(
-                "flex: 1 1 260px; padding: 48px 32px; text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
+                "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
               <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k44}</span>
@@ -2473,7 +2481,7 @@ Component.template = function (v, self) {
             <a
               href="#samples"
               style={S(
-                "flex: 1 1 260px; padding: 48px 32px; text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
+                "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
               <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k46}</span>
@@ -2482,7 +2490,7 @@ Component.template = function (v, self) {
             <a
               href="#downloads"
               style={S(
-                "flex: 1 1 260px; padding: 48px 32px; text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
+                "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
               <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k48}</span>
@@ -2491,7 +2499,7 @@ Component.template = function (v, self) {
             <a
               href="/find-a-rep"
               style={S(
-                "flex: 1 1 260px; padding: 48px 32px; text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
+                "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
               <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k8}</span>
@@ -2501,7 +2509,7 @@ Component.template = function (v, self) {
         </section>
         <section
           id="contact"
-          style={S("max-width: 1440px; margin: 0 auto; padding: 160px 40px 140px; text-align: center")}
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) calc(140px * var(--vs)); text-align: center")}
         >
           <h2
             style={S(
@@ -2544,7 +2552,7 @@ Component.template = function (v, self) {
         <footer style={S("background: #F4F1EB")}>
           <div
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 72px 40px 40px; display: flex; flex-wrap: wrap; gap: 40px",
+              "max-width: 1440px; margin: 0 auto; padding: calc(72px * var(--vs)) var(--gutter) 40px; display: flex; flex-wrap: wrap; gap: 40px",
             )}
           >
             <nav
@@ -2659,7 +2667,7 @@ Component.template = function (v, self) {
           </div>
           <div
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 24px 40px 40px; border-top: 1px solid #E2DDD3; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 11px; color: #6B675F",
+              "max-width: 1440px; margin: 0 auto; padding: 24px var(--gutter) 40px; border-top: 1px solid #E2DDD3; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 11px; color: #6B675F",
             )}
           >
             <span>{"© 2026 Indigoff LLC"}</span>
@@ -2691,7 +2699,7 @@ Component.template = function (v, self) {
             >
               <div
                 style={S(
-                  "display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 40px; border-bottom: 1px solid #ECE9E4",
+                  "display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--gutter); border-bottom: 1px solid #ECE9E4",
                 )}
               >
                 <button
@@ -2852,7 +2860,7 @@ Component.template = function (v, self) {
               >
                 <div
                   style={S(
-                    "max-width: 1440px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px",
+                    "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px",
                   )}
                 >
                   <span style={S("flex: 1 1 0; display: flex")}>
@@ -2905,7 +2913,7 @@ Component.template = function (v, self) {
               </div>
               <div
                 style={S(
-                  "max-width: 880px; margin: 0 auto; padding: 80px 32px 120px; text-align: center; color: #111111",
+                  "max-width: 880px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); text-align: center; color: #111111",
                 )}
               >
                 <h1
@@ -3059,7 +3067,7 @@ Component.template = function (v, self) {
               >
                 <div
                   style={S(
-                    "max-width: 1440px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px",
+                    "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px",
                   )}
                 >
                   <span style={S("flex: 1 1 0; display: flex")}>
@@ -3099,7 +3107,7 @@ Component.template = function (v, self) {
                   <span style={S("flex: 1 1 0")}></span>
                 </div>
               </header>
-              <div style={S("max-width: 1200px; margin: 0 auto; padding: 80px 32px 120px; color: #111111")}>
+              <div style={S("max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111")}>
                 <div style={S("text-align: center")}>
                   <h1
                     style={S(
@@ -3287,6 +3295,14 @@ Component.template = function (v, self) {
                   </a>
                   <a href="/onoff-studio" onClick={v.closeMenu} className="dw-big">
                     {"onoff studio"}
+                  </a>
+                </div>
+                <div className="dw-util">
+                  <a href="/downloads" onClick={v.closeMenu}>
+                    {v.T.k7}
+                  </a>
+                  <a href="/find-a-rep" onClick={v.closeMenu}>
+                    {v.T.k8}
                   </a>
                 </div>
               </div>

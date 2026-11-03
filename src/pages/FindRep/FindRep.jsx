@@ -501,12 +501,14 @@ Component.template = function (v, self) {
         </a>
         <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
           <div
+            className="hd-in"
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
+              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
             )}
           >
             <nav
               aria-label="Main"
+              className="hd-l"
               style={S(
                 "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
@@ -517,6 +519,7 @@ Component.template = function (v, self) {
                 aria-haspopup="dialog"
                 aria-expanded={v.menuOnStr}
                 className="hd-menu"
+                aria-label={v.dwMenuLbl}
               >
                 <svg
                   aria-hidden="true"
@@ -533,10 +536,11 @@ Component.template = function (v, self) {
                 </svg>
                 <span>{v.dwMenuLbl}</span>
               </button>
-              <a href="/downloads">{v.T.k5}</a>
+              <a href="/downloads" className="hd-opt">{v.T.k5}</a>
             </nav>
             <a
               href="/"
+              className="hd-logo"
               style={S(
                 "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
               )}
@@ -548,11 +552,12 @@ Component.template = function (v, self) {
               />
             </a>
             <div
+              className="hd-r"
               style={S(
                 "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
             >
-              <span style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
+              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
                 <button
                   type="button"
                   onClick={v.setEn}
@@ -577,7 +582,7 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
-              <a href="/find-a-rep" aria-current="page" style={S("border-bottom: 1px solid #111111")}>
+              <a href="/find-a-rep" className="hd-opt" aria-current="page" style={S("border-bottom: 1px solid #111111")}>
                 {v.T.k6}
               </a>
             </div>
@@ -585,7 +590,7 @@ Component.template = function (v, self) {
         </header>
         <section
           id="content"
-          style={S("max-width: 1440px; margin: 0 auto; padding: 120px 40px 56px; text-align: center")}
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 56px; text-align: center")}
         >
           <h1
             style={S(
@@ -619,7 +624,7 @@ Component.template = function (v, self) {
         </section>
         <section
           style={S(
-            "max-width: 1440px; margin: 0 auto; padding: 0 40px 120px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 64px",
+            "max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter) calc(120px * var(--vs)); display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 64px",
           )}
         >
           <div style={S("flex: 2 1 640px; min-width: 0")}>
@@ -1564,7 +1569,7 @@ Component.template = function (v, self) {
           </aside>
         </section>
         <section style={S("background: #F4F1EB")}>
-          <div style={S("max-width: 1440px; margin: 0 auto; padding: 120px 40px")}>
+          <div style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter)")}>
             <div style={S("text-align: center; margin-bottom: 56px")}>
               <h2
                 style={S(
@@ -1613,7 +1618,7 @@ Component.template = function (v, self) {
         <footer style={S("border-top: 1px solid #ECE9E4; background: #FFFFFF")}>
           <div
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 48px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
+              "max-width: 1440px; margin: 0 auto; padding: 48px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
             )}
           >
             <span>{"© Indigoff"}</span>
@@ -1699,6 +1704,14 @@ Component.template = function (v, self) {
                   </a>
                   <a href="/onoff-studio" onClick={v.closeMenu} className="dw-big">
                     {"onoff studio"}
+                  </a>
+                </div>
+                <div className="dw-util">
+                  <a href="/downloads" onClick={v.closeMenu}>
+                    {v.T.k5}
+                  </a>
+                  <a href="/find-a-rep" onClick={v.closeMenu}>
+                    {v.T.k6}
                   </a>
                 </div>
               </div>

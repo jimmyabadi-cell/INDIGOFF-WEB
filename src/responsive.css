@@ -1,0 +1,115 @@
+/*
+ * Ajustes responsivos compartidos por todas las páginas.
+ * Las páginas usan estilos inline; por eso algunas reglas necesitan !important.
+ * Breakpoints: tablet ≤ 1023px, mobile ≤ 767px.
+ */
+
+/* ---------- Header ---------- */
+.hd-ico { display: none; }
+.dw-util { display: none; }
+
+@media (max-width: 1023px) {
+  .site-hd .hd-in {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  .site-hd .hd-l,
+  .site-hd .hd-r {
+    flex-wrap: nowrap !important;
+    min-width: 0;
+    gap: 0 16px !important;
+    white-space: nowrap;
+  }
+  .site-hd .hd-r { justify-content: flex-end; }
+
+  /* "My list (0)" → icono + contador */
+  .hd-list { display: inline-flex !important; align-items: center; justify-content: center; gap: 4px; min-width: 44px; }
+  .hd-list .hd-list-lbl { display: none; }
+  .hd-ico { display: block; }
+
+  /* Links secundarios dentro del menú lateral */
+  .dw-util {
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-surface);
+  }
+  .dw-util a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: Urbanist, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+}
+
+@media (max-width: 767px) {
+  /* [☰] [logo] ........ [EN·ES] [lista] [buscar] */
+  .site-hd .hd-in {
+    grid-template-columns: auto auto 1fr;
+    gap: 4px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+  .site-hd .hd-l,
+  .site-hd .hd-r { gap: 0 2px !important; }
+  .site-hd .hd-opt,
+  .site-hd .hd-back-lbl,
+  .site-hd .hd-menu > span { display: none !important; }
+  .site-hd .hd-menu,
+  .site-hd .hd-back { min-width: 44px; justify-content: center; }
+  .site-hd .hd-logo img { height: 20px !important; }
+  .site-hd .hd-lang { margin-right: 4px !important; }
+
+  section[id] { scroll-margin-top: 72px; }
+}
+
+/* ---------- Pestañas: una fila deslizable en mobile ---------- */
+@media (max-width: 767px) {
+  .scroll-tabs {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    white-space: nowrap;
+    /* Desvanece el borde derecho para insinuar que hay más pestañas */
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+  }
+  .scroll-tabs::-webkit-scrollbar { display: none; }
+  .scroll-tabs > * { flex: none; }
+}
+
+/* ---------- Home: categorías ---------- */
+@media (min-width: 601px) and (max-width: 900px) {
+  .cat-row { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .cat-row .cat-panel:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .cat-row .cat-panel { height: 260px; }
+}
+
+/* ---------- Home: Specify ---------- */
+@media (max-width: 1023px) {
+  .spec-row { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .spec-row > * { border-left: 0 !important; border-top: 1px solid var(--color-surface); }
+  .spec-row > :nth-child(-n + 2) { border-top: 0; }
+  .spec-row > :nth-child(even) { border-left: 1px solid var(--color-surface) !important; }
+  .spec-row > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .spec-row { grid-template-columns: 1fr; }
+  .spec-row > * { padding: 28px 0 !important; }
+  .spec-row > :nth-child(n) { border-left: 0 !important; border-top: 1px solid var(--color-surface); }
+  .spec-row > :first-child { border-top: 0; }
+}
