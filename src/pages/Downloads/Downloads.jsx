@@ -251,7 +251,7 @@ Component.template = function (v, self) {
         </section>
         <section
           style={S(
-            "position: sticky; top: 0; z-index: 2; background: #FFFFFF; border-top: 1px solid #ECE9E4; border-bottom: 1px solid #ECE9E4",
+            "position: sticky; top: calc(var(--hd-h) - 1px); z-index: 2; background: #FFFFFF; border-top: 1px solid #ECE9E4; border-bottom: 1px solid #ECE9E4",
           )}
         >
           <div

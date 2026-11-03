@@ -23,6 +23,7 @@
   --vs: 1;          /* escala del espaciado vertical entre secciones */
   --mh: 1;          /* escala de alturas de imágenes grandes */
   --hero-h: 900px;  /* alto del hero de la home */
+  --hd-h: 89px;     /* alto del header sticky */
 }
 
 /* Tablet */
@@ -32,6 +33,7 @@
     --vs: 0.7;
     --mh: 0.75;
     --hero-h: 760px;
+    --hd-h: 69px;
   }
 }
 
@@ -42,5 +44,6 @@
     --vs: 0.5;
     --mh: 0.56;
     --hero-h: max(540px, calc(100svh - 60px));
+    --hd-h: 57px;
   }
 }
