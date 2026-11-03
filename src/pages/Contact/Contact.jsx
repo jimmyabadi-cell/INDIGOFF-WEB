@@ -149,10 +149,6 @@ export default function Contact() {
             <dd>
               <a href={"mailto:" + EMAIL}>{EMAIL}</a>
             </dd>
-            <dt>{v.t("contact.repTitle")}</dt>
-            <dd>
-              <a href="/find-a-rep">{v.t("common.findRep")}</a>
-            </dd>
           </dl>
         </div>
 

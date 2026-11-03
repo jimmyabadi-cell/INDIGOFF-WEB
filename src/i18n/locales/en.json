@@ -514,9 +514,8 @@
   },
   "contact": {
     "title": "Contact Indigoff",
-    "text": "Tell us about your project and our team will help you find the right acoustic solution. Contact INDIGOFF for quotes, specification support, product information, samples, or representative assistance.",
+    "text": "Tell us about your project and our team will help you find the right acoustic solution. Contact INDIGOFF for quotes, specifications, product information or samples.",
     "emailUs": "Email",
-    "repTitle": "Representatives",
     "fields": {
       "name": "Name",
       "lastName": "Last Name",
