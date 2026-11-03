@@ -1,5 +1,16 @@
 [
   {
+    "name": "Multimedios",
+    "desc": "Acoustic solution designed and installed by Indigoff.",
+    "imgs": [
+      "/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg",
+      "/img/7cd697164bbedd062f7c562568ce72e4.jpg",
+      "/img/5a80a15ff662f423da2a5432e30c8bce.jpg",
+      "/img/c9d045e84ea8afeb66ef62a34e9a4864.jpg",
+      "/img/9d0cc6c7d4b10c1f8eecc610f9c65d3f.jpg"
+    ]
+  },
+  {
     "name": "American Express",
     "desc": "Acoustic solution designed, manufactured and installed by Indigoff.",
     "imgs": [

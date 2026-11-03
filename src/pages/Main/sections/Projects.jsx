@@ -10,22 +10,6 @@ export default function Projects({ v }) {
       <div className={"sec-hd " + css.box}>
         <h2 className={css.heading}>{v.t("home.projects.title")}</h2>
       </div>
-      <button
-        className={css.button}
-        type="button"
-        onClick={v.openMM}
-        aria-label={v.t("collection.viewItem", { name: "Multimedios" })}
-      >
-        <img
-          loading="lazy"
-          decoding="async"
-          className={css.image}
-          {...imgProps("/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg", SIZES.full)}
-          alt="Multimedios: newsroom under a sculpted linear acoustic ceiling"
-        />
-        <span className={"scrim " + css.label} aria-hidden="true"></span>
-        <span className={css.label2}>{"Multimedios"}</span>
-      </button>
       <div className={"proj-grid " + css.box2}>
         {(v.projects || []).map((pj, pj__i) => (
           <React.Fragment key={pj__i}>

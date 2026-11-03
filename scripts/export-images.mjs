@@ -16,7 +16,6 @@ const P = read("products.json");
 const G = read("gallery.json");
 const C = read("collections.json");
 const PJ = read("projects.json");
-const FEATURED = read("project-featured.json");
 const LB = read("lightboxes.json");
 const D = read("downloads.json");
 const EN = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n/locales/en.json"), "utf8"));
@@ -82,7 +81,7 @@ for (const d of D) {
   add(d.img, "productos", k ? P[k][0] : d.n, k ? categoryOf[k] : EN.catalog.categories[d.c], "downloads");
 }
 // Proyectos.
-for (const pj of [FEATURED, ...PJ]) pj.imgs.forEach((src) => add(src, "proyectos", pj.name));
+for (const pj of PJ) pj.imgs.forEach((src) => add(src, "proyectos", pj.name));
 for (const [id, lb] of Object.entries(LB)) {
   if (id.startsWith("j_") && typeof lb.title === "string") add(lb.img, "proyectos", lb.title);
 }
