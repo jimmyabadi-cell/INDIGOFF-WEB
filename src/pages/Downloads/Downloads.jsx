@@ -1,7 +1,7 @@
-import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import React, { useState } from "react";
+import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
 import "./Downloads.css";
 
 const I18N_EN = {
@@ -22,6 +22,9 @@ const I18N_EN = {
 };
 
 import D from "../../data/downloads.json";
+import SiteHeader from "../../components/layout/SiteHeader.jsx";
+import SideMenu from "../../components/layout/SideMenu.jsx";
+import CompactFooter from "../../components/layout/CompactFooter.jsx";
 const CATS = ["All", "Ceilings", "Walls", "Lights", "Dividers"];
 const FMTS = ["All", "DWG", "SKP", "3DM", "REVIT"];
 const FMT_LABEL = { All: "All formats", DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
@@ -45,88 +48,86 @@ function chipStyle(on) {
   );
 }
 
-class Component extends DCLogic {
-  constructor(p) {
-    super(p);
-    this.state = { cat: "All", fmt: "All", q: "" };
-  }
-  _rv() {
-    const self = this;
-    const st = this.state;
-    const q = (st.q || "").trim().toLowerCase();
-    const groups = [];
-    let total = 0,
-      files = 0;
-    CATS.slice(1).forEach(function (c) {
-      if (st.cat !== "All" && st.cat !== c) return;
-      const items = [];
-      D.forEach(function (p) {
-        if (p.c !== c) return;
-        if (q && p.n.toLowerCase().indexOf(q) < 0 && p.s.toLowerCase().indexOf(q) < 0) return;
-        const fl = p.f.filter(function (f) {
-          return st.fmt === "All" || f[0] === st.fmt;
-        });
-        if (!fl.length) return;
-        files += fl.length;
-        items.push({
-          name: p.n,
-          sub: p.s,
-          href: p.href,
-          img: p.img,
-          hasImg: !!p.img,
-          noImg: !p.img,
-          files: fl.map(function (f) {
-            return { fmt: f[0] === "REVIT" ? "Revit" : f[0], name: f[1], size: f[2], href: f[3] };
-          }),
-        });
-      });
-      if (items.length) {
-        total += items.length;
-        groups.push({ name: c, count: items.length + (items.length === 1 ? " product" : " products"), items: items });
-      }
-    });
-    return {
-      groups: groups,
-      empty: groups.length === 0,
-      totalProducts: total,
-      totalFiles: files,
-      q: st.q,
-      cats: CATS.map(function (c) {
-        const on = st.cat === c;
-        return {
-          label: c,
-          on: on ? "true" : "false",
-          style: tabStyle(on),
-          pick: function () {
-            self.setState({ cat: c });
-          },
-        };
-      }),
-      fmts: FMTS.map(function (f) {
-        const on = st.fmt === f;
-        return {
-          label: FMT_LABEL[f],
-          on: on ? "true" : "false",
-          style: chipStyle(on),
-          pick: function () {
-            self.setState({ fmt: f });
-          },
-        };
-      }),
-      onQuery: function (e) {
-        self.setState({ q: e.target.value });
-      },
-    };
-  }
+const NAV = { DW_CATS, DW_FIN, ifoSetPending };
+
+export default function Downloads() {
+  const [cat, setCat] = useState("All");
+  const [fmt, setFmt] = useState("All");
+  const [query, setQuery] = useState("");
+  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
+  const vals = downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery });
+  return template({ ...localize(vals, lang), ...chrome });
 }
 
-Component.I18N_EN = I18N_EN;
-Component.DW_CATS = DW_CATS;
-Component.DW_FIN = DW_FIN;
-Component.ifoSetPending = ifoSetPending;
+function downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery }) {
+  const st = { cat, fmt, q: query };
+  const q = (st.q || "").trim().toLowerCase();
+  const groups = [];
+  let total = 0,
+    files = 0;
+  CATS.slice(1).forEach(function (c) {
+    if (st.cat !== "All" && st.cat !== c) return;
+    const items = [];
+    D.forEach(function (p) {
+      if (p.c !== c) return;
+      if (q && p.n.toLowerCase().indexOf(q) < 0 && p.s.toLowerCase().indexOf(q) < 0) return;
+      const fl = p.f.filter(function (f) {
+        return st.fmt === "All" || f[0] === st.fmt;
+      });
+      if (!fl.length) return;
+      files += fl.length;
+      items.push({
+        name: p.n,
+        sub: p.s,
+        href: p.href,
+        img: p.img,
+        hasImg: !!p.img,
+        noImg: !p.img,
+        files: fl.map(function (f) {
+          return { fmt: f[0] === "REVIT" ? "Revit" : f[0], name: f[1], size: f[2], href: f[3] };
+        }),
+      });
+    });
+    if (items.length) {
+      total += items.length;
+      groups.push({ name: c, count: items.length + (items.length === 1 ? " product" : " products"), items: items });
+    }
+  });
+  return {
+    groups: groups,
+    empty: groups.length === 0,
+    totalProducts: total,
+    totalFiles: files,
+    q: st.q,
+    cats: CATS.map(function (c) {
+      const on = st.cat === c;
+      return {
+        label: c,
+        on: on ? "true" : "false",
+        style: tabStyle(on),
+        pick: function () {
+          setCat(c);
+        },
+      };
+    }),
+    fmts: FMTS.map(function (f) {
+      const on = st.fmt === f;
+      return {
+        label: FMT_LABEL[f],
+        on: on ? "true" : "false",
+        style: chipStyle(on),
+        pick: function () {
+          setFmt(f);
+        },
+      };
+    }),
+    onQuery: function (e) {
+      setQuery(e.target.value);
+    },
+  };
+}
 
-Component.defaultProps = {};
-Component.template = function (v, self) {
+function template(v) {
   return (
     <>
       <div
@@ -137,99 +138,12 @@ Component.template = function (v, self) {
         <a className="skip" href="#content">
           {v.T.k1}
         </a>
-        <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
-          <div
-            className="hd-in"
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
-            )}
-          >
-            <nav
-              aria-label="Main"
-              className="hd-l"
-              style={S(
-                "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-              )}
-            >
-              <button
-                type="button"
-                onClick={v.openMenu}
-                aria-haspopup="dialog"
-                aria-expanded={v.menuOnStr}
-                className="hd-menu"
-                aria-label={v.dwMenuLbl}
-              >
-                <svg
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  style={S("display: block")}
-                >
-                  <path d="M3 7h18M3 12h18M3 17h18"></path>
-                </svg>
-                <span>{v.dwMenuLbl}</span>
-              </button>
-              <a href="/downloads" className="hd-dl" aria-label={v.T.k5} aria-current="page" style={S("border-bottom: 1px solid #111111")}>
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
-                <span className="hd-dl-lbl">{v.T.k5}</span>
-              </a>
-            </nav>
-            <a
-              href="/"
-              className="hd-logo"
-              style={S(
-                "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
-              )}
-            >
-              <img
-                src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                alt="indigoff"
-                style={S("display: block; height: 24px; width: auto")}
-              />
-            </a>
-            <div
-              className="hd-r"
-              style={S(
-                "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-              )}
-            >
-              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
-                <button
-                  type="button"
-                  onClick={v.setEn}
-                  aria-pressed={v.isEn}
-                  aria-label="English"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.enColor}`,
-                  )}
-                >
-                  {"EN"}
-                </button>
-                <span aria-hidden="true">{"·"}</span>
-                <button
-                  type="button"
-                  onClick={v.setEs}
-                  aria-pressed={v.isEs}
-                  aria-label="Español"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.esColor}`,
-                  )}
-                >
-                  {"ES"}
-                </button>
-              </span>
-              <a href="/find-a-rep" className="hd-opt">{v.T.k6}</a>
-            </div>
-          </div>
-        </header>
+        <SiteHeader v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} current="downloads" />
         <section
           id="content"
-          style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 64px; text-align: center")}
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 64px; text-align: center",
+          )}
         >
           <h1
             style={S(
@@ -260,7 +174,12 @@ Component.template = function (v, self) {
               "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 40px",
             )}
           >
-            <div role="tablist" aria-label="Category" className="scroll-tabs" style={S("display: flex; flex-wrap: wrap; gap: 4px 28px")}>
+            <div
+              role="tablist"
+              aria-label="Category"
+              className="scroll-tabs"
+              style={S("display: flex; flex-wrap: wrap; gap: 4px 28px")}
+            >
               {(v.cats || []).map((t, t__i) => (
                 <React.Fragment key={t__i}>
                   <button type="button" role="tab" aria-selected={t.on} onClick={t.pick} style={S(t.style)}>
@@ -299,7 +218,9 @@ Component.template = function (v, self) {
         <section style={S("max-width: 1440px; margin: 0 auto; padding: 24px var(--gutter) calc(160px * var(--vs))")}>
           {v.empty ? (
             <>
-              <p style={S("margin: calc(96px * var(--vs)) 0; text-align: center; font-size: 18px; color: #6B675F")}>{v.T.k9}</p>
+              <p style={S("margin: calc(96px * var(--vs)) 0; text-align: center; font-size: 18px; color: #6B675F")}>
+                {v.T.k9}
+              </p>
             </>
           ) : null}
           {(v.groups || []).map((g, g__i) => (
@@ -428,7 +349,11 @@ Component.template = function (v, self) {
               </div>
             </React.Fragment>
           ))}
-          <p style={S("margin: calc(96px * var(--vs)) auto 0; max-width: 520px; text-align: center; font-size: 15px; color: #5E5A53")}>
+          <p
+            style={S(
+              "margin: calc(96px * var(--vs)) auto 0; max-width: 520px; text-align: center; font-size: 15px; color: #5E5A53",
+            )}
+          >
             {v.T.k11}
           </p>
           <p style={S("margin: 28px 0 0; text-align: center")}>
@@ -442,112 +367,9 @@ Component.template = function (v, self) {
             </a>
           </p>
         </section>
-        <footer style={S("border-top: 1px solid #ECE9E4; background: #F4F1EB")}>
-          <div
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 48px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
-            )}
-          >
-            <span>{"© Indigoff"}</span>
-            <a href="/" style={S("color: #6B675F")}>
-              {v.T.k13}
-            </a>
-          </div>
-        </footer>
-        {v.menuOn ? (
-          <>
-            <div className="dw-back" onClick={v.closeMenu}></div>
-            <aside className="dw" role="dialog" aria-modal="true" aria-label={v.dwMenu}>
-              <div className="dw-hd">
-                <button type="button" onClick={v.closeMenu} className="dw-x">
-                  <svg
-                    aria-hidden="true"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    style={S("display: block")}
-                  >
-                    <path d="M5 5l14 14M19 5L5 19"></path>
-                  </svg>
-                  <span>{v.dwClose}</span>
-                </button>
-                <img
-                  src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                  alt="indigoff"
-                  style={S("display: block; height: 20px; width: auto")}
-                />
-              </div>
-              <div className="dw-body">
-                <p className="dw-g">{v.dwCat}</p>
-                {(v.dwCats || []).map((m, m__i) => (
-                  <React.Fragment key={m__i}>
-                    <div className="dw-item">
-                      <a href={m.href} onClick={v.closeMenu} className="dw-big">
-                        {m.name}
-                      </a>
-                      <div className="dw-subs">
-                        {(m.subs || []).map((u, u__i) => (
-                          <React.Fragment key={u__i}>
-                            <a href={u.href} onClick={u.go} className="dw-sub">
-                              {u.label}
-                            </a>
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                ))}
-                <p className="dw-g">{v.dwFin}</p>
-                <div className="dw-subs dw-fin">
-                  {(v.dwFins || []).map((m, m__i) => (
-                    <React.Fragment key={m__i}>
-                      {m.isBtn ? (
-                        <>
-                          <button type="button" onClick={m.go} className="dw-mid">
-                            {m.name}
-                          </button>
-                        </>
-                      ) : null}
-                      {m.isLink ? (
-                        <>
-                          <a href={m.href} className="dw-mid">
-                            {m.name}
-                          </a>
-                        </>
-                      ) : null}
-                    </React.Fragment>
-                  ))}
-                </div>
-                <div className="dw-two">
-                  <a href={v.dwConHref} onClick={v.closeMenu} className="dw-big">
-                    {v.dwCon}
-                  </a>
-                  <a href={v.dwProHref} onClick={v.closeMenu} className="dw-big">
-                    {v.dwPro}
-                  </a>
-                  <a href="/onoff-studio" onClick={v.closeMenu} className="dw-big">
-                    {"onoff studio"}
-                  </a>
-                </div>
-                <div className="dw-util">
-                  <a href="/downloads" onClick={v.closeMenu}>
-                    {v.T.k5}
-                  </a>
-                  <a href="/find-a-rep" onClick={v.closeMenu}>
-                    {v.T.k6}
-                  </a>
-                </div>
-              </div>
-            </aside>
-          </>
-        ) : null}
+        <CompactFooter homeLabel={v.T.k13} />
+        <SideMenu v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} />
       </div>
     </>
   );
-};
-
-export default Component;
+}

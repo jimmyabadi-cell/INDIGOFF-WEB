@@ -1,7 +1,8 @@
-import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import React, { useRef } from "react";
+import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { useMergeState } from "../../hooks/useMergeState.js";
 import "./FindRep.css";
 
 const I18N_EN = {
@@ -26,6 +27,9 @@ const I18N_EN = {
 };
 
 import REPS from "../../data/reps.json";
+import SiteHeader from "../../components/layout/SiteHeader.jsx";
+import SideMenu from "../../components/layout/SideMenu.jsx";
+import CompactFooter from "../../components/layout/CompactFooter.jsx";
 const DEFAULT_REP = {
   name: "Indigoff",
   contact: "Direct team",
@@ -309,190 +313,176 @@ function keysForState(abbr) {
   });
 }
 
-class Component extends DCLogic {
-  constructor(p) {
-    super(p);
-    this.state = { sel: null, rep: null, q: "", noMatch: false };
-  }
-  selectState(abbr) {
-    const ks = keysForState(abbr);
-    this.setState({ sel: ks, rep: null, noMatch: false });
-  }
-  _rv() {
-    const self = this;
-    const st = this.state;
-    const sel = st.sel || [];
-    const repSel = st.rep;
-    let reps = [];
-    if (repSel !== null) reps = [repSel];
-    else
-      sel.forEach(function (k) {
-        let i = KEYREP[k];
-        if (i === undefined) i = -1;
-        if (reps.indexOf(i) < 0) reps.push(i);
-      });
-    const hi = {};
-    reps.forEach(function (i) {
-      if (i >= 0)
-        REPS[i].areas.forEach(function (a) {
-          hi[a] = 1;
-        });
-    });
-    const fill = {};
-    const pick = {};
-    KEYS.forEach(function (k) {
-      const isSel = sel.indexOf(k) >= 0 && repSel === null;
-      fill[k] = hi[k]
-        ? isSel
-          ? "#1E125C"
-          : "#645DC5"
-        : isSel
-          ? "#A9A296"
-          : KEYREP[k] !== undefined
-            ? "#B7B3E6"
-            : "#E4DFD5";
-      pick[k] = function () {
-        self.setState({ sel: [k], rep: null, noMatch: false, q: keyName(k) });
-      };
-    });
-    let place = "Select a state";
-    let label = "Your representative";
-    if (repSel !== null) {
-      place = repSel >= 0 ? REPS[repSel].name : "Indigoff";
-      label = "Representative";
-    } else if (sel.length) {
-      place = sel.length > 1 ? (/^MX[A-Z]{3}$/.test(sel[0]) ? "México" : NAMES[sel[0].split("_")[0]]) : keyName(sel[0]);
-    }
-    const results = reps.map(function (i) {
-      return card(i >= 0 ? REPS[i] : DEFAULT_REP);
-    });
-    const all = REPS.map(function (r, i) {
-      return { i: i, r: r };
-    })
-      .concat([{ i: -1, r: DEFAULT_REP }])
-      .map(function (o) {
-        const on = repSel === o.i;
-        return {
-          name: o.r.name,
-          contact: o.r.contact || "\u00a0",
-          territory: territory(o.r),
-          on: on ? "true" : "false",
-          style:
-            "flex: 1 1 300px; min-height: 200px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 28px; text-align: left; cursor: pointer; font-family: inherit; color: #111111; border: 1px solid " +
-            (on ? "#111111" : "#E4DFD7") +
-            "; background: " +
-            (on ? "#FFFFFF" : "transparent"),
-          pick: function () {
-            // The result panel sits above this list: bring it into view so the pick is visible.
-            self.setState({ rep: o.i, sel: null, q: "" }, function () {
-              const el = document.getElementById("rep-result");
-              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-            });
-          },
-        };
-      });
-    return {
-      fill: fill,
-      pick: pick,
-      results: results,
-      showHint: results.length === 0,
-      resultPlace: place,
-      resultLabel: label,
-      all: all,
-      q: st.q,
-      noMatch: st.noMatch,
-      onQuery: function (e) {
-        const v = String(e.target.value || "").trim();
-        const n = v.toLowerCase();
-        let abbr = null;
-        if (!n) {
-          self.setState({ q: "", sel: null, rep: null, noMatch: false });
-          return;
-        }
-        if (n.length === 2 && NAMES[n.toUpperCase()]) abbr = n.toUpperCase();
-        else
-          Object.keys(AB).forEach(function (name) {
-            if (!abbr && name.toLowerCase() === n) abbr = AB[name];
-          });
-        if (!abbr && n.length >= 3)
-          Object.keys(AB).forEach(function (name) {
-            if (!abbr && name.toLowerCase().indexOf(n) === 0) abbr = AB[name];
-          });
-        if (abbr) self.setState({ q: v, sel: keysForState(abbr), rep: null, noMatch: false });
-        else self.setState({ q: v, noMatch: true });
-      },
-    };
-  }
+const NAV = { DW_CATS, DW_FIN, ifoSetPending };
+
+export default function FindRep() {
+  const [st, setSt] = useMergeState({ sel: null, rep: null, q: "", noMatch: false });
+  // Pestaña del mapa: se deriva de la selección, pero el usuario también puede elegirla.
+  const mapTab = useRef({ tab: "us", last: undefined });
+  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
+  const v = { ...localize(repVals(st, setSt), lang), ...mapVals(st, setSt, mapTab.current, lang === "es"), ...chrome };
+  return template(v);
 }
 
-Component.I18N_EN = I18N_EN;
-Component.DW_CATS = DW_CATS;
-Component.DW_FIN = DW_FIN;
-Component.ifoSetPending = ifoSetPending;
-
-(function () {
-  const _rvMT = Component.prototype.renderVals;
-  Component.prototype.renderVals = function () {
-    const v = _rvMT.apply(this, arguments) || {};
-    const self = this;
-    if (!self.state) self.state = {};
-    const sel = self.state.sel || [];
-    let tab = self.state.mapTab || "us";
-    if (sel.indexOf("CAN") >= 0 && self._mtLast !== "CAN") {
-      tab = "ca";
-    } else if (
-      sel.some(function (k) {
-        return /^MX[A-Z]{3}$/.test(k);
-      }) &&
-      self._mtLast !== "MX"
-    ) {
-      tab = "mx";
-    } else if (sel.length && sel[0] !== "CAN" && !/^MX[A-Z]{3}$/.test(sel[0]) && self._mtLast !== sel[0]) {
-      tab = "us";
-    }
-    self._mtLast = /^MX[A-Z]{3}$/.test(sel[0] || "") ? "MX" : sel[0] || "";
-    self.state.mapTab = tab;
-    let es = false;
-    try {
-      es = (typeof i18nGet === "function" ? i18nGet() : "en") === "es";
-    } catch (e) {}
-    const defs = [
-      ["us", es ? "Estados Unidos" : "United States", null],
-      ["ca", "Canada", "CAN"],
-      ["mx", "México", "MX"],
-    ];
-    v.mapTabs = defs.map(function (d) {
-      const on = d[0] === tab;
+function repVals(st, setSt) {
+  const sel = st.sel || [];
+  const repSel = st.rep;
+  let reps = [];
+  if (repSel !== null) reps = [repSel];
+  else
+    sel.forEach(function (k) {
+      let i = KEYREP[k];
+      if (i === undefined) i = -1;
+      if (reps.indexOf(i) < 0) reps.push(i);
+    });
+  const hi = {};
+  reps.forEach(function (i) {
+    if (i >= 0)
+      REPS[i].areas.forEach(function (a) {
+        hi[a] = 1;
+      });
+  });
+  const fill = {};
+  const pick = {};
+  KEYS.forEach(function (k) {
+    const isSel = sel.indexOf(k) >= 0 && repSel === null;
+    fill[k] = hi[k]
+      ? isSel
+        ? "#1E125C"
+        : "#645DC5"
+      : isSel
+        ? "#A9A296"
+        : KEYREP[k] !== undefined
+          ? "#B7B3E6"
+          : "#E4DFD5";
+    pick[k] = function () {
+      setSt({ sel: [k], rep: null, noMatch: false, q: keyName(k) });
+    };
+  });
+  let place = "Select a state";
+  let label = "Your representative";
+  if (repSel !== null) {
+    place = repSel >= 0 ? REPS[repSel].name : "Indigoff";
+    label = "Representative";
+  } else if (sel.length) {
+    place = sel.length > 1 ? (/^MX[A-Z]{3}$/.test(sel[0]) ? "México" : NAMES[sel[0].split("_")[0]]) : keyName(sel[0]);
+  }
+  const results = reps.map(function (i) {
+    return card(i >= 0 ? REPS[i] : DEFAULT_REP);
+  });
+  const all = REPS.map(function (r, i) {
+    return { i: i, r: r };
+  })
+    .concat([{ i: -1, r: DEFAULT_REP }])
+    .map(function (o) {
+      const on = repSel === o.i;
       return {
-        label: d[1],
+        name: o.r.name,
+        contact: o.r.contact || "\u00a0",
+        territory: territory(o.r),
         on: on ? "true" : "false",
-        cls: "mt-t" + (on ? " on" : ""),
+        style:
+          "flex: 1 1 300px; min-height: 200px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 28px; text-align: left; cursor: pointer; font-family: inherit; color: #111111; border: 1px solid " +
+          (on ? "#111111" : "#E4DFD7") +
+          "; background: " +
+          (on ? "#FFFFFF" : "transparent"),
         pick: function () {
-          if (d[2]) {
-            self._mtLast = d[2];
-            self.setState({
-              mapTab: d[0],
-              sel: d[2] === "MX" ? keysForState("MEX") : [d[2]],
-              rep: null,
-              noMatch: false,
-              q: d[1],
-            });
-          } else {
-            self._mtLast = "";
-            self.setState({ mapTab: "us", sel: [], rep: null, noMatch: false, q: "" });
-          }
+          // The result panel sits above this list: bring it into view so the pick is visible.
+          setSt({ rep: o.i, sel: null, q: "" });
+          requestAnimationFrame(function () {
+            const el = document.getElementById("rep-result");
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
         },
       };
     });
-    v.mapUS = tab === "us";
-    v.mapCA = tab === "ca";
-    v.mapMX = tab === "mx";
-    return v;
+  return {
+    fill: fill,
+    pick: pick,
+    results: results,
+    showHint: results.length === 0,
+    resultPlace: place,
+    resultLabel: label,
+    all: all,
+    q: st.q,
+    noMatch: st.noMatch,
+    onQuery: function (e) {
+      const v = String(e.target.value || "").trim();
+      const n = v.toLowerCase();
+      let abbr = null;
+      if (!n) {
+        setSt({ q: "", sel: null, rep: null, noMatch: false });
+        return;
+      }
+      if (n.length === 2 && NAMES[n.toUpperCase()]) abbr = n.toUpperCase();
+      else
+        Object.keys(AB).forEach(function (name) {
+          if (!abbr && name.toLowerCase() === n) abbr = AB[name];
+        });
+      if (!abbr && n.length >= 3)
+        Object.keys(AB).forEach(function (name) {
+          if (!abbr && name.toLowerCase().indexOf(n) === 0) abbr = AB[name];
+        });
+      if (abbr) setSt({ q: v, sel: keysForState(abbr), rep: null, noMatch: false });
+      else setSt({ q: v, noMatch: true });
+    },
   };
-})();
+}
 
-Component.defaultProps = {};
-Component.template = function (v, self) {
+function mapVals(st, setSt, mt, es) {
+  const v = {};
+  const sel = st.sel || [];
+  let tab = mt.tab;
+  if (sel.indexOf("CAN") >= 0 && mt.last !== "CAN") {
+    tab = "ca";
+  } else if (
+    sel.some(function (k) {
+      return /^MX[A-Z]{3}$/.test(k);
+    }) &&
+    mt.last !== "MX"
+  ) {
+    tab = "mx";
+  } else if (sel.length && sel[0] !== "CAN" && !/^MX[A-Z]{3}$/.test(sel[0]) && mt.last !== sel[0]) {
+    tab = "us";
+  }
+  mt.last = /^MX[A-Z]{3}$/.test(sel[0] || "") ? "MX" : sel[0] || "";
+  mt.tab = tab;
+  const defs = [
+    ["us", es ? "Estados Unidos" : "United States", null],
+    ["ca", "Canada", "CAN"],
+    ["mx", "México", "MX"],
+  ];
+  v.mapTabs = defs.map(function (d) {
+    const on = d[0] === tab;
+    return {
+      label: d[1],
+      on: on ? "true" : "false",
+      cls: "mt-t" + (on ? " on" : ""),
+      pick: function () {
+        if (d[2]) {
+          mt.last = d[2];
+          mt.tab = d[0];
+          setSt({
+            sel: d[2] === "MX" ? keysForState("MEX") : [d[2]],
+            rep: null,
+            noMatch: false,
+            q: d[1],
+          });
+        } else {
+          mt.last = "";
+          mt.tab = "us";
+          setSt({ sel: [], rep: null, noMatch: false, q: "" });
+        }
+      },
+    };
+  });
+  v.mapUS = tab === "us";
+  v.mapCA = tab === "ca";
+  v.mapMX = tab === "mx";
+  return v;
+}
+
+function template(v) {
   return (
     <>
       <div
@@ -503,101 +493,12 @@ Component.template = function (v, self) {
         <a className="skip" href="#content">
           {v.T.k1}
         </a>
-        <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
-          <div
-            className="hd-in"
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
-            )}
-          >
-            <nav
-              aria-label="Main"
-              className="hd-l"
-              style={S(
-                "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-              )}
-            >
-              <button
-                type="button"
-                onClick={v.openMenu}
-                aria-haspopup="dialog"
-                aria-expanded={v.menuOnStr}
-                className="hd-menu"
-                aria-label={v.dwMenuLbl}
-              >
-                <svg
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  style={S("display: block")}
-                >
-                  <path d="M3 7h18M3 12h18M3 17h18"></path>
-                </svg>
-                <span>{v.dwMenuLbl}</span>
-              </button>
-              <a href="/downloads" className="hd-dl" aria-label={v.T.k5}>
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
-                <span className="hd-dl-lbl">{v.T.k5}</span>
-              </a>
-            </nav>
-            <a
-              href="/"
-              className="hd-logo"
-              style={S(
-                "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
-              )}
-            >
-              <img
-                src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                alt="indigoff"
-                style={S("display: block; height: 24px; width: auto")}
-              />
-            </a>
-            <div
-              className="hd-r"
-              style={S(
-                "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-              )}
-            >
-              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
-                <button
-                  type="button"
-                  onClick={v.setEn}
-                  aria-pressed={v.isEn}
-                  aria-label="English"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.enColor}`,
-                  )}
-                >
-                  {"EN"}
-                </button>
-                <span aria-hidden="true">{"·"}</span>
-                <button
-                  type="button"
-                  onClick={v.setEs}
-                  aria-pressed={v.isEs}
-                  aria-label="Español"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.esColor}`,
-                  )}
-                >
-                  {"ES"}
-                </button>
-              </span>
-              <a href="/find-a-rep" className="hd-opt" aria-current="page" style={S("border-bottom: 1px solid #111111")}>
-                {v.T.k6}
-              </a>
-            </div>
-          </div>
-        </header>
+        <SiteHeader v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} current="find-a-rep" />
         <section
           id="content"
-          style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 56px; text-align: center")}
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 56px; text-align: center",
+          )}
         >
           <h1
             style={S(
@@ -1625,112 +1526,9 @@ Component.template = function (v, self) {
             </p>
           </div>
         </section>
-        <footer style={S("border-top: 1px solid #ECE9E4; background: #FFFFFF")}>
-          <div
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 48px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
-            )}
-          >
-            <span>{"© Indigoff"}</span>
-            <a href="/" style={S("color: #6B675F")}>
-              {v.T.k17}
-            </a>
-          </div>
-        </footer>
-        {v.menuOn ? (
-          <>
-            <div className="dw-back" onClick={v.closeMenu}></div>
-            <aside className="dw" role="dialog" aria-modal="true" aria-label={v.dwMenu}>
-              <div className="dw-hd">
-                <button type="button" onClick={v.closeMenu} className="dw-x">
-                  <svg
-                    aria-hidden="true"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    style={S("display: block")}
-                  >
-                    <path d="M5 5l14 14M19 5L5 19"></path>
-                  </svg>
-                  <span>{v.dwClose}</span>
-                </button>
-                <img
-                  src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                  alt="indigoff"
-                  style={S("display: block; height: 20px; width: auto")}
-                />
-              </div>
-              <div className="dw-body">
-                <p className="dw-g">{v.dwCat}</p>
-                {(v.dwCats || []).map((m, m__i) => (
-                  <React.Fragment key={m__i}>
-                    <div className="dw-item">
-                      <a href={m.href} onClick={v.closeMenu} className="dw-big">
-                        {m.name}
-                      </a>
-                      <div className="dw-subs">
-                        {(m.subs || []).map((u, u__i) => (
-                          <React.Fragment key={u__i}>
-                            <a href={u.href} onClick={u.go} className="dw-sub">
-                              {u.label}
-                            </a>
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                ))}
-                <p className="dw-g">{v.dwFin}</p>
-                <div className="dw-subs dw-fin">
-                  {(v.dwFins || []).map((m, m__i) => (
-                    <React.Fragment key={m__i}>
-                      {m.isBtn ? (
-                        <>
-                          <button type="button" onClick={m.go} className="dw-mid">
-                            {m.name}
-                          </button>
-                        </>
-                      ) : null}
-                      {m.isLink ? (
-                        <>
-                          <a href={m.href} className="dw-mid">
-                            {m.name}
-                          </a>
-                        </>
-                      ) : null}
-                    </React.Fragment>
-                  ))}
-                </div>
-                <div className="dw-two">
-                  <a href={v.dwConHref} onClick={v.closeMenu} className="dw-big">
-                    {v.dwCon}
-                  </a>
-                  <a href={v.dwProHref} onClick={v.closeMenu} className="dw-big">
-                    {v.dwPro}
-                  </a>
-                  <a href="/onoff-studio" onClick={v.closeMenu} className="dw-big">
-                    {"onoff studio"}
-                  </a>
-                </div>
-                <div className="dw-util">
-                  <a href="/downloads" onClick={v.closeMenu}>
-                    {v.T.k5}
-                  </a>
-                  <a href="/find-a-rep" onClick={v.closeMenu}>
-                    {v.T.k6}
-                  </a>
-                </div>
-              </div>
-            </aside>
-          </>
-        ) : null}
+        <CompactFooter homeLabel={v.T.k17} background="#FFFFFF" />
+        <SideMenu v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} />
       </div>
     </>
   );
-};
-
-export default Component;
+}

@@ -1,8 +1,15 @@
-import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import React, { useEffect, useRef, useState } from "react";
+import { S } from "../../lib/dc.js";
+import { listVals, saveVals } from "../../lib/savedList.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { useMergeState } from "../../hooks/useMergeState.js";
+import { useSavedList } from "../../hooks/useSavedList.js";
+import { useScrollLock } from "../../hooks/useScrollLock.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
+import { i18nGet, i18nTr } from "../../lib/i18n.js";
 import "./Main.css";
+import SiteHeader from "../../components/layout/SiteHeader.jsx";
+import SideMenu from "../../components/layout/SideMenu.jsx";
 
 var I18N_EN = {
   k1: "Skip to content",
@@ -586,374 +593,325 @@ function projLb(pj) {
 }
 import CONCEPTS from "../../data/concepts.json";
 
-var LKEY = "indigoff_list";
-function listGet() {
-  try {
-    var v = JSON.parse(window.localStorage.getItem(LKEY) || "null");
-    if (Array.isArray(v)) return v;
-  } catch (e) {}
-  return (typeof window !== "undefined" && window.__indigoffList) || [];
+import MM_FIN_IMG from "../../data/fin-img.json";
+import SR_INDEX from "../../data/sr-index.json";
+
+const NAV = { DW_CATS, DW_FIN, ifoSetPending };
+const ACCENT = "#645DC5";
+const INITIAL = { q: "", sel: null, lb: null, zi: null, allProj: false, allBrands: false, listOpen: false, cxi: 0 };
+
+export default function Main() {
+  const [st, setSt] = useMergeState(INITIAL);
+  const list = useSavedList();
+  // Último estado y menú, para los temporizadores y el teclado (que viven fuera del render).
+  const live = useRef({});
+  // Manejadores de teclado por capa; se reasignan en cada render con el estado actual.
+  const keys = useRef({});
+  const [cxEpoch, setCxEpoch] = useState(0);
+  const cxReset = () => setCxEpoch((n) => n + 1);
+
+  // Los acabados del menú lateral abren su lightbox (`open` sale de mainVals).
+  const openFinish = {};
+  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV, isMain: true, openFinish });
+  live.current = { st, menuOn: chrome.menuOn };
+
+  const self = { state: st, setState: setSt };
+  const vals = mainVals(self, list, keys.current, cxReset);
+  Object.assign(openFinish, vals.open);
+  const v = {
+    ...localize(vals, lang),
+    ...chrome,
+    ...searchVals(self, lang, vals.open, chrome.closeMenu, keys.current),
+    ...newsletterVals(self, lang, keys.current),
+  };
+
+  // Carrusel de conceptos: avanza cada 6.5 s salvo con un lightbox abierto; navegar a mano reinicia el conteo.
+  useEffect(() => {
+    if (CONCEPTS.length < 2) return undefined;
+    const id = setInterval(() => {
+      setSt((s) => (s.lb ? {} : { cxi: ((s.cxi || 0) + 1) % CONCEPTS.length }));
+    }, 6500);
+    return () => clearInterval(id);
+  }, [cxEpoch, setSt]);
+
+  // Newsletter: aparece a los 2.5 s si nunca se cerró, y si no hay otra capa abierta.
+  useEffect(() => {
+    let seen = false;
+    try {
+      seen = !!window.localStorage.getItem("indigoff_nl");
+    } catch (e) {}
+    if (seen) return undefined;
+    const id = setTimeout(() => {
+      const { st: s, menuOn } = live.current;
+      if (!s.lb && !menuOn && !s.searchOpen) setSt({ nlOpen: true });
+    }, 2500);
+    return () => clearTimeout(id);
+  }, [setSt]);
+
+  // Un solo listener de teclado; cada capa decide qué hacer con la tecla.
+  useEffect(() => {
+    const onKey = (e) => {
+      const k = keys.current;
+      if (k.lightbox) k.lightbox(e);
+      if (k.search) k.search(e);
+      if (k.newsletter) k.newsletter(e);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useScrollLock(!!(st.lb || st.listOpen || st.searchOpen || st.nlOpen));
+  return template(v);
 }
-function listSet(a) {
-  try {
-    window.localStorage.setItem(LKEY, JSON.stringify(a));
-  } catch (e) {}
-  try {
-    window.__indigoffList = a;
-  } catch (e) {}
-}
-function listHasId(id) {
-  return listGet().some(function (x) {
-    return x.id === id;
+
+function mainVals(self, saved, keys, cxReset) {
+  var accent = ACCENT;
+  var s = self.state;
+  var q = (s.q || "").trim().toUpperCase();
+  var list = CONCEPTS.filter(function (c) {
+    return !q || c.code.indexOf(q) !== -1;
   });
-}
-function listToggle(item) {
-  var a = listGet();
-  var i = a.findIndex(function (x) {
-    return x.id === item.id;
+  var cxi = Math.min(s.cxi || 0, Math.max(list.length - 1, 0));
+  var concepts = list.map(function (c, ci) {
+    var on = s.sel === c.code;
+    return Object.assign({}, c, {
+      selected: on,
+      fcls: "cf-img" + (ci === cxi ? " on" : ""),
+      tcls: "cf-t" + (ci === cxi ? " on" : ""),
+      cur: ci === cxi ? "true" : "false",
+      go: function () {
+        cxReset();
+        self.setState({ cxi: ci });
+      },
+      alt: "Concept " + c.code + ": " + c.name,
+      imgStyle:
+        "display: block; width: 100%; height: calc(460px * var(--mh)); object-fit: cover; outline: " +
+        (on ? "2px solid " + accent : "0") +
+        "; outline-offset: -2px",
+      pick: function () {
+        self.setState({
+          sel: c.code,
+          lb: {
+            gallery: c.gallery || null,
+            img: c.img,
+            alt: "Concept " + c.code + ": " + c.name,
+            label: "Concept",
+            title: c.code,
+            desc: c.name + " — a complete design we adapt to your space.",
+            cta: "",
+          },
+        });
+      },
+    });
   });
-  if (i >= 0) a.splice(i, 1);
-  else a.push(item);
-  listSet(a);
-}
-function listVals(self) {
-  var a = listGet();
-  var body =
-    "My%20Indigoff%20list%3A%0D%0A%0D%0A" +
-    a
-      .map(function (x) {
-        return encodeURIComponent("- " + x.name + (x.kind ? " (" + x.kind + ")" : ""));
-      })
-      .join("%0D%0A");
-  return {
-    listCount: a.length,
-    listOn: !!self.state.listOpen,
-    listEmpty: a.length === 0,
-    listHas: a.length > 0,
-    listMail: "mailto:?subject=" + encodeURIComponent("My Indigoff list") + "&body=" + body,
+  var cc = concepts[cxi] || { gallery: [] };
+  var cf = {
+    code: cc.code || "",
+    name: cc.name || "",
+    alt: cc.alt || "",
+    pick: cc.pick,
+    pos: cxi + 1 + " / " + concepts.length,
+    desc:
+      i18nGet() === "es"
+        ? "Un diseño completo que adaptamos a tu espacio. Toca la foto para ver la galería."
+        : "A complete design we adapt to your space. Tap the photo to see the gallery.",
+    fill: "animation-name: " + (cxi % 2 ? "cfa" : "cfb"),
+    prev: function () {
+      cxReset();
+      self.setState({ cxi: (cxi - 1 + concepts.length) % concepts.length });
+    },
+    next: function () {
+      cxReset();
+      self.setState({ cxi: (cxi + 1) % concepts.length });
+    },
+  };
+  var sel = CONCEPTS.find(function (c) {
+    return c.code === s.sel;
+  }) || { code: "", name: "" };
+  var open = {};
+  Object.keys(LB).forEach(function (k) {
+    open[k] = function () {
+      self.setState({ lb: LB[k], zi: null });
+    };
+  });
+  var groups =
+      s.lb && s.lb.swatches
+        ? SETS[s.lb.swatches]
+        : s.lb && s.lb.gallery
+          ? [
+              {
+                group: "",
+                ratio: s.lb.galleryRatio || "4 / 5",
+                min: s.lb.galleryMin || "240px",
+                names: s.lb.galleryNames !== false,
+                items: s.lb.gallery,
+              },
+            ]
+          : [],
+    flat = [];
+  groups.forEach(function (g) {
+    g.items.forEach(function (w) {
+      flat.push(w);
+    });
+  });
+  var zOpen = !!(s.lb && s.zi !== null && flat[s.zi]);
+  keys.lightbox = function (e) {
+    var k = e.key;
+    if (zOpen) {
+      if (k === "Escape") {
+        self.setState({ zi: null });
+      } else if (k === "ArrowLeft") {
+        self.setState({ zi: (s.zi - 1 + flat.length) % flat.length });
+      } else if (k === "ArrowRight") {
+        self.setState({ zi: (s.zi + 1) % flat.length });
+      }
+      return;
+    }
+    if (k !== "Escape") return;
+    if (s.listOpen) self.setState({ listOpen: false });
+    else if (s.lb) self.setState({ lb: null, zi: null });
+  };
+  var lbItem = s.lb
+    ? {
+        id: "lb:" + (s.lb.label || "") + ":" + s.lb.title,
+        name:
+          s.lb.title +
+          (s.lb.label === "Concept"
+            ? " · " +
+              ((
+                CONCEPTS.find(function (c) {
+                  return c.code === s.lb.title;
+                }) || {}
+              ).name || "")
+            : ""),
+        kind: s.lb.label || "",
+        img: (s.lb.gallery && s.lb.gallery[0] && s.lb.gallery[0].img) || s.lb.img || (flat[0] && flat[0].img) || "",
+      }
+    : null;
+  var zItem =
+    s.lb && s.zi !== null && flat[s.zi]
+      ? { id: "img:" + flat[s.zi].img, name: flat[s.zi].name, kind: s.lb.title, img: flat[s.zi].img }
+      : null;
+  var zs = saveVals(saved, "zSave", zItem, "Save");
+  if (zItem && saved.has(zItem.id)) zs.zSaveLbl = "Saved";
+  var ui = {
+    open: !!s.listOpen,
     openList: function () {
       self.setState({ listOpen: true, zi: null });
     },
     closeList: function () {
       self.setState({ listOpen: false });
     },
-    clearList: function () {
-      listSet([]);
-      self.setState({ lv: Date.now() });
-    },
-    listItems: a.map(function (x) {
+  };
+  return Object.assign(listVals(saved, ui), saveVals(saved, "lbSave", lbItem), zs, {
+    open: open,
+    lbOn: !!s.lb,
+    lb: s.lb || { img: "", alt: "", label: "", title: "", desc: "", cta: "" },
+    projects: (s.allProj ? PROJECTS : PROJECTS.slice(0, 12)).map(function (pj) {
       return {
-        name: x.name,
-        kind: x.kind || "",
-        img: x.img || "",
-        remove: function () {
-          listToggle(x);
-          self.setState({ lv: Date.now() });
+        name: pj.name,
+        cover: pj.imgs[0],
+        count: pj.imgs.length + (pj.imgs.length === 1 ? " photo" : " photos"),
+        pick: function () {
+          self.setState({ zi: null, lb: projLb(pj) });
         },
       };
     }),
-  };
-}
-function saveVals(self, pre, item, addLbl) {
-  var on = !!item && listHasId(item.id),
-    o = {};
-  o[pre + "On"] = on ? "true" : "false";
-  o[pre + "Lbl"] = on ? "Saved to my list" : addLbl || "Add to my list";
-  o[pre + "Is"] = on;
-  o[pre + "Not"] = !on;
-  o[pre + "Bg"] = on ? "#111111" : "transparent";
-  o[pre + "Fg"] = on ? "#FFFFFF" : "#111111";
-  o[pre + "Toggle"] = function () {
-    if (item) {
-      listToggle(item);
-      self.setState({ lv: Date.now() });
-    }
-  };
-  return o;
-}
-import MM_FIN_IMG from "../../data/fin-img.json";
-import SR_INDEX from "../../data/sr-index.json";
-
-class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    this.state = { q: "", sel: null, lb: null, zi: null, allProj: false, allBrands: false, listOpen: false, lv: 0 };
-    var self0 = this;
-    try {
-      window.addEventListener("keydown", function (e) {
-        if (self0._onKey) self0._onKey(e);
-      });
-    } catch (e) {}
-  }
-  _rv() {
-    var accent = this.props.accent ?? "#645DC5";
-    var s = this.state;
-    var self = this;
-    var q = (s.q || "").trim().toUpperCase();
-    var list = CONCEPTS.filter(function (c) {
-      return !q || c.code.indexOf(q) !== -1;
-    });
-    var cxi = Math.min(s.cxi || 0, Math.max(list.length - 1, 0));
-    if (!self._cxT && list.length > 1) {
-      var tick = function () {
-        if (!self.state.lb) self.setState({ cxi: ((self.state.cxi || 0) + 1) % CONCEPTS.length });
-      };
-      self._cxReset = function () {
-        try {
-          clearInterval(self._cxT);
-          self._cxT = setInterval(tick, 6500);
-        } catch (e) {}
-      };
-      try {
-        self._cxT = setInterval(tick, 6500);
-      } catch (e) {}
-    }
-    var concepts = list.map(function (c, ci) {
-      var on = s.sel === c.code;
-      return Object.assign({}, c, {
-        selected: on,
-        fcls: "cf-img" + (ci === cxi ? " on" : ""),
-        tcls: "cf-t" + (ci === cxi ? " on" : ""),
-        cur: ci === cxi ? "true" : "false",
-        go: function () {
-          self._cxReset && self._cxReset();
-          self.setState({ cxi: ci });
-        },
-        alt: "Concept " + c.code + ": " + c.name,
-        imgStyle:
-          "display: block; width: 100%; height: calc(460px * var(--mh)); object-fit: cover; outline: " +
-          (on ? "2px solid " + accent : "0") +
-          "; outline-offset: -2px",
-        pick: function () {
-          self.setState({
-            sel: c.code,
-            lb: {
-              gallery: c.gallery || null,
-              img: c.img,
-              alt: "Concept " + c.code + ": " + c.name,
-              label: "Concept",
-              title: c.code,
-              desc: c.name + " — a complete design we adapt to your space.",
-              cta: "",
+    moreProjects: PROJECTS.length > 12,
+    projBtn: s.allProj ? "View less" : "View more",
+    allBrands: !!s.allBrands,
+    brandsCls: s.allBrands ? "" : "tb-collapsed",
+    allBrandsStr: s.allBrands ? "true" : "false",
+    brandsBtn: s.allBrands ? "View less" : "View more",
+    toggleBrands: function () {
+      self.setState({ allBrands: !s.allBrands });
+    },
+    toggleProjects: function () {
+      self.setState({ allProj: !s.allProj });
+    },
+    openMM: function () {
+      self.setState({ zi: null, lb: projLb(PROJ_MM) });
+    },
+    closeLb: function () {
+      self.setState({ lb: null, zi: null });
+    },
+    showSw: groups.length > 0,
+    showHero: groups.length === 0,
+    showCount: !(s.lb && s.lb.gallery && s.lb.galleryNames === false),
+    swCount: flat.length,
+    swUnit: s.lb && (s.lb.swatches === "colors" || s.lb.swatches === "textures") ? "options" : "images",
+    lbImg: s.lb ? s.lb.img : "",
+    lbAlt: s.lb ? s.lb.alt : "",
+    zoomOn: !!(s.lb && s.zi !== null && flat[s.zi]),
+    zoom: (s.lb && s.zi !== null && flat[s.zi]) || { name: "", img: "" },
+    closeZoom: function () {
+      self.setState({ zi: null });
+    },
+    zoomPrev: function () {
+      self.setState({ zi: (s.zi - 1 + flat.length) % flat.length });
+    },
+    zoomNext: function () {
+      self.setState({ zi: (s.zi + 1) % flat.length });
+    },
+    swGroups: groups.map(function (g) {
+      return {
+        group: g.group,
+        hasLabel: !!g.group,
+        min: g.min,
+        items: g.items.map(function (w) {
+          var idx = flat.indexOf(w);
+          return {
+            name: w.name,
+            img: w.img,
+            showName: !!g.names,
+            on: "false",
+            style: "display: block; width: 100%; aspect-ratio: " + g.ratio + "; height: auto; object-fit: cover",
+            pick: function () {
+              self.setState({ zi: idx });
             },
-          });
-        },
-      });
-    });
-    var cc = concepts[cxi] || { gallery: [] },
-      cg = cc.gallery || [];
-    var cf = {
-      code: cc.code || "",
-      name: cc.name || "",
-      alt: cc.alt || "",
-      pick: cc.pick,
-      pos: cxi + 1 + " / " + concepts.length,
-      desc:
-        i18nGet() === "es"
-          ? "Un diseño completo que adaptamos a tu espacio. Toca la foto para ver la galería."
-          : "A complete design we adapt to your space. Tap the photo to see the gallery.",
-      fill: "animation-name: " + (cxi % 2 ? "cfa" : "cfb"),
-      prev: function () {
-        self._cxReset && self._cxReset();
-        self.setState({ cxi: (cxi - 1 + concepts.length) % concepts.length });
-      },
-      next: function () {
-        self._cxReset && self._cxReset();
-        self.setState({ cxi: (cxi + 1) % concepts.length });
-      },
-    };
-    var sel = CONCEPTS.find(function (c) {
-      return c.code === s.sel;
-    }) || { code: "", name: "" };
-    var open = {};
-    Object.keys(LB).forEach(function (k) {
-      open[k] = function () {
-        self.setState({ lb: LB[k], zi: null });
+          };
+        }),
       };
-    });
-    var groups =
-        s.lb && s.lb.swatches
-          ? SETS[s.lb.swatches]
-          : s.lb && s.lb.gallery
-            ? [
-                {
-                  group: "",
-                  ratio: s.lb.galleryRatio || "4 / 5",
-                  min: s.lb.galleryMin || "240px",
-                  names: s.lb.galleryNames !== false,
-                  items: s.lb.gallery,
-                },
-              ]
-            : [],
-      flat = [];
-    groups.forEach(function (g) {
-      g.items.forEach(function (w) {
-        flat.push(w);
-      });
-    });
-    var zOpen = !!(s.lb && s.zi !== null && flat[s.zi]);
-    self._onKey = function (e) {
-      var k = e.key;
-      if (zOpen) {
-        if (k === "Escape") {
-          self.setState({ zi: null });
-        } else if (k === "ArrowLeft") {
-          self.setState({ zi: (s.zi - 1 + flat.length) % flat.length });
-        } else if (k === "ArrowRight") {
-          self.setState({ zi: (s.zi + 1) % flat.length });
-        }
-        return;
-      }
-      if (k !== "Escape") return;
-      if (s.listOpen) self.setState({ listOpen: false });
-      else if (s.lb) self.setState({ lb: null, zi: null });
-    };
-    try {
-      document.body.style.overflow = s.lb || s.listOpen ? "hidden" : "";
-    } catch (e) {}
-    var lbItem = s.lb
-      ? {
-          id: "lb:" + (s.lb.label || "") + ":" + s.lb.title,
-          name:
-            s.lb.title +
-            (s.lb.label === "Concept"
-              ? " · " +
-                ((
-                  CONCEPTS.find(function (c) {
-                    return c.code === s.lb.title;
-                  }) || {}
-                ).name || "")
-              : ""),
-          kind: s.lb.label || "",
-          img: (s.lb.gallery && s.lb.gallery[0] && s.lb.gallery[0].img) || s.lb.img || (flat[0] && flat[0].img) || "",
-        }
-      : null;
-    var zItem =
-      s.lb && s.zi !== null && flat[s.zi]
-        ? { id: "img:" + flat[s.zi].img, name: flat[s.zi].name, kind: s.lb.title, img: flat[s.zi].img }
-        : null;
-    var zs = saveVals(self, "zSave", zItem, "Save");
-    if (zItem && listHasId(zItem.id)) zs.zSaveLbl = "Saved";
-    return Object.assign(listVals(self), saveVals(self, "lbSave", lbItem), zs, {
-      open: open,
-      lbOn: !!s.lb,
-      lb: s.lb || { img: "", alt: "", label: "", title: "", desc: "", cta: "" },
-      projects: (s.allProj ? PROJECTS : PROJECTS.slice(0, 12)).map(function (pj) {
-        return {
-          name: pj.name,
-          cover: pj.imgs[0],
-          count: pj.imgs.length + (pj.imgs.length === 1 ? " photo" : " photos"),
-          pick: function () {
-            self.setState({ zi: null, lb: projLb(pj) });
-          },
-        };
-      }),
-      moreProjects: PROJECTS.length > 12,
-      projBtn: s.allProj ? "View less" : "View more",
-      allBrands: !!s.allBrands,
-      brandsCls: s.allBrands ? "" : "tb-collapsed",
-      allBrandsStr: s.allBrands ? "true" : "false",
-      brandsBtn: s.allBrands ? "View less" : "View more",
-      toggleBrands: function () {
-        self.setState({ allBrands: !s.allBrands });
-      },
-      toggleProjects: function () {
-        self.setState({ allProj: !s.allProj });
-      },
-      openMM: function () {
-        self.setState({ zi: null, lb: projLb(PROJ_MM) });
-      },
-      closeLb: function () {
-        self.setState({ lb: null, zi: null });
-      },
-      showSw: groups.length > 0,
-      showHero: groups.length === 0,
-      showCount: !(s.lb && s.lb.gallery && s.lb.galleryNames === false),
-      swCount: flat.length,
-      swUnit: s.lb && (s.lb.swatches === "colors" || s.lb.swatches === "textures") ? "options" : "images",
-      lbImg: s.lb ? s.lb.img : "",
-      lbAlt: s.lb ? s.lb.alt : "",
-      zoomOn: !!(s.lb && s.zi !== null && flat[s.zi]),
-      zoom: (s.lb && s.zi !== null && flat[s.zi]) || { name: "", img: "" },
-      closeZoom: function () {
-        self.setState({ zi: null });
-      },
-      zoomPrev: function () {
-        self.setState({ zi: (s.zi - 1 + flat.length) % flat.length });
-      },
-      zoomNext: function () {
-        self.setState({ zi: (s.zi + 1) % flat.length });
-      },
-      swGroups: groups.map(function (g) {
-        return {
-          group: g.group,
-          hasLabel: !!g.group,
-          min: g.min,
-          items: g.items.map(function (w) {
-            var idx = flat.indexOf(w);
-            return {
-              name: w.name,
-              img: w.img,
-              showName: !!g.names,
-              on: "false",
-              style: "display: block; width: 100%; aspect-ratio: " + g.ratio + "; height: auto; object-fit: cover",
-              pick: function () {
-                self.setState({ zi: idx });
-              },
-            };
-          }),
-        };
-      }),
-      accent: accent,
-      concepts: concepts,
-      cf: cf,
-      query: s.q,
-      onQuery: function (e) {
-        self.setState({ q: e.target.value });
-      },
-      noResults: concepts.length === 0,
-      hasSel: !!s.sel,
-      hasCta: !!(s.lb && s.lb.cta),
-      sel: sel,
-      clear: function () {
-        self.setState({ sel: null });
-      },
-    });
-  }
+    }),
+    accent: accent,
+    concepts: concepts,
+    cf: cf,
+    query: s.q,
+    onQuery: function (e) {
+      self.setState({ q: e.target.value });
+    },
+    noResults: concepts.length === 0,
+    hasSel: !!s.sel,
+    hasCta: !!(s.lb && s.lb.cta),
+    sel: sel,
+    clear: function () {
+      self.setState({ sel: null });
+    },
+  });
 }
 
-Component.I18N_EN = I18N_EN;
-Component.DW_CATS = DW_CATS;
-Component.DW_FIN = DW_FIN;
-Component.ifoSetPending = ifoSetPending;
-
-Component.prototype.renderVals = function () {
-  var self = this;
-  var v = DCLogic.prototype.renderVals.call(this);
-  var lang = self.state.lang === "es" ? "es" : "en";
-  var isMain = !!(v.open && v.open.f_colors);
+/** Búsqueda global (`/` o ⌘K): productos, acabados, conceptos y proyectos. */
+function searchVals(self, lang, open, closeMenu, keys) {
+  var v = {};
+  var st = self.state;
   var trs = function (x) {
     return lang === "es" ? i18nTr(x) : x;
   };
-  if (!self._srKey) {
-    self._srKey = true;
-    try {
-      window.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && self.state.searchOpen) self.setState({ searchOpen: false, srq: "" });
-        if ((e.key === "/" || (e.key === "k" && (e.metaKey || e.ctrlKey))) && !self.state.searchOpen) {
-          var t = e.target && e.target.tagName;
-          if (t !== "INPUT" && t !== "TEXTAREA") {
-            e.preventDefault();
-            self.setState({ searchOpen: true });
-          }
-        }
-      });
-    } catch (e) {}
-  }
-  var sq = (self.state.srq || "").trim().toLowerCase();
-  v.searchOn = !!self.state.searchOpen;
+  keys.search = function (e) {
+    if (e.key === "Escape" && st.searchOpen) self.setState({ searchOpen: false, srq: "" });
+    if ((e.key === "/" || (e.key === "k" && (e.metaKey || e.ctrlKey))) && !st.searchOpen) {
+      var t = e.target && e.target.tagName;
+      if (t !== "INPUT" && t !== "TEXTAREA") {
+        e.preventDefault();
+        self.setState({ searchOpen: true });
+      }
+    }
+  };
+  var sq = (st.srq || "").trim().toLowerCase();
+  v.searchOn = !!st.searchOpen;
   v.openSearch = function () {
-    self.setState({ searchOpen: true, menuOpen: false });
+    self.setState({ searchOpen: true });
+    closeMenu();
   };
   v.closeSearch = function () {
     self.setState({ searchOpen: false, srq: "" });
@@ -961,7 +919,7 @@ Component.prototype.renderVals = function () {
   v.srInput = function (e) {
     self.setState({ srq: e.target.value });
   };
-  v.srQ = self.state.srq || "";
+  v.srQ = st.srq || "";
   v.srLabel = trs("Search");
   v.srClose = trs("Close");
   v.srPh = trs("Search products, finishes, concepts…");
@@ -1005,68 +963,66 @@ Component.prototype.renderVals = function () {
           rank: norm(p.n).indexOf(q2) === 0 ? 0 : 1,
         });
     });
-    if (isMain) {
-      DW_FIN.forEach(function (m) {
-        if (hit(m[0], trs(m[0]), "finish", "acabado"))
-          res.push({
-            name: trs(m[0]),
-            kind: trs("Finishes"),
-            img: MM_FIN_IMG[m[1]] || "",
-            href: "",
-            isLink: false,
-            isBtn: true,
-            go: function () {
-              self.setState({ searchOpen: false, srq: "" });
-              v.open[m[1]]();
-            },
-            rank: 0,
-          });
-      });
-      CONCEPTS.forEach(function (c) {
-        if (hit(c.code, c.name, trs(c.name), "concept", "concepto"))
-          res.push({
-            name: c.code + " · " + trs(c.name),
-            kind: trs("Concepts"),
-            img: c.img,
-            href: "",
-            isLink: false,
-            isBtn: true,
-            go: function () {
-              self.setState({
-                searchOpen: false,
-                srq: "",
-                sel: c.code,
-                zi: null,
-                lb: {
-                  gallery: c.gallery || null,
-                  img: c.img,
-                  alt: "Concept " + c.code + ": " + c.name,
-                  label: "Concept",
-                  title: c.code,
-                  desc: c.name + " — a complete design we adapt to your space.",
-                  cta: "",
-                },
-              });
-            },
-            rank: 1,
-          });
-      });
-      PROJECTS.forEach(function (pj) {
-        if (hit(pj.name, "project", "proyecto"))
-          res.push({
-            name: pj.name,
-            kind: trs("Projects"),
-            img: pj.imgs[0],
-            href: "",
-            isLink: false,
-            isBtn: true,
-            go: function () {
-              self.setState({ searchOpen: false, srq: "", zi: null, lb: projLb(pj) });
-            },
-            rank: 1,
-          });
-      });
-    }
+    DW_FIN.forEach(function (m) {
+      if (hit(m[0], trs(m[0]), "finish", "acabado"))
+        res.push({
+          name: trs(m[0]),
+          kind: trs("Finishes"),
+          img: MM_FIN_IMG[m[1]] || "",
+          href: "",
+          isLink: false,
+          isBtn: true,
+          go: function () {
+            self.setState({ searchOpen: false, srq: "" });
+            open[m[1]]();
+          },
+          rank: 0,
+        });
+    });
+    CONCEPTS.forEach(function (c) {
+      if (hit(c.code, c.name, trs(c.name), "concept", "concepto"))
+        res.push({
+          name: c.code + " · " + trs(c.name),
+          kind: trs("Concepts"),
+          img: c.img,
+          href: "",
+          isLink: false,
+          isBtn: true,
+          go: function () {
+            self.setState({
+              searchOpen: false,
+              srq: "",
+              sel: c.code,
+              zi: null,
+              lb: {
+                gallery: c.gallery || null,
+                img: c.img,
+                alt: "Concept " + c.code + ": " + c.name,
+                label: "Concept",
+                title: c.code,
+                desc: c.name + " — a complete design we adapt to your space.",
+                cta: "",
+              },
+            });
+          },
+          rank: 1,
+        });
+    });
+    PROJECTS.forEach(function (pj) {
+      if (hit(pj.name, "project", "proyecto"))
+        res.push({
+          name: pj.name,
+          kind: trs("Projects"),
+          img: pj.imgs[0],
+          href: "",
+          isLink: false,
+          isBtn: true,
+          go: function () {
+            self.setState({ searchOpen: false, srq: "", zi: null, lb: projLb(pj) });
+          },
+          rank: 1,
+        });
+    });
     res.sort(function (a, b) {
       return a.rank - b.rank;
     });
@@ -1076,57 +1032,43 @@ Component.prototype.renderVals = function () {
   v.srHas = res.length > 0;
   v.srEmpty = !!sq && res.length === 0;
   v.srCount = res.length + " " + trs("results");
-  if (self.state.searchOpen) {
-    try {
-      document.body.style.overflow = "hidden";
-    } catch (e) {}
-  }
+  return v;
+}
+
+/** Popup del newsletter (se muestra una vez; ver el efecto en Main). */
+function newsletterVals(self, lang, keys) {
+  var v = {};
+  var st = self.state;
   var trn = function (x) {
     return lang === "es" ? i18nTr(x) : x;
   };
-  if (isMain && !self._nlInit) {
-    self._nlInit = true;
-    var seen = false;
-    try {
-      seen = !!window.localStorage.getItem("indigoff_nl");
-    } catch (e) {}
-    if (!seen) {
+  keys.newsletter = function (e) {
+    if (e.key === "Escape" && st.nlOpen) {
       try {
-        setTimeout(function () {
-          if (!self.state.lb && !self.state.menuOpen && !self.state.searchOpen) self.setState({ nlOpen: true });
-        }, 2500);
-      } catch (e) {}
+        window.localStorage.setItem("indigoff_nl", "closed");
+      } catch (x) {}
+      self.setState({ nlOpen: false });
     }
-    try {
-      window.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && self.state.nlOpen) {
-          try {
-            window.localStorage.setItem("indigoff_nl", "closed");
-          } catch (x) {}
-          self.setState({ nlOpen: false });
-        }
-      });
-    } catch (e) {}
-  }
+  };
   var nlMark = function (val) {
     try {
       window.localStorage.setItem("indigoff_nl", val);
     } catch (e) {}
   };
-  v.nlOn = !!self.state.nlOpen;
-  v.nlDone = !!self.state.nlDone;
-  v.nlForm = !self.state.nlDone;
-  v.nlEmail = self.state.nlEmail || "";
-  v.nlErr = !!self.state.nlErr;
+  v.nlOn = !!st.nlOpen;
+  v.nlDone = !!st.nlDone;
+  v.nlForm = !st.nlDone;
+  v.nlEmail = st.nlEmail || "";
+  v.nlErr = !!st.nlErr;
   v.nlInput = function (e) {
     self.setState({ nlEmail: e.target.value, nlErr: false });
   };
   v.nlClose = function () {
-    if (!self.state.nlDone) nlMark("closed");
+    if (!st.nlDone) nlMark("closed");
     self.setState({ nlOpen: false });
   };
   v.nlSubmit = function () {
-    var em = (self.state.nlEmail || "").trim();
+    var em = (st.nlEmail || "").trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) {
       self.setState({ nlErr: true });
       return;
@@ -1144,39 +1086,10 @@ Component.prototype.renderVals = function () {
   v.nlThanks = trn("Thank you");
   v.nlThanksText = trn("You are on the list. We will be in touch soon.");
   v.nlContinue = trn("Continue");
-  if (self.state.nlOpen) {
-    try {
-      document.body.style.overflow = "hidden";
-    } catch (e) {}
-  }
   return v;
-};
+}
 
-(function () {
-  try {
-    document.addEventListener(
-      "click",
-      function (e) {
-        var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-        if (!a) return;
-        var m = /^\/?(Ceilings|Walls|Lights|Dividers|Podcaster)\.dc\.html$/i.exec(a.getAttribute("href") || "");
-        if (!m) return;
-        var o = { col: m[1].toLowerCase(), reset: true, t: Date.now() };
-        try {
-          window.localStorage.setItem("indigoff_open", JSON.stringify(o));
-        } catch (x) {}
-        try {
-          window.__indigoffOpen = o;
-          window.dispatchEvent(new CustomEvent("indigoff-open"));
-        } catch (x) {}
-      },
-      true,
-    );
-  } catch (e) {}
-})();
-
-Component.defaultProps = { accent: "#645DC5" };
-Component.template = function (v, self) {
+function template(v) {
   return (
     <>
       <div
@@ -1187,131 +1100,7 @@ Component.template = function (v, self) {
         <a className="skip" href="#categories">
           {v.T.k1}
         </a>
-        <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
-          <div
-            className="hd-in"
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
-            )}
-          >
-            <nav
-              aria-label="Main"
-              className="hd-l"
-              style={S(
-                "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-              )}
-            >
-              <button
-                type="button"
-                onClick={v.openMenu}
-                aria-haspopup="dialog"
-                aria-expanded={v.menuOnStr}
-                className="hd-menu"
-                aria-label={v.dwMenuLbl}
-              >
-                <svg
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  style={S("display: block")}
-                >
-                  <path d="M3 7h18M3 12h18M3 17h18"></path>
-                </svg>
-                <span>{v.dwMenuLbl}</span>
-              </button>
-              <a href="/downloads" className="hd-dl" aria-label={v.T.k7}>
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
-                <span className="hd-dl-lbl">{v.T.k7}</span>
-              </a>
-            </nav>
-            <a
-              href="#top"
-              className="hd-logo"
-              style={S(
-                "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
-              )}
-            >
-              <img
-                src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                alt="indigoff"
-                style={S("display: block; height: 24px; width: auto")}
-              />
-            </a>
-            <div
-              className="hd-r"
-              style={S(
-                "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-              )}
-            >
-              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
-                <button
-                  type="button"
-                  onClick={v.setEn}
-                  aria-pressed={v.isEn}
-                  aria-label="English"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.enColor}`,
-                  )}
-                >
-                  {"EN"}
-                </button>
-                <span aria-hidden="true">{"·"}</span>
-                <button
-                  type="button"
-                  onClick={v.setEs}
-                  aria-pressed={v.isEs}
-                  aria-label="Español"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.esColor}`,
-                  )}
-                >
-                  {"ES"}
-                </button>
-              </span>
-              <a href="/find-a-rep" className="hd-opt">{v.T.k8}</a>
-              <button
-                type="button"
-                onClick={v.openList}
-                className="hd-list"
-                aria-label={v.T.k69 + " (" + v.listCount + ")"}
-                style={S(
-                  "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: #111111",
-                )}
-              >
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg>
-                <span className="hd-list-lbl">{v.T.k69}{" ("}</span>
-                <span className="hd-list-n">{v.listCount}</span>
-                <span className="hd-list-lbl">{")"}</span>
-              </button>
-              <button
-                type="button"
-                aria-label="Search"
-                onClick={v.openSearch}
-                style={S(
-                  "width: 44px; height: 44px; border: 0; background: transparent; padding: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center",
-                )}
-              >
-                <svg
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#111111"
-                  strokeWidth="1.4"
-                >
-                  <circle cx="11" cy="11" r="7"></circle>
-                  <path d="M20 20l-4-4"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </header>
+        <SiteHeader v={v} labels={{ downloads: v.T.k7, findRep: v.T.k8, list: v.T.k69 }} logoHref="#top" search />
         <section id="top" style={S("position: relative; height: var(--hero-h); overflow: hidden; background: #1A1917")}>
           <div className="hs" aria-hidden="false">
             <img
@@ -1804,7 +1593,10 @@ Component.template = function (v, self) {
             </div>
           </div>
         </section>
-        <section id="concepts" style={S("max-width: 1440px; margin: 0 auto; padding: calc(180px * var(--vs)) var(--gutter) 0")}>
+        <section
+          id="concepts"
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(180px * var(--vs)) var(--gutter) 0")}
+        >
           <div className="sec-hd" style={S("text-align: center; margin-bottom: 0")}>
             <h2
               style={S(
@@ -1969,7 +1761,11 @@ Component.template = function (v, self) {
               </div>
             </>
           ) : null}
-          <div style={S("max-width: 1100px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0; text-align: center")}>
+          <div
+            style={S(
+              "max-width: 1100px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0; text-align: center",
+            )}
+          >
             <h2
               style={S(
                 "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -2451,7 +2247,10 @@ Component.template = function (v, self) {
             </button>
           </div>
         </section>
-        <section id="specify" style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) 0")}>
+        <section
+          id="specify"
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) 0")}
+        >
           <h2
             style={S(
               "margin: 0 0 48px; text-align: center; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -2512,7 +2311,9 @@ Component.template = function (v, self) {
         </section>
         <section
           id="contact"
-          style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) calc(140px * var(--vs)); text-align: center")}
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) calc(140px * var(--vs)); text-align: center",
+          )}
         >
           <h2
             style={S(
@@ -2616,7 +2417,13 @@ Component.template = function (v, self) {
               </span>
               <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
               <span style={S("display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 -13px")}>
-                <a href="https://www.instagram.com/indigoff.design/" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Instagram" className="soc">
+                <a
+                  href="https://www.instagram.com/indigoff.design/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Indigoff on Instagram"
+                  className="soc"
+                >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -2624,7 +2431,13 @@ Component.template = function (v, self) {
                     ></path>
                   </svg>
                 </a>
-                <a href="https://www.facebook.com/indigoff.design" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Facebook" className="soc">
+                <a
+                  href="https://www.facebook.com/indigoff.design"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Indigoff on Facebook"
+                  className="soc"
+                >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -2632,7 +2445,13 @@ Component.template = function (v, self) {
                     ></path>
                   </svg>
                 </a>
-                <a href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Spotify" className="soc">
+                <a
+                  href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Indigoff on Spotify"
+                  className="soc"
+                >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -3085,7 +2904,11 @@ Component.template = function (v, self) {
                   <span style={S("flex: 1 1 0")}></span>
                 </div>
               </header>
-              <div style={S("max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111")}>
+              <div
+                style={S(
+                  "max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111",
+                )}
+              >
                 <div style={S("text-align: center")}>
                   <h1
                     style={S(
@@ -3196,97 +3019,7 @@ Component.template = function (v, self) {
             </div>
           </>
         ) : null}
-        {v.menuOn ? (
-          <>
-            <div className="dw-back" onClick={v.closeMenu}></div>
-            <aside className="dw" role="dialog" aria-modal="true" aria-label={v.dwMenu}>
-              <div className="dw-hd">
-                <button type="button" onClick={v.closeMenu} className="dw-x">
-                  <svg
-                    aria-hidden="true"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    style={S("display: block")}
-                  >
-                    <path d="M5 5l14 14M19 5L5 19"></path>
-                  </svg>
-                  <span>{v.dwClose}</span>
-                </button>
-                <img
-                  src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                  alt="indigoff"
-                  style={S("display: block; height: 20px; width: auto")}
-                />
-              </div>
-              <div className="dw-body">
-                <p className="dw-g">{v.dwCat}</p>
-                {(v.dwCats || []).map((m, m__i) => (
-                  <React.Fragment key={m__i}>
-                    <div className="dw-item">
-                      <a href={m.href} onClick={v.closeMenu} className="dw-big">
-                        {m.name}
-                      </a>
-                      <div className="dw-subs">
-                        {(m.subs || []).map((u, u__i) => (
-                          <React.Fragment key={u__i}>
-                            <a href={u.href} onClick={u.go} className="dw-sub">
-                              {u.label}
-                            </a>
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </div>
-                  </React.Fragment>
-                ))}
-                <p className="dw-g">{v.dwFin}</p>
-                <div className="dw-subs dw-fin">
-                  {(v.dwFins || []).map((m, m__i) => (
-                    <React.Fragment key={m__i}>
-                      {m.isBtn ? (
-                        <>
-                          <button type="button" onClick={m.go} className="dw-mid">
-                            {m.name}
-                          </button>
-                        </>
-                      ) : null}
-                      {m.isLink ? (
-                        <>
-                          <a href={m.href} className="dw-mid">
-                            {m.name}
-                          </a>
-                        </>
-                      ) : null}
-                    </React.Fragment>
-                  ))}
-                </div>
-                <div className="dw-two">
-                  <a href={v.dwConHref} onClick={v.closeMenu} className="dw-big">
-                    {v.dwCon}
-                  </a>
-                  <a href={v.dwProHref} onClick={v.closeMenu} className="dw-big">
-                    {v.dwPro}
-                  </a>
-                  <a href="/onoff-studio" onClick={v.closeMenu} className="dw-big">
-                    {"onoff studio"}
-                  </a>
-                </div>
-                <div className="dw-util">
-                  <a href="/downloads" onClick={v.closeMenu}>
-                    {v.T.k7}
-                  </a>
-                  <a href="/find-a-rep" onClick={v.closeMenu}>
-                    {v.T.k8}
-                  </a>
-                </div>
-              </div>
-            </aside>
-          </>
-        ) : null}
+        <SideMenu v={v} labels={{ downloads: v.T.k7, findRep: v.T.k8 }} />
         {v.searchOn ? (
           <>
             <div className="sr-back" onClick={v.closeSearch}></div>
@@ -3312,7 +3045,7 @@ Component.template = function (v, self) {
                     placeholder={v.srPh}
                     value={v.srQ}
                     onChange={v.srInput}
-                    autofocus
+                    autoFocus
                     aria-label={v.srLabel}
                   />
                   <button type="button" onClick={v.closeSearch} className="sr-x" aria-label={v.srClose}>
@@ -3463,6 +3196,4 @@ Component.template = function (v, self) {
       </div>
     </>
   );
-};
-
-export default Component;
+}
