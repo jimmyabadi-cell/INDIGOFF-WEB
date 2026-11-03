@@ -4,7 +4,6 @@ import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { tx } from "../../i18n/index.js";
 import LB from "../../data/lightboxes.json";
 import SETS from "../../data/swatches.json";
-import PROJ_MM from "../../data/project-featured.json";
 import { useMergeState } from "../../hooks/useMergeState.js";
 import { useSavedList } from "../../hooks/useSavedList.js";
 import { useScrollLock } from "../../hooks/useScrollLock.js";
@@ -264,9 +263,6 @@ function mainVals(self, saved, keys, cxReset, t) {
       },
       toggleProjects: function () {
         self.setState({ allProj: !s.allProj });
-      },
-      openMM: function () {
-        self.setState({ zi: null, lb: projLb(PROJ_MM) });
       },
       closeLb: function () {
         self.setState({ lb: null, zi: null });
