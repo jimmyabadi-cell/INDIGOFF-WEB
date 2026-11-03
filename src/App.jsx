@@ -5,6 +5,7 @@ const CollectionPage = lazy(() => import("./pages/Collection/CollectionPage.jsx"
 const Downloads = lazy(() => import("./pages/Downloads/Downloads.jsx"));
 const OnoffStudio = lazy(() => import("./pages/OnoffStudio/OnoffStudio.jsx"));
 const FindRep = lazy(() => import("./pages/FindRep/FindRep.jsx"));
+const Contact = lazy(() => import("./pages/Contact/Contact.jsx"));
 
 const COLLECTIONS = ["ceilings", "walls", "lights", "dividers", "podcaster"];
 const TITLES = {
@@ -12,6 +13,7 @@ const TITLES = {
   "/downloads": "Downloads — Indigoff",
   "/find-a-rep": "Find a rep — Indigoff",
   "/onoff-studio": "onoff studio — Indigoff",
+  "/contact": "Contact — Indigoff",
 };
 
 function route() {
@@ -25,6 +27,7 @@ function route() {
   if (path === "/downloads") return <Downloads />;
   if (path === "/onoff-studio") return <OnoffStudio />;
   if (path === "/find-a-rep") return <FindRep />;
+  if (path === "/contact") return <Contact />;
   return <Main />;
 }
 

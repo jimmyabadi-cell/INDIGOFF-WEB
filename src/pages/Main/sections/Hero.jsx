@@ -47,7 +47,7 @@ export default function Hero({ v }) {
         </h1>
         <p className="hs-p">{v.t("home.hero.text")}</p>
         <div className="cta-row cta-dk">
-          <a href="/find-a-rep" className="cta-p">
+          <a href="/contact" className="cta-p">
             {v.t("home.hero.quote")}
           </a>
           <a href="#categories" className="cta-o">

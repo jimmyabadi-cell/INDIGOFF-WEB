@@ -85,7 +85,7 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
           ) : null}
           {labels.list ? <ListButton v={v} label={labels.list} style={st.list} /> : null}
           {labels.contact ? (
-            <a href="mailto:info@indigoff.com" className={"hd-opt " + css.link}>
+            <a href="/contact" className={"hd-opt " + css.link}>
               {labels.contact}
             </a>
           ) : null}

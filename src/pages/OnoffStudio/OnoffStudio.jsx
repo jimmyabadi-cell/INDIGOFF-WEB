@@ -138,7 +138,7 @@ function template(v) {
           <h2 className={css.heading4}>{v.on.ctaH}</h2>
           <p className={css.text8}>{v.on.ctaP}</p>
           <div className={css.box11}>
-            <a className={css.link2} href="/#contact">
+            <a className={css.link2} href="/contact">
               {v.on.cta1}
             </a>
             <a className={css.link3} href="/find-a-rep">
