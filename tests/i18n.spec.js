@@ -35,7 +35,23 @@ test.describe("Traducciones", () => {
 });
 
 // Páginas ya migradas a claves y los grupos de textos que muestran.
-const MIGRATED = { "/onoff-studio": ["studio", "common"] };
+const MIGRATED = {
+  "/onoff-studio": ["studio", "common"],
+  "/downloads": ["downloads", "catalog", "common"],
+  "/find-a-rep": ["findRep", "common"],
+};
+
+/**
+ * Un texto con {variables} se busca como patrón con límites de palabra:
+ * "{count} product" → /.+? product\b/ (así no coincide con "producto").
+ */
+const toPattern = (s) => {
+  const body = s
+    .replace(/[.*+?^$()|[\]\\]/g, "\\$&")
+    .split(/\{\w+\}/)
+    .join(".+?");
+  return new RegExp((/^\w/.test(s) ? "\\b" : "") + body + (/\w$/.test(s) ? "\\b" : ""));
+};
 
 for (const [route, namespaces] of Object.entries(MIGRATED)) {
   test(`${route}: en español no queda ningún texto en inglés`, async ({ page }) => {
@@ -47,12 +63,13 @@ for (const [route, namespaces] of Object.entries(MIGRATED)) {
     });
     await page.goto(route);
     await page.locator(".site-hd").waitFor();
-    const text = await page.locator("body").innerText();
+    // textContent (no innerText): el texto original, sin el text-transform del CSS.
+    const text = await page.evaluate(() => document.body.textContent);
     const english = namespaces
       .flatMap((ns) => Object.entries(flattenNs(ns)))
       .filter(([key, s]) => typeof s === "string" && s.length >= 12 && s !== flatEs[key])
       .map(([, s]) => s)
-      .filter((s) => text.includes(s));
+      .filter((s) => toPattern(s).test(text));
     expect(english).toEqual([]);
   });
 }

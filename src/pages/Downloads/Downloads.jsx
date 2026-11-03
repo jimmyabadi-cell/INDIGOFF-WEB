@@ -1,33 +1,17 @@
 import React, { useState } from "react";
 import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { usePageChrome } from "../../hooks/usePageChrome.js";
 import "./Downloads.css";
-
-const I18N_EN = {
-  k1: "Skip to content",
-  k2: "Categories",
-  k3: "Concepts",
-  k4: "Projects",
-  k5: "Downloads",
-  k6: "Find a rep",
-  k7: "CAD, SketchUp, Rhino and Revit files for every Indigoff product — ready to drop into your project.",
-  k8: "Search",
-  k9: "No files match your search.",
-  k10: "Download",
-  k11: "Need a format or size that isn't listed? Our team prepares CAD and BIM files on request.",
-  k12: "Request a file",
-  k13: "Back to home",
-  k14: "Product name",
-};
 
 import D from "../../data/downloads.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
 import SideMenu from "../../components/layout/SideMenu.jsx";
 import CompactFooter from "../../components/layout/CompactFooter.jsx";
-const CATS = ["All", "Ceilings", "Walls", "Lights", "Dividers"];
-const FMTS = ["All", "DWG", "SKP", "3DM", "REVIT"];
-const FMT_LABEL = { All: "All formats", DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
+const ALL = "all";
+const CATS = [ALL, "ceilings", "walls", "lights", "dividers"];
+const FMTS = [ALL, "DWG", "SKP", "3DM", "REVIT"];
+const FMT_LABEL = { DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
 function tabStyle(on) {
   return (
     "min-height: 44px; padding: 0 0 4px; border: 0; border-bottom: 2px solid " +
@@ -51,34 +35,35 @@ function chipStyle(on) {
 const NAV = { DW_CATS, DW_FIN, ifoSetPending };
 
 export default function Downloads() {
-  const [cat, setCat] = useState("All");
-  const [fmt, setFmt] = useState("All");
+  const [cat, setCat] = useState(ALL);
+  const [fmt, setFmt] = useState(ALL);
   const [query, setQuery] = useState("");
-  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
-  const vals = downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery });
-  return template({ ...localize(vals, lang), ...chrome });
+  const { chrome } = usePageChrome({}, { nav: NAV });
+  const vals = downloadsVals({ t: chrome.t, cat, fmt, query, setCat, setFmt, setQuery });
+  return template({ ...vals, ...chrome });
 }
 
-function downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery }) {
+function downloadsVals({ t, cat, fmt, query, setCat, setFmt, setQuery }) {
+  const subLabel = (p) => t("catalog.subcategories." + p.c + "." + p.s);
   const st = { cat, fmt, q: query };
   const q = (st.q || "").trim().toLowerCase();
   const groups = [];
   let total = 0,
     files = 0;
   CATS.slice(1).forEach(function (c) {
-    if (st.cat !== "All" && st.cat !== c) return;
+    if (st.cat !== ALL && st.cat !== c) return;
     const items = [];
     D.forEach(function (p) {
       if (p.c !== c) return;
-      if (q && p.n.toLowerCase().indexOf(q) < 0 && p.s.toLowerCase().indexOf(q) < 0) return;
+      if (q && p.n.toLowerCase().indexOf(q) < 0 && subLabel(p).toLowerCase().indexOf(q) < 0) return;
       const fl = p.f.filter(function (f) {
-        return st.fmt === "All" || f[0] === st.fmt;
+        return st.fmt === ALL || f[0] === st.fmt;
       });
       if (!fl.length) return;
       files += fl.length;
       items.push({
         name: p.n,
-        sub: p.s,
+        sub: subLabel(p),
         href: p.href,
         img: p.img,
         hasImg: !!p.img,
@@ -90,19 +75,22 @@ function downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery }) {
     });
     if (items.length) {
       total += items.length;
-      groups.push({ name: c, count: items.length + (items.length === 1 ? " product" : " products"), items: items });
+      groups.push({
+        name: t("catalog.categories." + c),
+        count: t("downloads.productCount", { count: items.length }),
+        items: items,
+      });
     }
   });
   return {
     groups: groups,
     empty: groups.length === 0,
-    totalProducts: total,
-    totalFiles: files,
+    totals: t("downloads.productCount", { count: total }) + " · " + t("downloads.fileCount", { count: files }),
     q: st.q,
     cats: CATS.map(function (c) {
       const on = st.cat === c;
       return {
-        label: c,
+        label: c === ALL ? t("downloads.allCategories") : t("catalog.categories." + c),
         on: on ? "true" : "false",
         style: tabStyle(on),
         pick: function () {
@@ -113,7 +101,7 @@ function downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery }) {
     fmts: FMTS.map(function (f) {
       const on = st.fmt === f;
       return {
-        label: FMT_LABEL[f],
+        label: f === ALL ? t("downloads.allFormats") : FMT_LABEL[f],
         on: on ? "true" : "false",
         style: chipStyle(on),
         pick: function () {
@@ -136,9 +124,13 @@ function template(v) {
         )}
       >
         <a className="skip" href="#content">
-          {v.T.k1}
+          {v.t("common.skipToContent")}
         </a>
-        <SiteHeader v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} current="downloads" />
+        <SiteHeader
+          v={v}
+          labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }}
+          current="downloads"
+        />
         <section
           id="content"
           style={S(
@@ -150,18 +142,15 @@ function template(v) {
               "margin: 0 0 24px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(44px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em",
             )}
           >
-            {v.T.k5}
+            {v.t("common.downloads")}
           </h1>
-          <p style={S("margin: 0 auto; max-width: 560px; font-size: 18px; color: #3A3935")}>{v.T.k7}</p>
+          <p style={S("margin: 0 auto; max-width: 560px; font-size: 18px; color: #3A3935")}>{v.t("downloads.intro")}</p>
           <p
             style={S(
               "margin: 28px 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
             )}
           >
-            {v.totalProducts}
-            {" products · "}
-            {v.totalFiles}
-            {" files"}
+            {v.totals}
           </p>
         </section>
         <section
@@ -176,7 +165,7 @@ function template(v) {
           >
             <div
               role="tablist"
-              aria-label="Category"
+              aria-label={v.t("downloads.categoryLabel")}
               className="scroll-tabs"
               style={S("display: flex; flex-wrap: wrap; gap: 4px 28px")}
             >
@@ -201,10 +190,10 @@ function template(v) {
                   "display: flex; align-items: center; gap: 12px; margin-left: 12px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
                 )}
               >
-                {v.T.k8}
+                {v.t("downloads.search")}
                 <input
                   type="search"
-                  placeholder={v.T.k14}
+                  placeholder={v.t("downloads.searchPlaceholder")}
                   value={v.q}
                   onChange={v.onQuery}
                   style={S(
@@ -219,7 +208,7 @@ function template(v) {
           {v.empty ? (
             <>
               <p style={S("margin: calc(96px * var(--vs)) 0; text-align: center; font-size: 18px; color: #6B675F")}>
-                {v.T.k9}
+                {v.t("downloads.empty")}
               </p>
             </>
           ) : null}
@@ -322,7 +311,7 @@ function template(v) {
                                 )}
                               >
                                 <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                                  {v.T.k10}
+                                  {v.t("downloads.download")}
                                   <svg
                                     aria-hidden="true"
                                     width="14"
@@ -354,7 +343,7 @@ function template(v) {
               "margin: calc(96px * var(--vs)) auto 0; max-width: 520px; text-align: center; font-size: 15px; color: #5E5A53",
             )}
           >
-            {v.T.k11}
+            {v.t("downloads.requestText")}
           </p>
           <p style={S("margin: 28px 0 0; text-align: center")}>
             <a
@@ -363,12 +352,12 @@ function template(v) {
                 "display: inline-flex; align-items: center; min-height: 48px; padding: 0 36px; background: #645DC5; color: #FFFFFF; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
               )}
             >
-              {v.T.k12}
+              {v.t("downloads.requestCta")}
             </a>
           </p>
         </section>
-        <CompactFooter homeLabel={v.T.k13} />
-        <SideMenu v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} />
+        <CompactFooter homeLabel={v.t("common.backToHome")} />
+        <SideMenu v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
       </div>
     </>
   );

@@ -1,30 +1,9 @@
 import React, { useRef } from "react";
 import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { useMergeState } from "../../hooks/useMergeState.js";
 import "./FindRep.css";
-
-const I18N_EN = {
-  k1: "Skip to content",
-  k2: "Categories",
-  k3: "Concepts",
-  k4: "Projects",
-  k5: "Downloads",
-  k6: "Find a rep",
-  k7: "Pricing, samples, specification and project support — from the Indigoff representative in your territory.",
-  k8: "State",
-  k9: "We couldn’t find that state. Try its full name or two-letter code.",
-  k10: "Rep territory",
-  k11: "Selected",
-  k12: "Served directly by Indigoff",
-  k13: "Email",
-  k14: "Select a state on the map or type it above to see who covers your project.",
-  k15: "All representatives",
-  k16: "Outside these territories, or working in México? Our team supports your project directly.",
-  k17: "Back to home",
-  k18: "Type a state — e.g. Texas or NJ",
-};
 
 import REPS from "../../data/reps.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
@@ -32,7 +11,7 @@ import SideMenu from "../../components/layout/SideMenu.jsx";
 import CompactFooter from "../../components/layout/CompactFooter.jsx";
 const DEFAULT_REP = {
   name: "Indigoff",
-  contact: "Direct team",
+  contactKey: "findRep.directTeam",
   email: "info@indigoff.com",
   phone: "908-489-7323",
   areas: [],
@@ -280,27 +259,30 @@ REPS.forEach(function (r, i) {
     KEYREP[a] = i;
   });
 });
-function territory(r) {
+function territory(r, t) {
   if (
     r.areas.length &&
     r.areas.every(function (a) {
       return /^MX[A-Z]{3}$/.test(a);
     })
   )
-    return "México · " + r.areas.length + " states";
-  return r.areas.length ? r.areas.map(keyName).join(" · ") : "All other territories";
+    return t("findRep.mexicoStates", { count: r.areas.length });
+  return r.areas.length ? r.areas.map(keyName).join(" · ") : t("findRep.allOtherTerritories");
 }
-function card(r) {
+function contactOf(r, t) {
+  return r.contactKey ? t(r.contactKey) : r.contact;
+}
+function card(r, t) {
   return {
     name: r.name,
-    contact: r.contact,
-    hasContact: !!r.contact,
+    contact: contactOf(r, t),
+    hasContact: !!contactOf(r, t),
     email: r.email,
     mail: "mailto:" + r.email,
     phone: r.phone,
     hasPhone: !!r.phone,
     tel: "tel:" + (/^\s*\+/.test(r.phone) ? "+" : "+1") + r.phone.replace(/[^0-9]/g, ""),
-    territory: territory(r),
+    territory: territory(r, t),
   };
 }
 function keysForState(abbr) {
@@ -319,12 +301,12 @@ export default function FindRep() {
   const [st, setSt] = useMergeState({ sel: null, rep: null, q: "", noMatch: false });
   // Pestaña del mapa: se deriva de la selección, pero el usuario también puede elegirla.
   const mapTab = useRef({ tab: "us", last: undefined });
-  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
-  const v = { ...localize(repVals(st, setSt), lang), ...mapVals(st, setSt, mapTab.current, lang === "es"), ...chrome };
+  const { chrome } = usePageChrome({}, { nav: NAV });
+  const v = { ...repVals(st, setSt, chrome.t), ...mapVals(st, setSt, mapTab.current, chrome.t), ...chrome };
   return template(v);
 }
 
-function repVals(st, setSt) {
+function repVals(st, setSt, t) {
   const sel = st.sel || [];
   const repSel = st.rep;
   let reps = [];
@@ -359,16 +341,23 @@ function repVals(st, setSt) {
       setSt({ sel: [k], rep: null, noMatch: false, q: keyName(k) });
     };
   });
-  let place = "Select a state";
-  let label = "Your representative";
+  let place = t("findRep.result.selectState");
+  let label = t("findRep.result.yourRep");
   if (repSel !== null) {
     place = repSel >= 0 ? REPS[repSel].name : "Indigoff";
-    label = "Representative";
+    label = t("findRep.result.rep");
   } else if (sel.length) {
-    place = sel.length > 1 ? (/^MX[A-Z]{3}$/.test(sel[0]) ? "México" : NAMES[sel[0].split("_")[0]]) : keyName(sel[0]);
+    place =
+      sel.length > 1
+        ? /^MX[A-Z]{3}$/.test(sel[0])
+          ? t("findRep.countries.mx")
+          : NAMES[sel[0].split("_")[0]]
+        : sel[0] === "CAN"
+          ? t("findRep.countries.ca")
+          : keyName(sel[0]);
   }
   const results = reps.map(function (i) {
-    return card(i >= 0 ? REPS[i] : DEFAULT_REP);
+    return card(i >= 0 ? REPS[i] : DEFAULT_REP, t);
   });
   const all = REPS.map(function (r, i) {
     return { i: i, r: r };
@@ -378,8 +367,8 @@ function repVals(st, setSt) {
       const on = repSel === o.i;
       return {
         name: o.r.name,
-        contact: o.r.contact || "\u00a0",
-        territory: territory(o.r),
+        contact: contactOf(o.r, t) || "\u00a0",
+        territory: territory(o.r, t),
         on: on ? "true" : "false",
         style:
           "flex: 1 1 300px; min-height: 200px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 28px; text-align: left; cursor: pointer; font-family: inherit; color: #111111; border: 1px solid " +
@@ -429,7 +418,7 @@ function repVals(st, setSt) {
   };
 }
 
-function mapVals(st, setSt, mt, es) {
+function mapVals(st, setSt, mt, t) {
   const v = {};
   const sel = st.sel || [];
   let tab = mt.tab;
@@ -448,9 +437,9 @@ function mapVals(st, setSt, mt, es) {
   mt.last = /^MX[A-Z]{3}$/.test(sel[0] || "") ? "MX" : sel[0] || "";
   mt.tab = tab;
   const defs = [
-    ["us", es ? "Estados Unidos" : "United States", null],
-    ["ca", "Canada", "CAN"],
-    ["mx", "México", "MX"],
+    ["us", t("findRep.countries.us"), null],
+    ["ca", t("findRep.countries.ca"), "CAN"],
+    ["mx", t("findRep.countries.mx"), "MX"],
   ];
   v.mapTabs = defs.map(function (d) {
     const on = d[0] === tab;
@@ -491,9 +480,13 @@ function template(v) {
         )}
       >
         <a className="skip" href="#content">
-          {v.T.k1}
+          {v.t("common.skipToContent")}
         </a>
-        <SiteHeader v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} current="find-a-rep" />
+        <SiteHeader
+          v={v}
+          labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }}
+          current="find-a-rep"
+        />
         <section
           id="content"
           style={S(
@@ -505,18 +498,18 @@ function template(v) {
               "margin: 0 0 24px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(44px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em",
             )}
           >
-            {v.T.k6}
+            {v.t("common.findRep")}
           </h1>
-          <p style={S("margin: 0 auto; max-width: 560px; font-size: 18px; color: #3A3935")}>{v.T.k7}</p>
+          <p style={S("margin: 0 auto; max-width: 560px; font-size: 18px; color: #3A3935")}>{v.t("findRep.intro")}</p>
           <label
             style={S(
               "margin: 48px auto 0; max-width: 520px; display: flex; align-items: center; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
             )}
           >
-            {v.T.k8}
+            {v.t("findRep.stateLabel")}
             <input
               type="search"
-              placeholder={v.T.k18}
+              placeholder={v.t("findRep.statePlaceholder")}
               value={v.q}
               onChange={v.onQuery}
               style={S(
@@ -526,7 +519,7 @@ function template(v) {
           </label>
           {v.noMatch ? (
             <>
-              <p style={S("margin: 14px 0 0; font-size: 14px; color: #645DC5")}>{v.T.k9}</p>
+              <p style={S("margin: 14px 0 0; font-size: 14px; color: #645DC5")}>{v.t("findRep.notFound")}</p>
             </>
           ) : null}
         </section>
@@ -536,7 +529,7 @@ function template(v) {
           )}
         >
           <div style={S("flex: 2 1 640px; min-width: 0")}>
-            <div className="mt-tabs" role="tablist" aria-label="Country">
+            <div className="mt-tabs" role="tablist" aria-label={v.t("findRep.countryLabel")}>
               {(v.mapTabs || []).map((t, t__i) => (
                 <React.Fragment key={t__i}>
                   <button type="button" role="tab" aria-selected={t.on} className={t.cls} onClick={t.pick}>
@@ -550,7 +543,7 @@ function template(v) {
                 <svg
                   viewBox="0 0 975 610"
                   role="img"
-                  aria-label="Map of United States representative territories"
+                  aria-label={v.t("findRep.mapLabels.us")}
                   style={S("display: block; width: 100%; height: auto")}
                 >
                   <defs>
@@ -1097,7 +1090,7 @@ function template(v) {
                 <svg
                   viewBox="0 0 975 610"
                   role="img"
-                  aria-label="Map of Canada"
+                  aria-label={v.t("findRep.mapLabels.ca")}
                   style={S("display: block; width: 100%; height: auto")}
                 >
                   <g stroke="#FFFFFF" strokeWidth="0.9" strokeLinejoin="round">
@@ -1118,7 +1111,7 @@ function template(v) {
                 <svg
                   viewBox="0 0 975 610"
                   role="img"
-                  aria-label="Map of México"
+                  aria-label={v.t("findRep.mapLabels.mx")}
                   style={S("display: block; width: 100%; height: auto")}
                 >
                   <g stroke="#FFFFFF" strokeWidth="0.9" strokeLinejoin="round">
@@ -1389,15 +1382,15 @@ function template(v) {
             >
               <span style={S("display: inline-flex; align-items: center; gap: 10px")}>
                 <span style={S("width: 14px; height: 14px; background: #D9DAEF")}></span>
-                {v.T.k10}
+                {v.t("findRep.legend.territory")}
               </span>
               <span style={S("display: inline-flex; align-items: center; gap: 10px")}>
                 <span style={S("width: 14px; height: 14px; background: #645DC5")}></span>
-                {v.T.k11}
+                {v.t("findRep.legend.selected")}
               </span>
               <span style={S("display: inline-flex; align-items: center; gap: 10px")}>
                 <span style={S("width: 14px; height: 14px; background: #F1EEE9; border: 1px solid #E4DFD7")}></span>
-                {v.T.k12}
+                {v.t("findRep.legend.direct")}
               </span>
             </div>
           </div>
@@ -1451,7 +1444,7 @@ function template(v) {
                         "display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; background: #645DC5; color: #FFFFFF; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase",
                       )}
                     >
-                      {v.T.k13}
+                      {v.t("findRep.email")}
                     </a>
                     {r.hasPhone ? (
                       <>
@@ -1474,7 +1467,7 @@ function template(v) {
             ))}
             {v.showHint ? (
               <>
-                <p style={S("margin: 0; color: #5E5A53")}>{v.T.k14}</p>
+                <p style={S("margin: 0; color: #5E5A53")}>{v.t("findRep.hint")}</p>
               </>
             ) : null}
           </aside>
@@ -1487,7 +1480,7 @@ function template(v) {
                   "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
                 )}
               >
-                {v.T.k15}
+                {v.t("findRep.allTitle")}
               </h2>
             </div>
             <div style={S("display: flex; flex-wrap: wrap; gap: 8px")}>
@@ -1513,7 +1506,9 @@ function template(v) {
                 </React.Fragment>
               ))}
             </div>
-            <p style={S("margin: 64px auto 0; max-width: 520px; text-align: center; color: #5E5A53")}>{v.T.k16}</p>
+            <p style={S("margin: 64px auto 0; max-width: 520px; text-align: center; color: #5E5A53")}>
+              {v.t("findRep.outside")}
+            </p>
             <p style={S("margin: 24px 0 0; text-align: center")}>
               <a
                 href="mailto:info@indigoff.com"
@@ -1526,8 +1521,8 @@ function template(v) {
             </p>
           </div>
         </section>
-        <CompactFooter homeLabel={v.T.k17} background="#FFFFFF" />
-        <SideMenu v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} />
+        <CompactFooter homeLabel={v.t("common.backToHome")} background="#FFFFFF" />
+        <SideMenu v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
       </div>
     </>
   );

@@ -44,10 +44,22 @@
     "process": {
       "title": "How we work",
       "steps": [
-        { "title": "Listen", "text": "We study the space, its use and its sound." },
-        { "title": "Design", "text": "We propose the acoustic and lighting concept, with renders and simulations." },
-        { "title": "Make", "text": "Indigoff produces each piece from recycled PET felt with integrated LED." },
-        { "title": "Install", "text": "We coordinate delivery and installation with your team." }
+        {
+          "title": "Listen",
+          "text": "We study the space, its use and its sound."
+        },
+        {
+          "title": "Design",
+          "text": "We propose the acoustic and lighting concept, with renders and simulations."
+        },
+        {
+          "title": "Make",
+          "text": "Indigoff produces each piece from recycled PET felt with integrated LED."
+        },
+        {
+          "title": "Install",
+          "text": "We coordinate delivery and installation with your team."
+        }
       ]
     },
     "designs": {
@@ -60,5 +72,101 @@
       "start": "Start a project",
       "rep": "Talk to a rep"
     }
+  },
+  "catalog": {
+    "categories": {
+      "ceilings": "Ceilings",
+      "walls": "Walls",
+      "lights": "Lights",
+      "dividers": "Dividers",
+      "podcaster": "Podcaster"
+    },
+    "subcategories": {
+      "ceilings": {
+        "ceilings": "Ceiling Systems",
+        "baffles": "Baffles",
+        "clouds": "Clouds",
+        "ceilinglights": "Ceiling Lights"
+      },
+      "walls": {
+        "walls": "Panels",
+        "frames": "Frames",
+        "murals": "Murals",
+        "canvas": "Canvas",
+        "walllights": "Wall Lights",
+        "woolskin": "Woolskin Panels"
+      },
+      "lights": {
+        "pendantlights": "Pendant",
+        "ceilinglights": "Ceiling",
+        "floorlights": "Floor",
+        "tablelights": "Table",
+        "walllights": "Wall"
+      },
+      "dividers": {
+        "dividers": "Space Dividers",
+        "fckoff": "Fckoff — Desk Dividers"
+      },
+      "podcaster": {
+        "podcaster": "Podcaster"
+      }
+    }
+  },
+  "downloads": {
+    "intro": "CAD, SketchUp, Rhino and Revit files for every Indigoff product — ready to drop into your project.",
+    "productCount": {
+      "one": "{count} product",
+      "other": "{count} products"
+    },
+    "fileCount": {
+      "one": "{count} file",
+      "other": "{count} files"
+    },
+    "categoryLabel": "Category",
+    "allCategories": "All",
+    "allFormats": "All formats",
+    "search": "Search",
+    "searchPlaceholder": "Product name",
+    "empty": "No files match your search.",
+    "download": "Download",
+    "requestText": "Need a format or size that isn't listed? Our team prepares CAD and BIM files on request.",
+    "requestCta": "Request a file"
+  },
+  "findRep": {
+    "intro": "Pricing, samples, specification and project support — from the Indigoff representative in your territory.",
+    "stateLabel": "State",
+    "statePlaceholder": "Type a state — e.g. Texas or NJ",
+    "notFound": "We couldn’t find that state. Try its full name or two-letter code.",
+    "countryLabel": "Country",
+    "countries": {
+      "us": "United States",
+      "ca": "Canada",
+      "mx": "México"
+    },
+    "mapLabels": {
+      "us": "Map of United States representative territories",
+      "ca": "Map of Canada",
+      "mx": "Map of México"
+    },
+    "legend": {
+      "territory": "Rep territory",
+      "selected": "Selected",
+      "direct": "Served directly by Indigoff"
+    },
+    "result": {
+      "selectState": "Select a state",
+      "yourRep": "Your representative",
+      "rep": "Representative"
+    },
+    "hint": "Select a state on the map or type it above to see who covers your project.",
+    "email": "Email",
+    "directTeam": "Direct team",
+    "allOtherTerritories": "All other territories",
+    "mexicoStates": {
+      "one": "México · {count} state",
+      "other": "México · {count} states"
+    },
+    "allTitle": "All representatives",
+    "outside": "Outside these territories, or working in México? Our team supports your project directly."
   }
 }

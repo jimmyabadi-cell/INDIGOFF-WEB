@@ -1,8 +1,8 @@
 [
   {
     "n": "Mist",
-    "c": "Ceilings",
-    "s": "Baffles",
+    "c": "ceilings",
+    "s": "baffles",
     "img": "/img/07047095a3b9bfeb4a7cbb035cc17702.jpg",
     "href": "/ceilings",
     "f": [
@@ -16,8 +16,8 @@
   },
   {
     "n": "Nimbus",
-    "c": "Ceilings",
-    "s": "Baffles",
+    "c": "ceilings",
+    "s": "baffles",
     "img": "/img/00caa49a841293eb3532d1ecdf713dbf.jpg",
     "href": "/ceilings",
     "f": [
@@ -37,8 +37,8 @@
   },
   {
     "n": "Slat",
-    "c": "Ceilings",
-    "s": "Baffles",
+    "c": "ceilings",
+    "s": "baffles",
     "img": "/img/fdf14264f222bec0f87fbda7845e15a7.jpg",
     "href": "/ceilings",
     "f": [
@@ -58,8 +58,8 @@
   },
   {
     "n": "Stratus",
-    "c": "Ceilings",
-    "s": "Baffles",
+    "c": "ceilings",
+    "s": "baffles",
     "img": "/img/0070fe89208c12f021b3b0111d3065ed.jpg",
     "href": "/ceilings",
     "f": [
@@ -73,8 +73,8 @@
   },
   {
     "n": "Acoustic Dot",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/862f8ec91c8db9b196df4b06bbd444cc.jpg",
     "href": "/ceilings",
     "f": [
@@ -88,8 +88,8 @@
   },
   {
     "n": "Aerial Field",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/90607153f0e72f39cc8a8318df96a44d.jpg",
     "href": "/ceilings",
     "f": [
@@ -109,8 +109,8 @@
   },
   {
     "n": "Array",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/54c1df31b97e71bc1586d5e1a1a444e4.jpg",
     "href": "/ceilings",
     "f": [
@@ -130,8 +130,8 @@
   },
   {
     "n": "Bloom",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/81bfdef8e084bbc8f891fb199527a5be.jpg",
     "href": "/ceilings",
     "f": [
@@ -151,8 +151,8 @@
   },
   {
     "n": "Echo Cloud",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/11b6e153e75dce598ccf16cc3f87067a.jpg",
     "href": "/ceilings",
     "f": [
@@ -166,8 +166,8 @@
   },
   {
     "n": "Fold",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/e77f3755b637ac31933a8183b999a9ff.jpg",
     "href": "/ceilings",
     "f": [
@@ -181,8 +181,8 @@
   },
   {
     "n": "Hive",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/1c616ac56bf4d001fdd01204caef6e55.jpg",
     "href": "/ceilings",
     "f": [
@@ -202,8 +202,8 @@
   },
   {
     "n": "Horizon",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/e90b5eb1a501dfcc34971827a815e894.jpg",
     "href": "/ceilings",
     "f": [
@@ -223,8 +223,8 @@
   },
   {
     "n": "Luma",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/af430b7f0cb95e736fbba91e7fe72df1.jpg",
     "href": "/ceilings",
     "f": [
@@ -238,8 +238,8 @@
   },
   {
     "n": "Plane",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/19c05df5e8631e8b95e88a42ef838881.jpg",
     "href": "/ceilings",
     "f": [
@@ -259,8 +259,8 @@
   },
   {
     "n": "Slate",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/9905b2e52be5a7402210c792b132b14c.jpg",
     "href": "/ceilings",
     "f": [
@@ -286,8 +286,8 @@
   },
   {
     "n": "Spatial Core",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/1c0fd1b5a71b9b0e00ef37b40b89fa5a.jpg",
     "href": "/ceilings",
     "f": [
@@ -301,8 +301,8 @@
   },
   {
     "n": "Vessel",
-    "c": "Ceilings",
-    "s": "Clouds",
+    "c": "ceilings",
+    "s": "clouds",
     "img": "/img/15f7adb955b8d979ce0b5193b62b5803.jpg",
     "href": "/ceilings",
     "f": [
@@ -316,8 +316,8 @@
   },
   {
     "n": "Aries",
-    "c": "Ceilings",
-    "s": "Ceiling Systems",
+    "c": "ceilings",
+    "s": "ceilings",
     "img": "/img/6360f709fe94e6bae13284f55c61476c.jpg",
     "href": "/ceilings",
     "f": [
@@ -343,8 +343,8 @@
   },
   {
     "n": "Framset",
-    "c": "Ceilings",
-    "s": "Ceiling Systems",
+    "c": "ceilings",
+    "s": "ceilings",
     "img": "/img/d73ac3070a2402f41d1182d44e8a25e1.jpg",
     "href": "/ceilings",
     "f": [
@@ -370,8 +370,8 @@
   },
   {
     "n": "Hydra",
-    "c": "Ceilings",
-    "s": "Ceiling Systems",
+    "c": "ceilings",
+    "s": "ceilings",
     "img": "/img/cd19048b0ebab1b60ae4f970684f52e0.jpg",
     "href": "/ceilings",
     "f": [
@@ -391,8 +391,8 @@
   },
   {
     "n": "Plenum",
-    "c": "Ceilings",
-    "s": "Ceiling Systems",
+    "c": "ceilings",
+    "s": "ceilings",
     "img": "/img/e4404422bd9760741e37bf031628cefe.jpg",
     "href": "/ceilings",
     "f": [
@@ -406,8 +406,8 @@
   },
   {
     "n": "Architectural Beam Line",
-    "c": "Ceilings",
-    "s": "Ceiling Lights",
+    "c": "ceilings",
+    "s": "ceilinglights",
     "img": "/img/ba20a00e2e35eb793118a0e9adb891dc.jpg",
     "href": "/ceilings",
     "f": [
@@ -439,8 +439,8 @@
   },
   {
     "n": "Hexa Glow Acoustic Ceiling",
-    "c": "Ceilings",
-    "s": "Ceiling Lights",
+    "c": "ceilings",
+    "s": "ceilinglights",
     "img": "/img/e49b73d7c36bcdf07deb9598b8227dd5.jpg",
     "href": "/ceilings",
     "f": [
@@ -466,8 +466,8 @@
   },
   {
     "n": "Luminous Matrix",
-    "c": "Ceilings",
-    "s": "Ceiling Lights",
+    "c": "ceilings",
+    "s": "ceilinglights",
     "img": "/img/daad968dff7352faad849a6a010628f2.jpg",
     "href": "/ceilings",
     "f": [
@@ -481,8 +481,8 @@
   },
   {
     "n": "Ripple Arc Acoustic Ceiling",
-    "c": "Ceilings",
-    "s": "Ceiling Lights",
+    "c": "ceilings",
+    "s": "ceilinglights",
     "img": "/img/bfe31b3f020cee8efcc13c1c27b829db.jpg",
     "href": "/ceilings",
     "f": [
@@ -496,8 +496,8 @@
   },
   {
     "n": "Lonicera",
-    "c": "Walls",
-    "s": "Panels",
+    "c": "walls",
+    "s": "walls",
     "img": "/img/b68b45410384d4bc67529a0b3eea5cd0.jpg",
     "href": "/walls",
     "f": [
@@ -511,8 +511,8 @@
   },
   {
     "n": "Wisteria",
-    "c": "Walls",
-    "s": "Panels",
+    "c": "walls",
+    "s": "walls",
     "img": "/img/ccfc7590591b928abd658dab02666acf.jpg",
     "href": "/walls",
     "f": [
@@ -526,8 +526,8 @@
   },
   {
     "n": "Cascade",
-    "c": "Walls",
-    "s": "Frames",
+    "c": "walls",
+    "s": "frames",
     "img": "/img/acd82f546d602b0486b8d1a33b4770aa.jpg",
     "href": "/walls",
     "f": [
@@ -553,8 +553,8 @@
   },
   {
     "n": "Cataract",
-    "c": "Walls",
-    "s": "Frames",
+    "c": "walls",
+    "s": "frames",
     "img": "/img/824be2d816020d40c5009474f0efae84.jpg",
     "href": "/walls",
     "f": [
@@ -568,8 +568,8 @@
   },
   {
     "n": "Orb",
-    "c": "Walls",
-    "s": "Frames",
+    "c": "walls",
+    "s": "frames",
     "img": "/img/03c1fba61bf982ef6f4f53e9e05ada68.jpg",
     "href": "/walls",
     "f": [
@@ -589,8 +589,8 @@
   },
   {
     "n": "Plunge",
-    "c": "Walls",
-    "s": "Frames",
+    "c": "walls",
+    "s": "frames",
     "img": "/img/157750c52032738193f7a36ad0453502.jpg",
     "href": "/walls",
     "f": [
@@ -610,8 +610,8 @@
   },
   {
     "n": "Datum",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/25d1ed12a0b097b79aaf144ce4ecedf5.jpg",
     "href": "/walls",
     "f": [
@@ -631,8 +631,8 @@
   },
   {
     "n": "Essential",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/47ca1426792088dcb26006174ce70ddc.jpg",
     "href": "/walls",
     "f": [
@@ -652,8 +652,8 @@
   },
   {
     "n": "Nexus",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/93c93ed3390656b2df48946800eeb635.jpg",
     "href": "/walls",
     "f": [
@@ -667,8 +667,8 @@
   },
   {
     "n": "Stride",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/1a375abe549ff77b4937ae4135eca7d8.jpg",
     "href": "/walls",
     "f": [
@@ -682,8 +682,8 @@
   },
   {
     "n": "Vertex",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/6e0cfa3f0614a39ad417367a288e80bd.jpg",
     "href": "/walls",
     "f": [
@@ -697,8 +697,8 @@
   },
   {
     "n": "Offset",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/5b31c33c4ee9fdc26e3f1b19b38dd49f.jpg",
     "href": "/walls",
     "f": [
@@ -718,8 +718,8 @@
   },
   {
     "n": "Slope",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/55b1ef871afc5f8c2a6eb5b510834321.jpg",
     "href": "/walls",
     "f": [
@@ -733,8 +733,8 @@
   },
   {
     "n": "Softline",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/ca7e72ff63100437a070e62b5740389d.jpg",
     "href": "/walls",
     "f": [
@@ -754,8 +754,8 @@
   },
   {
     "n": "Cadence",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/275e22354a2501e83c8757880e0bdc80.jpg",
     "href": "/walls",
     "f": [
@@ -775,8 +775,8 @@
   },
   {
     "n": "Parcel",
-    "c": "Walls",
-    "s": "Woolskin Panels",
+    "c": "walls",
+    "s": "woolskin",
     "img": "/img/43f5762cd2871277d752fd6b9e6d892a.jpg",
     "href": "/walls",
     "f": [
@@ -796,8 +796,8 @@
   },
   {
     "n": "Acoustic Eclipse Disc",
-    "c": "Walls",
-    "s": "Wall Lights",
+    "c": "walls",
+    "s": "walllights",
     "img": "/img/8523e6842e7a4deadf849cd2afe8ad88.jpg",
     "href": "/walls",
     "f": [
@@ -847,8 +847,8 @@
   },
   {
     "n": "Acoustic Wall Veil",
-    "c": "Walls",
-    "s": "Wall Lights",
+    "c": "walls",
+    "s": "walllights",
     "img": "/img/b19fcff3e6a06f1e1c8c3c61fb20a9c5.jpg",
     "href": "/walls",
     "f": [
@@ -874,8 +874,8 @@
   },
   {
     "n": "Drift Wall Panel Light",
-    "c": "Walls",
-    "s": "Wall Lights",
+    "c": "walls",
+    "s": "walllights",
     "img": "/img/69aed450d475768215de887190a6ee4a.jpg",
     "href": "/walls",
     "f": [
@@ -889,8 +889,8 @@
   },
   {
     "n": "Lumen Rings Array",
-    "c": "Walls",
-    "s": "Wall Lights",
+    "c": "walls",
+    "s": "walllights",
     "img": "/img/de40a00c534c4312c324dc8f4715c0cf.jpg",
     "href": "/walls",
     "f": [
@@ -910,8 +910,8 @@
   },
   {
     "n": "Vortex",
-    "c": "Walls",
-    "s": "Wall Lights",
+    "c": "walls",
+    "s": "walllights",
     "img": "/img/80b6daeba61536b2014cdc7d5201b593.jpg",
     "href": "/walls",
     "f": [
@@ -937,8 +937,8 @@
   },
   {
     "n": "Aura",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/aad85813ec8abdcfefb575b51ebad472.jpg",
     "href": "/lights",
     "f": [
@@ -958,8 +958,8 @@
   },
   {
     "n": "Box Light",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/f83218422427cbb74c52e5640fc0bfcc.jpg",
     "href": "/lights",
     "f": [
@@ -991,8 +991,8 @@
   },
   {
     "n": "Dragon",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/2e0b27b1fc21d25d37bdd3e8fbbe6ea8.jpg",
     "href": "/lights",
     "f": [
@@ -1006,8 +1006,8 @@
   },
   {
     "n": "Eve",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/9d54d40e504a50fd1fff39c901189241.jpg",
     "href": "/lights",
     "f": [
@@ -1027,8 +1027,8 @@
   },
   {
     "n": "Eve 02",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/07d063940dc84ed237a6af4bbaf23cd8.jpg",
     "href": "/lights",
     "f": [
@@ -1042,8 +1042,8 @@
   },
   {
     "n": "Faint",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/eabe18dc38885e71a43e67979ed9c625.jpg",
     "href": "/lights",
     "f": [
@@ -1081,8 +1081,8 @@
   },
   {
     "n": "Hanging Spark",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/63d68f3d9a4ab33ed1d6c148b3c50771.jpg",
     "href": "/lights",
     "f": [
@@ -1120,8 +1120,8 @@
   },
   {
     "n": "Orbit",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/1d3c577aedd74534d1cf41a2bfd27f1a.jpg",
     "href": "/lights",
     "f": [
@@ -1153,8 +1153,8 @@
   },
   {
     "n": "Radiant",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/a294e9b835536f5a3e9643d3665f74e1.jpg",
     "href": "/lights",
     "f": [
@@ -1186,8 +1186,8 @@
   },
   {
     "n": "Radiant 02",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/5bdec333da8c6160d3129d6d5f1d1343.jpg",
     "href": "/lights",
     "f": [
@@ -1213,8 +1213,8 @@
   },
   {
     "n": "Ray",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/fb5fda78f3748d948bd87b006ba1a9e4.jpg",
     "href": "/lights",
     "f": [
@@ -1234,8 +1234,8 @@
   },
   {
     "n": "Reso",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/39f45ba5484e245f3f0f69bbb7d177a9.jpg",
     "href": "/lights",
     "f": [
@@ -1273,8 +1273,8 @@
   },
   {
     "n": "Ring",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/8885b52ed2dc86a936b4de721ffc222c.jpg",
     "href": "/lights",
     "f": [
@@ -1312,8 +1312,8 @@
   },
   {
     "n": "Rise",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/cb223446328f4b9f92b033af6d750edf.jpg",
     "href": "/lights",
     "f": [
@@ -1351,8 +1351,8 @@
   },
   {
     "n": "Spatha",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/5f99589054b453354971f4cb9842beec.jpg",
     "href": "/lights",
     "f": [
@@ -1402,8 +1402,8 @@
   },
   {
     "n": "Vibe",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/7c8bcc0be3e7925de3bf825cd0b5029b.jpg",
     "href": "/lights",
     "f": [
@@ -1441,8 +1441,8 @@
   },
   {
     "n": "Warm",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/2a30a930d833497de66d9707432837e5.jpg",
     "href": "/lights",
     "f": [
@@ -1480,8 +1480,8 @@
   },
   {
     "n": "Zen",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/96e09f772f7a0cf09fca8ca90432785c.jpg",
     "href": "/lights",
     "f": [
@@ -1495,8 +1495,8 @@
   },
   {
     "n": "Acoustic Beam Arch",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/72302a7768fe332ae256ae3b833c7ccb.jpg",
     "href": "/lights",
     "f": [
@@ -1528,8 +1528,8 @@
   },
   {
     "n": "Acoustic Halo Tower",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/62bfb403562728bbc4cbdd9d13059c62.jpg",
     "href": "/lights",
     "f": [
@@ -1549,8 +1549,8 @@
   },
   {
     "n": "Aero Fin Light",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/3299caecf5ac0b036c8187e8054ec0ef.jpg",
     "href": "/lights",
     "f": [
@@ -1564,8 +1564,8 @@
   },
   {
     "n": "Contour Halo Pendant",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/1c5dc61cc920eda35e1e9c2e31ae065f.jpg",
     "href": "/lights",
     "f": [
@@ -1609,8 +1609,8 @@
   },
   {
     "n": "Echo Plane Ceiling",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/47bd47c16f07e65d56a1e2b539589aa5.jpg",
     "href": "/lights",
     "f": [
@@ -1648,8 +1648,8 @@
   },
   {
     "n": "Folded Wave Acoustic Chandelier",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/dc6b194e8cfae848cc1e1424d739f8cb.jpg",
     "href": "/lights",
     "f": [
@@ -1663,8 +1663,8 @@
   },
   {
     "n": "Helix Braid Acoustic Ceiling",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/81bad84b51f5e8547d366f9e49ac5f30.jpg",
     "href": "/lights",
     "f": [
@@ -1678,8 +1678,8 @@
   },
   {
     "n": "Nest Dome Pendant",
-    "c": "Lights",
-    "s": "Pendant",
+    "c": "lights",
+    "s": "pendantlights",
     "img": "/img/701d9571cd32f700f0d097126d07955c.jpg",
     "href": "/lights",
     "f": [
@@ -1705,8 +1705,8 @@
   },
   {
     "n": "Table Spark",
-    "c": "Lights",
-    "s": "Table",
+    "c": "lights",
+    "s": "tablelights",
     "img": "/img/cd5c0ec3dd4ebd3506720b8a132f2aa1.jpg",
     "href": "/lights",
     "f": [
@@ -1732,8 +1732,8 @@
   },
   {
     "n": "French",
-    "c": "Dividers",
-    "s": "Space Dividers",
+    "c": "dividers",
+    "s": "dividers",
     "img": "/img/39420ee446a50847bb2eae15d9311589.jpg",
     "href": "/dividers",
     "f": [
@@ -1747,8 +1747,8 @@
   },
   {
     "n": "Leaf",
-    "c": "Dividers",
-    "s": "Space Dividers",
+    "c": "dividers",
+    "s": "dividers",
     "img": "/img/fcab30d653bb8574c642b0ee7bb2ae77.jpg",
     "href": "/dividers",
     "f": [
@@ -1768,8 +1768,8 @@
   },
   {
     "n": "Peak",
-    "c": "Dividers",
-    "s": "Space Dividers",
+    "c": "dividers",
+    "s": "dividers",
     "img": "/img/10be42b39b7dfecb1320a85b4c3af725.jpg",
     "href": "/dividers",
     "f": [
@@ -1783,8 +1783,8 @@
   },
   {
     "n": "Pulse",
-    "c": "Dividers",
-    "s": "Space Dividers",
+    "c": "dividers",
+    "s": "dividers",
     "img": "/img/acdba88eeb78202af5b900ca9a31ddea.jpg",
     "href": "/dividers",
     "f": [
@@ -1798,8 +1798,8 @@
   },
   {
     "n": "Fckoff 03",
-    "c": "Dividers",
-    "s": "Fckoff — Desk Dividers",
+    "c": "dividers",
+    "s": "fckoff",
     "img": "/img/1bc15460be131ea16abef4ad4ed6c997.jpg",
     "href": "/dividers",
     "f": [

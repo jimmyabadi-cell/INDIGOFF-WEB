@@ -44,10 +44,22 @@
     "process": {
       "title": "Cómo trabajamos",
       "steps": [
-        { "title": "Escuchar", "text": "Estudiamos el espacio, su uso y su sonido." },
-        { "title": "Diseñar", "text": "Proponemos el concepto acústico y de iluminación, con renders y simulaciones." },
-        { "title": "Fabricar", "text": "Indigoff produce cada pieza en fieltro de PET reciclado con LED integrado." },
-        { "title": "Instalar", "text": "Coordinamos la entrega y la instalación con tu equipo." }
+        {
+          "title": "Escuchar",
+          "text": "Estudiamos el espacio, su uso y su sonido."
+        },
+        {
+          "title": "Diseñar",
+          "text": "Proponemos el concepto acústico y de iluminación, con renders y simulaciones."
+        },
+        {
+          "title": "Fabricar",
+          "text": "Indigoff produce cada pieza en fieltro de PET reciclado con LED integrado."
+        },
+        {
+          "title": "Instalar",
+          "text": "Coordinamos la entrega y la instalación con tu equipo."
+        }
       ]
     },
     "designs": {
@@ -60,5 +72,101 @@
       "start": "Inicia un proyecto",
       "rep": "Habla con un representante"
     }
+  },
+  "catalog": {
+    "categories": {
+      "ceilings": "Plafones",
+      "walls": "Muros",
+      "lights": "Iluminación",
+      "dividers": "Divisores",
+      "podcaster": "Podcaster"
+    },
+    "subcategories": {
+      "ceilings": {
+        "ceilings": "Sistemas de plafón",
+        "baffles": "Baffles",
+        "clouds": "Nubes",
+        "ceilinglights": "Luces de plafón"
+      },
+      "walls": {
+        "walls": "Paneles",
+        "frames": "Marcos",
+        "murals": "Murales",
+        "canvas": "Lienzos",
+        "walllights": "Lámparas de muro",
+        "woolskin": "Paneles Woolskin"
+      },
+      "lights": {
+        "pendantlights": "Colgantes",
+        "ceilinglights": "Plafón",
+        "floorlights": "Piso",
+        "tablelights": "Mesa",
+        "walllights": "Muro"
+      },
+      "dividers": {
+        "dividers": "Divisores de espacio",
+        "fckoff": "Fckoff — Divisores de escritorio"
+      },
+      "podcaster": {
+        "podcaster": "Podcaster"
+      }
+    }
+  },
+  "downloads": {
+    "intro": "Archivos CAD, SketchUp, Rhino y Revit de cada producto Indigoff, listos para integrar a tu proyecto.",
+    "productCount": {
+      "one": "{count} producto",
+      "other": "{count} productos"
+    },
+    "fileCount": {
+      "one": "{count} archivo",
+      "other": "{count} archivos"
+    },
+    "categoryLabel": "Categoría",
+    "allCategories": "Todos",
+    "allFormats": "Todos los formatos",
+    "search": "Buscar",
+    "searchPlaceholder": "Nombre del producto",
+    "empty": "Ningún archivo coincide con tu búsqueda.",
+    "download": "Descargar",
+    "requestText": "¿Necesitas un formato o medida que no aparece? Nuestro equipo prepara archivos CAD y BIM bajo pedido.",
+    "requestCta": "Solicitar un archivo"
+  },
+  "findRep": {
+    "intro": "Precios, muestras, especificación y apoyo en tu proyecto, con el representante Indigoff de tu territorio.",
+    "stateLabel": "Estado",
+    "statePlaceholder": "Escribe un estado, p. ej. Texas o NJ",
+    "notFound": "No encontramos ese estado. Prueba con su nombre completo o su abreviatura de dos letras.",
+    "countryLabel": "País",
+    "countries": {
+      "us": "Estados Unidos",
+      "ca": "Canadá",
+      "mx": "México"
+    },
+    "mapLabels": {
+      "us": "Mapa de territorios de representantes en Estados Unidos",
+      "ca": "Mapa de Canadá",
+      "mx": "Mapa de México"
+    },
+    "legend": {
+      "territory": "Territorio con representante",
+      "selected": "Seleccionado",
+      "direct": "Atendido directamente por Indigoff"
+    },
+    "result": {
+      "selectState": "Selecciona un estado",
+      "yourRep": "Tu representante",
+      "rep": "Representante"
+    },
+    "hint": "Selecciona un estado en el mapa o escríbelo arriba para ver quién atiende tu proyecto.",
+    "email": "Correo",
+    "directTeam": "Equipo directo",
+    "allOtherTerritories": "Todos los demás territorios",
+    "mexicoStates": {
+      "one": "México · {count} estado",
+      "other": "México · {count} estados"
+    },
+    "allTitle": "Todos los representantes",
+    "outside": "¿Fuera de estos territorios o trabajas en México? Nuestro equipo atiende tu proyecto directamente."
   }
 }
