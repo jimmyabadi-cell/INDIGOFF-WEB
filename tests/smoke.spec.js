@@ -44,6 +44,19 @@ for (const route of ROUTES) {
   });
 }
 
+for (const route of ROUTES) {
+  test(`${route}: ningún link #ancla apunta a una sección que no existe`, async ({ page }) => {
+    await page.goto(route);
+    await page.locator(".site-hd").waitFor();
+    const dead = await page.evaluate(() =>
+      [...document.querySelectorAll('a[href^="#"]')]
+        .map((a) => a.getAttribute("href"))
+        .filter((h) => h.length > 1 && !document.getElementById(h.slice(1))),
+    );
+    expect(dead).toEqual([]);
+  });
+}
+
 test("Find a rep: cada card muestra su representante", async ({ page }) => {
   test.setTimeout(60_000);
   const errors = trackErrors(page);
@@ -123,7 +136,7 @@ test("Títulos de sección sticky quedan pegados al header", async ({ page }) =>
 test("Cambio de idioma EN → ES", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByText("Request a quote").first()).toBeVisible();
-  await page.getByRole("button", { name: "Español" }).click();
+  await page.locator(".site-hd").getByRole("button", { name: "Español" }).click();
   await expect(page.getByText("Solicita una cotización").first()).toBeVisible();
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
 });

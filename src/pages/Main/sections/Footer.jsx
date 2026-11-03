@@ -1,5 +1,7 @@
 import css from "./Footer.module.css";
 
+const COLLECTIONS = ["ceilings", "walls", "lights", "dividers", "podcaster"];
+
 /** Footer de la home. */
 export default function Footer({ v }) {
   return (
@@ -8,23 +10,25 @@ export default function Footer({ v }) {
         <nav className={css.nav} aria-label={v.t("home.footer.clientService")}>
           <span className={css.label}>{v.t("home.footer.clientService")}</span>
           <a href="mailto:info@indigoff.com">{v.t("home.footer.contactUs")}</a>
-          <a href="#appointment">{v.t("home.specify.appointment")}</a>
+          <a href="mailto:info@indigoff.com?subject=Book%20an%20appointment">{v.t("home.specify.appointment")}</a>
           <a href="/find-a-rep">{v.t("common.findRep")}</a>
-          <a href="#install">{v.t("home.footer.installation")}</a>
+          <a href="/onoff-studio">{v.t("home.footer.installation")}</a>
         </nav>
         <nav className={css.nav} aria-label={v.t("home.footer.specify")}>
           <span className={css.label}>{v.t("home.footer.specify")}</span>
           <a href="/downloads">{v.t("common.downloads")}</a>
           <a href="/downloads">{v.t("home.footer.bimCad")}</a>
-          <a href="#samples">{v.t("home.specify.samples")}</a>
-          <a href="#sustainability">{v.t("home.footer.sustainability")}</a>
+          <a href="#finishes">{v.t("home.specify.samples")}</a>
+          <a href="#new">{v.t("home.footer.sustainability")}</a>
         </nav>
-        <nav className={css.nav} aria-label="Indigoff">
-          <span className={css.label}>{"Indigoff"}</span>
-          <a href="#about">{v.t("home.footer.about")}</a>
-          <a href="#journal">{v.t("home.footer.journal")}</a>
+        <nav className={css.nav} aria-label={v.t("home.footer.explore")}>
+          <span className={css.label}>{v.t("home.footer.explore")}</span>
+          {COLLECTIONS.map((c) => (
+            <a key={c} href={"/" + c}>
+              {v.t("catalog.categories." + c)}
+            </a>
+          ))}
           <a href="#projects">{v.t("home.footer.projects")}</a>
-          <a href="#careers">{v.t("home.footer.careers")}</a>
         </nav>
         <div className={css.box2}>
           <span className={css.label}>{v.t("home.footer.contact")}</span>
@@ -78,17 +82,22 @@ export default function Footer({ v }) {
       <div className={css.box3}>
         <span>{"© 2026 Indigoff LLC"}</span>
         <span className={css.label3}>
-          <a className={css.link} href="#lang">
+          <button
+            type="button"
+            className={css.link + " " + css.langToggle}
+            onClick={v.isEs === "true" ? v.setEn : v.setEs}
+            aria-label={v.isEs === "true" ? "Switch to English" : "Cambiar a español"}
+          >
             {v.t("home.footer.region")}
+          </button>
+          <a className={css.link} href="#finishes">
+            {v.t("common.menu.finishes")}
           </a>
-          <a className={css.link} href="#privacy">
-            {v.t("home.footer.privacy")}
+          <a className={css.link} href="#concepts">
+            {v.t("common.menu.concepts")}
           </a>
-          <a className={css.link} href="#terms">
-            {v.t("home.footer.terms")}
-          </a>
-          <a className={css.link} href="#accessibility">
-            {v.t("home.footer.accessibility")}
+          <a className={css.link} href="/onoff-studio">
+            {"onoff studio"}
           </a>
         </span>
       </div>

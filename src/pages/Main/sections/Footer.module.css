@@ -70,3 +70,13 @@
 .link {
   color: var(--color-muted);
 }
+
+/* El selector de idioma del footer se ve como los links de al lado. */
+.langToggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
