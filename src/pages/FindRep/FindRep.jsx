@@ -323,7 +323,7 @@ class Component extends DCLogic {
     const st = this.state;
     const sel = st.sel || [];
     const repSel = st.rep;
-    const reps = [];
+    let reps = [];
     if (repSel !== null) reps = [repSel];
     else
       sel.forEach(function (k) {
@@ -383,7 +383,11 @@ class Component extends DCLogic {
             "; background: " +
             (on ? "#FFFFFF" : "transparent"),
           pick: function () {
-            self.setState({ rep: o.i, sel: null, q: "" });
+            // The result panel sits above this list: bring it into view so the pick is visible.
+            self.setState({ rep: o.i, sel: null, q: "" }, function () {
+              const el = document.getElementById("rep-result");
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
           },
         };
       });
@@ -1497,8 +1501,11 @@ Component.template = function (v, self) {
             </div>
           </div>
           <aside
+            id="rep-result"
             aria-live="polite"
-            style={S("flex: 1 1 340px; min-width: 0; border-top: 1px solid #111111; padding-top: 28px")}
+            style={S(
+              "flex: 1 1 340px; min-width: 0; border-top: 1px solid #111111; padding-top: 28px; scroll-margin-top: calc(var(--hd-h) + 16px)",
+            )}
           >
             <p
               style={S(
