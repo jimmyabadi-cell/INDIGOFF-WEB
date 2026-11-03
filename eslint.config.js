@@ -24,7 +24,7 @@ export default [
     },
   },
   {
-    files: ["tests/**/*.js", "*.config.js"],
+    files: ["tests/**/*.js", "scripts/**/*.mjs", "*.config.js"],
     // Las pruebas corren en Node, pero el código dentro de page.evaluate corre en el navegador.
     languageOptions: { ecmaVersion: "latest", sourceType: "module", globals: { ...globals.node, ...globals.browser } },
   },

@@ -1,4 +1,5 @@
 import css from "./Material.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Un solo material, tres formas. */
 export default function Material({ v }) {
@@ -15,7 +16,7 @@ export default function Material({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/b45fdd3f48ffafe2e4c62af327a77568.jpg"
+            {...imgProps("/img/b45fdd3f48ffafe2e4c62af327a77568.jpg", SIZES.half)}
             alt="Reception desk in front of a terracotta acoustic shelving wall"
           />
         </button>

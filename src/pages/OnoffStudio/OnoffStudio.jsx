@@ -2,6 +2,7 @@ import React from "react";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import "./OnoffStudio.css";
+import { imgProps, SIZES } from "../../lib/images.js";
 
 import D from "../../data/studio.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
@@ -60,7 +61,11 @@ function template(v) {
         </a>
         <SiteHeader v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
         <section className={css.content} id="content">
-          <img className={css.image} src="/img/9d3fd937d8ba1cc27ab5015f8b0f82c6.jpg" alt={v.on.heroAlt} />
+          <img
+            className={css.image}
+            {...imgProps("/img/9d3fd937d8ba1cc27ab5015f8b0f82c6.jpg", SIZES.full)}
+            alt={v.on.heroAlt}
+          />
           <div className={css.box2} aria-hidden="true"></div>
           <div className={css.box3}>
             <p className={css.text}>{v.on.eyebrow}</p>
@@ -115,7 +120,13 @@ function template(v) {
             {(v.on.designs || []).map((d, d__i) => (
               <React.Fragment key={d__i}>
                 <a className={css.link} href={d.href} onClick={d.go}>
-                  <img className={css.image2} src={d.img} alt={d.name} loading="lazy" decoding="async" />
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    className={css.image2}
+                    {...imgProps(d.img, SIZES.third)}
+                    alt={d.name}
+                  />
                   <span className={css.label3}>{d.name}</span>
                   <span className={css.label4}>{d.kind}</span>
                 </a>

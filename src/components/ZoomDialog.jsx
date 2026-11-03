@@ -1,4 +1,5 @@
 import css from "./ZoomDialog.module.css";
+import { imgProps, SIZES } from "../lib/images.js";
 
 /** Foto de galería ampliada. */
 export default function ZoomDialog({ v }) {
@@ -103,7 +104,7 @@ export default function ZoomDialog({ v }) {
               </span>
             </div>
             <div className={css.box3}>
-              <img className={css.image} src={v.zoom.img} alt={v.zoom.name} />
+              <img className={css.image} {...imgProps(v.zoom.img, SIZES.full)} alt={v.zoom.name} />
             </div>
           </div>
         </>

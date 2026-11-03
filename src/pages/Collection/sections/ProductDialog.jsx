@@ -1,6 +1,7 @@
 import React from "react";
 import { S } from "../../../lib/dc.js";
 import css from "./ProductDialog.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Ficha de producto: galería, descripción, descargas y Mi lista. */
 export default function ProductDialog({ v }) {
@@ -41,7 +42,7 @@ export default function ProductDialog({ v }) {
             <div className={css.box3}>
               {v.sel.hasImg ? (
                 <>
-                  <img className={css.image2} src={v.sel.img} alt={v.sel.alt} />
+                  <img className={css.image2} {...imgProps(v.sel.img, SIZES.half)} alt={v.sel.alt} />
                 </>
               ) : null}
             </div>
@@ -97,7 +98,13 @@ export default function ProductDialog({ v }) {
                           onClick={g.pick}
                           aria-label={v.t("collection.viewItem", { name: g.name })}
                         >
-                          <img className={css.image3} src={g.img} alt={g.name} loading="lazy" decoding="async" />
+                          <img
+                            loading="lazy"
+                            decoding="async"
+                            className={css.image3}
+                            {...imgProps(g.img, SIZES.card)}
+                            alt={g.name}
+                          />
                         </button>
                       </React.Fragment>
                     ))}
@@ -171,7 +178,7 @@ export default function ProductDialog({ v }) {
                     loading="lazy"
                     decoding="async"
                     className={css.image4}
-                    src={v.sel.img2}
+                    {...imgProps(v.sel.img2, SIZES.half)}
                     alt={v.t("collection.secondView", { name: v.sel.title })}
                   />
                 </>

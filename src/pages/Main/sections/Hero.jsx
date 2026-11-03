@@ -1,4 +1,5 @@
 import css from "./Hero.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Hero con imágenes rotativas y llamados principales. */
 export default function Hero({ v }) {
@@ -7,22 +8,22 @@ export default function Hero({ v }) {
       <div className="hs" aria-hidden="false">
         <img
           className="hs-i hs-1"
-          src="/img/f8c0fd4c23fb59d6887e5fe8c294a39b.jpg"
+          {...imgProps("/img/f8c0fd4c23fb59d6887e5fe8c294a39b.jpg", SIZES.full)}
           alt="Indigoff space with suspended baffles, arched walls and sculptural forms"
         />
         <img
-          className="hs-i hs-2"
-          src="/img/95478a5658304ca607006b326c317835.jpg"
-          alt="Rainbow acoustic arches and ceiling ribbons over an open office"
           loading="lazy"
           decoding="async"
+          className="hs-i hs-2"
+          {...imgProps("/img/95478a5658304ca607006b326c317835.jpg", SIZES.full)}
+          alt="Rainbow acoustic arches and ceiling ribbons over an open office"
         />
         <img
-          className="hs-i hs-3"
-          src="/img/262de0d004e1e631ef993783a62dc338.jpg"
-          alt="Colorful acoustic podcast studio with wall shapes and ceiling clouds"
           loading="lazy"
           decoding="async"
+          className="hs-i hs-3"
+          {...imgProps("/img/262de0d004e1e631ef993783a62dc338.jpg", SIZES.full)}
+          alt="Colorful acoustic podcast studio with wall shapes and ceiling clouds"
         />
       </div>
       <div className={"scrim " + css.box} aria-hidden="true"></div>

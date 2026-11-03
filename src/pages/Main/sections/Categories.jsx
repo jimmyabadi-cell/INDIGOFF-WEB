@@ -1,4 +1,5 @@
 import css from "./Categories.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Las cinco categorías (Ceilings, Walls, Lights, Dividers, Podcaster). */
 export default function Categories({ v }) {
@@ -13,7 +14,7 @@ export default function Categories({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/a4f6a6e61e9f23429824023cd67d2a5f.jpg"
+            {...imgProps("/img/a4f6a6e61e9f23429824023cd67d2a5f.jpg", SIZES.half)}
             alt="Ceilings: Stratus mustard, gray and white baffles over a lounge"
           />
           <span className={"scrim " + css.label}></span>
@@ -44,7 +45,7 @@ export default function Categories({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/50cb19dd09bf67dde7b33787030edb02.jpg"
+            {...imgProps("/img/50cb19dd09bf67dde7b33787030edb02.jpg", SIZES.half)}
             alt="Walls: Red faceted acoustic wall"
           />
           <span className={"scrim " + css.label}></span>
@@ -75,7 +76,7 @@ export default function Categories({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/16744e6011fb31fe88309cf84f8242d3.jpg"
+            {...imgProps("/img/16744e6011fb31fe88309cf84f8242d3.jpg", SIZES.half)}
             alt="Lights: Acoustic pendant lamps over a dining room"
           />
           <span className={"scrim " + css.label}></span>
@@ -106,7 +107,7 @@ export default function Categories({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/e154f12501cbca329921ce90014beb4c.jpg"
+            {...imgProps("/img/e154f12501cbca329921ce90014beb4c.jpg", SIZES.half)}
             alt="Dividers: Acoustic desk dividers in an open office"
           />
           <span className={"scrim " + css.label}></span>
@@ -137,7 +138,7 @@ export default function Categories({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/262de0d004e1e631ef993783a62dc338.jpg"
+            {...imgProps("/img/262de0d004e1e631ef993783a62dc338.jpg", SIZES.half)}
             alt="Podcaster: podcast studio with sculptural acoustic panels"
           />
           <span className={"scrim " + css.label}></span>

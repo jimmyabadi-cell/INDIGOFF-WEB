@@ -3,6 +3,7 @@ import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import "./Downloads.css";
+import { imgProps, SIZES } from "../../lib/images.js";
 
 import D from "../../data/downloads.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
@@ -184,7 +185,13 @@ function template(v) {
                       <a className={css.link} href={p.href}>
                         {p.hasImg ? (
                           <>
-                            <img className={css.image} src={p.img} alt={p.name} loading="lazy" />
+                            <img
+                              loading="lazy"
+                              decoding="async"
+                              className={css.image}
+                              {...imgProps(p.img, SIZES.thumb)}
+                              alt={p.name}
+                            />
                           </>
                         ) : null}
                         {p.noImg ? (

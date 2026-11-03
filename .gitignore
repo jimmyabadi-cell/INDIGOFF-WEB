@@ -4,3 +4,5 @@ dist/
 .claude/
 test-results/
 playwright-report/
+# Versiones WebP generadas por scripts/optimize-images.mjs
+public/img/opt/

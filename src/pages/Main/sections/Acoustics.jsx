@@ -1,4 +1,5 @@
 import css from "./Acoustics.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Estudio acústico y de iluminación. */
 export default function Acoustics({ v }) {
@@ -15,7 +16,7 @@ export default function Acoustics({ v }) {
         <button className={css.button} type="button" onClick={v.open.e_study} aria-label={v.t("common.enlargeImage")}>
           <img
             className={css.image}
-            src="/img/73e73590532bd1289f3c5d2c7884612e.jpg"
+            {...imgProps("/img/73e73590532bd1289f3c5d2c7884612e.jpg", SIZES.half)}
             alt="Lounge with golden suspended baffles over a dark acoustic wall"
           />
         </button>
