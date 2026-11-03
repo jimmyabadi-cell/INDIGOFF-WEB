@@ -68,9 +68,11 @@
   .site-hd .hd-back { min-width: 44px; justify-content: center; }
   .site-hd .hd-logo img { height: 20px !important; }
   .site-hd .hd-lang { margin-right: 4px !important; }
-
-  section[id] { scroll-margin-top: 72px; }
 }
+
+/* ---------- Títulos de sección sticky: pegados justo bajo el header ---------- */
+.sec-hd { top: calc(var(--hd-h) - 1px) !important; }
+section[id] { scroll-margin-top: calc(var(--hd-h) + 8px) !important; }
 
 /* ---------- Pestañas: una fila deslizable en mobile ---------- */
 @media (max-width: 767px) {
