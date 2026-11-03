@@ -530,9 +530,15 @@
       "email": "Escribe un correo válido."
     },
     "mailSubject": "Consulta de proyecto — {name}",
-    "sent": {
+    "mail": {
       "title": "Tu mensaje está listo",
       "text": "Abrimos tu app de correo con tu mensaje. Envíalo y nuestro equipo te responderá pronto. Si no se abrió, escríbenos a {email}.",
+      "back": "Escribir otro mensaje"
+    },
+    "sending": "Enviando…",
+    "sent": {
+      "title": "Mensaje enviado",
+      "text": "Gracias por escribirnos. Nuestro equipo te responderá pronto a {email}.",
       "back": "Escribir otro mensaje"
     }
   }

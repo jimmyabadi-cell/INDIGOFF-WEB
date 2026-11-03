@@ -153,7 +153,15 @@ test("Footer: correo de contacto y redes sociales", async ({ page }) => {
   ]);
 });
 
-test("Contacto: valida campos obligatorios y prepara el correo", async ({ page }) => {
+/** Llena el formulario de contacto con datos válidos. */
+async function fillContact(form) {
+  await form.getByLabel("Name", { exact: true }).fill("Ana");
+  await form.getByLabel("Last Name").fill("López");
+  await form.getByLabel("Email").fill("ana@example.com");
+  await form.getByLabel("Message").fill("Necesito paneles para una oficina.");
+}
+
+test("Contacto: valida campos obligatorios", async ({ page }) => {
   await page.goto("/contact");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Contact Indigoff");
   const form = page.locator("main form");
@@ -162,15 +170,30 @@ test("Contacto: valida campos obligatorios y prepara el correo", async ({ page }
   await expect(form.getByText("This field is required.")).toHaveCount(3);
   await expect(form.getByLabel("Name", { exact: true })).toBeFocused();
 
-  await form.getByLabel("Name", { exact: true }).fill("Ana");
-  await form.getByLabel("Last Name").fill("López");
+  await fillContact(form);
   await form.getByLabel("Email").fill("ana@");
-  await form.getByLabel("Message").fill("Necesito paneles para una oficina.");
   await form.getByRole("button", { name: "Send" }).click();
   await expect(form.getByText("Enter a valid email address.")).toBeVisible();
+});
 
-  // El envío abre la app de correo con un mailto: (el navegador de pruebas lo ignora).
-  await form.getByLabel("Email").fill("ana@example.com");
-  await form.getByRole("button", { name: "Send" }).click();
+test("Contacto: envía el mensaje a /api/contact", async ({ page }) => {
+  let payload;
+  await page.route("/api/contact", async (route) => {
+    payload = route.request().postDataJSON();
+    await route.fulfill({ json: { ok: true } });
+  });
+  await page.goto("/contact");
+  await fillContact(page.locator("main form"));
+  await page.getByRole("button", { name: "Send" }).click();
+  await expect(page.getByRole("status")).toContainText("Message sent");
+  await expect(page.getByRole("status")).toContainText("ana@example.com");
+  expect(payload).toMatchObject({ name: "Ana", lastName: "López", email: "ana@example.com", lang: "en", company: "" });
+});
+
+test("Contacto: si la API falla, abre la app de correo", async ({ page }) => {
+  await page.route("/api/contact", (route) => route.fulfill({ status: 500, json: { error: "send_failed" } }));
+  await page.goto("/contact");
+  await fillContact(page.locator("main form"));
+  await page.getByRole("button", { name: "Send" }).click();
   await expect(page.getByRole("status")).toContainText("Your message is ready");
 });

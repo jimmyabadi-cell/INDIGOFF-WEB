@@ -530,9 +530,15 @@
       "email": "Enter a valid email address."
     },
     "mailSubject": "Project inquiry — {name}",
-    "sent": {
+    "mail": {
       "title": "Your message is ready",
       "text": "We opened your email app with your message. Send it and our team will reply soon. If it didn’t open, write to us at {email}.",
+      "back": "Write another message"
+    },
+    "sending": "Sending…",
+    "sent": {
+      "title": "Message sent",
+      "text": "Thanks for reaching out. Our team will reply to {email} soon.",
       "back": "Write another message"
     }
   }
