@@ -38,7 +38,7 @@ export default function Downloads() {
   const [cat, setCat] = useState(ALL);
   const [fmt, setFmt] = useState(ALL);
   const [query, setQuery] = useState("");
-  const { chrome } = usePageChrome({}, { nav: NAV });
+  const { chrome } = usePageChrome({ nav: NAV });
   const vals = downloadsVals({ t: chrome.t, cat, fmt, query, setCat, setFmt, setQuery });
   return template({ ...vals, ...chrome });
 }

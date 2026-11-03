@@ -301,7 +301,7 @@ export default function FindRep() {
   const [st, setSt] = useMergeState({ sel: null, rep: null, q: "", noMatch: false });
   // Pestaña del mapa: se deriva de la selección, pero el usuario también puede elegirla.
   const mapTab = useRef({ tab: "us", last: undefined });
-  const { chrome } = usePageChrome({}, { nav: NAV });
+  const { chrome } = usePageChrome({ nav: NAV });
   const v = { ...repVals(st, setSt, chrome.t), ...mapVals(st, setSt, mapTab.current, chrome.t), ...chrome };
   return template(v);
 }

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { I18N_ES, i18nDeep, i18nTr } from "../lib/i18n.js";
 import { makeT } from "../i18n/index.js";
 import { useEscape } from "./useEscape.js";
 import { useLang } from "./useLang.js";
@@ -8,37 +7,27 @@ import { useScrollLock } from "./useScrollLock.js";
 const ACTIVE = "#111111";
 const INACTIVE = "#6B675F";
 
-/** Traduce al español los textos de un view model (no toca hrefs, imágenes ni estilos). */
-export function localize(vals, lang) {
-  return lang === "es" ? i18nDeep(vals, "", 0) : vals;
-}
-
 /**
  * Lo que comparten todas las páginas: idioma, `t()`, selector EN/ES y menú lateral.
- * Devuelve los campos que usan las plantillas (`v.t`, `v.T`, `v.setEs`, `v.openMenu`, `v.dwCats`…).
+ * Devuelve los campos que usan las plantillas (`v.t`, `v.setEs`, `v.openMenu`, `v.dwCats`…).
  *
- * @param {Record<string, string>} [I18N_EN]  Textos heredados de la página (`v.T.kN`); las páginas migradas usan `v.t(clave)`.
  * @param {object} [options]
  * @param {object} [options.nav]    `{ DW_CATS, DW_FIN, ifoSetPending }` para el menú lateral; sin él no hay menú.
  * @param {boolean} [options.isMain]  La home: los acabados del menú abren su panel en lugar de navegar.
  * @param {Record<string, () => void>} [options.openFinish]  Home: abre el panel de un acabado por clave.
  * @returns {{ lang: string, chrome: object }}
  */
-export function usePageChrome(I18N_EN = {}, { nav, isMain = false, openFinish } = {}) {
+export function usePageChrome({ nav, isMain = false, openFinish } = {}) {
   const [lang, setLang] = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
   useEscape(menuOpen, () => setMenuOpen(false));
   useScrollLock(menuOpen);
 
+  const t = makeT(lang);
   const es = lang === "es";
-  const tr = (x) => (es ? i18nTr(x) : x);
-
-  const T = {};
-  for (const key in I18N_EN) T[key] = es ? I18N_ES[I18N_EN[key]] || I18N_EN[key] : I18N_EN[key];
 
   const chrome = {
-    t: makeT(lang),
-    T,
+    t,
     isEn: es ? "false" : "true",
     isEs: es ? "true" : "false",
     enColor: es ? INACTIVE : ACTIVE,
@@ -54,20 +43,20 @@ export function usePageChrome(I18N_EN = {}, { nav, isMain = false, openFinish } 
       menuOnStr: menuOpen ? "true" : "false",
       openMenu: () => setMenuOpen(true),
       closeMenu,
-      dwMenu: tr("Menu"),
-      dwMenuLbl: tr("Menu"),
-      dwClose: tr("Close"),
-      dwCat: tr("Categories"),
-      dwFin: tr("Finishes"),
-      dwCon: tr("Concepts"),
-      dwPro: tr("Projects"),
+      dwMenu: t("common.menu.menu"),
+      dwMenuLbl: t("common.menu.menu"),
+      dwClose: t("common.menu.close"),
+      dwCat: t("common.menu.categories"),
+      dwFin: t("common.menu.finishes"),
+      dwCon: t("common.menu.concepts"),
+      dwPro: t("common.menu.projects"),
       dwConHref: isMain ? "#concepts" : "/#concepts",
       dwProHref: isMain ? "#projects" : "/#projects",
       dwCats: nav.DW_CATS.map((m) => ({
-        name: tr(m.name),
+        name: t("catalog.categories." + m.cat),
         href: m.href,
         subs: m.subs.map((u) => ({
-          label: tr(u.label),
+          label: u.label || t("catalog.subcategories." + m.cat + "." + u.col),
           href: u.href,
           go: () => {
             nav.ifoSetPending(u.href);
@@ -76,7 +65,7 @@ export function usePageChrome(I18N_EN = {}, { nav, isMain = false, openFinish } 
         })),
       })),
       dwFins: nav.DW_FIN.map(([name, key]) => ({
-        name: tr(name),
+        name: t("home.finishes." + name),
         isBtn: isMain,
         isLink: !isMain,
         href: "/#finishes",

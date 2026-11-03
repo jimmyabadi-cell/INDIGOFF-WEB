@@ -22,55 +22,110 @@
   } catch (e) {}
 })();
 
+// Menú lateral: categoría y subcategorías por clave (textos en catalog.* de src/i18n).
 export var DW_CATS = [
   {
-    name: "Ceilings",
+    cat: "ceilings",
     href: "/ceilings",
     subs: [
-      { label: "Ceiling Systems", href: "/ceilings#ceilings" },
-      { label: "Baffles", href: "/ceilings#baffles" },
-      { label: "Clouds", href: "/ceilings#clouds" },
-      { label: "Ceiling Lights", href: "/ceilings#ceilinglights" },
+      {
+        col: "ceilings",
+        href: "/ceilings#ceilings",
+      },
+      {
+        col: "baffles",
+        href: "/ceilings#baffles",
+      },
+      {
+        col: "clouds",
+        href: "/ceilings#clouds",
+      },
+      {
+        col: "ceilinglights",
+        href: "/ceilings#ceilinglights",
+      },
     ],
   },
   {
-    name: "Walls",
+    cat: "walls",
     href: "/walls",
     subs: [
-      { label: "Panels", href: "/walls#walls" },
-      { label: "Frames", href: "/walls#frames" },
-      { label: "Murals", href: "/walls#murals" },
-      { label: "Canvas", href: "/walls#canvas" },
-      { label: "Wall Lights", href: "/walls#walllights" },
+      {
+        col: "walls",
+        href: "/walls#walls",
+      },
+      {
+        col: "frames",
+        href: "/walls#frames",
+      },
+      {
+        col: "murals",
+        href: "/walls#murals",
+      },
+      {
+        col: "canvas",
+        href: "/walls#canvas",
+      },
+      {
+        col: "walllights",
+        href: "/walls#walllights",
+      },
     ],
   },
   {
-    name: "Lights",
+    cat: "lights",
     href: "/lights",
     subs: [
-      { label: "Pendant", href: "/lights#pendantlights" },
-      { label: "Ceiling", href: "/lights#ceilinglights" },
-      { label: "Floor", href: "/lights#floorlights" },
-      { label: "Table", href: "/lights#tablelights" },
-      { label: "Wall", href: "/lights#walllights" },
+      {
+        col: "pendantlights",
+        href: "/lights#pendantlights",
+      },
+      {
+        col: "ceilinglights",
+        href: "/lights#ceilinglights",
+      },
+      {
+        col: "floorlights",
+        href: "/lights#floorlights",
+      },
+      {
+        col: "tablelights",
+        href: "/lights#tablelights",
+      },
+      {
+        col: "walllights",
+        href: "/lights#walllights",
+      },
     ],
   },
   {
-    name: "Dividers",
+    cat: "dividers",
     href: "/dividers",
     subs: [
-      { label: "Space Dividers", href: "/dividers#dividers" },
-      { label: "Fckoff", href: "/dividers#fckoff" },
+      {
+        col: "dividers",
+        href: "/dividers#dividers",
+      },
+      {
+        col: "fckoff",
+        href: "/dividers#fckoff",
+        label: "Fckoff",
+      },
     ],
   },
-  { name: "Podcaster", href: "/podcaster", subs: [] },
+  {
+    cat: "podcaster",
+    href: "/podcaster",
+    subs: [],
+  },
 ];
+// Acabados del menú: clave en home.finishes.* y panel que abre en la home.
 export var DW_FIN = [
-  ["Colors", "f_colors"],
-  ["Textures", "f_textures"],
-  ["Print", "f_print"],
-  ["Engraving", "f_engraving"],
-  ["Embossed", "f_embossed"],
+  ["colors", "f_colors"],
+  ["textures", "f_textures"],
+  ["print", "f_print"],
+  ["engraving", "f_engraving"],
+  ["embossed", "f_embossed"],
 ];
 
 export function ifoSetPending(href) {

@@ -62,13 +62,13 @@ export function listVals(list, ui) {
  * @param {ReturnType<import("../hooks/useSavedList.js").useSavedList>} list
  * @param {string} pre
  * @param {{ id: string } | null} item
- * @param {string} [addLbl]
+ * @param {{ add?: string, saved?: string }} [labels]  Textos ya traducidos del botón.
  */
-export function saveVals(list, pre, item, addLbl) {
+export function saveVals(list, pre, item, labels = {}) {
   const on = !!item && list.has(item.id);
   return {
     [pre + "On"]: on ? "true" : "false",
-    [pre + "Lbl"]: on ? "Saved to my list" : addLbl || "Add to my list",
+    [pre + "Lbl"]: on ? labels.saved || "Saved to my list" : labels.add || "Add to my list",
     [pre + "Is"]: on,
     [pre + "Not"]: !on,
     [pre + "Bg"]: on ? "#111111" : "transparent",

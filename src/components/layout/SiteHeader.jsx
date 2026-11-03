@@ -102,7 +102,7 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
           {search ? (
             <button
               type="button"
-              aria-label="Search"
+              aria-label={v.t("home.search.label")}
               onClick={v.openSearch}
               style={S(
                 "width: 44px; height: 44px; border: 0; background: transparent; padding: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center",

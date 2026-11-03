@@ -29,7 +29,7 @@ function studioVals(t) {
     ctaH: t("studio.cta.title"),
     ctaP: t("studio.cta.text"),
     cta1: t("studio.cta.start"),
-    cta2: t("studio.cta.rep"),
+    cta2: t("common.talkToRep"),
   };
   on.services = t("studio.services").map((x, i) => ({ n: pad(i), t: x.title, d: x.text }));
   on.steps = t("studio.process.steps").map((x, i) => ({ n: pad(i), t: x.title, d: x.text }));
@@ -47,7 +47,7 @@ function studioVals(t) {
 }
 
 export default function OnoffStudio() {
-  const { chrome } = usePageChrome({}, { nav: NAV });
+  const { chrome } = usePageChrome({ nav: NAV });
   return template({ ...studioVals(chrome.t), ...chrome });
 }
 

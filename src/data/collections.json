@@ -1,79 +1,32 @@
 {
-  "fam": {
-    "podcaster": {
-      "d": "A complete acoustic studio for podcast and recording: wall panels, ceiling clouds and slats that control echo so every voice sounds clear, close and warm on mic."
-    },
-    "baffles": {
-      "d": "Suspended acoustic baffles that absorb sound, reduce echo and add rhythm to the ceiling."
-    },
-    "clouds": {
-      "d": "Suspended acoustic clouds that absorb overhead sound and define zones without walls."
-    },
-    "ceilings": {
-      "d": "An acoustic ceiling system that adapts to the design of the space and adds comfort overhead."
-    },
-    "ceilinglights": {
-      "d": "An acoustic ceiling with integrated light — illumination and sound absorption in one surface."
-    },
-    "walls": {
-      "d": "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room."
-    },
-    "frames": {
-      "d": "Acoustic panels framed like art: sound absorption and design in a single piece."
-    },
-    "woolskin": {
-      "d": "A soft, wool-touch acoustic wall finish — warm to the eye and quiet to the ear."
-    },
-    "fusetex": {
-      "d": "A textured acoustic wall finish that adds depth to the room and absorbs sound."
-    },
-    "murals": {
-      "d": "A large-format printed acoustic mural — any image, full acoustic performance."
-    },
-    "canvas": {
-      "d": "An acoustic canvas that hangs like art and absorbs sound."
-    },
-    "walllights": {
-      "d": "An acoustic wall light that adds warmth and absorbs sound."
-    },
-    "pendantlights": {
-      "d": "An acoustic pendant: light that brightens the room and absorbs sound at the same time."
-    },
-    "floorlights": {
-      "d": "An acoustic floor light with a sound-absorbing body."
-    },
-    "tablelights": {
-      "d": "An acoustic table lamp with a sound-absorbing shade."
-    },
-    "dividers": {
-      "d": "Acoustic separation that reduces cross-talk and creates quieter micro-rooms in open spaces."
-    },
-    "fckoff": {
-      "d": "An acoustic desk divider that gives each workstation privacy and quiet."
-    }
-  },
-  "special": {
-    "wallwoolskin": {
-      "d": "Soft-edged acoustic wall panels with a deep wool-like texture, in a palette of warm, natural colors."
-    },
-    "wallfusion": {
-      "d": "Acoustic slat panels with two-tone depth: felt slats over a contrasting acoustic backing, for walls with rhythm and sound control."
-    },
-    "wallfusionslat": {
-      "d": "Wide felt slats separated by fine contrasting reveals, for walls and booths with a clean rhythm and quiet acoustics."
-    },
-    "wallaries": {
-      "d": "Aries on the wall: vertical acoustic slats that run floor to ceiling, adding warm rhythm and absorbing sound across open offices and corridors."
-    },
-    "airaries": {
-      "d": "Modular wood-veneer slats over a black acoustic panel, for ceilings and walls with warmth and acoustic control."
-    }
-  },
+  "fam": [
+    "podcaster",
+    "baffles",
+    "clouds",
+    "ceilings",
+    "ceilinglights",
+    "walls",
+    "frames",
+    "woolskin",
+    "fusetex",
+    "murals",
+    "canvas",
+    "walllights",
+    "pendantlights",
+    "floorlights",
+    "tablelights",
+    "dividers",
+    "fckoff"
+  ],
+  "special": [
+    "wallwoolskin",
+    "wallfusion",
+    "wallfusionslat",
+    "wallaries",
+    "airaries"
+  ],
   "cols": {
     "baffles": {
-      "name": "Baffles",
-      "tag": "Suspended acoustics",
-      "desc": "Suspended ceiling elements that absorb sound, reduce echo and add visual structure to open spaces.",
       "img": "/img/b29948a24137e9fd2b418e35436a8969.jpg",
       "alt": "Baffles",
       "small": true,
@@ -86,9 +39,6 @@
       ]
     },
     "clouds": {
-      "name": "Clouds",
-      "tag": "Overhead acoustics",
-      "desc": "Suspended acoustic panels that absorb overhead sound and define zones without walls.",
       "img": "/img/9db1ade3a2ac961a77051b22b6a8c728.jpg",
       "alt": "Clouds",
       "small": true,
@@ -113,9 +63,6 @@
       ]
     },
     "ceilings": {
-      "name": "Ceiling Systems",
-      "tag": "Acoustic ceilings",
-      "desc": "Ceiling systems that adapt to the design of the space and add acoustic comfort overhead.",
       "img": "/img/db89a04eab7deaebd23c4ea514aa65c0.jpg",
       "alt": "Ceiling Systems",
       "small": true,
@@ -130,9 +77,6 @@
       ]
     },
     "ceilinglights": {
-      "name": "Ceiling Lights",
-      "tag": "Acoustic lighting",
-      "desc": "Acoustic ceilings with integrated light — illumination and sound absorption in one surface.",
       "img": "/img/5bdaa96d5d7b2b69714a63313f56859e.jpg",
       "alt": "Ceiling Lights",
       "small": true,
@@ -146,9 +90,6 @@
       ]
     },
     "walls": {
-      "name": "Walls",
-      "tag": "Acoustic walls",
-      "desc": "Acoustic wall panels that soften echo and reduce everyday noise — as full wall fields or accents.",
       "img": "/img/50cb19dd09bf67dde7b33787030edb02.jpg",
       "alt": "Walls",
       "small": true,
@@ -171,9 +112,6 @@
       ]
     },
     "frames": {
-      "name": "Frames",
-      "tag": "Acoustic art",
-      "desc": "Decorative acoustic wall pieces, customizable in format, color, print and engraving.",
       "img": "/img/acd82f546d602b0486b8d1a33b4770aa.jpg",
       "alt": "Frames",
       "small": true,
@@ -185,9 +123,6 @@
       ]
     },
     "woolskin": {
-      "name": "Woolskin Panels",
-      "tag": "Wool touch · Better sound",
-      "desc": "A soft, wool-touch acoustic finish for commercial, office and residential walls.",
       "img": "/img/a80c62b501f00cd2a71e1882412fcfbe.jpg",
       "alt": "Woolskin Panels",
       "small": true,
@@ -207,9 +142,6 @@
       ]
     },
     "fusetex": {
-      "name": "Fabric Panels",
-      "tag": "Textured acoustics",
-      "desc": "Textured acoustic wall finishes for commercial, corporate and residential spaces.",
       "img": "/img/636f865fc440124f2aee720afc8c29e3.jpg",
       "alt": "Fabric Panels",
       "small": true,
@@ -238,9 +170,6 @@
       ]
     },
     "murals": {
-      "name": "Murals",
-      "tag": "Printed acoustics",
-      "desc": "Large-format printed acoustic murals — any image, full acoustic performance.",
       "img": "/img/542d2b909e3ce08a3bdc2098015e0ad8.jpg",
       "alt": "Murals",
       "small": true,
@@ -250,9 +179,6 @@
       ]
     },
     "canvas": {
-      "name": "Canvas",
-      "tag": "Acoustic art",
-      "desc": "Acoustic canvas that hangs like art and absorbs sound.",
       "img": "/img/ded5e0781055c57528c1e814be633493.jpg",
       "alt": "Canvas",
       "small": true,
@@ -263,9 +189,6 @@
       ]
     },
     "walllights": {
-      "name": "Wall Lights",
-      "tag": "Acoustic lighting",
-      "desc": "Wall lights that add warmth and absorb sound.",
       "img": "/img/23bef94b67c4031327025eed3fb82145.jpg",
       "alt": "Wall Lights",
       "small": true,
@@ -280,9 +203,6 @@
       ]
     },
     "pendantlights": {
-      "name": "Pendant Lights",
-      "tag": "Acoustic lighting",
-      "desc": "Pendant lights that brighten the room and absorb sound at the same time.",
       "img": "/img/1fd8efa838908a572cd3085c89531414.jpg",
       "alt": "Pendant Lights",
       "small": true,
@@ -350,9 +270,6 @@
       ]
     },
     "floorlights": {
-      "name": "Floor Lights",
-      "tag": "Acoustic lighting",
-      "desc": "Floor lamps and totems with acoustic shades.",
       "img": "/img/2cadda55518bec67a4173fdc68c4e9b8.jpg",
       "alt": "Floor Lights",
       "small": true,
@@ -364,9 +281,6 @@
       ]
     },
     "tablelights": {
-      "name": "Table Lights",
-      "tag": "Acoustic lighting",
-      "desc": "Table lamps with acoustic shades.",
       "img": "/img/799088d005b214657a3f4e9c1211da26.jpg",
       "alt": "Table Lights",
       "small": true,
@@ -377,9 +291,6 @@
       ]
     },
     "dividers": {
-      "name": "Space Dividers",
-      "tag": "Acoustic separation",
-      "desc": "Acoustic separation for open spaces that reduces cross-talk and creates quieter micro-rooms.",
       "img": "/img/e154f12501cbca329921ce90014beb4c.jpg",
       "alt": "Space Dividers",
       "small": true,
@@ -392,9 +303,6 @@
       ]
     },
     "fckoff": {
-      "name": "Fckoff",
-      "tag": "Desk dividers",
-      "desc": "Acoustic dividers and privacy screens for open-office desks.",
       "img": "/img/ed0bf4386ba9e7be00e6869e487878e1.jpg",
       "alt": "Fckoff",
       "small": true,
@@ -405,9 +313,6 @@
       ]
     },
     "podcaster": {
-      "name": "Podcaster",
-      "tag": "Studio acoustics",
-      "desc": "Acoustic treatment for podcast and recording studios — clear voices, no echo, a set that looks good on camera.",
       "img": "/img/262de0d004e1e631ef993783a62dc338.jpg",
       "alt": "Podcaster studio",
       "products": [
@@ -419,10 +324,7 @@
   },
   "parents": {
     "ceilings": {
-      "name": "Ceilings",
       "file": "Ceilings",
-      "tag": "Overhead acoustics",
-      "desc": "Everything overhead — baffles, clouds, ceiling systems and ceiling lights.",
       "img": "/img/1c06a2a53b0d23e2b097c63e3963da0d.jpg",
       "alt": "Stratus acoustic baffles over a conference room",
       "subs": [
@@ -430,14 +332,10 @@
         "baffles",
         "clouds",
         "ceilinglights"
-      ],
-      "labels": {}
+      ]
     },
     "walls": {
-      "name": "Walls",
       "file": "Walls",
-      "tag": "Acoustic walls",
-      "desc": "Panels, frames, finishes and art that quiet the room and shape how it looks.",
       "img": "/img/50cb19dd09bf67dde7b33787030edb02.jpg",
       "alt": "Blue and green acoustic wall",
       "subs": [
@@ -446,16 +344,10 @@
         "murals",
         "canvas",
         "walllights"
-      ],
-      "labels": {
-        "walls": "Panels"
-      }
+      ]
     },
     "lights": {
-      "name": "Lights",
       "file": "Lights",
-      "tag": "Acoustic lighting",
-      "desc": "Light that brightens the room and absorbs sound at the same time.",
       "img": "/img/16744e6011fb31fe88309cf84f8242d3.jpg",
       "alt": "Red acoustic lamps in a lounge",
       "subs": [
@@ -464,41 +356,24 @@
         "floorlights",
         "tablelights",
         "walllights"
-      ],
-      "labels": {
-        "pendantlights": "Pendant",
-        "ceilinglights": "Ceiling",
-        "floorlights": "Floor",
-        "tablelights": "Table",
-        "walllights": "Wall"
-      }
+      ]
     },
     "dividers": {
-      "name": "Dividers",
       "file": "Dividers",
-      "tag": "Acoustic separation",
-      "desc": "Freestanding and desk dividers that create quiet zones in open spaces.",
       "img": "/img/e154f12501cbca329921ce90014beb4c.jpg",
       "alt": "Colorful acoustic dividers in an office",
       "subs": [
         "dividers",
         "fckoff"
-      ],
-      "labels": {
-        "fckoff": "Fckoff — Desk Dividers"
-      }
+      ]
     },
     "podcaster": {
-      "name": "Podcaster",
       "file": "Podcaster",
-      "tag": "Studio acoustics",
-      "desc": "Acoustic treatment for podcast and recording studios — clear voices, no echo, a set that looks good on camera.",
       "img": "/img/262de0d004e1e631ef993783a62dc338.jpg",
       "alt": "Podcaster studio",
       "subs": [
         "podcaster"
-      ],
-      "labels": {}
+      ]
     }
   },
   "pcolls": {

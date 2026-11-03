@@ -1,0 +1,353 @@
+{
+  "p_mist": {
+    "img": "/img/07047095a3b9bfeb4a7cbb035cc17702.jpg",
+    "alt": "Mist: Wave baffle ceiling over a lounge",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.ceilings"
+    ],
+    "title": "Mist",
+    "desc": "@home.lightbox.desc.ceilingSystem",
+    "cta": "@home.hero.quote"
+  },
+  "p_stratus": {
+    "img": "/img/0070fe89208c12f021b3b0111d3065ed.jpg",
+    "alt": "Stratus: Linear ceiling baffles over a private office",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.ceilings"
+    ],
+    "title": "Stratus",
+    "desc": "@home.lightbox.desc.ceilingSystem",
+    "cta": "@home.hero.quote"
+  },
+  "p_cirrus": {
+    "img": "/img/7b0aa566228bcd0aac7e15a2f0ae15fa.jpg",
+    "alt": "Cirrus: Layered ceiling panels over a lobby",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.ceilings"
+    ],
+    "title": "Cirrus",
+    "desc": "@home.lightbox.desc.ceilingSystem",
+    "cta": "@home.hero.quote"
+  },
+  "p_aries": {
+    "img": "/img/db89a04eab7deaebd23c4ea514aa65c0.jpg",
+    "alt": "Aries: Wood slat ceiling and wall in a living room",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.ceilings"
+    ],
+    "title": "Aries",
+    "desc": "@catalog.special.airaries",
+    "cta": "@home.hero.quote"
+  },
+  "p_drizzle": {
+    "img": "/img/12430ba101bdf936a2b3510fe2f5069b.jpg",
+    "alt": "Drizzle: Red umbrella-shaped acoustic clouds",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.subcategories.ceilings.clouds"
+    ],
+    "title": "Drizzle",
+    "desc": "@home.lightbox.desc.clouds",
+    "cta": "@home.hero.quote"
+  },
+  "p_hexaglow": {
+    "img": "/img/e49b73d7c36bcdf07deb9598b8227dd5.jpg",
+    "alt": "HexaGlow: Hexagonal acoustic ceiling panels with light",
+    "label": [
+      "@home.lightbox.label.product",
+      "Glow"
+    ],
+    "title": "HexaGlow",
+    "desc": "@home.lightbox.desc.glow",
+    "cta": "@home.hero.quote"
+  },
+  "p_cascade": {
+    "img": "/img/acd82f546d602b0486b8d1a33b4770aa.jpg",
+    "alt": "Cascade: Slatted acoustic frames in an office",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.subcategories.walls.frames"
+    ],
+    "title": "Cascade",
+    "desc": "@catalog.families.frames",
+    "cta": "@home.hero.quote"
+  },
+  "p_cataract": {
+    "img": "/img/824be2d816020d40c5009474f0efae84.jpg",
+    "alt": "Cataract: Wave-relief acoustic frames on a wood wall",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.subcategories.walls.frames"
+    ],
+    "title": "Cataract",
+    "desc": "@catalog.families.frames",
+    "cta": "@home.hero.quote"
+  },
+  "p_plunge": {
+    "img": "/img/157750c52032738193f7a36ad0453502.jpg",
+    "alt": "Plunge: Backlit acoustic frames in a lounge",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.subcategories.walls.frames"
+    ],
+    "title": "Plunge",
+    "desc": "@catalog.families.frames",
+    "cta": "@home.hero.quote"
+  },
+  "p_akebia": {
+    "img": "/img/12792218baaf13c00d1a66f72041e0c4.jpg",
+    "alt": "Akebia: Red faceted acoustic wall",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.walls"
+    ],
+    "title": "Akebia",
+    "desc": "@catalog.families.walls",
+    "cta": "@home.hero.quote"
+  },
+  "p_cissus": {
+    "img": "/img/1cc784fd3718a01782dbdd4e6ec076a0.jpg",
+    "alt": "Cissus: Navy hexagonal acoustic wall",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.walls"
+    ],
+    "title": "Cissus",
+    "desc": "@catalog.families.walls",
+    "cta": "@home.hero.quote"
+  },
+  "p_clematis": {
+    "img": "/img/88049a1b69f352078226e37b9eeb105a.jpg",
+    "alt": "Clematis: Grey and black hexagonal acoustic wall in a boardroom",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.walls"
+    ],
+    "title": "Clematis",
+    "desc": "@catalog.families.walls",
+    "cta": "@home.hero.quote"
+  },
+  "p_lonicera": {
+    "img": "/img/b68b45410384d4bc67529a0b3eea5cd0.jpg",
+    "alt": "Lonicera: Blue and white scale-pattern acoustic wall",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.walls"
+    ],
+    "title": "Lonicera",
+    "desc": "@catalog.families.walls",
+    "cta": "@home.hero.quote"
+  },
+  "p_wisteria": {
+    "img": "/img/ccfc7590591b928abd658dab02666acf.jpg",
+    "alt": "Wisteria: Terracotta brick-pattern acoustic wall",
+    "label": [
+      "@home.lightbox.label.product",
+      "@catalog.categories.walls"
+    ],
+    "title": "Wisteria",
+    "desc": "@catalog.families.walls",
+    "cta": "@home.hero.quote"
+  },
+  "j_novonordisk": {
+    "img": "/img/b4b5aecc31cfc4c84d16b672483178bf.jpg",
+    "alt": "Novo Nordisk: Office lounge with sculpted acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Novo Nordisk",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_royaltoncancn": {
+    "img": "/img/0511a77cdd8a7f49b9c256536bb355b8.jpg",
+    "alt": "Royalton: Restaurant with a dark wave acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Royalton",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_citibank": {
+    "img": "/img/d13aa0c9246e60afd2c6c919d0a2c6fa.jpg",
+    "alt": "Citibank: Lounge with diamond acoustic wall panels",
+    "label": "@home.lightbox.label.project",
+    "title": "Citibank",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_nissan": {
+    "img": "/img/6b11647fe003817f3cf6c68183556ba4.jpg",
+    "alt": "Nissan: Auditorium with linear acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Nissan",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_tecdemonterrey": {
+    "img": "/img/1cf08ac549e5eee1dbedc0e4037c9a25.jpg",
+    "alt": "Tec: Theater with sculpted orange acoustic walls",
+    "label": "@home.lightbox.label.project",
+    "title": "Tec",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_nutanix": {
+    "img": "/img/7695458f1f2d416157a7a2512e5f7289.jpg",
+    "alt": "Nutanix: Corridor with a blue gradient acoustic wall",
+    "label": "@home.lightbox.label.project",
+    "title": "Nutanix",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_lenovo": {
+    "img": "/img/fd7faf838c54e6a80ded7b63cedecc38.jpg",
+    "alt": "Lenovo: Meeting room with blue and white triangle acoustic wall",
+    "label": "@home.lightbox.label.project",
+    "title": "Lenovo",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_scotiabank": {
+    "img": "/img/616da3db7011b80ea94dc54bc68ea6ba.jpg",
+    "alt": "Scotiabank: Café with hexagonal acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Scotiabank",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_irelandembassy": {
+    "img": "/img/6243735c15d77d14cc09a6d76839204a.jpg",
+    "alt": "Ireland Embassy: Teal acoustic ceiling panels",
+    "label": "@home.lightbox.label.project",
+    "title": "Ireland Embassy",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_multimedios": {
+    "img": "/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg",
+    "alt": "Multimedios: newsroom under a sculpted linear acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Multimedios",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "e_material": {
+    "img": "/img/b45fdd3f48ffafe2e4c62af327a77568.jpg",
+    "alt": "Reception desk in front of a terracotta acoustic shelving wall",
+    "label": "@home.lightbox.label.oneMaterial",
+    "title": "@home.lightbox.title.material",
+    "desc": "@home.material.text",
+    "cta": "@studio.cta.start"
+  },
+  "e_study": {
+    "img": "/img/73e73590532bd1289f3c5d2c7884612e.jpg",
+    "alt": "Lounge with golden suspended baffles over a dark acoustic wall",
+    "label": "@home.lightbox.label.studies",
+    "title": "@home.lightbox.title.study",
+    "desc": "@home.lightbox.desc.study",
+    "cta": "@collection.requestStudy"
+  },
+  "j_sempra": {
+    "img": "/img/adf2de3b3febf8b40929fdc18c880ed1.jpg",
+    "alt": "Sempra: Office lobby with wood slat acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Sempra",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_highpark": {
+    "img": "/img/a7e103c02242caf0d3114e839e7f9b06.jpg",
+    "alt": "Highpark: Reception with red coffered acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Highpark",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_jsftexas": {
+    "img": "/img/d849dd9badf2823fd7126370edd5c7db.jpg",
+    "alt": "JSF: Lounge with striped acoustic wall panels",
+    "label": "@home.lightbox.label.project",
+    "title": "JSF",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_koltin": {
+    "img": "/img/569ab9d06a4229d735b26e974e057cea.jpg",
+    "alt": "Koltin: Open office with teal grid acoustic ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "Koltin",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_sap": {
+    "img": "/img/e9a2de7b8774e93b374b516be8eda38e.jpg",
+    "alt": "SAP: Layered white acoustic baffle ceiling",
+    "label": "@home.lightbox.label.project",
+    "title": "SAP",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_arkansas": {
+    "img": "/img/2d7ebe48f1f049c75bc449fab94fce71.jpg",
+    "alt": "Arkansas: Library with acoustic art panel",
+    "label": "@home.lightbox.label.project",
+    "title": "Arkansas",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "j_bloomberg": {
+    "img": "/img/c4757270e77ef9c931c8ea1e692d38d8.jpg",
+    "alt": "Bloomberg: Atrium with suspended acoustic baffles",
+    "label": "@home.lightbox.label.project",
+    "title": "Bloomberg",
+    "desc": "@home.lightbox.desc.projectInstalled",
+    "cta": "@studio.cta.start"
+  },
+  "f_colors": {
+    "swatches": "colors",
+    "img": "/img/33bf52d337f0b5866c401b1f22274d1e.jpg",
+    "alt": "Colors finish samples",
+    "label": "@home.lightbox.label.finishes",
+    "title": "@home.finishes.colors",
+    "desc": "@home.lightbox.desc.colors",
+    "cta": "@common.requestSamples"
+  },
+  "f_textures": {
+    "swatches": "textures",
+    "img": "/img/59823a479ed6e68e4e9d0a9c53e86ad2.jpg",
+    "alt": "Textures finish samples",
+    "label": "@home.lightbox.label.finishes",
+    "title": "@home.finishes.textures",
+    "desc": "@home.lightbox.desc.textures",
+    "cta": "@common.requestSamples"
+  },
+  "f_print": {
+    "swatches": "print",
+    "img": "/img/01fd0ca4887bbb6af9330fa52b1fb80d.jpg",
+    "alt": "Print finish samples",
+    "label": "@home.lightbox.label.finishes",
+    "title": "@home.finishes.print",
+    "desc": "@home.lightbox.desc.print",
+    "cta": "@common.requestSamples"
+  },
+  "f_engraving": {
+    "swatches": "engraving",
+    "img": "/img/1cd84dadeac695b570a54542496638c0.jpg",
+    "alt": "Engraving finish samples",
+    "label": "@home.lightbox.label.finishes",
+    "title": "@home.finishes.engraving",
+    "desc": "@home.lightbox.desc.engraving",
+    "cta": "@common.requestSamples"
+  },
+  "f_embossed": {
+    "swatches": "embossed",
+    "img": "/img/83997bc339591c8c1d305c3b756d6962.jpg",
+    "alt": "Embossed finish samples",
+    "label": "@home.lightbox.label.finishes",
+    "title": "@home.finishes.embossed",
+    "desc": "@home.lightbox.desc.embossed",
+    "cta": "@common.requestSamples"
+  }
+}

@@ -19,6 +19,7 @@ function flatten(node, prefix = "", out = {}) {
 const flatEn = flatten(en);
 const flatEs = flatten(es);
 const placeholders = (s) => (String(s).match(/\{\w+\}/g) || []).sort();
+const flattenNs = (ns) => Object.fromEntries(Object.entries(flatEn).filter(([k]) => k.startsWith(ns + ".")));
 
 test.describe("Traducciones", () => {
   test("en.json y es.json tienen exactamente las mismas claves", () => {
@@ -34,12 +35,8 @@ test.describe("Traducciones", () => {
   });
 });
 
-// Páginas ya migradas a claves y los grupos de textos que muestran.
-const MIGRATED = {
-  "/onoff-studio": ["studio", "common"],
-  "/downloads": ["downloads", "catalog", "common"],
-  "/find-a-rep": ["findRep", "common"],
-};
+/** Grupos de primer nivel de los locales: una clave sin traducir se vería como "catalog.cols.x". */
+const KEY_LEAK = new RegExp("\\b(" + Object.keys(en).join("|") + ")\\.[a-zA-Z]");
 
 /**
  * Un texto con {variables} se busca como patrón con límites de palabra:
@@ -53,7 +50,42 @@ const toPattern = (s) => {
   return new RegExp((/^\w/.test(s) ? "\\b" : "") + body + (/\w$/.test(s) ? "\\b" : ""));
 };
 
-for (const [route, namespaces] of Object.entries(MIGRATED)) {
+// Cada página, los grupos de textos que muestra y estados extra que abrir (lightbox, búsqueda…).
+const COLLECTION = ["collection", "list", "catalog", "common"];
+const openFirstProduct = async (page) => {
+  const product = page.locator("button[aria-label^='Ver ']").first();
+  if (await product.count()) await product.click();
+};
+const PAGES = {
+  "/": {
+    ns: ["home", "list", "catalog", "common"],
+    states: [
+      // Relieves: "Modelo 1", "— Textura".
+      async (page) => page.locator(".fin-tile").nth(4).click(),
+      // Proyecto: etiqueta, CTA y fotos.
+      async (page) => {
+        await page.keyboard.press("Escape");
+        await page.locator(".proj-grid > button").first().click();
+      },
+      // Búsqueda: tipos y conteo.
+      async (page) => {
+        await page.keyboard.press("Escape");
+        await page.keyboard.press("/");
+        await page.locator(".sr-input").fill("nube");
+      },
+    ],
+  },
+  "/onoff-studio": { ns: ["studio", "common"] },
+  "/downloads": { ns: ["downloads", "catalog", "common"] },
+  "/find-a-rep": { ns: ["findRep", "common"] },
+  "/ceilings": { ns: COLLECTION, states: [openFirstProduct] },
+  "/walls": { ns: COLLECTION, states: [openFirstProduct] },
+  "/lights": { ns: COLLECTION, states: [openFirstProduct] },
+  "/dividers": { ns: COLLECTION, states: [openFirstProduct] },
+  "/podcaster": { ns: COLLECTION, states: [openFirstProduct] },
+};
+
+for (const [route, { ns, states = [] }] of Object.entries(PAGES)) {
   test(`${route}: en español no queda ningún texto en inglés`, async ({ page }) => {
     await page.addInitScript(() => {
       try {
@@ -63,17 +95,25 @@ for (const [route, namespaces] of Object.entries(MIGRATED)) {
     });
     await page.goto(route);
     await page.locator(".site-hd").waitFor();
-    // textContent (no innerText): el texto original, sin el text-transform del CSS.
-    const text = await page.evaluate(() => document.body.textContent);
-    const english = namespaces
-      .flatMap((ns) => Object.entries(flattenNs(ns)))
+    const english = ns
+      .flatMap((n) => Object.entries(flattenNs(n)))
       .filter(([key, s]) => typeof s === "string" && s.length >= 12 && s !== flatEs[key])
-      .map(([, s]) => s)
-      .filter((s) => toPattern(s).test(text));
-    expect(english).toEqual([]);
-  });
-}
+      .map(([, s]) => s);
 
-function flattenNs(ns) {
-  return Object.fromEntries(Object.entries(flatEn).filter(([k]) => k === ns || k.startsWith(ns + ".")));
+    for (const [i, open] of [null, ...states].entries()) {
+      if (open) await open(page);
+      // textContent (no innerText): el texto original, sin el text-transform del CSS; más los aria-label.
+      const text = await page.evaluate(
+        () =>
+          document.body.textContent +
+          " " +
+          [...document.querySelectorAll("[aria-label]")].map((e) => e.getAttribute("aria-label")).join(" "),
+      );
+      expect(text.match(KEY_LEAK)?.[0] ?? null, `clave sin traducir visible (estado ${i})`).toBeNull();
+      expect(
+        english.filter((s) => toPattern(s).test(text)),
+        `estado ${i}`,
+      ).toEqual([]);
+    }
+  });
 }

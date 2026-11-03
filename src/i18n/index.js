@@ -36,6 +36,24 @@ export function translate(lang, key, vars) {
   return typeof value === "string" && vars ? interpolate(value, vars) : value;
 }
 
+/**
+ * Texto que viene de datos (lightboxes, muestrarios…):
+ * - `"@clave"` se traduce con `t`;
+ * - `{ k, vars }` se traduce con variables (que a su vez pueden ser referencias);
+ * - una lista se une con " · ";
+ * - cualquier otro texto se deja igual (nombres propios: productos, marcas, proyectos).
+ */
+export function tx(ref, t) {
+  if (ref == null) return "";
+  if (Array.isArray(ref)) return ref.map((r) => tx(r, t)).join(" · ");
+  if (typeof ref === "object") {
+    const vars = {};
+    for (const [k, v] of Object.entries(ref.vars || {})) vars[k] = tx(v, t);
+    return t(ref.k, vars);
+  }
+  return typeof ref === "string" && ref.startsWith("@") ? t(ref.slice(1)) : ref;
+}
+
 /** Función `t(key, vars)` ligada a un idioma. */
 export function makeT(lang) {
   return (key, vars) => translate(lang, key, vars);
