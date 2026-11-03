@@ -19,9 +19,12 @@
   letter-spacing: -0.04em;
 }
 
+/* Proyecto destacado: mismo ancho que la cuadrícula de abajo (.box2: 1440px de contenido con margen lateral).
+   Ancho explícito: un <button> con width:auto se encoge a su contenido (aquí todo es absoluto). */
 .button {
   display: block;
-  width: 100%;
+  width: min(100% - 2 * var(--gutter), 1440px);
+  margin: 0 auto;
   position: relative;
   height: calc(820px * var(--mh));
   overflow: hidden;
@@ -149,11 +152,9 @@
   padding: 48px 24px 0;
 }
 
-/* Mobile: el proyecto destacado con el mismo ancho, margen y proporción que las tarjetas de proyecto. */
+/* Mobile: el proyecto destacado con la misma proporción y separación que las tarjetas de proyecto. */
 @media (max-width: 767px) {
   .button {
-    /* Ancho explícito: un <button> con width:auto se encoge a su contenido (aquí todo es absoluto). */
-    width: calc(100% - 2 * var(--gutter));
     height: auto;
     aspect-ratio: 4 / 3;
     /* 40px + los 8px de arriba de la cuadrícula = la misma separación (48px) que entre tarjetas. */
