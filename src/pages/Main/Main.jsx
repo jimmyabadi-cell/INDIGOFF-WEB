@@ -1224,7 +1224,20 @@ Component.template = function (v, self) {
                 <span>{v.dwMenuLbl}</span>
               </button>
               <a href="/downloads" className="hd-dl" aria-label={v.T.k7}>
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
+                <svg
+                  className="hd-ico"
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path>
+                </svg>
                 <span className="hd-dl-lbl">{v.T.k7}</span>
               </a>
             </nav>
@@ -1247,7 +1260,10 @@ Component.template = function (v, self) {
                 "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
             >
-              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
+              <span
+                className="hd-lang"
+                style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}
+              >
                 <button
                   type="button"
                   onClick={v.setEn}
@@ -1272,7 +1288,9 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
-              <a href="/find-a-rep" className="hd-opt">{v.T.k8}</a>
+              <a href="/find-a-rep" className="hd-opt">
+                {v.T.k8}
+              </a>
               <button
                 type="button"
                 onClick={v.openList}
@@ -1282,8 +1300,23 @@ Component.template = function (v, self) {
                   "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: #111111",
                 )}
               >
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg>
-                <span className="hd-list-lbl">{v.T.k69}{" ("}</span>
+                <svg
+                  className="hd-ico"
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path>
+                </svg>
+                <span className="hd-list-lbl">
+                  {v.T.k69}
+                  {" ("}
+                </span>
                 <span className="hd-list-n">{v.listCount}</span>
                 <span className="hd-list-lbl">{")"}</span>
               </button>
@@ -1803,7 +1836,10 @@ Component.template = function (v, self) {
             </div>
           </div>
         </section>
-        <section id="concepts" style={S("max-width: 1440px; margin: 0 auto; padding: calc(180px * var(--vs)) var(--gutter) 0")}>
+        <section
+          id="concepts"
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(180px * var(--vs)) var(--gutter) 0")}
+        >
           <div className="sec-hd" style={S("text-align: center; margin-bottom: 0")}>
             <h2
               style={S(
@@ -1968,7 +2004,11 @@ Component.template = function (v, self) {
               </div>
             </>
           ) : null}
-          <div style={S("max-width: 1100px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0; text-align: center")}>
+          <div
+            style={S(
+              "max-width: 1100px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0; text-align: center",
+            )}
+          >
             <h2
               style={S(
                 "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -2450,7 +2490,10 @@ Component.template = function (v, self) {
             </button>
           </div>
         </section>
-        <section id="specify" style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) 0")}>
+        <section
+          id="specify"
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) 0")}
+        >
           <h2
             style={S(
               "margin: 0 0 48px; text-align: center; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -2511,7 +2554,9 @@ Component.template = function (v, self) {
         </section>
         <section
           id="contact"
-          style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) calc(140px * var(--vs)); text-align: center")}
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) var(--gutter) calc(140px * var(--vs)); text-align: center",
+          )}
         >
           <h2
             style={S(
@@ -2615,7 +2660,13 @@ Component.template = function (v, self) {
               </span>
               <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
               <span style={S("display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 -13px")}>
-                <a href="https://www.instagram.com/indigoff.design/" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Instagram" className="soc">
+                <a
+                  href="https://www.instagram.com/indigoff.design/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Indigoff on Instagram"
+                  className="soc"
+                >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -2623,7 +2674,13 @@ Component.template = function (v, self) {
                     ></path>
                   </svg>
                 </a>
-                <a href="https://www.facebook.com/indigoff.design" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Facebook" className="soc">
+                <a
+                  href="https://www.facebook.com/indigoff.design"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Indigoff on Facebook"
+                  className="soc"
+                >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -2631,7 +2688,13 @@ Component.template = function (v, self) {
                     ></path>
                   </svg>
                 </a>
-                <a href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Spotify" className="soc">
+                <a
+                  href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Indigoff on Spotify"
+                  className="soc"
+                >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -3084,7 +3147,11 @@ Component.template = function (v, self) {
                   <span style={S("flex: 1 1 0")}></span>
                 </div>
               </header>
-              <div style={S("max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111")}>
+              <div
+                style={S(
+                  "max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111",
+                )}
+              >
                 <div style={S("text-align: center")}>
                   <h1
                     style={S(

@@ -110,7 +110,20 @@ Component.template = function (v, self) {
                 <span>{v.dwMenuLbl}</span>
               </button>
               <a href="/downloads" className="hd-dl" aria-label={v.T.k5}>
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
+                <svg
+                  className="hd-ico"
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path>
+                </svg>
                 <span className="hd-dl-lbl">{v.T.k5}</span>
               </a>
             </nav>
@@ -133,7 +146,10 @@ Component.template = function (v, self) {
                 "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
             >
-              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
+              <span
+                className="hd-lang"
+                style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}
+              >
                 <button
                   type="button"
                   onClick={v.setEn}
@@ -158,7 +174,9 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
-              <a href="/find-a-rep" className="hd-opt">{v.T.k6}</a>
+              <a href="/find-a-rep" className="hd-opt">
+                {v.T.k6}
+              </a>
             </div>
           </div>
         </header>
@@ -283,7 +301,10 @@ Component.template = function (v, self) {
             </ol>
           </div>
         </section>
-        <section id="designs" style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0")}>
+        <section
+          id="designs"
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 0")}
+        >
           <div style={S("text-align: center; margin: 0 auto 48px; max-width: 640px")}>
             <h2
               style={S(
@@ -332,7 +353,11 @@ Component.template = function (v, self) {
             ))}
           </div>
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: calc(140px * var(--vs)) var(--gutter) calc(160px * var(--vs)); text-align: center")}>
+        <section
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(140px * var(--vs)) var(--gutter) calc(160px * var(--vs)); text-align: center",
+          )}
+        >
           <h2
             style={S(
               "margin: 0 auto 16px; max-width: 720px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(32px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",

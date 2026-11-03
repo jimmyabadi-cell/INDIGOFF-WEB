@@ -571,7 +571,8 @@ Component.template = function (v, self) {
                 "flex: 1 1 260px; display: flex; align-items: center; justify-content: flex-end; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase",
               )}
             >
-              <span className="hd-lang"
+              <span
+                className="hd-lang"
                 style={S("margin-right: 24px; display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}
               >
                 <button
@@ -598,8 +599,26 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
-              <a href="/downloads" className="hd-dl" aria-label={v.T.k10} style={S("margin-right: 28px; color: #111111; text-decoration: none")}>
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
+              <a
+                href="/downloads"
+                className="hd-dl"
+                aria-label={v.T.k10}
+                style={S("margin-right: 28px; color: #111111; text-decoration: none")}
+              >
+                <svg
+                  className="hd-ico"
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path>
+                </svg>
                 <span className="hd-dl-lbl">{v.T.k10}</span>
               </a>
               <button
@@ -611,8 +630,23 @@ Component.template = function (v, self) {
                   "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: #111111; margin-right: 28px",
                 )}
               >
-                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg>
-                <span className="hd-list-lbl">{v.T.k14}{" ("}</span>
+                <svg
+                  className="hd-ico"
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path>
+                </svg>
+                <span className="hd-list-lbl">
+                  {v.T.k14}
+                  {" ("}
+                </span>
                 <span className="hd-list-n">{v.listCount}</span>
                 <span className="hd-list-lbl">{")"}</span>
               </button>
@@ -622,7 +656,10 @@ Component.template = function (v, self) {
             </div>
           </div>
         </header>
-        <section id="content" style={S("max-width: 1440px; margin: 0 auto; padding: 40px min(32px, var(--gutter)) 0; text-align: center")}>
+        <section
+          id="content"
+          style={S("max-width: 1440px; margin: 0 auto; padding: 40px min(32px, var(--gutter)) 0; text-align: center")}
+        >
           <h1
             style={S(
               "margin: 0 0 12px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(40px, 5vw, 64px); line-height: 1; letter-spacing: -0.04em",
@@ -743,7 +780,11 @@ Component.template = function (v, self) {
             </>
           ) : null}
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) min(32px, var(--gutter)) 0; text-align: center")}>
+        <section
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) min(32px, var(--gutter)) 0; text-align: center",
+          )}
+        >
           <p
             style={S(
               "margin: 0 0 28px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(32px, 3.6vw, 52px); letter-spacing: -0.04em",
@@ -770,7 +811,11 @@ Component.template = function (v, self) {
             </a>
           </div>
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) min(32px, var(--gutter)) calc(140px * var(--vs)); text-align: center")}>
+        <section
+          style={S(
+            "max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) min(32px, var(--gutter)) calc(140px * var(--vs)); text-align: center",
+          )}
+        >
           <h2
             style={S(
               "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -1352,7 +1397,11 @@ Component.template = function (v, self) {
                   <span style={S("flex: 1 1 0")}></span>
                 </div>
               </header>
-              <div style={S("max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111")}>
+              <div
+                style={S(
+                  "max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111",
+                )}
+              >
                 <div style={S("text-align: center")}>
                   <h1
                     style={S(

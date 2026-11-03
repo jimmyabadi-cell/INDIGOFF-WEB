@@ -1,29 +1,29 @@
 :root {
   /* Foreground */
-  --color-ink:        #111111;  /* texto principal */
-  --color-dark:       #3A3935;  /* encabezados oscuros */
-  --color-secondary:  #5E5A53;  /* texto secundario */
-  --color-muted:      #6B675F;  /* texto atenuado / UI inactivo */
-  --color-border:     #C9C4BA;  /* bordes y separadores */
+  --color-ink: #111111; /* texto principal */
+  --color-dark: #3a3935; /* encabezados oscuros */
+  --color-secondary: #5e5a53; /* texto secundario */
+  --color-muted: #6b675f; /* texto atenuado / UI inactivo */
+  --color-border: #c9c4ba; /* bordes y separadores */
 
   /* Background */
-  --color-white:      #FFFFFF;
-  --color-bg:         #F4F1EB;  /* fondo de página */
-  --color-surface:    #ECE9E4;  /* superficie / tarjeta */
-  --color-surface-2:  #EEEBE6;  /* superficie sutil */
-  --color-surface-3:  #F1EEE9;  /* superficie más clara */
+  --color-white: #ffffff;
+  --color-bg: #f4f1eb; /* fondo de página */
+  --color-surface: #ece9e4; /* superficie / tarjeta */
+  --color-surface-2: #eeebe6; /* superficie sutil */
+  --color-surface-3: #f1eee9; /* superficie más clara */
 
   /* Brand accent — púrpura Indigoff */
-  --color-accent:       #645DC5;  /* acento principal */
-  --color-accent-dark:  #1E125C;  /* acento oscuro */
-  --color-accent-light: #B5B7DD;  /* acento claro / tinte */
+  --color-accent: #645dc5; /* acento principal */
+  --color-accent-dark: #1e125c; /* acento oscuro */
+  --color-accent-light: #b5b7dd; /* acento claro / tinte */
 
   /* Layout — escalan por breakpoint */
-  --gutter: 40px;   /* margen lateral de contenedores */
-  --vs: 1;          /* escala del espaciado vertical entre secciones */
-  --mh: 1;          /* escala de alturas de imágenes grandes */
-  --hero-h: 900px;  /* alto del hero de la home */
-  --hd-h: 89px;     /* alto del header sticky */
+  --gutter: 40px; /* margen lateral de contenedores */
+  --vs: 1; /* escala del espaciado vertical entre secciones */
+  --mh: 1; /* escala de alturas de imágenes grandes */
+  --hero-h: 900px; /* alto del hero de la home */
+  --hd-h: 89px; /* alto del header sticky */
 }
 
 /* Tablet */
