@@ -4,7 +4,7 @@ import { CloseIcon } from "./icons.jsx";
 import "./layout.css";
 
 /**
- * Menú lateral (drawer). El estado y los textos vienen de DCLogic (`v.menuOn`, `v.dwCats`, ...).
+ * Menú lateral (drawer). El estado y los textos vienen de usePageChrome (`v.menuOn`, `v.dwCats`, ...).
  *
  * @param {object} props
  * @param {object} props.v       View model de la página.

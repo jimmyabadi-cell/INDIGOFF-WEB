@@ -32,8 +32,7 @@ export default [
     rules: {
       // El acceso a storage/DOM va en `try {} catch (e) {}` a propósito (modo privado, previews).
       "no-empty": ["error", { allowEmptyCatch: true }],
-      // Las plantillas de página comparten la firma `(v, self)` aunque no usen `self`.
-      "no-unused-vars": ["error", { caughtErrors: "none", argsIgnorePattern: "^(self|_)" }],
+      "no-unused-vars": ["error", { caughtErrors: "none", argsIgnorePattern: "^_" }],
     },
   },
 ];

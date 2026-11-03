@@ -1,5 +1,10 @@
-import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import React, { useEffect, useRef } from "react";
+import { S } from "../../lib/dc.js";
+import { listVals, saveVals } from "../../lib/savedList.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { useMergeState } from "../../hooks/useMergeState.js";
+import { useSavedList } from "../../hooks/useSavedList.js";
+import { useScrollLock } from "../../hooks/useScrollLock.js";
 import "./CollectionPage.css";
 
 const I18N_EN = {
@@ -42,474 +47,364 @@ function U(x) {
   return !x ? "" : x.indexOf("/") >= 0 ? x : "/_blob/" + x;
 }
 
-const LKEY = "indigoff_list";
-function listGet() {
-  try {
-    const v = JSON.parse(window.localStorage.getItem(LKEY) || "null");
-    if (Array.isArray(v)) return v;
-  } catch (e) {}
-  return (typeof window !== "undefined" && window.__indigoffList) || [];
+const EMPTY = { sub: null, sel: -1, zi: null, listOpen: false, coll: "" };
+
+/** Sin producto abierto siempre hay una subcategoría activa (la primera por defecto). */
+function normalize(st) {
+  return (st.sub === null || st.sub < 0) && !(st.sel >= 0) ? { ...st, sub: 0 } : st;
 }
-function listSet(a) {
-  try {
-    window.localStorage.setItem(LKEY, JSON.stringify(a));
-  } catch (e) {}
-  try {
-    window.__indigoffList = a;
-  } catch (e) {}
-}
-function listHasId(id) {
-  return listGet().some(function (x) {
-    return x.id === id;
+
+/** Todos los productos de una categoría, sin repetir, en el orden de sus subcategorías. */
+function allProducts(par) {
+  const al = [];
+  par.subs.forEach(function (k3) {
+    COLS[k3].products.forEach(function (x) {
+      if (al.indexOf(x) < 0) al.push(x);
+    });
   });
+  return al;
 }
-function listToggle(item) {
-  const a = listGet();
-  const i = a.findIndex(function (x) {
-    return x.id === item.id;
+
+/** Estado según el hash: `#baffles` abre la subcategoría, `#p=slug` abre el producto. */
+function stateFromHash(key) {
+  const par = PARENTS[key];
+  const out = { sub: null, sel: -1, zi: null };
+  try {
+    const hk = (window.location.hash || "").slice(1);
+    const hi = par.subs.indexOf(hk);
+    if (hi >= 0) out.sub = hi;
+    if (hk.indexOf("p=") === 0) {
+      const pi = allProducts(par).indexOf(hk.slice(2));
+      if (pi >= 0) {
+        out.sub = -1;
+        out.sel = pi;
+      }
+    }
+  } catch (e) {}
+  return out;
+}
+
+/** Consume la apertura pendiente que deja el menú lateral (ver ifoSetPending en lib/nav.js). */
+function takePendingOpen(key) {
+  try {
+    const raw = window.localStorage.getItem("indigoff_open"),
+      po = raw ? JSON.parse(raw) : window.__indigoffOpen || null;
+    if (!po || po.col !== key || Date.now() - po.t >= 120000) return null;
+    window.localStorage.removeItem("indigoff_open");
+    try {
+      window.__indigoffOpen = null;
+    } catch (e) {}
+    const pp = PARENTS[key];
+    if (po.slug) {
+      const pi = allProducts(pp).indexOf(po.slug);
+      if (pi >= 0) return { sub: -1, sel: pi, zi: null, listOpen: false };
+    } else if (po.sub) {
+      const si2 = pp.subs.indexOf(po.sub);
+      if (si2 >= 0) return { sub: si2, sel: -1, zi: null };
+    } else if (po.reset) {
+      return { sub: -1, sel: -1, zi: null, coll: "", listOpen: false };
+    }
+  } catch (e) {}
+  return null;
+}
+
+export default function CollectionPage({ col = "ceilings" }) {
+  const key = PARENTS[col] ? col : "ceilings";
+  const [st, setSt] = useMergeState(
+    () => normalize({ ...EMPTY, ...stateFromHash(key), ...(takePendingOpen(key) || {}) }),
+    normalize,
+  );
+  const list = useSavedList();
+  const onKey = useRef(null);
+  const { lang, chrome } = usePageChrome(I18N_EN);
+
+  useEffect(() => {
+    const applyPending = () => {
+      const patch = takePendingOpen(key);
+      if (patch) setSt(patch);
+    };
+    const onHash = () => setSt(stateFromHash(key));
+    window.addEventListener("indigoff-open", applyPending);
+    window.addEventListener("storage", applyPending);
+    window.addEventListener("focus", applyPending);
+    window.addEventListener("hashchange", onHash);
+    return () => {
+      window.removeEventListener("indigoff-open", applyPending);
+      window.removeEventListener("storage", applyPending);
+      window.removeEventListener("focus", applyPending);
+      window.removeEventListener("hashchange", onHash);
+    };
+  }, [key, setSt]);
+
+  useEffect(() => {
+    const handler = (e) => onKey.current && onKey.current(e);
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  const vals = collectionVals({ state: st, setState: setSt }, key, list, onKey);
+  useScrollLock(vals.selOn || st.listOpen);
+  return template({ ...localize(vals, lang), ...chrome });
+}
+
+function collectionVals(self, key, list, onKey) {
+  const par = PARENTS[key];
+  const si = self.state.sub !== null ? self.state.sub : -1;
+  const allP = allProducts(par);
+  const sk = si < 0 ? "__all" : par.subs[si];
+  let d = si < 0 ? { desc: par.desc, products: allP, small: true, img: "" } : COLS[sk];
+  const cdefs = PCOLLS[key] || [];
+  const collOf = function (pk) {
+    for (let ci = 0; ci < cdefs.length; ci++) {
+      if (pk.indexOf(cdefs[ci].pre) === 0) return cdefs[ci].name;
+    }
+    return "";
+  };
+  const present = cdefs.filter(function (cd) {
+    return d.products.some(function (pk) {
+      return collOf(pk) === cd.name;
+    });
   });
-  if (i >= 0) a.splice(i, 1);
-  else a.push(item);
-  listSet(a);
-}
-function listVals(self) {
-  const a = listGet();
-  const body =
-    "My%20Indigoff%20list%3A%0D%0A%0D%0A" +
-    a
-      .map(function (x) {
-        return encodeURIComponent("- " + x.name + (x.kind ? " (" + x.kind + ")" : ""));
-      })
-      .join("%0D%0A");
-  return {
-    listCount: a.length,
-    listOn: !!self.state.listOpen,
-    listEmpty: a.length === 0,
-    listHas: a.length > 0,
-    listMail: "mailto:?subject=" + encodeURIComponent("My Indigoff list") + "&body=" + body,
+  let cur = self.state.coll || "";
+  const hasColls = present.length > 1;
+  if (
+    !hasColls ||
+    !present.some(function (cd) {
+      return cd.name === cur;
+    })
+  )
+    cur = "";
+  if (cur)
+    d = Object.assign({}, d, {
+      products: d.products.filter(function (pk) {
+        return collOf(pk) === cur;
+      }),
+    });
+  const colls = hasColls
+    ? [{ name: "", label: "All" }]
+        .concat(
+          present.map(function (cd) {
+            return { name: cd.name, label: cd.name };
+          }),
+        )
+        .map(function (cd) {
+          const on = cd.name === cur;
+          return {
+            label: cd.label,
+            on: on,
+            cls: "cl-b" + (on ? " on" : ""),
+            pick: function () {
+              self.setState({ coll: cd.name, sel: -1, zi: null });
+            },
+          };
+        })
+    : [];
+  const lab = function (k) {
+    return k === "__all" ? "All" : par.labels[k] || COLS[k].name;
+  };
+  const c = { name: par.name, tag: par.tag, desc: par.desc, hasImg: !!par.img, img: U(par.img), alt: par.alt };
+  const tabs = par.subs.map(function (k, i0) {
+    const i = i0;
+    const on = i === si;
+    return {
+      label: lab(k),
+      on: on,
+      style:
+        "min-height: 48px; padding: 0 0 4px; border: 0; border-bottom: 2px solid " +
+        (on ? "#645DC5" : "transparent") +
+        "; margin-bottom: -1px; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: " +
+        (on ? "#111111" : "#6B675F"),
+      pick: function () {
+        self.setState({ sub: i, sel: -1, coll: "" });
+      },
+    };
+  });
+  const s = {
+    label: lab(sk),
+    desc: d.desc,
+    sub: d.sub || "",
+    hasSub: !!d.sub,
+    hasProducts: d.products.length > 0,
+    noProducts: d.products.length === 0,
+    feat: U(d.img),
+    hasFeat: !!d.img,
+    noFeat: !d.img,
+    gridStyle:
+      "display: grid; grid-template-columns: repeat(auto-fill, minmax(min(" +
+      (d.small ? "260px" : "320px") +
+      ", 100%), 1fr)); gap: 40px 8px",
+    tileStyle:
+      "min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: inherit; color: #111111",
+    imgStyle: "display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover",
+    phStyle: "display: block; width: 100%; aspect-ratio: 4 / 5; background: #EEEBE6",
+    products: d.products.map(function (k, i) {
+      const p = P[k];
+      return {
+        name: p[0],
+        hasImg: !!p[2],
+        noImg: !p[2],
+        img: U(p[2]),
+        alt: p[0] + ": " + p[3],
+        pick: function () {
+          self.setState({ sel: i });
+        },
+      };
+    }),
+  };
+  const n = d.products.length;
+  const xi = self.state.sel;
+  const st0 = self.state;
+  let sel = {
+    title: "",
+    label: "",
+    hasImg: false,
+    img: "",
+    hasImg2: false,
+    img2: "",
+    alt: "",
+    desc: "",
+    dl: [],
+    hasDl: false,
+    noDl: true,
+    gal: [],
+    galList: [],
+    hasGal: false,
+    galOne: false,
+    oneImg: "",
+    oneName: "",
+  };
+  let prevName = "";
+  let nextName = "";
+  if (xi >= 0 && xi < n) {
+    const k = d.products[xi];
+    const p = P[k];
+    const info = SPECIAL[k] || FAM[p[1]] || { d: "" };
+    sel = {
+      title: p[0],
+      label: si < 0 ? par.name : par.name + " · " + lab(sk),
+      hasImg: !!p[2],
+      img: U(p[4] || p[2]),
+      hasImg2: !!p[5],
+      img2: U(p[5]),
+      alt: p[0] + ": " + p[3],
+      desc: info.d,
+    };
+    const fl = DL[k] || [];
+    sel.dl = fl.map(function (f) {
+      return { fmt: f[0], name: f[1], size: f[2], href: f[3] };
+    });
+    sel.hasDl = fl.length > 0;
+    sel.noDl = fl.length === 0;
+    const gl = GAL[k] || [];
+    sel.galList = gl;
+    sel.hasGal = gl.length > 0;
+    sel.galOne = false;
+    sel.oneImg = sel.galOne ? gl[0].img : "";
+    sel.oneName = sel.galOne ? gl[0].name : "";
+    if (gl.length > 0) {
+      sel.hasImg = false;
+      sel.hasImg2 = false;
+    }
+    sel.gal = gl.map(function (g, gi) {
+      return {
+        name: g.name,
+        img: g.img,
+        pick: function () {
+          self.setState({ zi: gi });
+        },
+      };
+    });
+    prevName = P[d.products[(xi - 1 + n) % n]][0];
+    nextName = P[d.products[(xi + 1) % n]][0];
+  }
+  const others = PORDER.filter(function (k2) {
+    return k2 !== key;
+  }).map(function (k2) {
+    return { name: PARENTS[k2].name, href: "/" + PARENTS[k2].file.toLowerCase() };
+  });
+  const zOpenC = st0.zi !== null && sel.galList.length > 0,
+    selOpen = xi >= 0 && xi < n;
+  onKey.current = function (e) {
+    const k = e.key;
+    const gl2 = sel.galList.length;
+    if (zOpenC) {
+      if (k === "Escape") self.setState({ zi: null });
+      else if (k === "ArrowLeft") self.setState({ zi: (st0.zi - 1 + gl2) % gl2 });
+      else if (k === "ArrowRight") self.setState({ zi: (st0.zi + 1) % gl2 });
+      return;
+    }
+    if (st0.listOpen) {
+      if (k === "Escape") self.setState({ listOpen: false });
+      return;
+    }
+    if (selOpen) {
+      if (k === "Escape") self.setState({ sel: -1, zi: null });
+      else if (k === "ArrowLeft") self.setState({ sel: (xi - 1 + n) % n, zi: null });
+      else if (k === "ArrowRight") self.setState({ sel: (xi + 1) % n, zi: null });
+    }
+  };
+  let pItem = null;
+  let zItem = null;
+  if (xi >= 0 && xi < n) {
+    const pk0 = d.products[xi];
+    pItem = { id: "p:" + pk0, name: P[pk0][0], kind: par.name, img: U(P[pk0][2]) };
+  }
+  if (st0.zi !== null && sel.galList[st0.zi])
+    zItem = {
+      id: "img:" + sel.galList[st0.zi].img,
+      name: sel.galList[st0.zi].name,
+      kind: sel.title,
+      img: sel.galList[st0.zi].img,
+    };
+  const zs = saveVals(list, "zSave", zItem, "Save");
+  if (zItem && list.has(zItem.id)) zs.zSaveLbl = "Saved";
+  const ui = {
+    open: !!st0.listOpen,
     openList: function () {
       self.setState({ listOpen: true, zi: null });
     },
     closeList: function () {
       self.setState({ listOpen: false });
     },
-    clearList: function () {
-      listSet([]);
-      self.setState({ lv: Date.now() });
+  };
+  return Object.assign(listVals(list, ui), saveVals(list, "pSave", pItem), zs, {
+    c: c,
+    s: s,
+    tabs: tabs,
+    colls: colls,
+    hasColls: hasColls,
+    collLabel: "Collection",
+    others: others,
+    sel: sel,
+    selOn: xi >= 0 && xi < n,
+    prevName: prevName,
+    nextName: nextName,
+    zoomOn: st0.zi !== null && sel.galList.length > 0,
+    zoom: (st0.zi !== null && sel.galList[st0.zi]) || { name: "", img: "" },
+    closeZoom: function () {
+      self.setState({ zi: null });
     },
-    listItems: a.map(function (x) {
-      return {
-        name: x.name,
-        kind: x.kind || "",
-        img: x.img || "",
-        remove: function () {
-          listToggle(x);
-          self.setState({ lv: Date.now() });
-        },
-      };
-    }),
-  };
-}
-function saveVals(self, pre, item, addLbl) {
-  const on = !!item && listHasId(item.id);
-  const o = {};
-  o[pre + "On"] = on ? "true" : "false";
-  o[pre + "Lbl"] = on ? "Saved to my list" : addLbl || "Add to my list";
-  o[pre + "Is"] = on;
-  o[pre + "Not"] = !on;
-  o[pre + "Bg"] = on ? "#111111" : "transparent";
-  o[pre + "Fg"] = on ? "#FFFFFF" : "#111111";
-  o[pre + "Toggle"] = function () {
-    if (item) {
-      listToggle(item);
-      self.setState({ lv: Date.now() });
-    }
-  };
-  return o;
-}
-class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    this.state = { sub: null, sel: -1, zi: null, listOpen: false, lv: 0 };
-    const self0 = this;
-    try {
-      window.addEventListener("keydown", function (e) {
-        if (self0._onKey) self0._onKey(e);
-      });
-    } catch (e) {}
-  }
-  _rv() {
-    const self = this;
-    const key = PARENTS[this.props.col] ? this.props.col : "ceilings";
-    const par = PARENTS[key];
-    if (this.state.sub === null && !this._hashDone) {
-      this._hashDone = true;
-      try {
-        const hk = (window.location.hash || "").slice(1);
-        const hi = PARENTS[PARENTS[this.props.col] ? this.props.col : "ceilings"].subs.indexOf(hk);
-        if (hi >= 0) this.state.sub = hi;
-        if (hk.indexOf("p=") === 0) {
-          const pp = PARENTS[PARENTS[this.props.col] ? this.props.col : "ceilings"];
-          const al = [];
-          pp.subs.forEach(function (k3) {
-            COLS[k3].products.forEach(function (x) {
-              if (al.indexOf(x) < 0) al.push(x);
-            });
-          });
-          const pi = al.indexOf(hk.slice(2));
-          if (pi >= 0) {
-            this.state.sub = -1;
-            this.state.sel = pi;
-          }
-        }
-      } catch (e) {}
-    }
-    let si =
-      this.state.sub !== null
-        ? this.state.sub
-        : this.props.sub !== undefined && this.props.sub !== null
-          ? Math.min(Math.max(this.props.sub, 0), par.subs.length - 1)
-          : -1;
-    if (si < 0 && !(this.state.sel >= 0)) {
-      si = 0;
-      this.state.sub = 0;
-    }
-    const allP = [];
-    par.subs.forEach(function (k) {
-      COLS[k].products.forEach(function (pk) {
-        if (allP.indexOf(pk) < 0) allP.push(pk);
-      });
-    });
-    const sk = si < 0 ? "__all" : par.subs[si];
-    let d = si < 0 ? { desc: par.desc, products: allP, small: true, img: "" } : COLS[sk];
-    const cdefs = PCOLLS[key] || [];
-    const collOf = function (pk) {
-      for (let ci = 0; ci < cdefs.length; ci++) {
-        if (pk.indexOf(cdefs[ci].pre) === 0) return cdefs[ci].name;
-      }
-      return "";
-    };
-    const present = cdefs.filter(function (cd) {
-      return d.products.some(function (pk) {
-        return collOf(pk) === cd.name;
-      });
-    });
-    let cur = this.state.coll || "";
-    const hasColls = present.length > 1;
-    if (
-      !hasColls ||
-      !present.some(function (cd) {
-        return cd.name === cur;
-      })
-    )
-      cur = "";
-    if (cur)
-      d = Object.assign({}, d, {
-        products: d.products.filter(function (pk) {
-          return collOf(pk) === cur;
-        }),
-      });
-    const colls = hasColls
-      ? [{ name: "", label: "All" }]
-          .concat(
-            present.map(function (cd) {
-              return { name: cd.name, label: cd.name };
-            }),
-          )
-          .map(function (cd) {
-            const on = cd.name === cur;
-            return {
-              label: cd.label,
-              on: on,
-              cls: "cl-b" + (on ? " on" : ""),
-              pick: function () {
-                self.setState({ coll: cd.name, sel: -1, zi: null });
-              },
-            };
-          })
-      : [];
-    const lab = function (k) {
-      return k === "__all" ? "All" : par.labels[k] || COLS[k].name;
-    };
-    const c = { name: par.name, tag: par.tag, desc: par.desc, hasImg: !!par.img, img: U(par.img), alt: par.alt };
-    const tabs = par.subs.map(function (k, i0) {
-      const i = i0;
-      const on = i === si;
-      return {
-        label: lab(k),
-        on: on,
-        style:
-          "min-height: 48px; padding: 0 0 4px; border: 0; border-bottom: 2px solid " +
-          (on ? "#645DC5" : "transparent") +
-          "; margin-bottom: -1px; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: " +
-          (on ? "#111111" : "#6B675F"),
-        pick: function () {
-          self.setState({ sub: i, sel: -1, coll: "" });
-        },
-      };
-    });
-    const s = {
-      label: lab(sk),
-      desc: d.desc,
-      sub: d.sub || "",
-      hasSub: !!d.sub,
-      hasProducts: d.products.length > 0,
-      noProducts: d.products.length === 0,
-      feat: U(d.img),
-      hasFeat: !!d.img,
-      noFeat: !d.img,
-      gridStyle:
-        "display: grid; grid-template-columns: repeat(auto-fill, minmax(min(" +
-        (d.small ? "260px" : "320px") +
-        ", 100%), 1fr)); gap: 40px 8px",
-      tileStyle:
-        "min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: inherit; color: #111111",
-      imgStyle: "display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover",
-      phStyle: "display: block; width: 100%; aspect-ratio: 4 / 5; background: #EEEBE6",
-      products: d.products.map(function (k, i) {
-        const p = P[k];
-        return {
-          name: p[0],
-          hasImg: !!p[2],
-          noImg: !p[2],
-          img: U(p[2]),
-          alt: p[0] + ": " + p[3],
-          pick: function () {
-            self.setState({ sel: i });
-          },
-        };
-      }),
-    };
-    const n = d.products.length;
-    const xi = this.state.sel;
-    const st0 = this.state;
-    let sel = {
-      title: "",
-      label: "",
-      hasImg: false,
-      img: "",
-      hasImg2: false,
-      img2: "",
-      alt: "",
-      desc: "",
-      dl: [],
-      hasDl: false,
-      noDl: true,
-      gal: [],
-      galList: [],
-      hasGal: false,
-      galOne: false,
-      oneImg: "",
-      oneName: "",
-    };
-    let prevName = "";
-    let nextName = "";
-    if (xi >= 0 && xi < n) {
-      const k = d.products[xi];
-      const p = P[k];
-      const info = SPECIAL[k] || FAM[p[1]] || { d: "" };
-      sel = {
-        title: p[0],
-        label: si < 0 ? par.name : par.name + " · " + lab(sk),
-        hasImg: !!p[2],
-        img: U(p[4] || p[2]),
-        hasImg2: !!p[5],
-        img2: U(p[5]),
-        alt: p[0] + ": " + p[3],
-        desc: info.d,
-      };
-      const fl = DL[k] || [];
-      sel.dl = fl.map(function (f) {
-        return { fmt: f[0], name: f[1], size: f[2], href: f[3] };
-      });
-      sel.hasDl = fl.length > 0;
-      sel.noDl = fl.length === 0;
-      const gl = GAL[k] || [];
-      sel.galList = gl;
-      sel.hasGal = gl.length > 0;
-      sel.galOne = false;
-      sel.oneImg = sel.galOne ? gl[0].img : "";
-      sel.oneName = sel.galOne ? gl[0].name : "";
-      if (gl.length > 0) {
-        sel.hasImg = false;
-        sel.hasImg2 = false;
-      }
-      sel.gal = gl.map(function (g, gi) {
-        return {
-          name: g.name,
-          img: g.img,
-          pick: function () {
-            self.setState({ zi: gi });
-          },
-        };
-      });
-      prevName = P[d.products[(xi - 1 + n) % n]][0];
-      nextName = P[d.products[(xi + 1) % n]][0];
-    }
-    const others = PORDER.filter(function (k2) {
-      return k2 !== key;
-    }).map(function (k2) {
-      return { name: PARENTS[k2].name, href: "/" + PARENTS[k2].file.toLowerCase() };
-    });
-    const zOpenC = st0.zi !== null && sel.galList.length > 0,
-      selOpen = xi >= 0 && xi < n;
-    self._onKey = function (e) {
-      const k = e.key;
-      const gl2 = sel.galList.length;
-      if (zOpenC) {
-        if (k === "Escape") self.setState({ zi: null });
-        else if (k === "ArrowLeft") self.setState({ zi: (st0.zi - 1 + gl2) % gl2 });
-        else if (k === "ArrowRight") self.setState({ zi: (st0.zi + 1) % gl2 });
-        return;
-      }
-      if (st0.listOpen) {
-        if (k === "Escape") self.setState({ listOpen: false });
-        return;
-      }
-      if (selOpen) {
-        if (k === "Escape") self.setState({ sel: -1, zi: null });
-        else if (k === "ArrowLeft") self.setState({ sel: (xi - 1 + n) % n, zi: null });
-        else if (k === "ArrowRight") self.setState({ sel: (xi + 1) % n, zi: null });
-      }
-    };
-    try {
-      document.body.style.overflow = selOpen || st0.listOpen ? "hidden" : "";
-    } catch (e) {}
-    let pItem = null;
-    let zItem = null;
-    if (xi >= 0 && xi < n) {
-      const pk0 = d.products[xi];
-      pItem = { id: "p:" + pk0, name: P[pk0][0], kind: par.name, img: U(P[pk0][2]) };
-    }
-    if (st0.zi !== null && sel.galList[st0.zi])
-      zItem = {
-        id: "img:" + sel.galList[st0.zi].img,
-        name: sel.galList[st0.zi].name,
-        kind: sel.title,
-        img: sel.galList[st0.zi].img,
-      };
-    const zs = saveVals(self, "zSave", zItem, "Save");
-    if (zItem && listHasId(zItem.id)) zs.zSaveLbl = "Saved";
-    return Object.assign(listVals(self), saveVals(self, "pSave", pItem), zs, {
-      c: c,
-      s: s,
-      tabs: tabs,
-      colls: colls,
-      hasColls: hasColls,
-      collLabel: "Collection",
-      others: others,
-      sel: sel,
-      selOn: xi >= 0 && xi < n,
-      prevName: prevName,
-      nextName: nextName,
-      zoomOn: st0.zi !== null && sel.galList.length > 0,
-      zoom: (st0.zi !== null && sel.galList[st0.zi]) || { name: "", img: "" },
-      closeZoom: function () {
-        self.setState({ zi: null });
-      },
-      zoomPrev: function () {
-        const n2 = sel.galList.length;
-        self.setState({ zi: (st0.zi - 1 + n2) % n2 });
-      },
-      zoomNext: function () {
-        const n2 = sel.galList.length;
-        self.setState({ zi: (st0.zi + 1) % n2 });
-      },
-      close: function () {
-        self.setState({ sel: -1, zi: null });
-      },
-      prev: function () {
-        self.setState({ sel: (xi - 1 + n) % n, zi: null });
-      },
-      next: function () {
-        self.setState({ sel: (xi + 1) % n, zi: null });
-      },
-    });
-  }
+    zoomPrev: function () {
+      const n2 = sel.galList.length;
+      self.setState({ zi: (st0.zi - 1 + n2) % n2 });
+    },
+    zoomNext: function () {
+      const n2 = sel.galList.length;
+      self.setState({ zi: (st0.zi + 1) % n2 });
+    },
+    close: function () {
+      self.setState({ sel: -1, zi: null });
+    },
+    prev: function () {
+      self.setState({ sel: (xi - 1 + n) % n, zi: null });
+    },
+    next: function () {
+      self.setState({ sel: (xi + 1) % n, zi: null });
+    },
+  });
 }
 
-Component.I18N_EN = I18N_EN;
-
-Component.prototype.renderVals = function () {
-  const selfp = this;
-  if (!selfp._ifoInit) {
-    selfp._ifoInit = true;
-    try {
-      const hp = function () {
-        selfp.setState({ _ifo: Date.now() });
-      };
-      window.addEventListener("indigoff-open", hp);
-      window.addEventListener("storage", hp);
-      window.addEventListener("focus", hp);
-      window.addEventListener("hashchange", function () {
-        selfp._hashDone = false;
-        selfp.state.sub = null;
-        hp();
-      });
-    } catch (e) {}
-    try {
-      document.addEventListener(
-        "click",
-        function (e) {
-          const a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-          if (!a) return;
-          const h = a.getAttribute("href") || "";
-          if (
-            /(^|\/)(Main\.dc\.html|Downloads\.dc\.html|FindRep\.dc\.html)/.test(h) ||
-            /^\/?(downloads|find-a-rep)?$/.test(h)
-          ) {
-            selfp.setState({ sub: -1, sel: -1, zi: null, coll: "", listOpen: false });
-          }
-        },
-        true,
-      );
-    } catch (e) {}
-  }
-  try {
-    const raw = window.localStorage.getItem("indigoff_open"),
-      po = raw ? JSON.parse(raw) : window.__indigoffOpen || null;
-    const colKey = PARENTS[selfp.props.col] ? selfp.props.col : "ceilings";
-    if (po && po.col === colKey && Date.now() - po.t < 120000) {
-      window.localStorage.removeItem("indigoff_open");
-      try {
-        window.__indigoffOpen = null;
-      } catch (e) {}
-      const pp = PARENTS[colKey];
-      if (po.slug) {
-        const al = [];
-        pp.subs.forEach(function (k3) {
-          COLS[k3].products.forEach(function (x) {
-            if (al.indexOf(x) < 0) al.push(x);
-          });
-        });
-        const pi = al.indexOf(po.slug);
-        if (pi >= 0) {
-          selfp.state.sub = -1;
-          selfp.state.sel = pi;
-          selfp.state.zi = null;
-          selfp.state.listOpen = false;
-        }
-      } else if (po.sub) {
-        const si2 = pp.subs.indexOf(po.sub);
-        if (si2 >= 0) {
-          selfp.state.sub = si2;
-          selfp.state.sel = -1;
-          selfp.state.zi = null;
-        }
-      } else if (po.reset) {
-        selfp.state.sub = -1;
-        selfp.state.sel = -1;
-        selfp.state.zi = null;
-        selfp.state.coll = "";
-        selfp.state.listOpen = false;
-      }
-    }
-  } catch (e) {}
-  return DCLogic.prototype.renderVals.call(this);
-};
-
-Component.defaultProps = { col: "ceilings" };
-Component.template = function (v, self) {
+function template(v) {
   return (
     <>
       <div
@@ -1384,6 +1279,4 @@ Component.template = function (v, self) {
       </div>
     </>
   );
-};
-
-export default Component;
+}

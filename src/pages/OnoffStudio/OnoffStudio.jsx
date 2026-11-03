@@ -1,6 +1,7 @@
 import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
 import "./OnoffStudio.css";
 
 const I18N_EN = {
@@ -29,42 +30,37 @@ const ON_SV = D.sv;
 const ON_STEPS = D.steps;
 const ON_DES = D.designs;
 
-class Component extends DCLogic {
-  constructor(p) {
-    super(p);
-    this.state = {};
-  }
-  _rv() {
-    const on = Object.assign({}, ON_TXT);
-    on.services = ON_SV.map(function (x) {
-      return { n: x[0], t: x[1], d: x[2] };
-    });
-    on.steps = ON_STEPS.map(function (x) {
-      return { n: x[0], t: x[1], d: x[2] };
-    });
-    on.designs = ON_DES.map(function (d) {
-      var href = "/lights#p=" + d.slug;
-      return {
-        name: d.name,
-        kind: d.kind,
-        img: d.img,
-        href: href,
-        go: function () {
-          ifoSetPending(href);
-        },
-      };
-    });
-    return { on: on };
-  }
+const NAV = { DW_CATS, DW_FIN, ifoSetPending };
+
+function studioVals() {
+  const on = Object.assign({}, ON_TXT);
+  on.services = ON_SV.map(function (x) {
+    return { n: x[0], t: x[1], d: x[2] };
+  });
+  on.steps = ON_STEPS.map(function (x) {
+    return { n: x[0], t: x[1], d: x[2] };
+  });
+  on.designs = ON_DES.map(function (d) {
+    var href = "/lights#p=" + d.slug;
+    return {
+      name: d.name,
+      kind: d.kind,
+      img: d.img,
+      href: href,
+      go: function () {
+        ifoSetPending(href);
+      },
+    };
+  });
+  return { on: on };
 }
 
-Component.I18N_EN = I18N_EN;
-Component.DW_CATS = DW_CATS;
-Component.DW_FIN = DW_FIN;
-Component.ifoSetPending = ifoSetPending;
+export default function OnoffStudio() {
+  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
+  return template({ ...localize(studioVals(), lang), ...chrome });
+}
 
-Component.defaultProps = {};
-Component.template = function (v, self) {
+function template(v) {
   return (
     <>
       <div
@@ -286,6 +282,4 @@ Component.template = function (v, self) {
       </div>
     </>
   );
-};
-
-export default Component;
+}

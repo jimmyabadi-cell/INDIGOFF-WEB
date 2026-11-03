@@ -1,6 +1,7 @@
-import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import React, { useState } from "react";
+import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
 import "./Downloads.css";
 
 const I18N_EN = {
@@ -47,88 +48,86 @@ function chipStyle(on) {
   );
 }
 
-class Component extends DCLogic {
-  constructor(p) {
-    super(p);
-    this.state = { cat: "All", fmt: "All", q: "" };
-  }
-  _rv() {
-    const self = this;
-    const st = this.state;
-    const q = (st.q || "").trim().toLowerCase();
-    const groups = [];
-    let total = 0,
-      files = 0;
-    CATS.slice(1).forEach(function (c) {
-      if (st.cat !== "All" && st.cat !== c) return;
-      const items = [];
-      D.forEach(function (p) {
-        if (p.c !== c) return;
-        if (q && p.n.toLowerCase().indexOf(q) < 0 && p.s.toLowerCase().indexOf(q) < 0) return;
-        const fl = p.f.filter(function (f) {
-          return st.fmt === "All" || f[0] === st.fmt;
-        });
-        if (!fl.length) return;
-        files += fl.length;
-        items.push({
-          name: p.n,
-          sub: p.s,
-          href: p.href,
-          img: p.img,
-          hasImg: !!p.img,
-          noImg: !p.img,
-          files: fl.map(function (f) {
-            return { fmt: f[0] === "REVIT" ? "Revit" : f[0], name: f[1], size: f[2], href: f[3] };
-          }),
-        });
-      });
-      if (items.length) {
-        total += items.length;
-        groups.push({ name: c, count: items.length + (items.length === 1 ? " product" : " products"), items: items });
-      }
-    });
-    return {
-      groups: groups,
-      empty: groups.length === 0,
-      totalProducts: total,
-      totalFiles: files,
-      q: st.q,
-      cats: CATS.map(function (c) {
-        const on = st.cat === c;
-        return {
-          label: c,
-          on: on ? "true" : "false",
-          style: tabStyle(on),
-          pick: function () {
-            self.setState({ cat: c });
-          },
-        };
-      }),
-      fmts: FMTS.map(function (f) {
-        const on = st.fmt === f;
-        return {
-          label: FMT_LABEL[f],
-          on: on ? "true" : "false",
-          style: chipStyle(on),
-          pick: function () {
-            self.setState({ fmt: f });
-          },
-        };
-      }),
-      onQuery: function (e) {
-        self.setState({ q: e.target.value });
-      },
-    };
-  }
+const NAV = { DW_CATS, DW_FIN, ifoSetPending };
+
+export default function Downloads() {
+  const [cat, setCat] = useState("All");
+  const [fmt, setFmt] = useState("All");
+  const [query, setQuery] = useState("");
+  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
+  const vals = downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery });
+  return template({ ...localize(vals, lang), ...chrome });
 }
 
-Component.I18N_EN = I18N_EN;
-Component.DW_CATS = DW_CATS;
-Component.DW_FIN = DW_FIN;
-Component.ifoSetPending = ifoSetPending;
+function downloadsVals({ cat, fmt, query, setCat, setFmt, setQuery }) {
+  const st = { cat, fmt, q: query };
+  const q = (st.q || "").trim().toLowerCase();
+  const groups = [];
+  let total = 0,
+    files = 0;
+  CATS.slice(1).forEach(function (c) {
+    if (st.cat !== "All" && st.cat !== c) return;
+    const items = [];
+    D.forEach(function (p) {
+      if (p.c !== c) return;
+      if (q && p.n.toLowerCase().indexOf(q) < 0 && p.s.toLowerCase().indexOf(q) < 0) return;
+      const fl = p.f.filter(function (f) {
+        return st.fmt === "All" || f[0] === st.fmt;
+      });
+      if (!fl.length) return;
+      files += fl.length;
+      items.push({
+        name: p.n,
+        sub: p.s,
+        href: p.href,
+        img: p.img,
+        hasImg: !!p.img,
+        noImg: !p.img,
+        files: fl.map(function (f) {
+          return { fmt: f[0] === "REVIT" ? "Revit" : f[0], name: f[1], size: f[2], href: f[3] };
+        }),
+      });
+    });
+    if (items.length) {
+      total += items.length;
+      groups.push({ name: c, count: items.length + (items.length === 1 ? " product" : " products"), items: items });
+    }
+  });
+  return {
+    groups: groups,
+    empty: groups.length === 0,
+    totalProducts: total,
+    totalFiles: files,
+    q: st.q,
+    cats: CATS.map(function (c) {
+      const on = st.cat === c;
+      return {
+        label: c,
+        on: on ? "true" : "false",
+        style: tabStyle(on),
+        pick: function () {
+          setCat(c);
+        },
+      };
+    }),
+    fmts: FMTS.map(function (f) {
+      const on = st.fmt === f;
+      return {
+        label: FMT_LABEL[f],
+        on: on ? "true" : "false",
+        style: chipStyle(on),
+        pick: function () {
+          setFmt(f);
+        },
+      };
+    }),
+    onQuery: function (e) {
+      setQuery(e.target.value);
+    },
+  };
+}
 
-Component.defaultProps = {};
-Component.template = function (v, self) {
+function template(v) {
   return (
     <>
       <div
@@ -373,6 +372,4 @@ Component.template = function (v, self) {
       </div>
     </>
   );
-};
-
-export default Component;
+}

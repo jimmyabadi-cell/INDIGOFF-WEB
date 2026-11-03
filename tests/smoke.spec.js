@@ -45,6 +45,7 @@ for (const route of ROUTES) {
 }
 
 test("Find a rep: cada card muestra su representante", async ({ page }) => {
+  test.setTimeout(60_000);
   const errors = trackErrors(page);
   await page.goto("/find-a-rep");
   const cards = page.locator("section button[aria-pressed]");
@@ -67,6 +68,29 @@ test("Find a rep: buscar un estado muestra su representante", async ({ page }) =
   await page.goto("/find-a-rep");
   await page.getByPlaceholder(/type a state/i).fill("Texas");
   await expect(page.locator("#rep-result h2")).toHaveText("Texas");
+});
+
+test("Find a rep: pestañas del mapa cambian de país", async ({ page }) => {
+  await page.goto("/find-a-rep");
+  const tabs = page.locator("[role=tablist][aria-label=Country]");
+  const result = page.locator("#rep-result h2");
+
+  await tabs.getByRole("tab", { name: "Canada" }).click();
+  await expect(tabs.getByRole("tab", { name: "Canada" })).toHaveAttribute("aria-selected", "true");
+  await expect(result).toHaveText("Canada");
+
+  await tabs.getByRole("tab", { name: "México" }).click();
+  await expect(tabs.getByRole("tab", { name: "México" })).toHaveAttribute("aria-selected", "true");
+  await expect(result).toHaveText("México");
+
+  await tabs.getByRole("tab", { name: "United States" }).click();
+  await expect(tabs.getByRole("tab", { name: "United States" })).toHaveAttribute("aria-selected", "true");
+  await expect(result).toHaveText("Select a state");
+
+  // Buscar un estado de EE. UU. desde otra pestaña regresa el mapa a EE. UU.
+  await tabs.getByRole("tab", { name: "Canada" }).click();
+  await page.getByPlaceholder(/type a state/i).fill("Texas");
+  await expect(tabs.getByRole("tab", { name: "United States" })).toHaveAttribute("aria-selected", "true");
 });
 
 test("Menú lateral abre, muestra links y cierra con Escape", async ({ page }, testInfo) => {

@@ -1,7 +1,8 @@
-import React from "react";
-import { DCLogic, S } from "../../lib/dc.js";
+import React, { useRef } from "react";
+import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { i18nGet } from "../../lib/i18n.js";
+import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { useMergeState } from "../../hooks/useMergeState.js";
 import "./FindRep.css";
 
 const I18N_EN = {
@@ -312,190 +313,176 @@ function keysForState(abbr) {
   });
 }
 
-class Component extends DCLogic {
-  constructor(p) {
-    super(p);
-    this.state = { sel: null, rep: null, q: "", noMatch: false };
-  }
-  selectState(abbr) {
-    const ks = keysForState(abbr);
-    this.setState({ sel: ks, rep: null, noMatch: false });
-  }
-  _rv() {
-    const self = this;
-    const st = this.state;
-    const sel = st.sel || [];
-    const repSel = st.rep;
-    let reps = [];
-    if (repSel !== null) reps = [repSel];
-    else
-      sel.forEach(function (k) {
-        let i = KEYREP[k];
-        if (i === undefined) i = -1;
-        if (reps.indexOf(i) < 0) reps.push(i);
-      });
-    const hi = {};
-    reps.forEach(function (i) {
-      if (i >= 0)
-        REPS[i].areas.forEach(function (a) {
-          hi[a] = 1;
-        });
-    });
-    const fill = {};
-    const pick = {};
-    KEYS.forEach(function (k) {
-      const isSel = sel.indexOf(k) >= 0 && repSel === null;
-      fill[k] = hi[k]
-        ? isSel
-          ? "#1E125C"
-          : "#645DC5"
-        : isSel
-          ? "#A9A296"
-          : KEYREP[k] !== undefined
-            ? "#B7B3E6"
-            : "#E4DFD5";
-      pick[k] = function () {
-        self.setState({ sel: [k], rep: null, noMatch: false, q: keyName(k) });
-      };
-    });
-    let place = "Select a state";
-    let label = "Your representative";
-    if (repSel !== null) {
-      place = repSel >= 0 ? REPS[repSel].name : "Indigoff";
-      label = "Representative";
-    } else if (sel.length) {
-      place = sel.length > 1 ? (/^MX[A-Z]{3}$/.test(sel[0]) ? "México" : NAMES[sel[0].split("_")[0]]) : keyName(sel[0]);
-    }
-    const results = reps.map(function (i) {
-      return card(i >= 0 ? REPS[i] : DEFAULT_REP);
-    });
-    const all = REPS.map(function (r, i) {
-      return { i: i, r: r };
-    })
-      .concat([{ i: -1, r: DEFAULT_REP }])
-      .map(function (o) {
-        const on = repSel === o.i;
-        return {
-          name: o.r.name,
-          contact: o.r.contact || "\u00a0",
-          territory: territory(o.r),
-          on: on ? "true" : "false",
-          style:
-            "flex: 1 1 300px; min-height: 200px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 28px; text-align: left; cursor: pointer; font-family: inherit; color: #111111; border: 1px solid " +
-            (on ? "#111111" : "#E4DFD7") +
-            "; background: " +
-            (on ? "#FFFFFF" : "transparent"),
-          pick: function () {
-            // The result panel sits above this list: bring it into view so the pick is visible.
-            self.setState({ rep: o.i, sel: null, q: "" }, function () {
-              const el = document.getElementById("rep-result");
-              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-            });
-          },
-        };
-      });
-    return {
-      fill: fill,
-      pick: pick,
-      results: results,
-      showHint: results.length === 0,
-      resultPlace: place,
-      resultLabel: label,
-      all: all,
-      q: st.q,
-      noMatch: st.noMatch,
-      onQuery: function (e) {
-        const v = String(e.target.value || "").trim();
-        const n = v.toLowerCase();
-        let abbr = null;
-        if (!n) {
-          self.setState({ q: "", sel: null, rep: null, noMatch: false });
-          return;
-        }
-        if (n.length === 2 && NAMES[n.toUpperCase()]) abbr = n.toUpperCase();
-        else
-          Object.keys(AB).forEach(function (name) {
-            if (!abbr && name.toLowerCase() === n) abbr = AB[name];
-          });
-        if (!abbr && n.length >= 3)
-          Object.keys(AB).forEach(function (name) {
-            if (!abbr && name.toLowerCase().indexOf(n) === 0) abbr = AB[name];
-          });
-        if (abbr) self.setState({ q: v, sel: keysForState(abbr), rep: null, noMatch: false });
-        else self.setState({ q: v, noMatch: true });
-      },
-    };
-  }
+const NAV = { DW_CATS, DW_FIN, ifoSetPending };
+
+export default function FindRep() {
+  const [st, setSt] = useMergeState({ sel: null, rep: null, q: "", noMatch: false });
+  // Pestaña del mapa: se deriva de la selección, pero el usuario también puede elegirla.
+  const mapTab = useRef({ tab: "us", last: undefined });
+  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
+  const v = { ...localize(repVals(st, setSt), lang), ...mapVals(st, setSt, mapTab.current, lang === "es"), ...chrome };
+  return template(v);
 }
 
-Component.I18N_EN = I18N_EN;
-Component.DW_CATS = DW_CATS;
-Component.DW_FIN = DW_FIN;
-Component.ifoSetPending = ifoSetPending;
-
-(function () {
-  const _rvMT = Component.prototype.renderVals;
-  Component.prototype.renderVals = function () {
-    const v = _rvMT.apply(this, arguments) || {};
-    const self = this;
-    if (!self.state) self.state = {};
-    const sel = self.state.sel || [];
-    let tab = self.state.mapTab || "us";
-    if (sel.indexOf("CAN") >= 0 && self._mtLast !== "CAN") {
-      tab = "ca";
-    } else if (
-      sel.some(function (k) {
-        return /^MX[A-Z]{3}$/.test(k);
-      }) &&
-      self._mtLast !== "MX"
-    ) {
-      tab = "mx";
-    } else if (sel.length && sel[0] !== "CAN" && !/^MX[A-Z]{3}$/.test(sel[0]) && self._mtLast !== sel[0]) {
-      tab = "us";
-    }
-    self._mtLast = /^MX[A-Z]{3}$/.test(sel[0] || "") ? "MX" : sel[0] || "";
-    self.state.mapTab = tab;
-    let es = false;
-    try {
-      es = (typeof i18nGet === "function" ? i18nGet() : "en") === "es";
-    } catch (e) {}
-    const defs = [
-      ["us", es ? "Estados Unidos" : "United States", null],
-      ["ca", "Canada", "CAN"],
-      ["mx", "México", "MX"],
-    ];
-    v.mapTabs = defs.map(function (d) {
-      const on = d[0] === tab;
+function repVals(st, setSt) {
+  const sel = st.sel || [];
+  const repSel = st.rep;
+  let reps = [];
+  if (repSel !== null) reps = [repSel];
+  else
+    sel.forEach(function (k) {
+      let i = KEYREP[k];
+      if (i === undefined) i = -1;
+      if (reps.indexOf(i) < 0) reps.push(i);
+    });
+  const hi = {};
+  reps.forEach(function (i) {
+    if (i >= 0)
+      REPS[i].areas.forEach(function (a) {
+        hi[a] = 1;
+      });
+  });
+  const fill = {};
+  const pick = {};
+  KEYS.forEach(function (k) {
+    const isSel = sel.indexOf(k) >= 0 && repSel === null;
+    fill[k] = hi[k]
+      ? isSel
+        ? "#1E125C"
+        : "#645DC5"
+      : isSel
+        ? "#A9A296"
+        : KEYREP[k] !== undefined
+          ? "#B7B3E6"
+          : "#E4DFD5";
+    pick[k] = function () {
+      setSt({ sel: [k], rep: null, noMatch: false, q: keyName(k) });
+    };
+  });
+  let place = "Select a state";
+  let label = "Your representative";
+  if (repSel !== null) {
+    place = repSel >= 0 ? REPS[repSel].name : "Indigoff";
+    label = "Representative";
+  } else if (sel.length) {
+    place = sel.length > 1 ? (/^MX[A-Z]{3}$/.test(sel[0]) ? "México" : NAMES[sel[0].split("_")[0]]) : keyName(sel[0]);
+  }
+  const results = reps.map(function (i) {
+    return card(i >= 0 ? REPS[i] : DEFAULT_REP);
+  });
+  const all = REPS.map(function (r, i) {
+    return { i: i, r: r };
+  })
+    .concat([{ i: -1, r: DEFAULT_REP }])
+    .map(function (o) {
+      const on = repSel === o.i;
       return {
-        label: d[1],
+        name: o.r.name,
+        contact: o.r.contact || "\u00a0",
+        territory: territory(o.r),
         on: on ? "true" : "false",
-        cls: "mt-t" + (on ? " on" : ""),
+        style:
+          "flex: 1 1 300px; min-height: 200px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 28px; text-align: left; cursor: pointer; font-family: inherit; color: #111111; border: 1px solid " +
+          (on ? "#111111" : "#E4DFD7") +
+          "; background: " +
+          (on ? "#FFFFFF" : "transparent"),
         pick: function () {
-          if (d[2]) {
-            self._mtLast = d[2];
-            self.setState({
-              mapTab: d[0],
-              sel: d[2] === "MX" ? keysForState("MEX") : [d[2]],
-              rep: null,
-              noMatch: false,
-              q: d[1],
-            });
-          } else {
-            self._mtLast = "";
-            self.setState({ mapTab: "us", sel: [], rep: null, noMatch: false, q: "" });
-          }
+          // The result panel sits above this list: bring it into view so the pick is visible.
+          setSt({ rep: o.i, sel: null, q: "" });
+          requestAnimationFrame(function () {
+            const el = document.getElementById("rep-result");
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
         },
       };
     });
-    v.mapUS = tab === "us";
-    v.mapCA = tab === "ca";
-    v.mapMX = tab === "mx";
-    return v;
+  return {
+    fill: fill,
+    pick: pick,
+    results: results,
+    showHint: results.length === 0,
+    resultPlace: place,
+    resultLabel: label,
+    all: all,
+    q: st.q,
+    noMatch: st.noMatch,
+    onQuery: function (e) {
+      const v = String(e.target.value || "").trim();
+      const n = v.toLowerCase();
+      let abbr = null;
+      if (!n) {
+        setSt({ q: "", sel: null, rep: null, noMatch: false });
+        return;
+      }
+      if (n.length === 2 && NAMES[n.toUpperCase()]) abbr = n.toUpperCase();
+      else
+        Object.keys(AB).forEach(function (name) {
+          if (!abbr && name.toLowerCase() === n) abbr = AB[name];
+        });
+      if (!abbr && n.length >= 3)
+        Object.keys(AB).forEach(function (name) {
+          if (!abbr && name.toLowerCase().indexOf(n) === 0) abbr = AB[name];
+        });
+      if (abbr) setSt({ q: v, sel: keysForState(abbr), rep: null, noMatch: false });
+      else setSt({ q: v, noMatch: true });
+    },
   };
-})();
+}
 
-Component.defaultProps = {};
-Component.template = function (v, self) {
+function mapVals(st, setSt, mt, es) {
+  const v = {};
+  const sel = st.sel || [];
+  let tab = mt.tab;
+  if (sel.indexOf("CAN") >= 0 && mt.last !== "CAN") {
+    tab = "ca";
+  } else if (
+    sel.some(function (k) {
+      return /^MX[A-Z]{3}$/.test(k);
+    }) &&
+    mt.last !== "MX"
+  ) {
+    tab = "mx";
+  } else if (sel.length && sel[0] !== "CAN" && !/^MX[A-Z]{3}$/.test(sel[0]) && mt.last !== sel[0]) {
+    tab = "us";
+  }
+  mt.last = /^MX[A-Z]{3}$/.test(sel[0] || "") ? "MX" : sel[0] || "";
+  mt.tab = tab;
+  const defs = [
+    ["us", es ? "Estados Unidos" : "United States", null],
+    ["ca", "Canada", "CAN"],
+    ["mx", "México", "MX"],
+  ];
+  v.mapTabs = defs.map(function (d) {
+    const on = d[0] === tab;
+    return {
+      label: d[1],
+      on: on ? "true" : "false",
+      cls: "mt-t" + (on ? " on" : ""),
+      pick: function () {
+        if (d[2]) {
+          mt.last = d[2];
+          mt.tab = d[0];
+          setSt({
+            sel: d[2] === "MX" ? keysForState("MEX") : [d[2]],
+            rep: null,
+            noMatch: false,
+            q: d[1],
+          });
+        } else {
+          mt.last = "";
+          mt.tab = "us";
+          setSt({ sel: [], rep: null, noMatch: false, q: "" });
+        }
+      },
+    };
+  });
+  v.mapUS = tab === "us";
+  v.mapCA = tab === "ca";
+  v.mapMX = tab === "mx";
+  return v;
+}
+
+function template(v) {
   return (
     <>
       <div
@@ -1544,6 +1531,4 @@ Component.template = function (v, self) {
       </div>
     </>
   );
-};
-
-export default Component;
+}
