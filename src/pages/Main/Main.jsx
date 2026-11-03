@@ -2569,7 +2569,7 @@ Component.template = function (v, self) {
               >
                 {v.T.k55}
               </span>
-              <a href="#contact">{v.T.k56}</a>
+              <a href="mailto:info@indigoff.com">{v.T.k56}</a>
               <a href="#appointment">{v.T.k42}</a>
               <a href="/find-a-rep">{v.T.k8}</a>
               <a href="#install">{v.T.k57}</a>
@@ -2615,7 +2615,7 @@ Component.template = function (v, self) {
                 {v.T.k63}
               </span>
               <span>{"[Phone] · [WhatsApp]"}</span>
-              <span>{"[hello@indigoff.com]"}</span>
+              <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
               <span style={S("display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 -13px")}>
                 <a href="#instagram" aria-label="Indigoff on Instagram" className="soc">
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>

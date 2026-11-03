@@ -617,7 +617,7 @@ Component.template = function (v, self) {
                 <span className="hd-list-n">{v.listCount}</span>
                 <span className="hd-list-lbl">{")"}</span>
               </button>
-              <a href="/" className="hd-opt" style={S("color: #111111; text-decoration: none")}>
+              <a href="mailto:info@indigoff.com" className="hd-opt" style={S("color: #111111; text-decoration: none")}>
                 {v.T.k3}
               </a>
             </div>
@@ -800,6 +800,9 @@ Component.template = function (v, self) {
           )}
         >
           <span>{"© 2026 Indigoff LLC"}</span>
+          <a href="mailto:info@indigoff.com" style={S("color: #6B675F; text-decoration: none")}>
+            {"info@indigoff.com"}
+          </a>
           <a href="/" style={S("color: #6B675F; text-decoration: none")}>
             {v.T.k8}
           </a>
