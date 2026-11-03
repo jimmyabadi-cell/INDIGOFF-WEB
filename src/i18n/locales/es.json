@@ -514,9 +514,8 @@
   },
   "contact": {
     "title": "Contacta a Indigoff",
-    "text": "Cuéntanos sobre tu proyecto y nuestro equipo te ayudará a encontrar la solución acústica adecuada. Contacta a INDIGOFF para cotizaciones, apoyo en especificación, información de productos, muestras o atención de un representante.",
+    "text": "Cuéntanos sobre tu proyecto y nuestro equipo te ayudará a encontrar la solución acústica adecuada. Contacta a INDIGOFF para cotizaciones, especificaciones, información de productos o muestras.",
     "emailUs": "Correo",
-    "repTitle": "Representantes",
     "fields": {
       "name": "Nombre",
       "lastName": "Apellido",
