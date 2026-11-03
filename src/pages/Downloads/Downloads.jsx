@@ -174,8 +174,9 @@ Component.template = function (v, self) {
                 </svg>
                 <span>{v.dwMenuLbl}</span>
               </button>
-              <a href="/downloads" className="hd-opt" aria-current="page" style={S("border-bottom: 1px solid #111111")}>
-                {v.T.k5}
+              <a href="/downloads" className="hd-dl" aria-label={v.T.k5} aria-current="page" style={S("border-bottom: 1px solid #111111")}>
+                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
+                <span className="hd-dl-lbl">{v.T.k5}</span>
               </a>
             </nav>
             <a

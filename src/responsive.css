@@ -25,10 +25,14 @@
   }
   .site-hd .hd-r { justify-content: flex-end; }
 
+  /* Collection: "Home" repite la flecha de volver y el logo; se libera espacio */
+  .site-hd .hd-r a.hd-opt[href="/"] { display: none !important; }
+  .site-hd .hd-r .hd-dl { margin-right: 16px !important; }
+
   /* "My list (0)" → icono + contador */
   .hd-list { display: inline-flex !important; align-items: center; justify-content: center; gap: 4px; min-width: 44px; }
   .hd-list .hd-list-lbl { display: none; }
-  .hd-ico { display: block; }
+  .hd-list .hd-ico { display: block; }
 
   /* Links secundarios dentro del menú lateral */
   .dw-util {
@@ -52,15 +56,27 @@
 }
 
 @media (max-width: 767px) {
-  /* [☰] [logo] ........ [EN·ES] [lista] [buscar] */
+  /*
+   * [☰] [logo] ........ [EN·ES] [descargas] [lista] [buscar]
+   * Los grupos izquierdo/derecho se aplanan (display: contents) para poder
+   * reordenar sus elementos: Downloads vive en el nav izquierdo pero aquí va a la derecha.
+   */
   .site-hd .hd-in {
-    grid-template-columns: auto auto 1fr;
-    gap: 4px !important;
+    display: flex !important;
+    align-items: center;
+    gap: 2px !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
-  .site-hd .hd-l,
-  .site-hd .hd-r { gap: 0 2px !important; }
+  .site-hd .hd-l:not(a),
+  .site-hd .hd-r { display: contents !important; }
+  .site-hd .hd-menu,
+  .site-hd .hd-back { order: 0; flex: none !important; }
+  .site-hd .hd-logo { order: 1; margin-left: 2px; }
+  .site-hd .hd-lang { order: 2; margin-left: auto !important; }
+  .site-hd .hd-dl { order: 3; }
+  .site-hd .hd-list { order: 4; }
+  .site-hd .hd-r > button[aria-label="Search"] { order: 5; }
   .site-hd .hd-opt,
   .site-hd .hd-back-lbl,
   .site-hd .hd-menu > span { display: none !important; }
@@ -68,6 +84,28 @@
   .site-hd .hd-back { min-width: 44px; justify-content: center; }
   .site-hd .hd-logo img { height: 20px !important; }
   .site-hd .hd-lang { margin-right: 4px !important; }
+
+  /* Downloads siempre visible: icono a la derecha */
+  .site-hd .hd-dl {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    margin-right: 0 !important;
+  }
+  .hd-dl .hd-dl-lbl { display: none; }
+  .hd-dl .hd-ico { display: block; }
+}
+
+/* Teléfonos angostos (≤ 359px): botones de 36px para que todo quepa */
+@media (max-width: 359px) {
+  .site-hd .hd-menu,
+  .site-hd .hd-back,
+  .site-hd .hd-dl,
+  .site-hd .hd-list { min-width: 36px !important; }
+  .site-hd .hd-r > button[aria-label="Search"] { width: 36px !important; }
+  .site-hd .hd-lang button { padding: 0 2px !important; }
+  .site-hd .hd-logo img { height: 18px !important; }
 }
 
 /* ---------- Títulos de sección sticky: pegados justo bajo el header ---------- */
