@@ -1,42 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { S } from "../../lib/dc.js";
 import { listVals, saveVals } from "../../lib/savedList.js";
-import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { useMergeState } from "../../hooks/useMergeState.js";
 import { useSavedList } from "../../hooks/useSavedList.js";
 import { useScrollLock } from "../../hooks/useScrollLock.js";
 import "./CollectionPage.css";
-
-const I18N_EN = {
-  k1: "Skip to content",
-  k2: "All categories",
-  k3: "Contact",
-  k4: "Bring it to your space.",
-  k5: "Request samples",
-  k6: "Request an acoustic + lighting study",
-  k7: "More categories",
-  k8: "Back to home",
-  k9: "Back",
-  k10: "Downloads",
-  k11: "All downloads",
-  k12: "Download",
-  k13: "CAD & BIM files available on request",
-  k14: "My list",
-  k15: "Save products, finishes, concepts and projects as you browse. Share the list with a rep to get samples and pricing for your project.",
-  k16: "Your list is empty. Tap “Add to my list” on any product, finish, concept or project to save it here.",
-  k17: "Send to a rep",
-  k18: "Email my list",
-  k19: "Clear list",
-  k20: "Remove",
-};
 
 import P from "../../data/products.json";
 import C from "../../data/collections.json";
 import GAL_DATA from "../../data/gallery.json";
 import DL_DATA from "../../data/product-downloads.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
-const FAM = C.fam;
-const SPECIAL = C.special;
+// Productos con descripción propia (catalog.special) y familias con descripción (catalog.families).
+const FAM = new Set(C.fam);
+const SPECIAL = new Set(C.special);
 const COLS = C.cols;
 const PARENTS = C.parents;
 const PCOLLS = C.pcolls;
@@ -116,7 +94,7 @@ export default function CollectionPage({ col = "ceilings" }) {
   );
   const list = useSavedList();
   const onKey = useRef(null);
-  const { lang, chrome } = usePageChrome(I18N_EN);
+  const { chrome } = usePageChrome();
 
   useEffect(() => {
     const applyPending = () => {
@@ -142,17 +120,22 @@ export default function CollectionPage({ col = "ceilings" }) {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  const vals = collectionVals({ state: st, setState: setSt }, key, list, onKey);
+  const vals = collectionVals({ state: st, setState: setSt }, key, list, onKey, chrome.t);
   useScrollLock(vals.selOn || st.listOpen);
-  return template({ ...localize(vals, lang), ...chrome });
+  return template({ ...vals, ...chrome });
 }
 
-function collectionVals(self, key, list, onKey) {
+function collectionVals(self, key, list, onKey, t) {
   const par = PARENTS[key];
+  const parName = t("catalog.categories." + key);
+  const parDesc = t("catalog.parents." + key + ".desc");
   const si = self.state.sub !== null ? self.state.sub : -1;
   const allP = allProducts(par);
   const sk = si < 0 ? "__all" : par.subs[si];
-  let d = si < 0 ? { desc: par.desc, products: allP, small: true, img: "" } : COLS[sk];
+  let d =
+    si < 0
+      ? { desc: parDesc, products: allP, small: true, img: "" }
+      : { ...COLS[sk], desc: t("catalog.cols." + sk + ".desc") };
   const cdefs = PCOLLS[key] || [];
   const collOf = function (pk) {
     for (let ci = 0; ci < cdefs.length; ci++) {
@@ -181,7 +164,7 @@ function collectionVals(self, key, list, onKey) {
       }),
     });
   const colls = hasColls
-    ? [{ name: "", label: "All" }]
+    ? [{ name: "", label: t("collection.all") }]
         .concat(
           present.map(function (cd) {
             return { name: cd.name, label: cd.name };
@@ -200,9 +183,9 @@ function collectionVals(self, key, list, onKey) {
         })
     : [];
   const lab = function (k) {
-    return k === "__all" ? "All" : par.labels[k] || COLS[k].name;
+    return k === "__all" ? t("collection.all") : t("catalog.subcategories." + key + "." + k);
   };
-  const c = { name: par.name, tag: par.tag, desc: par.desc, hasImg: !!par.img, img: U(par.img), alt: par.alt };
+  const c = { name: parName, desc: parDesc, hasImg: !!par.img, img: U(par.img), alt: par.alt };
   const tabs = par.subs.map(function (k, i0) {
     const i = i0;
     const on = i === si;
@@ -278,16 +261,16 @@ function collectionVals(self, key, list, onKey) {
   if (xi >= 0 && xi < n) {
     const k = d.products[xi];
     const p = P[k];
-    const info = SPECIAL[k] || FAM[p[1]] || { d: "" };
+    const desc = SPECIAL.has(k) ? t("catalog.special." + k) : FAM.has(p[1]) ? t("catalog.families." + p[1]) : "";
     sel = {
       title: p[0],
-      label: si < 0 ? par.name : par.name + " · " + lab(sk),
+      label: si < 0 ? parName : parName + " · " + lab(sk),
       hasImg: !!p[2],
       img: U(p[4] || p[2]),
       hasImg2: !!p[5],
       img2: U(p[5]),
       alt: p[0] + ": " + p[3],
-      desc: info.d,
+      desc: desc,
     };
     const fl = DL[k] || [];
     sel.dl = fl.map(function (f) {
@@ -320,7 +303,7 @@ function collectionVals(self, key, list, onKey) {
   const others = PORDER.filter(function (k2) {
     return k2 !== key;
   }).map(function (k2) {
-    return { name: PARENTS[k2].name, href: "/" + PARENTS[k2].file.toLowerCase() };
+    return { name: t("catalog.categories." + k2), href: "/" + PARENTS[k2].file.toLowerCase() };
   });
   const zOpenC = st0.zi !== null && sel.galList.length > 0,
     selOpen = xi >= 0 && xi < n;
@@ -347,7 +330,7 @@ function collectionVals(self, key, list, onKey) {
   let zItem = null;
   if (xi >= 0 && xi < n) {
     const pk0 = d.products[xi];
-    pItem = { id: "p:" + pk0, name: P[pk0][0], kind: par.name, img: U(P[pk0][2]) };
+    pItem = { id: "p:" + pk0, name: P[pk0][0], kind: parName, img: U(P[pk0][2]) };
   }
   if (st0.zi !== null && sel.galList[st0.zi])
     zItem = {
@@ -356,8 +339,7 @@ function collectionVals(self, key, list, onKey) {
       kind: sel.title,
       img: sel.galList[st0.zi].img,
     };
-  const zs = saveVals(list, "zSave", zItem, "Save");
-  if (zItem && list.has(zItem.id)) zs.zSaveLbl = "Saved";
+  const zs = saveVals(list, "zSave", zItem, { add: t("collection.save"), saved: t("collection.saved") });
   const ui = {
     open: !!st0.listOpen,
     openList: function () {
@@ -367,41 +349,46 @@ function collectionVals(self, key, list, onKey) {
       self.setState({ listOpen: false });
     },
   };
-  return Object.assign(listVals(list, ui), saveVals(list, "pSave", pItem), zs, {
-    c: c,
-    s: s,
-    tabs: tabs,
-    colls: colls,
-    hasColls: hasColls,
-    collLabel: "Collection",
-    others: others,
-    sel: sel,
-    selOn: xi >= 0 && xi < n,
-    prevName: prevName,
-    nextName: nextName,
-    zoomOn: st0.zi !== null && sel.galList.length > 0,
-    zoom: (st0.zi !== null && sel.galList[st0.zi]) || { name: "", img: "" },
-    closeZoom: function () {
-      self.setState({ zi: null });
+  return Object.assign(
+    listVals(list, ui),
+    saveVals(list, "pSave", pItem, { add: t("list.add"), saved: t("list.saved") }),
+    zs,
+    {
+      c: c,
+      s: s,
+      tabs: tabs,
+      colls: colls,
+      hasColls: hasColls,
+      collLabel: t("collection.collectionLabel"),
+      others: others,
+      sel: sel,
+      selOn: xi >= 0 && xi < n,
+      prevName: prevName,
+      nextName: nextName,
+      zoomOn: st0.zi !== null && sel.galList.length > 0,
+      zoom: (st0.zi !== null && sel.galList[st0.zi]) || { name: "", img: "" },
+      closeZoom: function () {
+        self.setState({ zi: null });
+      },
+      zoomPrev: function () {
+        const n2 = sel.galList.length;
+        self.setState({ zi: (st0.zi - 1 + n2) % n2 });
+      },
+      zoomNext: function () {
+        const n2 = sel.galList.length;
+        self.setState({ zi: (st0.zi + 1) % n2 });
+      },
+      close: function () {
+        self.setState({ sel: -1, zi: null });
+      },
+      prev: function () {
+        self.setState({ sel: (xi - 1 + n) % n, zi: null });
+      },
+      next: function () {
+        self.setState({ sel: (xi + 1) % n, zi: null });
+      },
     },
-    zoomPrev: function () {
-      const n2 = sel.galList.length;
-      self.setState({ zi: (st0.zi - 1 + n2) % n2 });
-    },
-    zoomNext: function () {
-      const n2 = sel.galList.length;
-      self.setState({ zi: (st0.zi + 1) % n2 });
-    },
-    close: function () {
-      self.setState({ sel: -1, zi: null });
-    },
-    prev: function () {
-      self.setState({ sel: (xi - 1 + n) % n, zi: null });
-    },
-    next: function () {
-      self.setState({ sel: (xi + 1) % n, zi: null });
-    },
-  });
+  );
 }
 
 function template(v) {
@@ -413,12 +400,17 @@ function template(v) {
         )}
       >
         <a className="skip" href="#content">
-          {v.T.k1}
+          {v.t("common.skipToContent")}
         </a>
         <SiteHeader
           v={v}
           variant="collection"
-          labels={{ back: v.T.k2, downloads: v.T.k10, list: v.T.k14, contact: v.T.k3 }}
+          labels={{
+            back: v.t("collection.allCategories"),
+            downloads: v.t("common.downloads"),
+            list: v.t("list.title"),
+            contact: v.t("collection.contact"),
+          }}
         />
         <section
           id="content"
@@ -439,7 +431,7 @@ function template(v) {
             {v.c.desc}
           </p>
           <nav
-            aria-label="Subcategories"
+            aria-label={v.t("collection.subcategoriesLabel")}
             className="scroll-tabs"
             style={S(
               "display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 40px; border-bottom: 1px solid #ECE9E4",
@@ -455,7 +447,7 @@ function template(v) {
           </nav>
           {v.hasColls ? (
             <>
-              <nav aria-label="Collections" className="cl-row">
+              <nav aria-label={v.t("collection.collectionsLabel")} className="cl-row">
                 <span className="cl-lab">{v.collLabel}</span>
                 {(v.colls || []).map((q, q__i) => (
                   <React.Fragment key={q__i}>
@@ -495,7 +487,12 @@ function template(v) {
               <div style={S(v.s.gridStyle)}>
                 {(v.s.products || []).map((p, p__i) => (
                   <React.Fragment key={p__i}>
-                    <button type="button" onClick={p.pick} aria-label={`View ${p.name}`} style={S(v.s.tileStyle)}>
+                    <button
+                      type="button"
+                      onClick={p.pick}
+                      aria-label={v.t("collection.viewItem", { name: p.name })}
+                      style={S(v.s.tileStyle)}
+                    >
                       {p.hasImg ? (
                         <>
                           <img src={p.img} alt={p.alt} style={S(v.s.imgStyle)} />
@@ -535,7 +532,7 @@ function template(v) {
                   <>
                     <div
                       role="img"
-                      aria-label={`${v.s.label} photo placeholder`}
+                      aria-label={v.t("collection.photoPlaceholder", { name: v.s.label })}
                       style={S("height: calc(620px * var(--mh)); background: #EEEBE6")}
                     ></div>
                   </>
@@ -554,7 +551,7 @@ function template(v) {
               "margin: 0 0 28px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(32px, 3.6vw, 52px); letter-spacing: -0.04em",
             )}
           >
-            {v.T.k4}
+            {v.t("collection.bringTitle")}
           </p>
           <div style={S("display: flex; flex-wrap: wrap; justify-content: center; gap: 12px")}>
             <a
@@ -563,7 +560,7 @@ function template(v) {
                 "display: inline-flex; align-items: center; min-height: 48px; padding: 0 36px; background: #645DC5; color: #FFFFFF; text-decoration: none; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
               )}
             >
-              {v.T.k5}
+              {v.t("common.requestSamples")}
             </a>
             <a
               href="/#acoustics"
@@ -571,7 +568,7 @@ function template(v) {
                 "display: inline-flex; align-items: center; min-height: 48px; padding: 0 36px; border: 1px solid #111111; color: #111111; text-decoration: none; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
               )}
             >
-              {v.T.k6}
+              {v.t("collection.requestStudy")}
             </a>
           </div>
         </section>
@@ -585,10 +582,10 @@ function template(v) {
               "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
             )}
           >
-            {v.T.k7}
+            {v.t("collection.moreCategories")}
           </h2>
           <nav
-            aria-label="More categories"
+            aria-label={v.t("collection.moreCategories")}
             style={S(
               "display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 44px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -0.02em",
             )}
@@ -612,7 +609,7 @@ function template(v) {
             {"info@indigoff.com"}
           </a>
           <a href="/" style={S("color: #6B675F; text-decoration: none")}>
-            {v.T.k8}
+            {v.t("common.backToHome")}
           </a>
         </footer>
         {v.zoomOn ? (
@@ -652,7 +649,7 @@ function template(v) {
                     >
                       <path d="M15 5l-7 7 7 7"></path>
                     </svg>
-                    {v.T.k9}
+                    {v.t("common.back")}
                   </span>
                 </button>
                 <span
@@ -714,7 +711,7 @@ function template(v) {
                   <button
                     type="button"
                     onClick={v.zoomPrev}
-                    aria-label="Previous image"
+                    aria-label={v.t("collection.prevImage")}
                     style={S(
                       "min-height: 44px; min-width: 44px; border: 0; background: transparent; cursor: pointer; font-size: 18px; color: #111111; display: inline-flex; align-items: center; justify-content: center",
                     )}
@@ -737,7 +734,7 @@ function template(v) {
                   <button
                     type="button"
                     onClick={v.zoomNext}
-                    aria-label="Next image"
+                    aria-label={v.t("collection.nextImage")}
                     style={S(
                       "min-height: 44px; min-width: 44px; border: 0; background: transparent; cursor: pointer; font-size: 18px; color: #111111; display: inline-flex; align-items: center; justify-content: center",
                     )}
@@ -814,11 +811,11 @@ function template(v) {
                         >
                           <path d="M15 5l-7 7 7 7"></path>
                         </svg>
-                        {v.T.k9}
+                        {v.t("common.back")}
                       </span>
                     </button>
                   </span>
-                  <a href="/" aria-label="Indigoff home" style={S("display: block")}>
+                  <a href="/" aria-label={v.t("collection.homeLabel")} style={S("display: block")}>
                     <img
                       src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
                       alt="indigoff"
@@ -917,7 +914,7 @@ function template(v) {
                           <button
                             type="button"
                             onClick={g.pick}
-                            aria-label={`View ${g.name}`}
+                            aria-label={v.t("collection.viewItem", { name: g.name })}
                             style={S(
                               "display: block; flex: 0 0 calc((100% - 24px) / 4); padding: 0; border: 0; background: #EEEBE6; cursor: pointer",
                             )}
@@ -939,7 +936,10 @@ function template(v) {
                 ) : null}
                 {v.sel.hasDl ? (
                   <>
-                    <section aria-label="Downloads" style={S("margin-top: calc(88px * var(--vs)); text-align: left")}>
+                    <section
+                      aria-label={v.t("common.downloads")}
+                      style={S("margin-top: calc(88px * var(--vs)); text-align: left")}
+                    >
                       <div
                         style={S(
                           "display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding-bottom: 18px; border-bottom: 1px solid #111111",
@@ -950,7 +950,7 @@ function template(v) {
                             "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: 30px; letter-spacing: -0.03em",
                           )}
                         >
-                          {v.T.k10}
+                          {v.t("common.downloads")}
                         </h2>
                         <a
                           href="/downloads"
@@ -959,7 +959,7 @@ function template(v) {
                           )}
                         >
                           <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                            {v.T.k11}
+                            {v.t("collection.allDownloads")}
                             <svg
                               aria-hidden="true"
                               width="14"
@@ -1003,7 +1003,7 @@ function template(v) {
                               )}
                             >
                               <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                                {v.T.k12}
+                                {v.t("downloads.download")}
                                 <svg
                                   aria-hidden="true"
                                   width="14"
@@ -1033,7 +1033,7 @@ function template(v) {
                         "margin: calc(72px * var(--vs)) 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
                       )}
                     >
-                      {v.T.k13}
+                      {v.t("collection.filesOnRequest")}
                     </p>
                   </>
                 ) : null}
@@ -1041,7 +1041,7 @@ function template(v) {
                   <>
                     <img
                       src={v.sel.img2}
-                      alt={`${v.sel.title} — second view`}
+                      alt={v.t("collection.secondView", { name: v.sel.title })}
                       style={S("display: block; width: 100%; margin-top: calc(72px * var(--vs)); background: #F4F1EB")}
                     />
                   </>
@@ -1111,7 +1111,7 @@ function template(v) {
             <div
               role="dialog"
               aria-modal="true"
-              aria-label="My list"
+              aria-label={v.t("list.title")}
               style={S(
                 "position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 70; background: #FFFFFF; overflow-y: auto",
               )}
@@ -1147,11 +1147,11 @@ function template(v) {
                         >
                           <path d="M15 5l-7 7 7 7"></path>
                         </svg>
-                        {v.T.k9}
+                        {v.t("common.back")}
                       </span>
                     </button>
                   </span>
-                  <a href="/" aria-label="Indigoff home" style={S("display: block")}>
+                  <a href="/" aria-label={v.t("collection.homeLabel")} style={S("display: block")}>
                     <img
                       src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
                       alt="indigoff"
@@ -1172,14 +1172,14 @@ function template(v) {
                       "margin: 0 0 24px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(44px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em",
                     )}
                   >
-                    {v.T.k14}
+                    {v.t("list.title")}
                   </h1>
                   <p
                     style={S(
                       "margin: 0 auto 48px; max-width: 560px; font-size: 17px; line-height: 1.7; color: #3A3935",
                     )}
                   >
-                    {v.T.k15}
+                    {v.t("list.intro")}
                   </p>
                 </div>
                 {v.listEmpty ? (
@@ -1189,7 +1189,7 @@ function template(v) {
                         "margin: 0 auto; padding: 64px 24px; max-width: 520px; text-align: center; background: #F4F1EB; font-size: 15px; color: #5E5A53",
                       )}
                     >
-                      {v.T.k16}
+                      {v.t("list.empty")}
                     </p>
                   </>
                 ) : null}
@@ -1204,7 +1204,7 @@ function template(v) {
                           "display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; background: #111111; color: #FFFFFF; text-decoration: none; J",
                         )}
                       >
-                        {v.T.k17}
+                        {v.t("list.sendToRep")}
                       </a>
                       <a
                         href={v.listMail}
@@ -1212,7 +1212,7 @@ function template(v) {
                           "display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border: 1px solid #111111; color: #111111; text-decoration: none; J",
                         )}
                       >
-                        {v.T.k18}
+                        {v.t("list.email")}
                       </a>
                       <button
                         type="button"
@@ -1221,7 +1221,7 @@ function template(v) {
                           "min-height: 48px; padding: 0 20px; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F",
                         )}
                       >
-                        {v.T.k19}
+                        {v.t("list.clear")}
                       </button>
                     </div>
                     <div
@@ -1259,12 +1259,12 @@ function template(v) {
                             <button
                               type="button"
                               onClick={it.remove}
-                              aria-label={`Remove ${it.name}`}
+                              aria-label={v.t("list.removeItem", { name: it.name })}
                               style={S(
                                 "align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F; text-decoration: underline; text-underline-offset: 4px",
                               )}
                             >
-                              {v.T.k20}
+                              {v.t("list.remove")}
                             </button>
                           </div>
                         </React.Fragment>

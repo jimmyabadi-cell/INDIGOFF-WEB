@@ -1,0 +1,519 @@
+{
+  "common": {
+    "skipToContent": "Ir al contenido",
+    "downloads": "Descargas",
+    "findRep": "Encuentra un representante",
+    "backToHome": "Volver al inicio",
+    "lightKinds": {
+      "pendant": "Lámparas colgantes",
+      "wall": "Lámparas de muro",
+      "floor": "Lámparas de piso",
+      "table": "Lámparas de mesa"
+    },
+    "back": "Regresar",
+    "requestSamples": "Solicitar muestras",
+    "talkToRep": "Habla con un representante",
+    "menu": {
+      "menu": "Menú",
+      "close": "Cerrar",
+      "categories": "Categorías",
+      "finishes": "Acabados",
+      "concepts": "Conceptos",
+      "projects": "Proyectos"
+    },
+    "viewMore": "Ver más",
+    "viewLess": "Ver menos",
+    "enlargeImage": "Ampliar imagen",
+    "onNetwork": "{name} en {network}"
+  },
+  "studio": {
+    "hero": {
+      "eyebrow": "onoff studio",
+      "title": "Diseño acústico y de iluminación, en uno.",
+      "subtitle": "onoff studio es el estudio de diseño de Indigoff para espacios que necesitan sonar tan bien como se ven.",
+      "imageAlt": "Dosel acústico de hojas con luz integrada sobre una sala de estar"
+    },
+    "what": {
+      "title": "Diseñamos cómo suena un espacio y cómo se ilumina, al mismo tiempo.",
+      "p1": "La mayoría de los proyectos tratan la acústica y la iluminación como dos problemas separados. En onoff studio los resolvemos como uno solo: cada luminaria que diseñamos absorbe el sonido y da forma a la luz a la vez, para que plafones y muros se mantengan limpios y el espacio se sienta en calma.",
+      "p2": "Trabajamos con arquitectos, diseñadores de interiores y clientes finales en oficinas, hotelería, educación y retail, desde una sola pieza protagonista hasta el plan acústico y de iluminación completo de un edificio."
+    },
+    "services": [
+      {
+        "title": "Diseño acústico",
+        "text": "Análisis de reverberación y ruido de tu espacio, con una recomendación clara de qué tratar y dónde."
+      },
+      {
+        "title": "Diseño de iluminación",
+        "text": "Planos de iluminación y distribución de luminarias que equilibran ambiente, función y consumo de energía."
+      },
+      {
+        "title": "Luminarias acústicas a medida",
+        "text": "Lámparas acústicas únicas, diseñadas para tu proyecto en cualquier forma, tamaño y color."
+      },
+      {
+        "title": "Coordinación e instalación",
+        "text": "Planos de taller, muestras, producción y acompañamiento en obra hasta terminar el espacio."
+      }
+    ],
+    "process": {
+      "title": "Cómo trabajamos",
+      "steps": [
+        {
+          "title": "Escuchar",
+          "text": "Estudiamos el espacio, su uso y su sonido."
+        },
+        {
+          "title": "Diseñar",
+          "text": "Proponemos el concepto acústico y de iluminación, con renders y simulaciones."
+        },
+        {
+          "title": "Fabricar",
+          "text": "Indigoff produce cada pieza en fieltro de PET reciclado con LED integrado."
+        },
+        {
+          "title": "Instalar",
+          "text": "Coordinamos la entrega y la instalación con tu equipo."
+        }
+      ]
+    },
+    "designs": {
+      "title": "Diseños de onoff studio",
+      "text": "Iluminación acústica diseñada por onoff studio y fabricada por Indigoff con fieltro de PET reciclado."
+    },
+    "cta": {
+      "title": "Diseñemos tu espacio.",
+      "text": "Cuéntanos de tu proyecto y el equipo de onoff studio te propondrá un concepto acústico y de iluminación.",
+      "start": "Inicia un proyecto"
+    }
+  },
+  "catalog": {
+    "categories": {
+      "ceilings": "Plafones",
+      "walls": "Muros",
+      "lights": "Iluminación",
+      "dividers": "Divisores",
+      "podcaster": "Podcaster"
+    },
+    "subcategories": {
+      "ceilings": {
+        "ceilings": "Sistemas de plafón",
+        "baffles": "Baffles",
+        "clouds": "Nubes",
+        "ceilinglights": "Luces de plafón"
+      },
+      "walls": {
+        "walls": "Paneles",
+        "frames": "Marcos",
+        "murals": "Murales",
+        "canvas": "Lienzos",
+        "walllights": "Lámparas de muro",
+        "woolskin": "Paneles Woolskin",
+        "fabric": "Paneles de tela"
+      },
+      "lights": {
+        "pendantlights": "Colgantes",
+        "ceilinglights": "Plafón",
+        "floorlights": "Piso",
+        "tablelights": "Mesa",
+        "walllights": "Muro"
+      },
+      "dividers": {
+        "dividers": "Divisores de espacio",
+        "fckoff": "Fckoff — Divisores de escritorio"
+      },
+      "podcaster": {
+        "podcaster": "Podcaster"
+      }
+    },
+    "parents": {
+      "ceilings": {
+        "desc": "Todo lo que va arriba: baffles, nubes, sistemas de plafón y luces de plafón."
+      },
+      "walls": {
+        "desc": "Paneles, marcos, acabados y arte que silencian el espacio y definen cómo se ve."
+      },
+      "lights": {
+        "desc": "Luz que ilumina el espacio y absorbe el sonido al mismo tiempo."
+      },
+      "dividers": {
+        "desc": "Divisores de piso y de escritorio que crean zonas silenciosas en espacios abiertos."
+      },
+      "podcaster": {
+        "desc": "Tratamiento acústico para estudios de podcast y grabación: voces claras, sin eco y un set que se ve bien en cámara."
+      }
+    },
+    "cols": {
+      "baffles": {
+        "desc": "Elementos suspendidos de plafón que absorben el sonido, reducen el eco y dan estructura visual a los espacios abiertos."
+      },
+      "clouds": {
+        "desc": "Paneles acústicos suspendidos que absorben el sonido desde arriba y definen zonas sin muros."
+      },
+      "ceilings": {
+        "desc": "Sistemas de plafón que se adaptan al diseño del espacio y agregan confort acústico desde arriba."
+      },
+      "ceilinglights": {
+        "desc": "Plafones acústicos con luz integrada: iluminación y absorción de sonido en una sola superficie."
+      },
+      "walls": {
+        "desc": "Paneles acústicos de muro que suavizan el eco y reducen el ruido diario, en muros completos o como acentos."
+      },
+      "frames": {
+        "desc": "Piezas acústicas decorativas para muro, personalizables en formato, color, impresión y grabado."
+      },
+      "woolskin": {
+        "desc": "Un acabado acústico suave, con tacto de lana, para muros comerciales, de oficina y residenciales."
+      },
+      "fusetex": {
+        "desc": "Acabados acústicos texturizados para espacios comerciales, corporativos y residenciales."
+      },
+      "murals": {
+        "desc": "Murales acústicos impresos en gran formato: cualquier imagen, con todo el desempeño acústico."
+      },
+      "canvas": {
+        "desc": "Lienzos acústicos que se cuelgan como arte y absorben el sonido."
+      },
+      "walllights": {
+        "desc": "Lámparas de muro que dan calidez y absorben el sonido."
+      },
+      "pendantlights": {
+        "desc": "Lámparas colgantes que iluminan el espacio y absorben el sonido al mismo tiempo."
+      },
+      "floorlights": {
+        "desc": "Lámparas de piso y tótems con pantallas acústicas."
+      },
+      "tablelights": {
+        "desc": "Lámparas de mesa con pantallas acústicas."
+      },
+      "dividers": {
+        "desc": "Separación acústica para espacios abiertos que reduce las conversaciones cruzadas y crea microespacios más silenciosos."
+      },
+      "fckoff": {
+        "desc": "Divisores acústicos y pantallas de privacidad para escritorios en oficinas abiertas."
+      },
+      "podcaster": {
+        "desc": "Tratamiento acústico para estudios de podcast y grabación: voces claras, sin eco y un set que se ve bien en cámara."
+      }
+    },
+    "families": {
+      "podcaster": "Un estudio acústico completo para podcast y grabación: paneles de muro, nubes de plafón y tablillas que controlan el eco para que cada voz suene clara, cercana y cálida en el micrófono.",
+      "baffles": "Baffles acústicos suspendidos que absorben el sonido, reducen el eco y dan ritmo al plafón.",
+      "clouds": "Nubes acústicas suspendidas que absorben el sonido desde arriba y definen zonas sin muros.",
+      "ceilings": "Un sistema de plafón acústico que se adapta al diseño del espacio y agrega confort desde arriba.",
+      "ceilinglights": "Un plafón acústico con luz integrada: iluminación y absorción de sonido en una sola superficie.",
+      "walls": "Un sistema acústico de muro que reduce el ruido, mejora la concentración y transforma la atmósfera del espacio.",
+      "frames": "Paneles acústicos enmarcados como arte: absorción de sonido y diseño en una sola pieza.",
+      "woolskin": "Un acabado acústico suave, con tacto de lana: cálido a la vista y silencioso al oído.",
+      "fusetex": "Un acabado acústico texturizado que da profundidad al espacio y absorbe el sonido.",
+      "murals": "Un mural acústico impreso en gran formato: cualquier imagen, con todo el desempeño acústico.",
+      "canvas": "Un lienzo acústico que se cuelga como arte y absorbe el sonido.",
+      "walllights": "Una lámpara de muro acústica que da calidez y absorbe el sonido.",
+      "pendantlights": "Una lámpara colgante acústica: luz que ilumina el espacio y absorbe el sonido al mismo tiempo.",
+      "floorlights": "Una lámpara de piso acústica con cuerpo que absorbe el sonido.",
+      "tablelights": "Una lámpara de mesa acústica con pantalla que absorbe el sonido.",
+      "dividers": "Separación acústica que reduce las conversaciones cruzadas y crea microespacios más silenciosos en áreas abiertas.",
+      "fckoff": "Un divisor acústico de escritorio que da privacidad y silencio a cada estación de trabajo."
+    },
+    "special": {
+      "wallwoolskin": "Paneles acústicos de muro con bordes suaves y una textura profunda tipo lana, en una paleta de colores cálidos y naturales.",
+      "wallfusion": "Paneles acústicos de tablillas con profundidad en dos tonos: tablillas de fieltro sobre un fondo acústico en color contrastante, para muros con ritmo y control del sonido.",
+      "wallfusionslat": "Tablillas anchas de fieltro separadas por finas líneas en color contrastante, para muros y cabinas con un ritmo limpio y una acústica tranquila.",
+      "wallaries": "Aries en muro: tablillas acústicas verticales de piso a techo que agregan un ritmo cálido y absorben el sonido en oficinas abiertas y pasillos.",
+      "airaries": "Tablillas modulares de chapa de madera sobre panel acústico negro, para plafones y muros con calidez y control acústico."
+    }
+  },
+  "downloads": {
+    "intro": "Archivos CAD, SketchUp, Rhino y Revit de cada producto Indigoff, listos para integrar a tu proyecto.",
+    "productCount": {
+      "one": "{count} producto",
+      "other": "{count} productos"
+    },
+    "fileCount": {
+      "one": "{count} archivo",
+      "other": "{count} archivos"
+    },
+    "categoryLabel": "Categoría",
+    "allCategories": "Todos",
+    "allFormats": "Todos los formatos",
+    "search": "Buscar",
+    "searchPlaceholder": "Nombre del producto",
+    "empty": "Ningún archivo coincide con tu búsqueda.",
+    "download": "Descargar",
+    "requestText": "¿Necesitas un formato o medida que no aparece? Nuestro equipo prepara archivos CAD y BIM bajo pedido.",
+    "requestCta": "Solicitar un archivo"
+  },
+  "findRep": {
+    "intro": "Precios, muestras, especificación y apoyo en tu proyecto, con el representante Indigoff de tu territorio.",
+    "stateLabel": "Estado",
+    "statePlaceholder": "Escribe un estado, p. ej. Texas o NJ",
+    "notFound": "No encontramos ese estado. Prueba con su nombre completo o su abreviatura de dos letras.",
+    "countryLabel": "País",
+    "countries": {
+      "us": "Estados Unidos",
+      "ca": "Canadá",
+      "mx": "México"
+    },
+    "mapLabels": {
+      "us": "Mapa de territorios de representantes en Estados Unidos",
+      "ca": "Mapa de Canadá",
+      "mx": "Mapa de México"
+    },
+    "legend": {
+      "territory": "Territorio con representante",
+      "selected": "Seleccionado",
+      "direct": "Atendido directamente por Indigoff"
+    },
+    "result": {
+      "selectState": "Selecciona un estado",
+      "yourRep": "Tu representante",
+      "rep": "Representante"
+    },
+    "hint": "Selecciona un estado en el mapa o escríbelo arriba para ver quién atiende tu proyecto.",
+    "email": "Correo",
+    "directTeam": "Equipo directo",
+    "allOtherTerritories": "Todos los demás territorios",
+    "mexicoStates": {
+      "one": "México · {count} estado",
+      "other": "México · {count} estados"
+    },
+    "allTitle": "Todos los representantes",
+    "outside": "¿Fuera de estos territorios o trabajas en México? Nuestro equipo atiende tu proyecto directamente."
+  },
+  "collection": {
+    "allCategories": "Todas las categorías",
+    "contact": "Contacto",
+    "bringTitle": "Llévalo a tu espacio.",
+    "requestStudy": "Solicita un estudio acústico y de iluminación",
+    "moreCategories": "Más categorías",
+    "allDownloads": "Todas las descargas",
+    "filesOnRequest": "Archivos CAD y BIM disponibles bajo pedido",
+    "all": "Todos",
+    "collectionLabel": "Colección",
+    "subcategoriesLabel": "Subcategorías",
+    "collectionsLabel": "Colecciones",
+    "viewItem": "Ver {name}",
+    "photoPlaceholder": "Espacio para la foto de {name}",
+    "secondView": "{name} — segunda vista",
+    "prevImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente",
+    "homeLabel": "Inicio de Indigoff",
+    "save": "Guardar",
+    "saved": "Guardado"
+  },
+  "list": {
+    "title": "Mi lista",
+    "intro": "Guarda productos, acabados, conceptos y proyectos mientras navegas. Comparte la lista con un representante para recibir muestras y precios para tu proyecto.",
+    "empty": "Tu lista está vacía. Toca “Agregar a mi lista” en cualquier producto, acabado, concepto o proyecto para guardarlo aquí.",
+    "sendToRep": "Enviar a un representante",
+    "email": "Enviar mi lista por correo",
+    "clear": "Vaciar lista",
+    "remove": "Quitar",
+    "removeItem": "Quitar {name}",
+    "add": "Agregar a mi lista",
+    "saved": "Guardado en mi lista"
+  },
+  "home": {
+    "footer": {
+      "projects": "Proyectos",
+      "specify": "Especificar",
+      "clientService": "Atención al cliente",
+      "contactUs": "Contáctanos",
+      "installation": "Instalación",
+      "bimCad": "BIM y CAD",
+      "sustainability": "Sustentabilidad",
+      "about": "Nosotros",
+      "journal": "Revista",
+      "careers": "Empleos",
+      "contact": "Contacto",
+      "region": "Estados Unidos | Español",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "accessibility": "Accesibilidad"
+    },
+    "categories": {
+      "title": "Cada aplicación. Un solo material.",
+      "ceilingsSubs": "Sistemas · Baffles · Nubes · Iluminación",
+      "explore": "Explorar",
+      "wallsSubs": "Paneles · Marcos · Murales · Lienzos",
+      "lightsSubs": "Colgante · Plafón · Piso · Mesa · Muro",
+      "dividersSubs": "Divisores de espacio · Fckoff",
+      "podcasterSubs": "Acústica para estudio"
+    },
+    "finishes": {
+      "title": "Hazlo tuyo.",
+      "colors": "Colores",
+      "colorsSub": "18 colores",
+      "textures": "Texturas",
+      "texturesSub": "Madera · Piedra",
+      "print": "Impresión",
+      "printSub": "Cualquier imagen",
+      "engraving": "Grabado",
+      "engravingSub": "Líneas y relieve",
+      "embossed": "Realzado",
+      "embossedSub": "Prisma · Ola · Diamante",
+      "groups": {
+        "wood": "Madera",
+        "stone": "Piedra"
+      },
+      "modelGroup": "{name} · Modelo {n}",
+      "items": {
+        "texture": "{name} — Textura",
+        "panel": "{name} — Panel",
+        "inSpace": "{name} — En espacio",
+        "print": "Impresión {n}",
+        "engraving": "Grabado {n}"
+      }
+    },
+    "material": {
+      "title": "Tres formas de darle forma.",
+      "text": "Muros, costillas y plafones que respiran, todo de PET 100% reciclado.",
+      "cta": "Explora muros"
+    },
+    "concepts": {
+      "title": "Elige un concepto.",
+      "text": "Cada concepto es un diseño completo con su propio número. Elige uno y lo adaptamos a tu espacio.",
+      "adapt": "Adapta este concepto a tu espacio",
+      "tapHint": "Un diseño completo que adaptamos a tu espacio. Toca la foto para ver la galería.",
+      "prev": "Concepto anterior",
+      "next": "Concepto siguiente",
+      "alt": "Concepto {code}: {name}",
+      "fullView": "{name} — vista completa",
+      "gallery": {
+        "ceiling": "Plafón"
+      }
+    },
+    "projects": {
+      "title": "Proyectos icónicos.",
+      "trustedBy": "Confían en nosotros",
+      "photos": {
+        "one": "{count} foto",
+        "other": "{count} fotos"
+      },
+      "clients": "Clientes"
+    },
+    "acoustics": {
+      "title": "Diseñamos el sonido y la luz al mismo tiempo.",
+      "text": "Nuestro equipo de acústica e iluminación estudia tu proyecto e integra el tratamiento acústico con el diseño de iluminación, para que cada espacio suene tan tranquilo como se ve.",
+      "cta": "Solicita un estudio acústico y de iluminación"
+    },
+    "specify": {
+      "eyebrow": "Exclusivo de Indigoff",
+      "appointment": "Agenda una cita",
+      "appointmentText": "En showroom o por video, con un diseñador.",
+      "study": "Estudio acústico",
+      "studyText": "Análisis propio de tu espacio.",
+      "samples": "Muestras",
+      "samplesText": "Colores y acabados, hasta tu puerta.",
+      "bim": "Especificaciones y BIM",
+      "bimText": "NRC [0.XX] · [Clase A] · Familias Revit.",
+      "repText": "Más de 10 estados y México."
+    },
+    "contact": {
+      "title": "Mantente en contacto",
+      "text": "Nuevas colecciones, conceptos y proyectos, antes que nadie.",
+      "email": "Correo",
+      "signUp": "Suscribirme"
+    },
+    "hero": {
+      "line1": "escucha de cerca",
+      "line2": "siente el silencio",
+      "line3": "mira la luz",
+      "text": "Acústica e iluminación, diseñadas como una sola — paneles, plafones e iluminación acústica que definen cómo suena y cómo se ilumina tu espacio.",
+      "quote": "Solicita una cotización",
+      "explore": "Explora productos"
+    },
+    "cta": {
+      "start": "Inicia tu proyecto"
+    },
+    "onoff": {
+      "eyebrow": "onoff studio",
+      "title": "No solo acústica. Acústica e iluminación, integradas.",
+      "text": "A través de onoff studio, Indigoff integra el tratamiento acústico y el diseño de iluminación en una sola solución: luminarias que absorben el sonido e iluminan el espacio al mismo tiempo, diseñadas para tu proyecto desde el primer concepto hasta la instalación.",
+      "discover": "Conoce onoff studio",
+      "explore": "Explora la iluminación acústica"
+    },
+    "lightbox": {
+      "label": {
+        "product": "Producto",
+        "project": "Proyecto",
+        "oneMaterial": "Un solo material",
+        "finishes": "Acabados",
+        "concept": "Concepto",
+        "studies": "Estudios acústicos propios"
+      },
+      "desc": {
+        "ceilingSystem": "Un sistema de plafón suspendido que se adapta al diseño del espacio y agrega protección acústica con color desde arriba.",
+        "clouds": "Piezas acústicas suspendidas que absorben el ruido y decoran el espacio al mismo tiempo.",
+        "glow": "Iluminación acústica: luz que ilumina el espacio y absorbe el sonido al mismo tiempo.",
+        "projectInstalled": "Solución acústica diseñada e instalada por Indigoff.",
+        "study": "Nuestro equipo acústico analiza tu proyecto y recomienda la solución correcta.",
+        "colors": "18 colores estándar y colores personalizados bajo pedido.",
+        "textures": "Texturas de madera, piedra y minerales impresas sobre paneles acústicos.",
+        "print": "Cualquier imagen, impresa en alta resolución sobre paneles acústicos sin perder su desempeño acústico.",
+        "engraving": "Patrones grabados en CNC que dan profundidad y diseño a cada panel.",
+        "embossed": "Superficies en relieve, esculpidas con luz y sombra.",
+        "projectManufactured": "Solución acústica diseñada, fabricada e instalada por Indigoff."
+      },
+      "title": {
+        "material": "Tres formas de darle forma",
+        "study": "Primero estudiamos el sonido."
+      },
+      "cta": {
+        "likeThis": "Inicia un proyecto como este"
+      },
+      "conceptDesc": "{name} — un diseño completo que adaptamos a tu espacio.",
+      "options": {
+        "one": "{count} opción",
+        "other": "{count} opciones"
+      },
+      "images": {
+        "one": "{count} imagen",
+        "other": "{count} imágenes"
+      }
+    },
+    "search": {
+      "label": "Buscar",
+      "placeholder": "Busca productos, acabados, conceptos…",
+      "popular": "Populares",
+      "none": "Sin resultados. Prueba con otra palabra.",
+      "results": {
+        "one": "{count} resultado",
+        "other": "{count} resultados"
+      }
+    },
+    "newsletter": {
+      "title": "Mantente al día",
+      "text": "Nuevas colecciones, conceptos y proyectos, antes que nadie. Además, tips de especificación de nuestro equipo acústico.",
+      "email": "Correo",
+      "subscribe": "Suscribirme",
+      "noThanks": "No, gracias",
+      "invalid": "Escribe un correo válido.",
+      "thanks": "Gracias",
+      "thanksText": "Ya estás en la lista. Pronto te escribimos.",
+      "continue": "Continuar"
+    },
+    "conceptNames": {
+      "R2001": "Flujo orgánico",
+      "R2002": "Arcos arcoíris",
+      "R2003": "Café mosaico",
+      "R2004": "Lounge de ondas",
+      "R2005": "Arcos luminosos",
+      "R2006": "Arco neón",
+      "R2007": "Café líquido",
+      "R2009": "Estudio color block",
+      "R2010": "Ondas de horizonte",
+      "R2011": "Oficina prisma",
+      "R2012": "Comedor pop",
+      "R2013": "Lluvia dorada",
+      "R2014": "Arcada",
+      "R2015": "Galería geométrica",
+      "R2016": "Bloques de construcción",
+      "R2017": "Boutique de rayas II",
+      "R2018": "Campo de color",
+      "R2019": "Puntos terracota",
+      "R2020": "Espectro de color",
+      "R2021": "Estudio en nogal"
+    }
+  }
+}

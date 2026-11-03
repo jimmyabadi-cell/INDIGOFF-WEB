@@ -1,0 +1,519 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "downloads": "Downloads",
+    "findRep": "Find a rep",
+    "backToHome": "Back to home",
+    "lightKinds": {
+      "pendant": "Pendant Lights",
+      "wall": "Wall Lights",
+      "floor": "Floor Lights",
+      "table": "Table Lights"
+    },
+    "back": "Back",
+    "requestSamples": "Request samples",
+    "talkToRep": "Talk to a rep",
+    "menu": {
+      "menu": "Menu",
+      "close": "Close",
+      "categories": "Categories",
+      "finishes": "Finishes",
+      "concepts": "Concepts",
+      "projects": "Projects"
+    },
+    "viewMore": "View more",
+    "viewLess": "View less",
+    "enlargeImage": "Enlarge image",
+    "onNetwork": "{name} on {network}"
+  },
+  "studio": {
+    "hero": {
+      "eyebrow": "onoff studio",
+      "title": "Acoustic and lighting design, as one.",
+      "subtitle": "onoff studio is the Indigoff design studio for spaces that need to sound as good as they look.",
+      "imageAlt": "Acoustic leaf canopy with integrated light over a lounge"
+    },
+    "what": {
+      "title": "We design how a space sounds and how it is lit — together.",
+      "p1": "Most projects treat acoustics and lighting as two separate problems. At onoff studio we solve them as one: every fixture we design absorbs sound and shapes light at the same time, so ceilings and walls stay clean and the room feels calm.",
+      "p2": "We work with architects, interior designers and end clients on offices, hospitality, education and retail — from a single statement piece to the full acoustic and lighting plan of a building."
+    },
+    "services": [
+      {
+        "title": "Acoustic design",
+        "text": "Reverberation and noise analysis of your space, with a clear recommendation of what to treat and where."
+      },
+      {
+        "title": "Lighting design",
+        "text": "Lighting plans and fixture layouts that balance mood, function and energy use."
+      },
+      {
+        "title": "Custom acoustic fixtures",
+        "text": "One-of-a-kind acoustic lights designed for your project, in any shape, size and color."
+      },
+      {
+        "title": "Coordination and installation",
+        "text": "Shop drawings, samples, production and on-site support until the space is finished."
+      }
+    ],
+    "process": {
+      "title": "How we work",
+      "steps": [
+        {
+          "title": "Listen",
+          "text": "We study the space, its use and its sound."
+        },
+        {
+          "title": "Design",
+          "text": "We propose the acoustic and lighting concept, with renders and simulations."
+        },
+        {
+          "title": "Make",
+          "text": "Indigoff produces each piece from recycled PET felt with integrated LED."
+        },
+        {
+          "title": "Install",
+          "text": "We coordinate delivery and installation with your team."
+        }
+      ]
+    },
+    "designs": {
+      "title": "onoff studio designs",
+      "text": "Acoustic lighting designed by onoff studio and made by Indigoff from recycled PET felt."
+    },
+    "cta": {
+      "title": "Let’s design your space.",
+      "text": "Tell us about your project and the onoff studio team will propose an acoustic and lighting concept.",
+      "start": "Start a project"
+    }
+  },
+  "catalog": {
+    "categories": {
+      "ceilings": "Ceilings",
+      "walls": "Walls",
+      "lights": "Lights",
+      "dividers": "Dividers",
+      "podcaster": "Podcaster"
+    },
+    "subcategories": {
+      "ceilings": {
+        "ceilings": "Ceiling Systems",
+        "baffles": "Baffles",
+        "clouds": "Clouds",
+        "ceilinglights": "Ceiling Lights"
+      },
+      "walls": {
+        "walls": "Panels",
+        "frames": "Frames",
+        "murals": "Murals",
+        "canvas": "Canvas",
+        "walllights": "Wall Lights",
+        "woolskin": "Woolskin Panels",
+        "fabric": "Fabric Panels"
+      },
+      "lights": {
+        "pendantlights": "Pendant",
+        "ceilinglights": "Ceiling",
+        "floorlights": "Floor",
+        "tablelights": "Table",
+        "walllights": "Wall"
+      },
+      "dividers": {
+        "dividers": "Space Dividers",
+        "fckoff": "Fckoff — Desk Dividers"
+      },
+      "podcaster": {
+        "podcaster": "Podcaster"
+      }
+    },
+    "parents": {
+      "ceilings": {
+        "desc": "Everything overhead — baffles, clouds, ceiling systems and ceiling lights."
+      },
+      "walls": {
+        "desc": "Panels, frames, finishes and art that quiet the room and shape how it looks."
+      },
+      "lights": {
+        "desc": "Light that brightens the room and absorbs sound at the same time."
+      },
+      "dividers": {
+        "desc": "Freestanding and desk dividers that create quiet zones in open spaces."
+      },
+      "podcaster": {
+        "desc": "Acoustic treatment for podcast and recording studios — clear voices, no echo, a set that looks good on camera."
+      }
+    },
+    "cols": {
+      "baffles": {
+        "desc": "Suspended ceiling elements that absorb sound, reduce echo and add visual structure to open spaces."
+      },
+      "clouds": {
+        "desc": "Suspended acoustic panels that absorb overhead sound and define zones without walls."
+      },
+      "ceilings": {
+        "desc": "Ceiling systems that adapt to the design of the space and add acoustic comfort overhead."
+      },
+      "ceilinglights": {
+        "desc": "Acoustic ceilings with integrated light — illumination and sound absorption in one surface."
+      },
+      "walls": {
+        "desc": "Acoustic wall panels that soften echo and reduce everyday noise — as full wall fields or accents."
+      },
+      "frames": {
+        "desc": "Decorative acoustic wall pieces, customizable in format, color, print and engraving."
+      },
+      "woolskin": {
+        "desc": "A soft, wool-touch acoustic finish for commercial, office and residential walls."
+      },
+      "fusetex": {
+        "desc": "Textured acoustic wall finishes for commercial, corporate and residential spaces."
+      },
+      "murals": {
+        "desc": "Large-format printed acoustic murals — any image, full acoustic performance."
+      },
+      "canvas": {
+        "desc": "Acoustic canvas that hangs like art and absorbs sound."
+      },
+      "walllights": {
+        "desc": "Wall lights that add warmth and absorb sound."
+      },
+      "pendantlights": {
+        "desc": "Pendant lights that brighten the room and absorb sound at the same time."
+      },
+      "floorlights": {
+        "desc": "Floor lamps and totems with acoustic shades."
+      },
+      "tablelights": {
+        "desc": "Table lamps with acoustic shades."
+      },
+      "dividers": {
+        "desc": "Acoustic separation for open spaces that reduces cross-talk and creates quieter micro-rooms."
+      },
+      "fckoff": {
+        "desc": "Acoustic dividers and privacy screens for open-office desks."
+      },
+      "podcaster": {
+        "desc": "Acoustic treatment for podcast and recording studios — clear voices, no echo, a set that looks good on camera."
+      }
+    },
+    "families": {
+      "podcaster": "A complete acoustic studio for podcast and recording: wall panels, ceiling clouds and slats that control echo so every voice sounds clear, close and warm on mic.",
+      "baffles": "Suspended acoustic baffles that absorb sound, reduce echo and add rhythm to the ceiling.",
+      "clouds": "Suspended acoustic clouds that absorb overhead sound and define zones without walls.",
+      "ceilings": "An acoustic ceiling system that adapts to the design of the space and adds comfort overhead.",
+      "ceilinglights": "An acoustic ceiling with integrated light — illumination and sound absorption in one surface.",
+      "walls": "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room.",
+      "frames": "Acoustic panels framed like art: sound absorption and design in a single piece.",
+      "woolskin": "A soft, wool-touch acoustic wall finish — warm to the eye and quiet to the ear.",
+      "fusetex": "A textured acoustic wall finish that adds depth to the room and absorbs sound.",
+      "murals": "A large-format printed acoustic mural — any image, full acoustic performance.",
+      "canvas": "An acoustic canvas that hangs like art and absorbs sound.",
+      "walllights": "An acoustic wall light that adds warmth and absorbs sound.",
+      "pendantlights": "An acoustic pendant: light that brightens the room and absorbs sound at the same time.",
+      "floorlights": "An acoustic floor light with a sound-absorbing body.",
+      "tablelights": "An acoustic table lamp with a sound-absorbing shade.",
+      "dividers": "Acoustic separation that reduces cross-talk and creates quieter micro-rooms in open spaces.",
+      "fckoff": "An acoustic desk divider that gives each workstation privacy and quiet."
+    },
+    "special": {
+      "wallwoolskin": "Soft-edged acoustic wall panels with a deep wool-like texture, in a palette of warm, natural colors.",
+      "wallfusion": "Acoustic slat panels with two-tone depth: felt slats over a contrasting acoustic backing, for walls with rhythm and sound control.",
+      "wallfusionslat": "Wide felt slats separated by fine contrasting reveals, for walls and booths with a clean rhythm and quiet acoustics.",
+      "wallaries": "Aries on the wall: vertical acoustic slats that run floor to ceiling, adding warm rhythm and absorbing sound across open offices and corridors.",
+      "airaries": "Modular wood-veneer slats over a black acoustic panel, for ceilings and walls with warmth and acoustic control."
+    }
+  },
+  "downloads": {
+    "intro": "CAD, SketchUp, Rhino and Revit files for every Indigoff product — ready to drop into your project.",
+    "productCount": {
+      "one": "{count} product",
+      "other": "{count} products"
+    },
+    "fileCount": {
+      "one": "{count} file",
+      "other": "{count} files"
+    },
+    "categoryLabel": "Category",
+    "allCategories": "All",
+    "allFormats": "All formats",
+    "search": "Search",
+    "searchPlaceholder": "Product name",
+    "empty": "No files match your search.",
+    "download": "Download",
+    "requestText": "Need a format or size that isn't listed? Our team prepares CAD and BIM files on request.",
+    "requestCta": "Request a file"
+  },
+  "findRep": {
+    "intro": "Pricing, samples, specification and project support — from the Indigoff representative in your territory.",
+    "stateLabel": "State",
+    "statePlaceholder": "Type a state — e.g. Texas or NJ",
+    "notFound": "We couldn’t find that state. Try its full name or two-letter code.",
+    "countryLabel": "Country",
+    "countries": {
+      "us": "United States",
+      "ca": "Canada",
+      "mx": "México"
+    },
+    "mapLabels": {
+      "us": "Map of United States representative territories",
+      "ca": "Map of Canada",
+      "mx": "Map of México"
+    },
+    "legend": {
+      "territory": "Rep territory",
+      "selected": "Selected",
+      "direct": "Served directly by Indigoff"
+    },
+    "result": {
+      "selectState": "Select a state",
+      "yourRep": "Your representative",
+      "rep": "Representative"
+    },
+    "hint": "Select a state on the map or type it above to see who covers your project.",
+    "email": "Email",
+    "directTeam": "Direct team",
+    "allOtherTerritories": "All other territories",
+    "mexicoStates": {
+      "one": "México · {count} state",
+      "other": "México · {count} states"
+    },
+    "allTitle": "All representatives",
+    "outside": "Outside these territories, or working in México? Our team supports your project directly."
+  },
+  "collection": {
+    "allCategories": "All categories",
+    "contact": "Contact",
+    "bringTitle": "Bring it to your space.",
+    "requestStudy": "Request an acoustic + lighting study",
+    "moreCategories": "More categories",
+    "allDownloads": "All downloads",
+    "filesOnRequest": "CAD & BIM files available on request",
+    "all": "All",
+    "collectionLabel": "Collection",
+    "subcategoriesLabel": "Subcategories",
+    "collectionsLabel": "Collections",
+    "viewItem": "View {name}",
+    "photoPlaceholder": "{name} photo placeholder",
+    "secondView": "{name} — second view",
+    "prevImage": "Previous image",
+    "nextImage": "Next image",
+    "homeLabel": "Indigoff home",
+    "save": "Save",
+    "saved": "Saved"
+  },
+  "list": {
+    "title": "My list",
+    "intro": "Save products, finishes, concepts and projects as you browse. Share the list with a rep to get samples and pricing for your project.",
+    "empty": "Your list is empty. Tap “Add to my list” on any product, finish, concept or project to save it here.",
+    "sendToRep": "Send to a rep",
+    "email": "Email my list",
+    "clear": "Clear list",
+    "remove": "Remove",
+    "removeItem": "Remove {name}",
+    "add": "Add to my list",
+    "saved": "Saved to my list"
+  },
+  "home": {
+    "footer": {
+      "projects": "Projects",
+      "specify": "Specify",
+      "clientService": "Client service",
+      "contactUs": "Contact us",
+      "installation": "Installation",
+      "bimCad": "BIM & CAD",
+      "sustainability": "Sustainability",
+      "about": "About",
+      "journal": "Journal",
+      "careers": "Careers",
+      "contact": "Contact",
+      "region": "United States | English",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "accessibility": "Accessibility"
+    },
+    "categories": {
+      "title": "Every application. One material.",
+      "ceilingsSubs": "Systems · Baffles · Clouds · Lights",
+      "explore": "Explore",
+      "wallsSubs": "Panels · Frames · Murals · Canvas",
+      "lightsSubs": "Acoustic lighting · Pendant · Ceiling · Wall",
+      "dividersSubs": "Space dividers · Fckoff",
+      "podcasterSubs": "Studio acoustics"
+    },
+    "finishes": {
+      "title": "Make it yours.",
+      "colors": "Colors",
+      "colorsSub": "18 colorways",
+      "textures": "Textures",
+      "texturesSub": "Wood · Stone",
+      "print": "Print",
+      "printSub": "Any image",
+      "engraving": "Engraving",
+      "engravingSub": "Lines & relief",
+      "embossed": "Embossed",
+      "embossedSub": "Prism · Wave · Diamond",
+      "groups": {
+        "wood": "Wood",
+        "stone": "Stone"
+      },
+      "modelGroup": "{name} · Model {n}",
+      "items": {
+        "texture": "{name} — Texture",
+        "panel": "{name} — Panel",
+        "inSpace": "{name} — In space",
+        "print": "Print {n}",
+        "engraving": "Engraving {n}"
+      }
+    },
+    "material": {
+      "title": "Shaped three ways.",
+      "text": "Walls, ribs and ceilings that breathe — all from 100% recycled PET.",
+      "cta": "Explore walls"
+    },
+    "concepts": {
+      "title": "Choose a concept.",
+      "text": "Every concept is a complete design with its own number. Choose one and we will adapt it to your space.",
+      "adapt": "Adapt this concept to your space",
+      "tapHint": "A complete design we adapt to your space. Tap the photo to see the gallery.",
+      "prev": "Previous concept",
+      "next": "Next concept",
+      "alt": "Concept {code}: {name}",
+      "fullView": "{name} — full view",
+      "gallery": {
+        "ceiling": "Ceiling"
+      }
+    },
+    "projects": {
+      "title": "Iconic projects.",
+      "trustedBy": "Trusted by",
+      "photos": {
+        "one": "{count} photo",
+        "other": "{count} photos"
+      },
+      "clients": "Clients"
+    },
+    "acoustics": {
+      "title": "We design sound and light together.",
+      "text": "Our in-house acoustic and lighting team studies your project and integrates acoustic treatment with lighting design — so every space sounds as calm as it looks.",
+      "cta": "Request an acoustic + lighting study"
+    },
+    "specify": {
+      "eyebrow": "Exclusively Indigoff",
+      "appointment": "Book an appointment",
+      "appointmentText": "Showroom or video, with a designer.",
+      "study": "Acoustic study",
+      "studyText": "In-house analysis of your space.",
+      "samples": "Samples",
+      "samplesText": "Colors and finishes, delivered.",
+      "bim": "Specifications & BIM",
+      "bimText": "NRC [0.XX] · [Class A] · Revit families.",
+      "repText": "10+ states and México."
+    },
+    "contact": {
+      "title": "Stay in touch",
+      "text": "New collections, concepts and projects — first.",
+      "email": "Email",
+      "signUp": "Sign up"
+    },
+    "hero": {
+      "line1": "listen closer",
+      "line2": "feel the silence",
+      "line3": "see the light",
+      "text": "Acoustics and light, designed as one — panels, ceilings and acoustic lighting that shape how your space sounds and how it glows.",
+      "quote": "Request a quote",
+      "explore": "Explore products"
+    },
+    "cta": {
+      "start": "Start your project"
+    },
+    "onoff": {
+      "eyebrow": "onoff studio",
+      "title": "Not just acoustics. Acoustics and light, integrated.",
+      "text": "Through onoff studio, Indigoff integrates acoustic treatment and lighting design into a single solution: fixtures that absorb sound and light the space at the same time, designed for your project from the first concept to installation.",
+      "discover": "Discover onoff studio",
+      "explore": "Explore acoustic lighting"
+    },
+    "lightbox": {
+      "label": {
+        "product": "Product",
+        "project": "Project",
+        "oneMaterial": "One material",
+        "finishes": "Finishes",
+        "concept": "Concept",
+        "studies": "In-house acoustic studies"
+      },
+      "desc": {
+        "ceilingSystem": "A hanging ceiling system that adapts to the design of the space and adds colorful acoustic protection overhead.",
+        "clouds": "Suspended acoustic pieces that absorb noise and decorate the room at the same time.",
+        "glow": "Acoustic lighting: light that brightens the room and absorbs sound at the same time.",
+        "projectInstalled": "Acoustic solution designed and installed by Indigoff.",
+        "study": "Our in-house acoustic team analyzes your project and recommends the right solution.",
+        "colors": "18 standard colors, and custom colors on request.",
+        "textures": "Wood, stone and mineral textures printed on acoustic panels.",
+        "print": "Any image, printed at high resolution on acoustic panels while keeping their acoustic performance.",
+        "engraving": "CNC-engraved patterns that add depth and pattern to every panel.",
+        "embossed": "Raised, sculpted surfaces with light and shadow.",
+        "projectManufactured": "Acoustic solution designed, manufactured and installed by Indigoff."
+      },
+      "title": {
+        "material": "Shaped three ways",
+        "study": "We study the sound first."
+      },
+      "cta": {
+        "likeThis": "Start a project like this"
+      },
+      "conceptDesc": "{name} — a complete design we adapt to your space.",
+      "options": {
+        "one": "{count} option",
+        "other": "{count} options"
+      },
+      "images": {
+        "one": "{count} image",
+        "other": "{count} images"
+      }
+    },
+    "search": {
+      "label": "Search",
+      "placeholder": "Search products, finishes, concepts…",
+      "popular": "Popular",
+      "none": "No results. Try another word.",
+      "results": {
+        "one": "{count} result",
+        "other": "{count} results"
+      }
+    },
+    "newsletter": {
+      "title": "Stay in the know",
+      "text": "New collections, concepts and projects — first. Plus specification tips from our acoustic team.",
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "noThanks": "No, thanks",
+      "invalid": "Enter a valid email address.",
+      "thanks": "Thank you",
+      "thanksText": "You are on the list. We will be in touch soon.",
+      "continue": "Continue"
+    },
+    "conceptNames": {
+      "R2001": "Organic flow",
+      "R2002": "Rainbow arches",
+      "R2003": "Mosaic café",
+      "R2004": "Wave lounge",
+      "R2005": "Glowing arches",
+      "R2006": "Neon arc",
+      "R2007": "Liquid café",
+      "R2009": "Color block studio",
+      "R2010": "Horizon waves",
+      "R2011": "Prism office",
+      "R2012": "Pop canteen",
+      "R2013": "Golden rain",
+      "R2014": "Arcade",
+      "R2015": "Geometric gallery",
+      "R2016": "Building blocks",
+      "R2017": "Stripe boutique II",
+      "R2018": "Color field",
+      "R2019": "Terracotta dots",
+      "R2020": "Color spectrum",
+      "R2021": "Walnut study"
+    }
+  }
+}

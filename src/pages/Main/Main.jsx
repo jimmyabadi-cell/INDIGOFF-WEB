@@ -1,422 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { S } from "../../lib/dc.js";
 import { listVals, saveVals } from "../../lib/savedList.js";
-import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { usePageChrome } from "../../hooks/usePageChrome.js";
+import { makeT, tx } from "../../i18n/index.js";
+import LB from "../../data/lightboxes.json";
 import { useMergeState } from "../../hooks/useMergeState.js";
 import { useSavedList } from "../../hooks/useSavedList.js";
 import { useScrollLock } from "../../hooks/useScrollLock.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { i18nGet, i18nTr } from "../../lib/i18n.js";
 import "./Main.css";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
 import SideMenu from "../../components/layout/SideMenu.jsx";
 
-var I18N_EN = {
-  k1: "Skip to content",
-  k2: "Categories",
-  k3: "Finishes",
-  k4: "Concepts",
-  k5: "Projects",
-  k6: "Specify",
-  k7: "Downloads",
-  k8: "Find a rep",
-  k9: "Design the silence.",
-  k10: "Every application. One material.",
-  k11: "Ceilings",
-  k12: "Systems · Baffles · Clouds · Lights",
-  k13: "Explore",
-  k14: "Walls",
-  k15: "Panels · Frames · Murals · Canvas",
-  k16: "Lights",
-  k17: "Acoustic lighting · Pendant · Ceiling · Wall",
-  k18: "Dividers",
-  k19: "Space dividers · Fckoff",
-  k20: "Studio acoustics",
-  k21: "Make it yours.",
-  k22: "Colors",
-  k23: "18 colorways",
-  k24: "Textures",
-  k25: "Wood · Stone",
-  k26: "Print",
-  k27: "Any image",
-  k28: "Engraving",
-  k29: "Lines & relief",
-  k30: "Embossed",
-  k31: "Prism · Wave · Diamond",
-  k32: "Shaped three ways.",
-  k33: "Walls, ribs and ceilings that breathe — all from 100% recycled PET.",
-  k34: "Choose a concept.",
-  k35: "Every concept is a complete design with its own number. Choose one and we will adapt it to your space.",
-  k36: "Iconic projects.",
-  k37: "Trusted by",
-  k38: "We design sound and light together.",
-  k39: "Our in-house acoustic and lighting team studies your project and integrates acoustic treatment with lighting design — so every space sounds as calm as it looks.",
-  k40: "Request an acoustic + lighting study",
-  k41: "Exclusively Indigoff",
-  k42: "Book an appointment",
-  k43: "Showroom or video, with a designer.",
-  k44: "Acoustic study",
-  k45: "In-house analysis of your space.",
-  k46: "Samples",
-  k47: "Colors and finishes, delivered.",
-  k48: "Specifications & BIM",
-  k49: "NRC [0.XX] · [Class A] · Revit families.",
-  k50: "10+ states and México.",
-  k51: "Stay in touch",
-  k52: "New collections, concepts and projects — first.",
-  k53: "Email",
-  k54: "Sign up",
-  k55: "Client service",
-  k56: "Contact us",
-  k57: "Installation",
-  k58: "BIM & CAD",
-  k59: "Sustainability",
-  k60: "About",
-  k61: "Journal",
-  k62: "Careers",
-  k63: "Contact",
-  k64: "United States | English",
-  k65: "Privacy",
-  k66: "Terms",
-  k67: "Accessibility",
-  k68: "Back",
-  k69: "My list",
-  k70: "Save products, finishes, concepts and projects as you browse. Share the list with a rep to get samples and pricing for your project.",
-  k71: "Your list is empty. Tap “Add to my list” on any product, finish, concept or project to save it here.",
-  k72: "Send to a rep",
-  k73: "Email my list",
-  k74: "Clear list",
-  k75: "Remove",
-  k76: "listen closer",
-  k77: "feel the silence",
-  k78: "Acoustics and light, designed as one — panels, ceilings and acoustic lighting that shape how your space sounds and how it glows.",
-  k79: "Request a quote",
-  k80: "Explore products",
-  k81: "Request samples",
-  k82: "Explore walls",
-  k83: "Adapt this concept to your space",
-  k84: "Book an appointment",
-  k85: "Start your project",
-  k86: "Talk to a rep",
-  k87: "onoff studio",
-  k88: "Not just acoustics. Acoustics and light, integrated.",
-  k89: "Through onoff studio, Indigoff integrates acoustic treatment and lighting design into a single solution: fixtures that absorb sound and light the space at the same time, designed for your project from the first concept to installation.",
-  k90: "Discover onoff studio",
-  k91: "Explore acoustic lighting",
-  k92: "see the light",
-};
-
-var LB = {
-  p_mist: {
-    img: "/img/07047095a3b9bfeb4a7cbb035cc17702.jpg",
-    alt: "Mist: Wave baffle ceiling over a lounge",
-    label: "Product · Ceilings",
-    title: "Mist",
-    desc: "A hanging ceiling system that adapts to the design of the space and adds colorful acoustic protection overhead.",
-    cta: "Request a quote",
-  },
-  p_stratus: {
-    img: "/img/0070fe89208c12f021b3b0111d3065ed.jpg",
-    alt: "Stratus: Linear ceiling baffles over a private office",
-    label: "Product · Ceilings",
-    title: "Stratus",
-    desc: "A hanging ceiling system that adapts to the design of the space and adds colorful acoustic protection overhead.",
-    cta: "Request a quote",
-  },
-  p_cirrus: {
-    img: "/img/7b0aa566228bcd0aac7e15a2f0ae15fa.jpg",
-    alt: "Cirrus: Layered ceiling panels over a lobby",
-    label: "Product · Ceilings",
-    title: "Cirrus",
-    desc: "A hanging ceiling system that adapts to the design of the space and adds colorful acoustic protection overhead.",
-    cta: "Request a quote",
-  },
-  p_aries: {
-    img: "/img/db89a04eab7deaebd23c4ea514aa65c0.jpg",
-    alt: "Aries: Wood slat ceiling and wall in a living room",
-    label: "Product · Ceilings",
-    title: "Aries",
-    desc: "Modular wood-veneer slats over a black acoustic panel, for ceilings and walls with warmth and acoustic control.",
-    cta: "Request a quote",
-  },
-  p_drizzle: {
-    img: "/img/12430ba101bdf936a2b3510fe2f5069b.jpg",
-    alt: "Drizzle: Red umbrella-shaped acoustic clouds",
-    label: "Product · Clouds",
-    title: "Drizzle",
-    desc: "Suspended acoustic pieces that absorb noise and decorate the room at the same time.",
-    cta: "Request a quote",
-  },
-  p_hexaglow: {
-    img: "/img/e49b73d7c36bcdf07deb9598b8227dd5.jpg",
-    alt: "HexaGlow: Hexagonal acoustic ceiling panels with light",
-    label: "Product · Glow",
-    title: "HexaGlow",
-    desc: "Acoustic lighting: light that brightens the room and absorbs sound at the same time.",
-    cta: "Request a quote",
-  },
-  p_cascade: {
-    img: "/img/acd82f546d602b0486b8d1a33b4770aa.jpg",
-    alt: "Cascade: Slatted acoustic frames in an office",
-    label: "Product · Frames",
-    title: "Cascade",
-    desc: "Acoustic panels framed like art: sound absorption and design in a single piece.",
-    cta: "Request a quote",
-  },
-  p_cataract: {
-    img: "/img/824be2d816020d40c5009474f0efae84.jpg",
-    alt: "Cataract: Wave-relief acoustic frames on a wood wall",
-    label: "Product · Frames",
-    title: "Cataract",
-    desc: "Acoustic panels framed like art: sound absorption and design in a single piece.",
-    cta: "Request a quote",
-  },
-  p_plunge: {
-    img: "/img/157750c52032738193f7a36ad0453502.jpg",
-    alt: "Plunge: Backlit acoustic frames in a lounge",
-    label: "Product · Frames",
-    title: "Plunge",
-    desc: "Acoustic panels framed like art: sound absorption and design in a single piece.",
-    cta: "Request a quote",
-  },
-  p_akebia: {
-    img: "/img/12792218baaf13c00d1a66f72041e0c4.jpg",
-    alt: "Akebia: Red faceted acoustic wall",
-    label: "Product · Walls",
-    title: "Akebia",
-    desc: "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room.",
-    cta: "Request a quote",
-  },
-  p_cissus: {
-    img: "/img/1cc784fd3718a01782dbdd4e6ec076a0.jpg",
-    alt: "Cissus: Navy hexagonal acoustic wall",
-    label: "Product · Walls",
-    title: "Cissus",
-    desc: "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room.",
-    cta: "Request a quote",
-  },
-  p_clematis: {
-    img: "/img/88049a1b69f352078226e37b9eeb105a.jpg",
-    alt: "Clematis: Grey and black hexagonal acoustic wall in a boardroom",
-    label: "Product · Walls",
-    title: "Clematis",
-    desc: "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room.",
-    cta: "Request a quote",
-  },
-  p_lonicera: {
-    img: "/img/b68b45410384d4bc67529a0b3eea5cd0.jpg",
-    alt: "Lonicera: Blue and white scale-pattern acoustic wall",
-    label: "Product · Walls",
-    title: "Lonicera",
-    desc: "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room.",
-    cta: "Request a quote",
-  },
-  p_wisteria: {
-    img: "/img/ccfc7590591b928abd658dab02666acf.jpg",
-    alt: "Wisteria: Terracotta brick-pattern acoustic wall",
-    label: "Product · Walls",
-    title: "Wisteria",
-    desc: "An acoustic wall system that reduces noise, improves focus and transforms the atmosphere of the room.",
-    cta: "Request a quote",
-  },
-  j_novonordisk: {
-    img: "/img/b4b5aecc31cfc4c84d16b672483178bf.jpg",
-    alt: "Novo Nordisk: Office lounge with sculpted acoustic ceiling",
-    label: "Project",
-    title: "Novo Nordisk",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_royaltoncancn: {
-    img: "/img/0511a77cdd8a7f49b9c256536bb355b8.jpg",
-    alt: "Royalton: Restaurant with a dark wave acoustic ceiling",
-    label: "Project",
-    title: "Royalton",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_citibank: {
-    img: "/img/d13aa0c9246e60afd2c6c919d0a2c6fa.jpg",
-    alt: "Citibank: Lounge with diamond acoustic wall panels",
-    label: "Project",
-    title: "Citibank",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_nissan: {
-    img: "/img/6b11647fe003817f3cf6c68183556ba4.jpg",
-    alt: "Nissan: Auditorium with linear acoustic ceiling",
-    label: "Project",
-    title: "Nissan",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_tecdemonterrey: {
-    img: "/img/1cf08ac549e5eee1dbedc0e4037c9a25.jpg",
-    alt: "Tec: Theater with sculpted orange acoustic walls",
-    label: "Project",
-    title: "Tec",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_nutanix: {
-    img: "/img/7695458f1f2d416157a7a2512e5f7289.jpg",
-    alt: "Nutanix: Corridor with a blue gradient acoustic wall",
-    label: "Project",
-    title: "Nutanix",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_lenovo: {
-    img: "/img/fd7faf838c54e6a80ded7b63cedecc38.jpg",
-    alt: "Lenovo: Meeting room with blue and white triangle acoustic wall",
-    label: "Project",
-    title: "Lenovo",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_scotiabank: {
-    img: "/img/616da3db7011b80ea94dc54bc68ea6ba.jpg",
-    alt: "Scotiabank: Café with hexagonal acoustic ceiling",
-    label: "Project",
-    title: "Scotiabank",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_irelandembassy: {
-    img: "/img/6243735c15d77d14cc09a6d76839204a.jpg",
-    alt: "Ireland Embassy: Teal acoustic ceiling panels",
-    label: "Project",
-    title: "Ireland Embassy",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_multimedios: {
-    img: "/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg",
-    alt: "Multimedios: newsroom under a sculpted linear acoustic ceiling",
-    label: "Project",
-    title: "Multimedios",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  e_material: {
-    img: "/img/b45fdd3f48ffafe2e4c62af327a77568.jpg",
-    alt: "Reception desk in front of a terracotta acoustic shelving wall",
-    label: "One material",
-    title: "Shaped three ways",
-    desc: "Walls, ribs and ceilings that breathe — all from 100% recycled PET.",
-    cta: "Start a project",
-  },
-  e_study: {
-    img: "/img/73e73590532bd1289f3c5d2c7884612e.jpg",
-    alt: "Lounge with golden suspended baffles over a dark acoustic wall",
-    label: "In-house acoustic studies",
-    title: "We study the sound first.",
-    desc: "Our in-house acoustic team analyzes your project and recommends the right solution.",
-    cta: "Request an acoustic + lighting study",
-  },
-  j_sempra: {
-    img: "/img/adf2de3b3febf8b40929fdc18c880ed1.jpg",
-    alt: "Sempra: Office lobby with wood slat acoustic ceiling",
-    label: "Project",
-    title: "Sempra",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_highpark: {
-    img: "/img/a7e103c02242caf0d3114e839e7f9b06.jpg",
-    alt: "Highpark: Reception with red coffered acoustic ceiling",
-    label: "Project",
-    title: "Highpark",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_jsftexas: {
-    img: "/img/d849dd9badf2823fd7126370edd5c7db.jpg",
-    alt: "JSF: Lounge with striped acoustic wall panels",
-    label: "Project",
-    title: "JSF",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_koltin: {
-    img: "/img/569ab9d06a4229d735b26e974e057cea.jpg",
-    alt: "Koltin: Open office with teal grid acoustic ceiling",
-    label: "Project",
-    title: "Koltin",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_sap: {
-    img: "/img/e9a2de7b8774e93b374b516be8eda38e.jpg",
-    alt: "SAP: Layered white acoustic baffle ceiling",
-    label: "Project",
-    title: "SAP",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_arkansas: {
-    img: "/img/2d7ebe48f1f049c75bc449fab94fce71.jpg",
-    alt: "Arkansas: Library with acoustic art panel",
-    label: "Project",
-    title: "Arkansas",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  j_bloomberg: {
-    img: "/img/c4757270e77ef9c931c8ea1e692d38d8.jpg",
-    alt: "Bloomberg: Atrium with suspended acoustic baffles",
-    label: "Project",
-    title: "Bloomberg",
-    desc: "Acoustic solution designed and installed by Indigoff.",
-    cta: "Start a project",
-  },
-  f_colors: {
-    swatches: "colors",
-    img: "/img/33bf52d337f0b5866c401b1f22274d1e.jpg",
-    alt: "Colors finish samples",
-    label: "Finishes",
-    title: "Colors",
-    desc: "18 standard colors, and custom colors on request.",
-    cta: "Request samples",
-  },
-  f_textures: {
-    swatches: "textures",
-    img: "/img/59823a479ed6e68e4e9d0a9c53e86ad2.jpg",
-    alt: "Textures finish samples",
-    label: "Finishes",
-    title: "Textures",
-    desc: "Wood, stone and mineral textures printed on acoustic panels.",
-    cta: "Request samples",
-  },
-  f_print: {
-    swatches: "print",
-    img: "/img/01fd0ca4887bbb6af9330fa52b1fb80d.jpg",
-    alt: "Print finish samples",
-    label: "Finishes",
-    title: "Print",
-    desc: "Any image, printed at high resolution on acoustic panels while keeping their acoustic performance.",
-    cta: "Request samples",
-  },
-  f_engraving: {
-    swatches: "engraving",
-    img: "/img/1cd84dadeac695b570a54542496638c0.jpg",
-    alt: "Engraving finish samples",
-    label: "Finishes",
-    title: "Engraving",
-    desc: "CNC-engraved patterns that add depth and pattern to every panel.",
-    cta: "Request samples",
-  },
-  f_embossed: {
-    swatches: "embossed",
-    img: "/img/83997bc339591c8c1d305c3b756d6962.jpg",
-    alt: "Embossed finish samples",
-    label: "Finishes",
-    title: "Embossed",
-    desc: "Raised, sculpted surfaces with light and shadow.",
-    cta: "Request samples",
-  },
-};
 var SETS = {
   colors: [
     {
@@ -448,7 +43,7 @@ var SETS = {
   ],
   textures: [
     {
-      group: "Wood",
+      group: "@home.finishes.groups.wood",
       items: [
         { name: "Sand Oak", img: "/img/c48702a0cda370a77be613af9045b5dd.jpg" },
         { name: "Sandwood Ash", img: "/img/b0d28dcf4fac08fd70400fa30c83d09a.jpg" },
@@ -468,7 +63,7 @@ var SETS = {
       names: true,
     },
     {
-      group: "Stone",
+      group: "@home.finishes.groups.stone",
       items: [
         { name: "Alba", img: "/img/a0c3422a39f02ecf00ca10718e710122.jpg" },
         { name: "Auric", img: "/img/e38afe24e1db33d0ef0a653d9c2cc48f.jpg" },
@@ -497,12 +92,30 @@ var SETS = {
       min: "320px",
       names: false,
       items: [
-        { name: "Print 01", img: "/img/34a02b4660e492a1b630744acb0e04ab.jpg" },
-        { name: "Print 02", img: "/img/bb82485fb6f852b03d1715391e4b1401.jpg" },
-        { name: "Print 03", img: "/img/6e6c42398633643a85ab007830987298.jpg" },
-        { name: "Print 04", img: "/img/6e84086d74d9bf4e4be85c3d856abf21.jpg" },
-        { name: "Print 05", img: "/img/5e7c034e32b536043b96a7d33a737ed8.jpg" },
-        { name: "Print 06", img: "/img/c1d10cefed304c36c550f6c9b2421716.jpg" },
+        {
+          name: { k: "home.finishes.items.print", vars: { n: "01" } },
+          img: "/img/34a02b4660e492a1b630744acb0e04ab.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.print", vars: { n: "02" } },
+          img: "/img/bb82485fb6f852b03d1715391e4b1401.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.print", vars: { n: "03" } },
+          img: "/img/6e6c42398633643a85ab007830987298.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.print", vars: { n: "04" } },
+          img: "/img/6e84086d74d9bf4e4be85c3d856abf21.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.print", vars: { n: "05" } },
+          img: "/img/5e7c034e32b536043b96a7d33a737ed8.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.print", vars: { n: "06" } },
+          img: "/img/c1d10cefed304c36c550f6c9b2421716.jpg",
+        },
       ],
     },
   ],
@@ -513,52 +126,112 @@ var SETS = {
       min: "200px",
       names: false,
       items: [
-        { name: "Engraving 01", img: "/img/331ed34c72c6eb78c7b7cff146ae6652.jpg" },
-        { name: "Engraving 02", img: "/img/71587e528f45cffca9733efd6afa42ad.jpg" },
-        { name: "Engraving 03", img: "/img/28c8304ebf72cec9b38581e6d9e6f0fa.jpg" },
-        { name: "Engraving 04", img: "/img/7f39bf8b43b670473b068b12cdaff1b9.jpg" },
-        { name: "Engraving 05", img: "/img/df3d6b5a1f252d58ea570a6864499afc.jpg" },
-        { name: "Engraving 06", img: "/img/67026b7ad40180160a59c8a32190263e.jpg" },
-        { name: "Engraving 07", img: "/img/e97be6d024099f3e2f2a66554ae26c37.jpg" },
-        { name: "Engraving 08", img: "/img/1b1600e6aaa234fae2946864cdc01f2a.jpg" },
-        { name: "Engraving 09", img: "/img/0cfbe1f191404e917cff2d1b38f87f1f.jpg" },
-        { name: "Engraving 10", img: "/img/b70418a13b8c7b6d6997e9ad54eb8ab8.jpg" },
-        { name: "Engraving 11", img: "/img/f085da6c2310693e870cc1c3896f0c44.jpg" },
-        { name: "Engraving 12", img: "/img/16200b0ed525795910ec44a20f953009.jpg" },
-        { name: "Engraving 13", img: "/img/24254d9b73f7eb1831717b58eb19d0a7.jpg" },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "01" } },
+          img: "/img/331ed34c72c6eb78c7b7cff146ae6652.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "02" } },
+          img: "/img/71587e528f45cffca9733efd6afa42ad.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "03" } },
+          img: "/img/28c8304ebf72cec9b38581e6d9e6f0fa.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "04" } },
+          img: "/img/7f39bf8b43b670473b068b12cdaff1b9.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "05" } },
+          img: "/img/df3d6b5a1f252d58ea570a6864499afc.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "06" } },
+          img: "/img/67026b7ad40180160a59c8a32190263e.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "07" } },
+          img: "/img/e97be6d024099f3e2f2a66554ae26c37.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "08" } },
+          img: "/img/1b1600e6aaa234fae2946864cdc01f2a.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "09" } },
+          img: "/img/0cfbe1f191404e917cff2d1b38f87f1f.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "10" } },
+          img: "/img/b70418a13b8c7b6d6997e9ad54eb8ab8.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "11" } },
+          img: "/img/f085da6c2310693e870cc1c3896f0c44.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "12" } },
+          img: "/img/16200b0ed525795910ec44a20f953009.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.engraving", vars: { n: "13" } },
+          img: "/img/24254d9b73f7eb1831717b58eb19d0a7.jpg",
+        },
       ],
     },
   ],
   embossed: [
     {
-      group: "Prism \u00b7 Model 1",
+      group: { k: "home.finishes.modelGroup", vars: { name: "Prism", n: 1 } },
       ratio: "1 / 1",
       min: "220px",
       names: true,
       items: [
-        { name: "Prism \u2014 Texture", img: "/img/6c9048232a88d183e8acfba79694fb30.jpg" },
-        { name: "Prism \u2014 Panel", img: "/img/5e4b09ceafa340fcbff87a8870112332.jpg" },
+        {
+          name: { k: "home.finishes.items.texture", vars: { name: "Prism" } },
+          img: "/img/6c9048232a88d183e8acfba79694fb30.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.panel", vars: { name: "Prism" } },
+          img: "/img/5e4b09ceafa340fcbff87a8870112332.jpg",
+        },
       ],
     },
     {
-      group: "Wave \u00b7 Model 2",
+      group: { k: "home.finishes.modelGroup", vars: { name: "Wave", n: 2 } },
       ratio: "1 / 1",
       min: "220px",
       names: true,
       items: [
-        { name: "Wave \u2014 Texture", img: "/img/9ac0da76cb16110fed512f9c8a36ccc3.jpg" },
-        { name: "Wave \u2014 Panel", img: "/img/4ffdfc25a7d7e0bb04aaa1bfc7a6f94b.jpg" },
+        {
+          name: { k: "home.finishes.items.texture", vars: { name: "Wave" } },
+          img: "/img/9ac0da76cb16110fed512f9c8a36ccc3.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.panel", vars: { name: "Wave" } },
+          img: "/img/4ffdfc25a7d7e0bb04aaa1bfc7a6f94b.jpg",
+        },
       ],
     },
     {
-      group: "Diamond \u00b7 Model 3",
+      group: { k: "home.finishes.modelGroup", vars: { name: "Diamond", n: 3 } },
       ratio: "1 / 1",
       min: "220px",
       names: true,
       items: [
-        { name: "Diamond \u2014 Texture", img: "/img/19fad91390ac57747dd3a4392536429e.jpg" },
-        { name: "Diamond \u2014 Panel", img: "/img/ff1f4e5d7bffa0d558953503809cf19d.jpg" },
-        { name: "Diamond \u2014 In space", img: "/img/442961bbeccb92f0d9f97cb1d0abc9e4.jpg" },
+        {
+          name: { k: "home.finishes.items.texture", vars: { name: "Diamond" } },
+          img: "/img/19fad91390ac57747dd3a4392536429e.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.panel", vars: { name: "Diamond" } },
+          img: "/img/ff1f4e5d7bffa0d558953503809cf19d.jpg",
+        },
+        {
+          name: { k: "home.finishes.items.inSpace", vars: { name: "Diamond" } },
+          img: "/img/442961bbeccb92f0d9f97cb1d0abc9e4.jpg",
+        },
       ],
     },
   ],
@@ -575,14 +248,18 @@ var PROJ_MM = {
     "/img/9d0cc6c7d4b10c1f8eecc610f9c65d3f.jpg",
   ],
 };
+const PROJECT_DESC = {
+  "Acoustic solution designed and installed by Indigoff.": "@home.lightbox.desc.projectInstalled",
+  "Acoustic solution designed, manufactured and installed by Indigoff.": "@home.lightbox.desc.projectManufactured",
+};
 function projLb(pj) {
   return {
-    label: "Project",
+    label: "@home.lightbox.label.project",
     title: pj.name,
-    desc: pj.desc,
+    desc: PROJECT_DESC[pj.desc] || pj.desc,
     img: pj.imgs[0],
     alt: pj.name,
-    cta: "Start a project like this",
+    cta: "@home.lightbox.cta.likeThis",
     galleryRatio: "4 / 3",
     galleryMin: "320px",
     galleryNames: false,
@@ -592,6 +269,23 @@ function projLb(pj) {
   };
 }
 import CONCEPTS from "../../data/concepts.json";
+
+/** Lightbox de un concepto (desde el carrusel o la búsqueda). */
+function conceptLb(c) {
+  return {
+    concept: true,
+    gallery: c.gallery || null,
+    img: c.img,
+    alt: { k: "home.concepts.alt", vars: { code: c.code, name: "@home.conceptNames." + c.code } },
+    label: "@home.lightbox.label.concept",
+    title: c.code,
+    desc: { k: "home.lightbox.conceptDesc", vars: { name: "@home.conceptNames." + c.code } },
+    cta: "",
+  };
+}
+
+// Los ids de "Mi lista" se arman con el texto en inglés: no cambian al cambiar de idioma.
+const tEn = makeT("en");
 
 import MM_FIN_IMG from "../../data/fin-img.json";
 import SR_INDEX from "../../data/sr-index.json";
@@ -612,17 +306,17 @@ export default function Main() {
 
   // Los acabados del menú lateral abren su lightbox (`open` sale de mainVals).
   const openFinish = {};
-  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV, isMain: true, openFinish });
+  const { chrome } = usePageChrome({ nav: NAV, isMain: true, openFinish });
   live.current = { st, menuOn: chrome.menuOn };
 
   const self = { state: st, setState: setSt };
-  const vals = mainVals(self, list, keys.current, cxReset);
+  const vals = mainVals(self, list, keys.current, cxReset, chrome.t);
   Object.assign(openFinish, vals.open);
   const v = {
-    ...localize(vals, lang),
+    ...vals,
     ...chrome,
-    ...searchVals(self, lang, vals.open, chrome.closeMenu, keys.current),
-    ...newsletterVals(self, lang, keys.current),
+    ...searchVals(self, chrome.t, vals.open, chrome.closeMenu, keys.current),
+    ...newsletterVals(self, chrome.t, keys.current),
   };
 
   // Carrusel de conceptos: avanza cada 6.5 s salvo con un lightbox abierto; navegar a mano reinicia el conteo.
@@ -664,7 +358,7 @@ export default function Main() {
   return template(v);
 }
 
-function mainVals(self, saved, keys, cxReset) {
+function mainVals(self, saved, keys, cxReset, t) {
   var accent = ACCENT;
   var s = self.state;
   var q = (s.q || "").trim().toUpperCase();
@@ -675,6 +369,7 @@ function mainVals(self, saved, keys, cxReset) {
   var concepts = list.map(function (c, ci) {
     var on = s.sel === c.code;
     return Object.assign({}, c, {
+      name: t("home.conceptNames." + c.code),
       selected: on,
       fcls: "cf-img" + (ci === cxi ? " on" : ""),
       tcls: "cf-t" + (ci === cxi ? " on" : ""),
@@ -683,24 +378,13 @@ function mainVals(self, saved, keys, cxReset) {
         cxReset();
         self.setState({ cxi: ci });
       },
-      alt: "Concept " + c.code + ": " + c.name,
+      alt: t("home.concepts.alt", { code: c.code, name: t("home.conceptNames." + c.code) }),
       imgStyle:
         "display: block; width: 100%; height: calc(460px * var(--mh)); object-fit: cover; outline: " +
         (on ? "2px solid " + accent : "0") +
         "; outline-offset: -2px",
       pick: function () {
-        self.setState({
-          sel: c.code,
-          lb: {
-            gallery: c.gallery || null,
-            img: c.img,
-            alt: "Concept " + c.code + ": " + c.name,
-            label: "Concept",
-            title: c.code,
-            desc: c.name + " — a complete design we adapt to your space.",
-            cta: "",
-          },
-        });
+        self.setState({ sel: c.code, lb: conceptLb(c) });
       },
     });
   });
@@ -711,10 +395,7 @@ function mainVals(self, saved, keys, cxReset) {
     alt: cc.alt || "",
     pick: cc.pick,
     pos: cxi + 1 + " / " + concepts.length,
-    desc:
-      i18nGet() === "es"
-        ? "Un diseño completo que adaptamos a tu espacio. Toca la foto para ver la galería."
-        : "A complete design we adapt to your space. Tap the photo to see the gallery.",
+    desc: t("home.concepts.tapHint"),
     fill: "animation-name: " + (cxi % 2 ? "cfa" : "cfb"),
     prev: function () {
       cxReset();
@@ -734,7 +415,8 @@ function mainVals(self, saved, keys, cxReset) {
       self.setState({ lb: LB[k], zi: null });
     };
   });
-  var groups =
+  // Textos de grupos y muestras resueltos al idioma actual (ver tx en src/i18n).
+  var rawGroups =
       s.lb && s.lb.swatches
         ? SETS[s.lb.swatches]
         : s.lb && s.lb.gallery
@@ -748,6 +430,14 @@ function mainVals(self, saved, keys, cxReset) {
               },
             ]
           : [],
+    groups = rawGroups.map(function (g) {
+      return Object.assign({}, g, {
+        group: tx(g.group, t),
+        items: g.items.map(function (w) {
+          return Object.assign({}, w, { name: tx(w.name, t) });
+        }),
+      });
+    }),
     flat = [];
   groups.forEach(function (g) {
     g.items.forEach(function (w) {
@@ -773,18 +463,9 @@ function mainVals(self, saved, keys, cxReset) {
   };
   var lbItem = s.lb
     ? {
-        id: "lb:" + (s.lb.label || "") + ":" + s.lb.title,
-        name:
-          s.lb.title +
-          (s.lb.label === "Concept"
-            ? " · " +
-              ((
-                CONCEPTS.find(function (c) {
-                  return c.code === s.lb.title;
-                }) || {}
-              ).name || "")
-            : ""),
-        kind: s.lb.label || "",
+        id: "lb:" + tx(s.lb.label, tEn) + ":" + tx(s.lb.title, tEn),
+        name: tx(s.lb.title, t) + (s.lb.concept ? " · " + t("home.conceptNames." + s.lb.title) : ""),
+        kind: tx(s.lb.label, t),
         img: (s.lb.gallery && s.lb.gallery[0] && s.lb.gallery[0].img) || s.lb.img || (flat[0] && flat[0].img) || "",
       }
     : null;
@@ -792,8 +473,7 @@ function mainVals(self, saved, keys, cxReset) {
     s.lb && s.zi !== null && flat[s.zi]
       ? { id: "img:" + flat[s.zi].img, name: flat[s.zi].name, kind: s.lb.title, img: flat[s.zi].img }
       : null;
-  var zs = saveVals(saved, "zSave", zItem, "Save");
-  if (zItem && saved.has(zItem.id)) zs.zSaveLbl = "Saved";
+  var zs = saveVals(saved, "zSave", zItem, { add: t("collection.save"), saved: t("collection.saved") });
   var ui = {
     open: !!s.listOpen,
     openList: function () {
@@ -803,100 +483,113 @@ function mainVals(self, saved, keys, cxReset) {
       self.setState({ listOpen: false });
     },
   };
-  return Object.assign(listVals(saved, ui), saveVals(saved, "lbSave", lbItem), zs, {
-    open: open,
-    lbOn: !!s.lb,
-    lb: s.lb || { img: "", alt: "", label: "", title: "", desc: "", cta: "" },
-    projects: (s.allProj ? PROJECTS : PROJECTS.slice(0, 12)).map(function (pj) {
-      return {
-        name: pj.name,
-        cover: pj.imgs[0],
-        count: pj.imgs.length + (pj.imgs.length === 1 ? " photo" : " photos"),
-        pick: function () {
-          self.setState({ zi: null, lb: projLb(pj) });
-        },
-      };
-    }),
-    moreProjects: PROJECTS.length > 12,
-    projBtn: s.allProj ? "View less" : "View more",
-    allBrands: !!s.allBrands,
-    brandsCls: s.allBrands ? "" : "tb-collapsed",
-    allBrandsStr: s.allBrands ? "true" : "false",
-    brandsBtn: s.allBrands ? "View less" : "View more",
-    toggleBrands: function () {
-      self.setState({ allBrands: !s.allBrands });
+  return Object.assign(
+    listVals(saved, ui),
+    saveVals(saved, "lbSave", lbItem, { add: t("list.add"), saved: t("list.saved") }),
+    zs,
+    {
+      open: open,
+      lbOn: !!s.lb,
+      lb: s.lb
+        ? Object.assign({}, s.lb, {
+            label: tx(s.lb.label, t),
+            title: tx(s.lb.title, t),
+            desc: tx(s.lb.desc, t),
+            cta: tx(s.lb.cta, t),
+          })
+        : { img: "", alt: "", label: "", title: "", desc: "", cta: "" },
+      projects: (s.allProj ? PROJECTS : PROJECTS.slice(0, 12)).map(function (pj) {
+        return {
+          name: pj.name,
+          cover: pj.imgs[0],
+          count: t("home.projects.photos", { count: pj.imgs.length }),
+          pick: function () {
+            self.setState({ zi: null, lb: projLb(pj) });
+          },
+        };
+      }),
+      moreProjects: PROJECTS.length > 12,
+      projBtn: t(s.allProj ? "common.viewLess" : "common.viewMore"),
+      allBrands: !!s.allBrands,
+      brandsCls: s.allBrands ? "" : "tb-collapsed",
+      allBrandsStr: s.allBrands ? "true" : "false",
+      brandsBtn: t(s.allBrands ? "common.viewLess" : "common.viewMore"),
+      toggleBrands: function () {
+        self.setState({ allBrands: !s.allBrands });
+      },
+      toggleProjects: function () {
+        self.setState({ allProj: !s.allProj });
+      },
+      openMM: function () {
+        self.setState({ zi: null, lb: projLb(PROJ_MM) });
+      },
+      closeLb: function () {
+        self.setState({ lb: null, zi: null });
+      },
+      showSw: groups.length > 0,
+      showHero: groups.length === 0,
+      showCount: !(s.lb && s.lb.gallery && s.lb.galleryNames === false),
+      swCountText: t(
+        s.lb && (s.lb.swatches === "colors" || s.lb.swatches === "textures")
+          ? "home.lightbox.options"
+          : "home.lightbox.images",
+        { count: flat.length },
+      ),
+      lbImg: s.lb ? s.lb.img : "",
+      lbAlt: s.lb ? tx(s.lb.alt, t) : "",
+      zoomOn: !!(s.lb && s.zi !== null && flat[s.zi]),
+      zoom: (s.lb && s.zi !== null && flat[s.zi]) || { name: "", img: "" },
+      closeZoom: function () {
+        self.setState({ zi: null });
+      },
+      zoomPrev: function () {
+        self.setState({ zi: (s.zi - 1 + flat.length) % flat.length });
+      },
+      zoomNext: function () {
+        self.setState({ zi: (s.zi + 1) % flat.length });
+      },
+      swGroups: groups.map(function (g) {
+        return {
+          group: g.group,
+          hasLabel: !!g.group,
+          min: g.min,
+          items: g.items.map(function (w) {
+            var idx = flat.indexOf(w);
+            return {
+              name: w.name,
+              img: w.img,
+              showName: !!g.names,
+              on: "false",
+              style: "display: block; width: 100%; aspect-ratio: " + g.ratio + "; height: auto; object-fit: cover",
+              pick: function () {
+                self.setState({ zi: idx });
+              },
+            };
+          }),
+        };
+      }),
+      accent: accent,
+      concepts: concepts,
+      cf: cf,
+      query: s.q,
+      onQuery: function (e) {
+        self.setState({ q: e.target.value });
+      },
+      noResults: concepts.length === 0,
+      hasSel: !!s.sel,
+      hasCta: !!(s.lb && s.lb.cta),
+      sel: sel,
+      clear: function () {
+        self.setState({ sel: null });
+      },
     },
-    toggleProjects: function () {
-      self.setState({ allProj: !s.allProj });
-    },
-    openMM: function () {
-      self.setState({ zi: null, lb: projLb(PROJ_MM) });
-    },
-    closeLb: function () {
-      self.setState({ lb: null, zi: null });
-    },
-    showSw: groups.length > 0,
-    showHero: groups.length === 0,
-    showCount: !(s.lb && s.lb.gallery && s.lb.galleryNames === false),
-    swCount: flat.length,
-    swUnit: s.lb && (s.lb.swatches === "colors" || s.lb.swatches === "textures") ? "options" : "images",
-    lbImg: s.lb ? s.lb.img : "",
-    lbAlt: s.lb ? s.lb.alt : "",
-    zoomOn: !!(s.lb && s.zi !== null && flat[s.zi]),
-    zoom: (s.lb && s.zi !== null && flat[s.zi]) || { name: "", img: "" },
-    closeZoom: function () {
-      self.setState({ zi: null });
-    },
-    zoomPrev: function () {
-      self.setState({ zi: (s.zi - 1 + flat.length) % flat.length });
-    },
-    zoomNext: function () {
-      self.setState({ zi: (s.zi + 1) % flat.length });
-    },
-    swGroups: groups.map(function (g) {
-      return {
-        group: g.group,
-        hasLabel: !!g.group,
-        min: g.min,
-        items: g.items.map(function (w) {
-          var idx = flat.indexOf(w);
-          return {
-            name: w.name,
-            img: w.img,
-            showName: !!g.names,
-            on: "false",
-            style: "display: block; width: 100%; aspect-ratio: " + g.ratio + "; height: auto; object-fit: cover",
-            pick: function () {
-              self.setState({ zi: idx });
-            },
-          };
-        }),
-      };
-    }),
-    accent: accent,
-    concepts: concepts,
-    cf: cf,
-    query: s.q,
-    onQuery: function (e) {
-      self.setState({ q: e.target.value });
-    },
-    noResults: concepts.length === 0,
-    hasSel: !!s.sel,
-    hasCta: !!(s.lb && s.lb.cta),
-    sel: sel,
-    clear: function () {
-      self.setState({ sel: null });
-    },
-  });
+  );
 }
 
 /** Búsqueda global (`/` o ⌘K): productos, acabados, conceptos y proyectos. */
-function searchVals(self, lang, open, closeMenu, keys) {
+function searchVals(self, t, open, closeMenu, keys) {
   var v = {};
   var st = self.state;
-  var trs = function (x) {
-    return lang === "es" ? i18nTr(x) : x;
-  };
   keys.search = function (e) {
     if (e.key === "Escape" && st.searchOpen) self.setState({ searchOpen: false, srq: "" });
     if ((e.key === "/" || (e.key === "k" && (e.metaKey || e.ctrlKey))) && !st.searchOpen) {
@@ -920,21 +613,25 @@ function searchVals(self, lang, open, closeMenu, keys) {
     self.setState({ srq: e.target.value });
   };
   v.srQ = st.srq || "";
-  v.srLabel = trs("Search");
-  v.srClose = trs("Close");
-  v.srPh = trs("Search products, finishes, concepts…");
-  v.srSuggest = trs("Popular");
-  v.srNone = trs("No results. Try another word.");
+  v.srLabel = t("home.search.label");
+  v.srClose = t("common.menu.close");
+  v.srPh = t("home.search.placeholder");
+  v.srSuggest = t("home.search.popular");
+  v.srNone = t("home.search.none");
   v.srChips = [
-    ["Ceilings", "/ceilings"],
-    ["Walls", "/walls"],
-    ["Lights", "/lights"],
-    ["Dividers", "/dividers"],
-    ["Podcaster", "/podcaster"],
-    ["Downloads", "/downloads"],
+    ["catalog.categories.ceilings", "/ceilings"],
+    ["catalog.categories.walls", "/walls"],
+    ["catalog.categories.lights", "/lights"],
+    ["catalog.categories.dividers", "/dividers"],
+    ["catalog.categories.podcaster", "/podcaster"],
+    ["common.downloads", "/downloads"],
   ].map(function (c) {
-    return { name: trs(c[0]), href: c[1] };
+    return { name: t(c[0]), href: c[1] };
   });
+  // Se busca en ambos idiomas: el visitante puede escribir "nubes" o "clouds".
+  var both = function (key) {
+    return [tEn(key), t(key)];
+  };
   var res = [];
   if (sq) {
     var norm = function (x) {
@@ -948,10 +645,12 @@ function searchVals(self, lang, open, closeMenu, keys) {
       return false;
     };
     SR_INDEX.forEach(function (p) {
-      if (hit(p.n, p.c, p.s, trs(p.c), trs(p.s)))
+      var catKey = "catalog.categories." + p.c;
+      var subKey = "catalog.subcategories." + p.c + "." + p.s;
+      if (hit.apply(null, [p.n].concat(both(catKey), both(subKey))))
         res.push({
           name: p.n,
-          kind: trs(p.c) + " · " + trs(p.s),
+          kind: t(catKey) + " · " + t(subKey),
           img: p.i,
           href: p.h,
           isLink: true,
@@ -964,10 +663,11 @@ function searchVals(self, lang, open, closeMenu, keys) {
         });
     });
     DW_FIN.forEach(function (m) {
-      if (hit(m[0], trs(m[0]), "finish", "acabado"))
+      var finKey = "home.finishes." + m[0];
+      if (hit.apply(null, both(finKey).concat(["finish", "acabado"])))
         res.push({
-          name: trs(m[0]),
-          kind: trs("Finishes"),
+          name: t(finKey),
+          kind: t("common.menu.finishes"),
           img: MM_FIN_IMG[m[1]] || "",
           href: "",
           isLink: false,
@@ -980,10 +680,11 @@ function searchVals(self, lang, open, closeMenu, keys) {
         });
     });
     CONCEPTS.forEach(function (c) {
-      if (hit(c.code, c.name, trs(c.name), "concept", "concepto"))
+      var cName = "home.conceptNames." + c.code;
+      if (hit.apply(null, [c.code].concat(both(cName), ["concept", "concepto"])))
         res.push({
-          name: c.code + " · " + trs(c.name),
-          kind: trs("Concepts"),
+          name: c.code + " · " + t(cName),
+          kind: t("common.menu.concepts"),
           img: c.img,
           href: "",
           isLink: false,
@@ -994,15 +695,7 @@ function searchVals(self, lang, open, closeMenu, keys) {
               srq: "",
               sel: c.code,
               zi: null,
-              lb: {
-                gallery: c.gallery || null,
-                img: c.img,
-                alt: "Concept " + c.code + ": " + c.name,
-                label: "Concept",
-                title: c.code,
-                desc: c.name + " — a complete design we adapt to your space.",
-                cta: "",
-              },
+              lb: conceptLb(c),
             });
           },
           rank: 1,
@@ -1012,7 +705,7 @@ function searchVals(self, lang, open, closeMenu, keys) {
       if (hit(pj.name, "project", "proyecto"))
         res.push({
           name: pj.name,
-          kind: trs("Projects"),
+          kind: t("common.menu.projects"),
           img: pj.imgs[0],
           href: "",
           isLink: false,
@@ -1031,17 +724,14 @@ function searchVals(self, lang, open, closeMenu, keys) {
   v.srNoQ = !sq;
   v.srHas = res.length > 0;
   v.srEmpty = !!sq && res.length === 0;
-  v.srCount = res.length + " " + trs("results");
+  v.srCount = t("home.search.results", { count: res.length });
   return v;
 }
 
 /** Popup del newsletter (se muestra una vez; ver el efecto en Main). */
-function newsletterVals(self, lang, keys) {
+function newsletterVals(self, t, keys) {
   var v = {};
   var st = self.state;
-  var trn = function (x) {
-    return lang === "es" ? i18nTr(x) : x;
-  };
   keys.newsletter = function (e) {
     if (e.key === "Escape" && st.nlOpen) {
       try {
@@ -1076,16 +766,16 @@ function newsletterVals(self, lang, keys) {
     nlMark("subscribed");
     self.setState({ nlDone: true, nlErr: false });
   };
-  v.nlTitle = trn("Stay in the know");
-  v.nlText = trn("New collections, concepts and projects — first. Plus specification tips from our acoustic team.");
-  v.nlEmailLbl = trn("Email");
-  v.nlCta = trn("Subscribe");
-  v.nlNo = trn("No, thanks");
-  v.nlCloseLbl = trn("Close");
-  v.nlErrText = trn("Enter a valid email address.");
-  v.nlThanks = trn("Thank you");
-  v.nlThanksText = trn("You are on the list. We will be in touch soon.");
-  v.nlContinue = trn("Continue");
+  v.nlTitle = t("home.newsletter.title");
+  v.nlText = t("home.newsletter.text");
+  v.nlEmailLbl = t("home.newsletter.email");
+  v.nlCta = t("home.newsletter.subscribe");
+  v.nlNo = t("home.newsletter.noThanks");
+  v.nlCloseLbl = t("common.menu.close");
+  v.nlErrText = t("home.newsletter.invalid");
+  v.nlThanks = t("home.newsletter.thanks");
+  v.nlThanksText = t("home.newsletter.thanksText");
+  v.nlContinue = t("home.newsletter.continue");
   return v;
 }
 
@@ -1098,9 +788,14 @@ function template(v) {
         )}
       >
         <a className="skip" href="#categories">
-          {v.T.k1}
+          {v.t("common.skipToContent")}
         </a>
-        <SiteHeader v={v} labels={{ downloads: v.T.k7, findRep: v.T.k8, list: v.T.k69 }} logoHref="#top" search />
+        <SiteHeader
+          v={v}
+          labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep"), list: v.t("list.title") }}
+          logoHref="#top"
+          search
+        />
         <section id="top" style={S("position: relative; height: var(--hero-h); overflow: hidden; background: #1A1917")}>
           <div className="hs" aria-hidden="false">
             <img
@@ -1130,19 +825,19 @@ function template(v) {
           ></div>
           <div className="hs-copy">
             <h1 className="hs-h">
-              {v.T.k76}
+              {v.t("home.hero.line1")}
               <br />
-              {v.T.k77}
+              {v.t("home.hero.line2")}
               <br />
-              {v.T.k92}
+              {v.t("home.hero.line3")}
             </h1>
-            <p className="hs-p">{v.T.k78}</p>
+            <p className="hs-p">{v.t("home.hero.text")}</p>
             <div className="cta-row cta-dk">
               <a href="/find-a-rep" className="cta-p">
-                {v.T.k79}
+                {v.t("home.hero.quote")}
               </a>
               <a href="#categories" className="cta-o">
-                {v.T.k80}
+                {v.t("home.hero.explore")}
               </a>
             </div>
           </div>
@@ -1154,7 +849,7 @@ function template(v) {
                 "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
               )}
             >
-              {v.T.k10}
+              {v.t("home.categories.title")}
             </h2>
           </div>
           <div className="cat-row" style={S("max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter)")}>
@@ -1166,10 +861,10 @@ function template(v) {
               />
               <span className="scrim" style={S("position: absolute; top: 0; left: 0; right: 0; bottom: 0")}></span>
               <span className="cat-label">
-                <span className="cat-name">{v.T.k11}</span>
-                <span className="cat-sub">{v.T.k12}</span>
+                <span className="cat-name">{v.t("catalog.categories.ceilings")}</span>
+                <span className="cat-sub">{v.t("home.categories.ceilingsSubs")}</span>
                 <span className="cat-cta" style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                  {v.T.k13}
+                  {v.t("home.categories.explore")}
                   <svg
                     aria-hidden="true"
                     width="14"
@@ -1195,10 +890,10 @@ function template(v) {
               />
               <span className="scrim" style={S("position: absolute; top: 0; left: 0; right: 0; bottom: 0")}></span>
               <span className="cat-label">
-                <span className="cat-name">{v.T.k14}</span>
-                <span className="cat-sub">{v.T.k15}</span>
+                <span className="cat-name">{v.t("catalog.categories.walls")}</span>
+                <span className="cat-sub">{v.t("home.categories.wallsSubs")}</span>
                 <span className="cat-cta" style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                  {v.T.k13}
+                  {v.t("home.categories.explore")}
                   <svg
                     aria-hidden="true"
                     width="14"
@@ -1224,10 +919,10 @@ function template(v) {
               />
               <span className="scrim" style={S("position: absolute; top: 0; left: 0; right: 0; bottom: 0")}></span>
               <span className="cat-label">
-                <span className="cat-name">{v.T.k16}</span>
-                <span className="cat-sub">{v.T.k17}</span>
+                <span className="cat-name">{v.t("catalog.categories.lights")}</span>
+                <span className="cat-sub">{v.t("home.categories.lightsSubs")}</span>
                 <span className="cat-cta" style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                  {v.T.k13}
+                  {v.t("home.categories.explore")}
                   <svg
                     aria-hidden="true"
                     width="14"
@@ -1253,10 +948,10 @@ function template(v) {
               />
               <span className="scrim" style={S("position: absolute; top: 0; left: 0; right: 0; bottom: 0")}></span>
               <span className="cat-label">
-                <span className="cat-name">{v.T.k18}</span>
-                <span className="cat-sub">{v.T.k19}</span>
+                <span className="cat-name">{v.t("catalog.categories.dividers")}</span>
+                <span className="cat-sub">{v.t("home.categories.dividersSubs")}</span>
                 <span className="cat-cta" style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                  {v.T.k13}
+                  {v.t("home.categories.explore")}
                   <svg
                     aria-hidden="true"
                     width="14"
@@ -1283,9 +978,9 @@ function template(v) {
               <span className="scrim" style={S("position: absolute; top: 0; left: 0; right: 0; bottom: 0")}></span>
               <span className="cat-label">
                 <span className="cat-name">{"Podcaster"}</span>
-                <span className="cat-sub">{v.T.k20}</span>
+                <span className="cat-sub">{v.t("home.categories.podcasterSubs")}</span>
                 <span className="cat-cta" style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                  {v.T.k13}
+                  {v.t("home.categories.explore")}
                   <svg
                     aria-hidden="true"
                     width="14"
@@ -1326,16 +1021,16 @@ function template(v) {
                   "margin: 0 0 20px; font-family: Urbanist, sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.04em",
                 )}
               >
-                {v.T.k87}
+                {v.t("home.onoff.eyebrow")}
               </span>
               <h2
                 style={S(
                   "margin: 0 0 20px; max-width: 480px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
                 )}
               >
-                {v.T.k88}
+                {v.t("home.onoff.title")}
               </h2>
-              <p style={S("margin: 0 0 32px; max-width: 420px; color: #5E5A53")}>{v.T.k89}</p>
+              <p style={S("margin: 0 0 32px; max-width: 420px; color: #5E5A53")}>{v.t("home.onoff.text")}</p>
               <div style={S("display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px")}>
                 <a
                   href="/onoff-studio"
@@ -1343,7 +1038,7 @@ function template(v) {
                     "display: inline-flex; align-items: center; min-height: 44px; color: #111111; border-bottom: 1px solid #111111; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
                   )}
                 >
-                  {v.T.k90}
+                  {v.t("home.onoff.discover")}
                 </a>
                 <a
                   href="/lights"
@@ -1351,7 +1046,7 @@ function template(v) {
                     "display: inline-flex; align-items: center; min-height: 44px; color: #645DC5; border-bottom: 1px solid #645DC5; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
                   )}
                 >
-                  {v.T.k91}
+                  {v.t("home.onoff.explore")}
                 </a>
               </div>
             </div>
@@ -1364,7 +1059,7 @@ function template(v) {
                 "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
               )}
             >
-              {v.T.k21}
+              {v.t("home.finishes.title")}
             </h2>
           </div>
           <div className="fin-grid" style={S("padding: 0 var(--gutter)")}>
@@ -1372,7 +1067,7 @@ function template(v) {
               type="button"
               className="fin-tile fin-a"
               onClick={v.open.f_colors}
-              aria-label="View Colors"
+              aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.colors") })}
               style={S(
                 "position: relative; overflow: hidden; padding: 0; border: 0; background: #EEEBE6; cursor: pointer; font-family: inherit; color: #FFFFFF; text-align: left",
               )}
@@ -1393,14 +1088,14 @@ function template(v) {
                     "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 44px; line-height: 1.05; letter-spacing: -0.03em",
                   )}
                 >
-                  {v.T.k22}
+                  {v.t("home.finishes.colors")}
                 </span>
                 <span
                   style={S(
                     "font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.85",
                   )}
                 >
-                  {v.T.k23}
+                  {v.t("home.finishes.colorsSub")}
                 </span>
               </span>
             </button>
@@ -1408,7 +1103,7 @@ function template(v) {
               type="button"
               className="fin-tile fin-b"
               onClick={v.open.f_textures}
-              aria-label="View Textures"
+              aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.textures") })}
               style={S(
                 "position: relative; overflow: hidden; padding: 0; border: 0; background: #EEEBE6; cursor: pointer; font-family: inherit; color: #FFFFFF; text-align: left",
               )}
@@ -1429,14 +1124,14 @@ function template(v) {
                     "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 24px; line-height: 1.05; letter-spacing: -0.03em",
                   )}
                 >
-                  {v.T.k24}
+                  {v.t("home.finishes.textures")}
                 </span>
                 <span
                   style={S(
                     "font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.85",
                   )}
                 >
-                  {v.T.k25}
+                  {v.t("home.finishes.texturesSub")}
                 </span>
               </span>
             </button>
@@ -1444,7 +1139,7 @@ function template(v) {
               type="button"
               className="fin-tile fin-c"
               onClick={v.open.f_print}
-              aria-label="View Print"
+              aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.print") })}
               style={S(
                 "position: relative; overflow: hidden; padding: 0; border: 0; background: #EEEBE6; cursor: pointer; font-family: inherit; color: #FFFFFF; text-align: left",
               )}
@@ -1465,14 +1160,14 @@ function template(v) {
                     "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 24px; line-height: 1.05; letter-spacing: -0.03em",
                   )}
                 >
-                  {v.T.k26}
+                  {v.t("home.finishes.print")}
                 </span>
                 <span
                   style={S(
                     "font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.85",
                   )}
                 >
-                  {v.T.k27}
+                  {v.t("home.finishes.printSub")}
                 </span>
               </span>
             </button>
@@ -1480,7 +1175,7 @@ function template(v) {
               type="button"
               className="fin-tile fin-d"
               onClick={v.open.f_engraving}
-              aria-label="View Engraving"
+              aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.engraving") })}
               style={S(
                 "position: relative; overflow: hidden; padding: 0; border: 0; background: #EEEBE6; cursor: pointer; font-family: inherit; color: #FFFFFF; text-align: left",
               )}
@@ -1501,14 +1196,14 @@ function template(v) {
                     "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 24px; line-height: 1.05; letter-spacing: -0.03em",
                   )}
                 >
-                  {v.T.k28}
+                  {v.t("home.finishes.engraving")}
                 </span>
                 <span
                   style={S(
                     "font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.85",
                   )}
                 >
-                  {v.T.k29}
+                  {v.t("home.finishes.engravingSub")}
                 </span>
               </span>
             </button>
@@ -1516,7 +1211,7 @@ function template(v) {
               type="button"
               className="fin-tile fin-e"
               onClick={v.open.f_embossed}
-              aria-label="View Embossed"
+              aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.embossed") })}
               style={S(
                 "position: relative; overflow: hidden; padding: 0; border: 0; background: #EEEBE6; cursor: pointer; font-family: inherit; color: #FFFFFF; text-align: left",
               )}
@@ -1537,24 +1232,24 @@ function template(v) {
                     "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 24px; line-height: 1.05; letter-spacing: -0.03em",
                   )}
                 >
-                  {v.T.k30}
+                  {v.t("home.finishes.embossed")}
                 </span>
                 <span
                   style={S(
                     "font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.85",
                   )}
                 >
-                  {v.T.k31}
+                  {v.t("home.finishes.embossedSub")}
                 </span>
               </span>
             </button>
           </div>
           <div className="cta-row">
             <a href="/find-a-rep" className="cta-p">
-              {v.T.k81}
+              {v.t("common.requestSamples")}
             </a>
             <a href="/downloads" className="cta-o">
-              {v.T.k7}
+              {v.t("common.downloads")}
             </a>
           </div>
         </section>
@@ -1563,7 +1258,7 @@ function template(v) {
             <button
               type="button"
               onClick={v.open.e_material}
-              aria-label="Enlarge image"
+              aria-label={v.t("common.enlargeImage")}
               style={S(
                 "flex: 1 1 520px; min-width: 0; display: block; padding: 0; border: 0; background: transparent; cursor: pointer",
               )}
@@ -1584,11 +1279,11 @@ function template(v) {
                   "margin: 0 0 20px; max-width: 460px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
                 )}
               >
-                {v.T.k32}
+                {v.t("home.material.title")}
               </h2>
-              <p style={S("margin: 0 0 28px; max-width: 380px; color: #5E5A53")}>{v.T.k33}</p>
+              <p style={S("margin: 0 0 28px; max-width: 380px; color: #5E5A53")}>{v.t("home.material.text")}</p>
               <a href="/walls" className="cta-o">
-                {v.T.k82}
+                {v.t("home.material.cta")}
               </a>
             </div>
           </div>
@@ -1603,10 +1298,12 @@ function template(v) {
                 "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
               )}
             >
-              {v.T.k34}
+              {v.t("home.concepts.title")}
             </h2>
           </div>
-          <p style={S("margin: 0 auto 56px; max-width: 480px; text-align: center; color: #5E5A53")}>{v.T.k35}</p>
+          <p style={S("margin: 0 auto 56px; max-width: 480px; text-align: center; color: #5E5A53")}>
+            {v.t("home.concepts.text")}
+          </p>
           <div className="cf">
             <p className="cf-cap">
               <span className="cf-code">{v.cf.code}</span>
@@ -1620,7 +1317,12 @@ function template(v) {
                   </React.Fragment>
                 ))}
               </button>
-              <button type="button" className="cf-nav cf-prev" onClick={v.cf.prev} aria-label="Previous concept">
+              <button
+                type="button"
+                className="cf-nav cf-prev"
+                onClick={v.cf.prev}
+                aria-label={v.t("home.concepts.prev")}
+              >
                 <svg
                   aria-hidden="true"
                   width="20"
@@ -1633,7 +1335,12 @@ function template(v) {
                   <path d="M15 5l-7 7 7 7"></path>
                 </svg>
               </button>
-              <button type="button" className="cf-nav cf-next" onClick={v.cf.next} aria-label="Next concept">
+              <button
+                type="button"
+                className="cf-nav cf-next"
+                onClick={v.cf.next}
+                aria-label={v.t("home.concepts.next")}
+              >
                 <svg
                   aria-hidden="true"
                   width="20"
@@ -1667,10 +1374,10 @@ function template(v) {
           </div>
           <div className="cta-row">
             <a href="/find-a-rep" className="cta-p">
-              {v.T.k83}
+              {v.t("home.concepts.adapt")}
             </a>
             <a href="/find-a-rep" className="cta-o">
-              {v.T.k84}
+              {v.t("home.specify.appointment")}
             </a>
           </div>
         </section>
@@ -1681,13 +1388,13 @@ function template(v) {
                 "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
               )}
             >
-              {v.T.k36}
+              {v.t("home.projects.title")}
             </h2>
           </div>
           <button
             type="button"
             onClick={v.openMM}
-            aria-label="View Multimedios"
+            aria-label={v.t("collection.viewItem", { name: "Multimedios" })}
             style={S(
               "display: block; width: 100%; position: relative; height: calc(820px * var(--mh)); overflow: hidden; background: #1A1917; padding: 0; border: 0; cursor: pointer",
             )}
@@ -1771,9 +1478,9 @@ function template(v) {
                 "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
               )}
             >
-              {v.T.k37}
+              {v.t("home.projects.trustedBy")}
             </h2>
-            <ul className={`tb-grid ${v.brandsCls}`} aria-label="Clients">
+            <ul className={`tb-grid ${v.brandsCls}`} aria-label={v.t("home.projects.clients")}>
               <li className="tb-cell">
                 <img
                   className="tb-logo"
@@ -2200,10 +1907,10 @@ function template(v) {
           </div>
           <div className="cta-row">
             <a href="/find-a-rep" className="cta-p">
-              {v.T.k85}
+              {v.t("home.cta.start")}
             </a>
             <a href="/find-a-rep" className="cta-o">
-              {v.T.k86}
+              {v.t("common.talkToRep")}
             </a>
           </div>
         </section>
@@ -2219,22 +1926,22 @@ function template(v) {
                   "margin: 0 0 20px; max-width: 480px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
                 )}
               >
-                {v.T.k38}
+                {v.t("home.acoustics.title")}
               </h2>
-              <p style={S("margin: 0 0 28px; max-width: 400px; color: #D8D2C7")}>{v.T.k39}</p>
+              <p style={S("margin: 0 0 28px; max-width: 400px; color: #D8D2C7")}>{v.t("home.acoustics.text")}</p>
               <a
                 href="#contact"
                 style={S(
                   "display: inline-flex; align-items: center; min-height: 44px; color: #FFFFFF; border-bottom: 1px solid #FFFFFF; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
                 )}
               >
-                {v.T.k40}
+                {v.t("home.acoustics.cta")}
               </a>
             </div>
             <button
               type="button"
               onClick={v.open.e_study}
-              aria-label="Enlarge image"
+              aria-label={v.t("common.enlargeImage")}
               style={S(
                 "flex: 1 1 520px; min-width: 0; display: block; padding: 0; border: 0; background: transparent; cursor: pointer",
               )}
@@ -2256,7 +1963,7 @@ function template(v) {
               "margin: 0 0 48px; text-align: center; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
             )}
           >
-            {v.T.k41}
+            {v.t("home.specify.eyebrow")}
           </h2>
           <div
             className="spec-row"
@@ -2268,8 +1975,10 @@ function template(v) {
                 "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px",
               )}
             >
-              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k42}</span>
-              <span style={S("font-size: 14px; color: #5E5A53")}>{v.T.k43}</span>
+              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>
+                {v.t("home.specify.appointment")}
+              </span>
+              <span style={S("font-size: 14px; color: #5E5A53")}>{v.t("home.specify.appointmentText")}</span>
             </a>
             <a
               href="#acoustics"
@@ -2277,8 +1986,10 @@ function template(v) {
                 "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
-              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k44}</span>
-              <span style={S("font-size: 14px; color: #5E5A53")}>{v.T.k45}</span>
+              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>
+                {v.t("home.specify.study")}
+              </span>
+              <span style={S("font-size: 14px; color: #5E5A53")}>{v.t("home.specify.studyText")}</span>
             </a>
             <a
               href="#samples"
@@ -2286,8 +1997,10 @@ function template(v) {
                 "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
-              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k46}</span>
-              <span style={S("font-size: 14px; color: #5E5A53")}>{v.T.k47}</span>
+              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>
+                {v.t("home.specify.samples")}
+              </span>
+              <span style={S("font-size: 14px; color: #5E5A53")}>{v.t("home.specify.samplesText")}</span>
             </a>
             <a
               href="#downloads"
@@ -2295,8 +2008,10 @@ function template(v) {
                 "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
-              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k48}</span>
-              <span style={S("font-size: 14px; color: #5E5A53")}>{v.T.k49}</span>
+              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>
+                {v.t("home.specify.bim")}
+              </span>
+              <span style={S("font-size: 14px; color: #5E5A53")}>{v.t("home.specify.bimText")}</span>
             </a>
             <a
               href="/find-a-rep"
@@ -2304,8 +2019,10 @@ function template(v) {
                 "flex: 1 1 260px; padding: 48px min(32px, var(--gutter)); text-align: center; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #ECE9E4",
               )}
             >
-              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>{v.T.k8}</span>
-              <span style={S("font-size: 14px; color: #5E5A53")}>{v.T.k50}</span>
+              <span style={S("font-family: Urbanist, sans-serif; font-weight: 300; font-size: 22px")}>
+                {v.t("common.findRep")}
+              </span>
+              <span style={S("font-size: 14px; color: #5E5A53")}>{v.t("home.specify.repText")}</span>
             </a>
           </div>
         </section>
@@ -2320,9 +2037,9 @@ function template(v) {
               "margin: 0 0 12px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(30px, 3vw, 44px); letter-spacing: -0.03em",
             )}
           >
-            {v.T.k51}
+            {v.t("home.contact.title")}
           </h2>
-          <p style={S("margin: 0 auto 32px; max-width: 420px; color: #5E5A53")}>{v.T.k52}</p>
+          <p style={S("margin: 0 auto 32px; max-width: 420px; color: #5E5A53")}>{v.t("home.contact.text")}</p>
           <form
             style={S(
               "margin: 0 auto; max-width: 520px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center",
@@ -2333,7 +2050,7 @@ function template(v) {
                 "flex: 1 1 280px; display: flex; flex-direction: column; text-align: left; font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
               )}
             >
-              {v.T.k53}
+              {v.t("home.contact.email")}
               <input
                 type="email"
                 name="email"
@@ -2349,7 +2066,7 @@ function template(v) {
                 "min-height: 48px; padding: 0 36px; border: 0; background: #645DC5; color: #FFFFFF; font-family: inherit; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; cursor: pointer; align-self: flex-end",
               )}
             >
-              {v.T.k54}
+              {v.t("home.contact.signUp")}
             </button>
           </form>
         </section>
@@ -2360,7 +2077,7 @@ function template(v) {
             )}
           >
             <nav
-              aria-label="Client service"
+              aria-label={v.t("home.footer.clientService")}
               style={S("flex: 1 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}
             >
               <span
@@ -2368,15 +2085,15 @@ function template(v) {
                   "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
                 )}
               >
-                {v.T.k55}
+                {v.t("home.footer.clientService")}
               </span>
-              <a href="mailto:info@indigoff.com">{v.T.k56}</a>
-              <a href="#appointment">{v.T.k42}</a>
-              <a href="/find-a-rep">{v.T.k8}</a>
-              <a href="#install">{v.T.k57}</a>
+              <a href="mailto:info@indigoff.com">{v.t("home.footer.contactUs")}</a>
+              <a href="#appointment">{v.t("home.specify.appointment")}</a>
+              <a href="/find-a-rep">{v.t("common.findRep")}</a>
+              <a href="#install">{v.t("home.footer.installation")}</a>
             </nav>
             <nav
-              aria-label="Specify"
+              aria-label={v.t("home.footer.specify")}
               style={S("flex: 1 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}
             >
               <span
@@ -2384,12 +2101,12 @@ function template(v) {
                   "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
                 )}
               >
-                {v.T.k6}
+                {v.t("home.footer.specify")}
               </span>
-              <a href="/downloads">{v.T.k7}</a>
-              <a href="/downloads">{v.T.k58}</a>
-              <a href="#samples">{v.T.k46}</a>
-              <a href="#sustainability">{v.T.k59}</a>
+              <a href="/downloads">{v.t("common.downloads")}</a>
+              <a href="/downloads">{v.t("home.footer.bimCad")}</a>
+              <a href="#samples">{v.t("home.specify.samples")}</a>
+              <a href="#sustainability">{v.t("home.footer.sustainability")}</a>
             </nav>
             <nav
               aria-label="Indigoff"
@@ -2402,10 +2119,10 @@ function template(v) {
               >
                 {"Indigoff"}
               </span>
-              <a href="#about">{v.T.k60}</a>
-              <a href="#journal">{v.T.k61}</a>
-              <a href="#projects">{v.T.k5}</a>
-              <a href="#careers">{v.T.k62}</a>
+              <a href="#about">{v.t("home.footer.about")}</a>
+              <a href="#journal">{v.t("home.footer.journal")}</a>
+              <a href="#projects">{v.t("home.footer.projects")}</a>
+              <a href="#careers">{v.t("home.footer.careers")}</a>
             </nav>
             <div style={S("flex: 1 1 220px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}>
               <span
@@ -2413,7 +2130,7 @@ function template(v) {
                   "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
                 )}
               >
-                {v.T.k63}
+                {v.t("home.footer.contact")}
               </span>
               <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
               <span style={S("display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 -13px")}>
@@ -2421,7 +2138,7 @@ function template(v) {
                   href="https://www.instagram.com/indigoff.design/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Indigoff on Instagram"
+                  aria-label={v.t("common.onNetwork", { name: "Indigoff", network: "Instagram" })}
                   className="soc"
                 >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
@@ -2435,7 +2152,7 @@ function template(v) {
                   href="https://www.facebook.com/indigoff.design"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Indigoff on Facebook"
+                  aria-label={v.t("common.onNetwork", { name: "Indigoff", network: "Facebook" })}
                   className="soc"
                 >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
@@ -2449,7 +2166,7 @@ function template(v) {
                   href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Indigoff on Spotify"
+                  aria-label={v.t("common.onNetwork", { name: "Indigoff", network: "Spotify" })}
                   className="soc"
                 >
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
@@ -2470,16 +2187,16 @@ function template(v) {
             <span>{"© 2026 Indigoff LLC"}</span>
             <span style={S("display: flex; flex-wrap: wrap; gap: 8px 24px")}>
               <a href="#lang" style={S("color: #6B675F")}>
-                {v.T.k64}
+                {v.t("home.footer.region")}
               </a>
               <a href="#privacy" style={S("color: #6B675F")}>
-                {v.T.k65}
+                {v.t("home.footer.privacy")}
               </a>
               <a href="#terms" style={S("color: #6B675F")}>
-                {v.T.k66}
+                {v.t("home.footer.terms")}
               </a>
               <a href="#accessibility" style={S("color: #6B675F")}>
-                {v.T.k67}
+                {v.t("home.footer.accessibility")}
               </a>
             </span>
           </div>
@@ -2521,7 +2238,7 @@ function template(v) {
                     >
                       <path d="M15 5l-7 7 7 7"></path>
                     </svg>
-                    {v.T.k68}
+                    {v.t("common.back")}
                   </span>
                 </button>
                 <span
@@ -2583,7 +2300,7 @@ function template(v) {
                   <button
                     type="button"
                     onClick={v.zoomPrev}
-                    aria-label="Previous image"
+                    aria-label={v.t("collection.prevImage")}
                     style={S(
                       "min-height: 44px; min-width: 44px; border: 0; background: transparent; cursor: pointer; font-size: 18px; color: #111111; display: inline-flex; align-items: center; justify-content: center",
                     )}
@@ -2606,7 +2323,7 @@ function template(v) {
                   <button
                     type="button"
                     onClick={v.zoomNext}
-                    aria-label="Next image"
+                    aria-label={v.t("collection.nextImage")}
                     style={S(
                       "min-height: 44px; min-width: 44px; border: 0; background: transparent; cursor: pointer; font-size: 18px; color: #111111; display: inline-flex; align-items: center; justify-content: center",
                     )}
@@ -2683,11 +2400,16 @@ function template(v) {
                         >
                           <path d="M15 5l-7 7 7 7"></path>
                         </svg>
-                        {v.T.k68}
+                        {v.t("common.back")}
                       </span>
                     </button>
                   </span>
-                  <a href="#top" onClick={v.closeLb} aria-label="Indigoff home" style={S("display: block")}>
+                  <a
+                    href="#top"
+                    onClick={v.closeLb}
+                    aria-label={v.t("collection.homeLabel")}
+                    style={S("display: block")}
+                  >
                     <img
                       src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
                       alt="indigoff"
@@ -2784,7 +2506,7 @@ function template(v) {
                             "margin: 0 0 8px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
                           )}
                         >
-                          {v.swCount} {v.swUnit}
+                          {v.swCountText}
                         </p>
                       </>
                     ) : null}
@@ -2854,7 +2576,7 @@ function template(v) {
             <div
               role="dialog"
               aria-modal="true"
-              aria-label="My list"
+              aria-label={v.t("list.title")}
               style={S(
                 "position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 70; background: #FFFFFF; overflow-y: auto",
               )}
@@ -2890,11 +2612,16 @@ function template(v) {
                         >
                           <path d="M15 5l-7 7 7 7"></path>
                         </svg>
-                        {v.T.k68}
+                        {v.t("common.back")}
                       </span>
                     </button>
                   </span>
-                  <a href="#top" onClick={v.closeList} aria-label="Indigoff home" style={S("display: block")}>
+                  <a
+                    href="#top"
+                    onClick={v.closeList}
+                    aria-label={v.t("collection.homeLabel")}
+                    style={S("display: block")}
+                  >
                     <img
                       src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
                       alt="indigoff"
@@ -2915,14 +2642,14 @@ function template(v) {
                       "margin: 0 0 24px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(44px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em",
                     )}
                   >
-                    {v.T.k69}
+                    {v.t("list.title")}
                   </h1>
                   <p
                     style={S(
                       "margin: 0 auto 48px; max-width: 560px; font-size: 17px; line-height: 1.7; color: #3A3935",
                     )}
                   >
-                    {v.T.k70}
+                    {v.t("list.intro")}
                   </p>
                 </div>
                 {v.listEmpty ? (
@@ -2932,7 +2659,7 @@ function template(v) {
                         "margin: 0 auto; padding: 64px 24px; max-width: 520px; text-align: center; background: #F4F1EB; font-size: 15px; color: #5E5A53",
                       )}
                     >
-                      {v.T.k71}
+                      {v.t("list.empty")}
                     </p>
                   </>
                 ) : null}
@@ -2947,7 +2674,7 @@ function template(v) {
                           "display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; background: #111111; color: #FFFFFF; text-decoration: none; J",
                         )}
                       >
-                        {v.T.k72}
+                        {v.t("list.sendToRep")}
                       </a>
                       <a
                         href={v.listMail}
@@ -2955,7 +2682,7 @@ function template(v) {
                           "display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border: 1px solid #111111; color: #111111; text-decoration: none; J",
                         )}
                       >
-                        {v.T.k73}
+                        {v.t("list.email")}
                       </a>
                       <button
                         type="button"
@@ -2964,7 +2691,7 @@ function template(v) {
                           "min-height: 48px; padding: 0 20px; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F",
                         )}
                       >
-                        {v.T.k74}
+                        {v.t("list.clear")}
                       </button>
                     </div>
                     <div
@@ -3007,7 +2734,7 @@ function template(v) {
                                 "align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F; text-decoration: underline; text-underline-offset: 4px",
                               )}
                             >
-                              {v.T.k75}
+                              {v.t("list.remove")}
                             </button>
                           </div>
                         </React.Fragment>
@@ -3019,7 +2746,7 @@ function template(v) {
             </div>
           </>
         ) : null}
-        <SideMenu v={v} labels={{ downloads: v.T.k7, findRep: v.T.k8 }} />
+        <SideMenu v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
         {v.searchOn ? (
           <>
             <div className="sr-back" onClick={v.closeSearch}></div>

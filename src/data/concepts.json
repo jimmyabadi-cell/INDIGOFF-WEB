@@ -5,7 +5,12 @@
     "img": "/img/5e1ecbd7574559319cbf4fc35aad71f6.jpg",
     "gallery": [
       {
-        "name": "Organic flow — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2001"
+          }
+        },
         "img": "/img/484011ecac252f8f10ca087b4c239e32.jpg"
       },
       {
@@ -36,7 +41,12 @@
     "img": "/img/95478a5658304ca607006b326c317835.jpg",
     "gallery": [
       {
-        "name": "Rainbow arches — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2002"
+          }
+        },
         "img": "/img/1206371128d7b969ea21585c39a6642f.jpg"
       },
       {
@@ -63,7 +73,12 @@
     "img": "/img/4d86dc58ba0db6a9c88f9f2a38f5632a.jpg",
     "gallery": [
       {
-        "name": "Mosaic café — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2003"
+          }
+        },
         "img": "/img/731f0a2a9e3790fec9420a623f64a5e3.jpg"
       },
       {
@@ -90,7 +105,12 @@
     "img": "/img/0011b24c95d6df51d060680cb116a878.jpg",
     "gallery": [
       {
-        "name": "Wave lounge — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2004"
+          }
+        },
         "img": "/img/d288d344c4cc19a9f0eda3582d4d96c0.jpg"
       },
       {
@@ -117,7 +137,12 @@
     "img": "/img/20d54b5100c7d1779afc3519c91b1b85.jpg",
     "gallery": [
       {
-        "name": "Glowing arches — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2005"
+          }
+        },
         "img": "/img/2cf09192efb870512f4d07f34ad61c54.jpg"
       },
       {
@@ -144,7 +169,12 @@
     "img": "/img/b83fe3691a7a675ccee14e3dc2966c02.jpg",
     "gallery": [
       {
-        "name": "Neon arc — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2006"
+          }
+        },
         "img": "/img/dfc2c84aa2d4b0001889c0a49a1a20e7.jpg"
       },
       {
@@ -171,7 +201,12 @@
     "img": "/img/95a3d9b0022912c92124291bc7b9eb6e.jpg",
     "gallery": [
       {
-        "name": "Liquid café — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2007"
+          }
+        },
         "img": "/img/bdb1eb1f695c498bb85ae1a42e8ac702.jpg"
       },
       {
@@ -198,11 +233,16 @@
     "img": "/img/5c58bf51730cdbdcea26e2ae649e0d4a.jpg",
     "gallery": [
       {
-        "name": "Color block studio — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2009"
+          }
+        },
         "img": "/img/16e39749b5d6682a292abac7597e31b2.jpg"
       },
       {
-        "name": "Ceiling",
+        "name": "@home.concepts.gallery.ceiling",
         "img": "/img/834e64991fbd13becabb80b91387b170.jpg"
       },
       {
@@ -225,7 +265,12 @@
     "img": "/img/4679ae5054fbb85be2dbb06c5f98024e.jpg",
     "gallery": [
       {
-        "name": "Horizon waves — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2010"
+          }
+        },
         "img": "/img/c7ff099319131a9712a627a05b98587e.jpg"
       },
       {
@@ -252,7 +297,12 @@
     "img": "/img/6aa8e8cbb48db86de552c94e7e205a9c.jpg",
     "gallery": [
       {
-        "name": "Prism office — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2011"
+          }
+        },
         "img": "/img/c61599f8b0b5a2314b06bca649f9c1a2.jpg"
       },
       {
@@ -279,7 +329,12 @@
     "img": "/img/ae88488df02bead4f5fd652391ca2746.jpg",
     "gallery": [
       {
-        "name": "Pop canteen — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2012"
+          }
+        },
         "img": "/img/ecde899112b198c5c26a5dae5f54776b.jpg"
       },
       {
@@ -306,7 +361,12 @@
     "img": "/img/73e73590532bd1289f3c5d2c7884612e.jpg",
     "gallery": [
       {
-        "name": "Golden rain — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2013"
+          }
+        },
         "img": "/img/f03505c3d43896196f48ab6d41a2a1b3.jpg"
       },
       {
@@ -333,7 +393,12 @@
     "img": "/img/e3e5192c927808fe5bc97b8735c482dd.jpg",
     "gallery": [
       {
-        "name": "Arcade — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2014"
+          }
+        },
         "img": "/img/16f29896e7db002e451f36518472c7ab.jpg"
       },
       {
@@ -360,7 +425,12 @@
     "img": "/img/ff30b9c78cd1f46bf68da00ea14b993c.jpg",
     "gallery": [
       {
-        "name": "Geometric gallery — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2015"
+          }
+        },
         "img": "/img/0fcbc96a1f8ca54586212bf94f0d80e7.jpg"
       },
       {
@@ -387,7 +457,12 @@
     "img": "/img/4833b914f8398ea188d9db14419c8db1.jpg",
     "gallery": [
       {
-        "name": "Building blocks — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2016"
+          }
+        },
         "img": "/img/41c497d692140b474bb1a9aee05ccfe6.jpg"
       },
       {
@@ -414,7 +489,12 @@
     "img": "/img/1da3bb348e415ec2a050b8919f26fd7c.jpg",
     "gallery": [
       {
-        "name": "Stripe boutique II — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2017"
+          }
+        },
         "img": "/img/d83fdd3acb100912278916e2f41f289e.jpg"
       },
       {
@@ -441,7 +521,12 @@
     "img": "/img/f48689aa22f3c65293c234376112a1d1.jpg",
     "gallery": [
       {
-        "name": "Color field — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2018"
+          }
+        },
         "img": "/img/09f2fc4a9728e4931a61f68d9bc54f61.jpg"
       },
       {
@@ -468,7 +553,12 @@
     "img": "/img/77fb91b62a72b5f4efcc21abeca28ba0.jpg",
     "gallery": [
       {
-        "name": "Terracotta dots — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2019"
+          }
+        },
         "img": "/img/847087d884885862504f5d869ea4feac.jpg"
       },
       {
@@ -495,7 +585,12 @@
     "img": "/img/691807ebc12d5222dd8848de1b075cd8.jpg",
     "gallery": [
       {
-        "name": "Color spectrum — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2020"
+          }
+        },
         "img": "/img/d9f42db289f01857ebed8d3de69e1271.jpg"
       },
       {
@@ -522,7 +617,12 @@
     "img": "/img/92bb92d3cfb90375499af8dca0eedf63.jpg",
     "gallery": [
       {
-        "name": "Walnut study — full view",
+        "name": {
+          "k": "home.concepts.fullView",
+          "vars": {
+            "name": "@home.conceptNames.R2021"
+          }
+        },
         "img": "/img/4b808d19a43e5c5b70b7b0ca353585a2.jpg"
       },
       {
