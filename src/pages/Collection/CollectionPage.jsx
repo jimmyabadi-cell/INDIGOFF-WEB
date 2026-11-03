@@ -599,6 +599,10 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
+              <a href="/downloads" className="hd-dl" aria-label={v.T.k10} style={S("margin-right: 28px; color: #111111; text-decoration: none")}>
+                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path></svg>
+                <span className="hd-dl-lbl">{v.T.k10}</span>
+              </a>
               <button
                 type="button"
                 onClick={v.openList}
