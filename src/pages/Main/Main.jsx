@@ -1,7 +1,7 @@
 import React from "react";
 import { DCLogic, S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
+import { i18nGet, i18nTr } from "../../lib/i18n.js";
 import "./Main.css";
 
 var I18N_EN = {
@@ -740,8 +740,7 @@ class Component extends DCLogic {
         },
       });
     });
-    var cc = concepts[cxi] || { gallery: [] },
-      cg = cc.gallery || [];
+    var cc = concepts[cxi] || { gallery: [] };
     var cf = {
       code: cc.code || "",
       name: cc.name || "",
@@ -3312,7 +3311,7 @@ Component.template = function (v, self) {
                     placeholder={v.srPh}
                     value={v.srQ}
                     onChange={v.srInput}
-                    autofocus
+                    autoFocus
                     aria-label={v.srLabel}
                   />
                   <button type="button" onClick={v.closeSearch} className="sr-x" aria-label={v.srClose}>

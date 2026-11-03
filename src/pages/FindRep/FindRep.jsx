@@ -1,7 +1,7 @@
 import React from "react";
 import { DCLogic, S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
+import { i18nGet } from "../../lib/i18n.js";
 import "./FindRep.css";
 
 const I18N_EN = {

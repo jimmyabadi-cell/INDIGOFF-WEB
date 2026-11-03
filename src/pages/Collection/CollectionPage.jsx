@@ -1,6 +1,5 @@
 import React from "react";
 import { DCLogic, S } from "../../lib/dc.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
 import "./CollectionPage.css";
 
 const I18N_EN = {

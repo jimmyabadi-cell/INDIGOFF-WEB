@@ -1,0 +1,10 @@
+dist/
+node_modules/
+public/
+test-results/
+playwright-report/
+package-lock.json
+# Datos de contenido: se editan aparte y no conviene reformatearlos en bloque
+src/data/
+# CSS de páginas minificado; se formateará cuando se migre a CSS Modules
+src/pages/**/*.css

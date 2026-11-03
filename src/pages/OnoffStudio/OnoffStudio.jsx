@@ -1,7 +1,6 @@
 import React from "react";
 import { DCLogic, S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { I18N_ES, i18nGet, i18nSet, i18nTr, i18nDeep } from "../../lib/i18n.js";
 import "./OnoffStudio.css";
 
 const I18N_EN = {
@@ -22,32 +21,10 @@ const I18N_EN = {
 };
 
 import D from "../../data/studio.json";
-const CATS = ["All", "Ceilings", "Walls", "Lights", "Dividers"];
-const FMTS = ["All", "DWG", "SKP", "3DM", "REVIT"];
-const FMT_LABEL = { All: "All formats", DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
 const ON_TXT = D.txt;
 const ON_SV = D.sv;
 const ON_STEPS = D.steps;
 const ON_DES = D.designs;
-function tabStyle(on) {
-  return (
-    "min-height: 44px; padding: 0 0 4px; border: 0; border-bottom: 2px solid " +
-    (on ? "#645DC5" : "transparent") +
-    "; background: transparent; cursor: pointer; font-family: Urbanist, 'Futura', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: " +
-    (on ? "#111111" : "#6B675F")
-  );
-}
-function chipStyle(on) {
-  return (
-    "min-height: 32px; padding: 0 12px; border: 1px solid " +
-    (on ? "#111111" : "#DCD8D1") +
-    "; background: " +
-    (on ? "#111111" : "transparent") +
-    "; color: " +
-    (on ? "#FFFFFF" : "#111111") +
-    "; cursor: pointer; font-family: Urbanist, 'Futura', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase"
-  );
-}
 
 class Component extends DCLogic {
   constructor(p) {

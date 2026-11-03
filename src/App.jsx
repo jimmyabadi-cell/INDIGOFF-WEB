@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 
 const Main = lazy(() => import('./pages/Main/Main.jsx'));
 const CollectionPage = lazy(() => import('./pages/Collection/CollectionPage.jsx'));
