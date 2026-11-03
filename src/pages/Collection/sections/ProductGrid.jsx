@@ -1,5 +1,4 @@
 import React from "react";
-import { S } from "../../../lib/dc.js";
 import css from "./ProductGrid.module.css";
 
 /** Colecciones, descripción de la subcategoría y cuadrícula de productos. */
@@ -17,23 +16,23 @@ export default function ProductGrid({ v }) {
       </div>
       {v.s.hasProducts ? (
         <>
-          <div style={S(v.s.gridStyle)}>
+          <div className={v.s.small ? css.grid + " " + css.small : css.grid}>
             {(v.s.products || []).map((p, p__i) => (
               <React.Fragment key={p__i}>
                 <button
                   type="button"
                   onClick={p.pick}
                   aria-label={v.t("collection.viewItem", { name: p.name })}
-                  style={S(v.s.tileStyle)}
+                  className={css.tile}
                 >
                   {p.hasImg ? (
                     <>
-                      <img src={p.img} alt={p.alt} style={S(v.s.imgStyle)} />
+                      <img className={css.tileImage} src={p.img} alt={p.alt} />
                     </>
                   ) : null}
                   {p.noImg ? (
                     <>
-                      <span aria-hidden="true" style={S(v.s.phStyle)}></span>
+                      <span className={css.placeholder} aria-hidden="true"></span>
                     </>
                   ) : null}
                   <span className={css.label}>{p.name}</span>

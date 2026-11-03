@@ -220,14 +220,8 @@ function collectionVals(self, key, list, onKey, t) {
     feat: U(d.img),
     hasFeat: !!d.img,
     noFeat: !d.img,
-    gridStyle:
-      "display: grid; grid-template-columns: repeat(auto-fill, minmax(min(" +
-      (d.small ? "260px" : "320px") +
-      ", 100%), 1fr)); gap: 40px 8px",
-    tileStyle:
-      "min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: inherit; color: #111111",
-    imgStyle: "display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover",
-    phStyle: "display: block; width: 100%; aspect-ratio: 4 / 5; background: #EEEBE6",
+    // Tarjetas más angostas en "Todos" (más productos por fila); ver ProductGrid.module.css.
+    small: !!d.small,
     products: d.products.map(function (k, i) {
       const p = P[k];
       return {

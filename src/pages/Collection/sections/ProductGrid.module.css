@@ -38,6 +38,46 @@
   color: var(--color-muted);
 }
 
+/* Cuadrícula de productos: columnas automáticas a todo el ancho en tablet y desktop. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 40px 8px;
+}
+
+/* "Todos": tarjetas más angostas, más productos por fila. */
+.small {
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+}
+
+.tile {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--color-ink);
+}
+
+.tileImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+}
+
+.placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-surface-2);
+}
+
 .label {
   display: block;
   width: 100%;
@@ -46,6 +86,23 @@
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+/* Mobile: dos productos por fila con margen lateral (antes, una foto a todo el ancho por producto). */
+@media (max-width: 767px) {
+  .grid,
+  .small {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 8px;
+    padding: 0 var(--gutter);
+  }
+  .tile {
+    gap: 10px;
+  }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
 }
 
 .box2 {
