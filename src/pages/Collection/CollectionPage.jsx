@@ -522,12 +522,15 @@ Component.template = function (v, self) {
         </a>
         <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
           <div
+            className="hd-in"
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
+              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
             )}
           >
             <a
               href="/"
+              className="hd-l hd-back"
+              aria-label={v.T.k2}
               style={S(
                 "flex: 1 1 260px; color: #111111; text-decoration: none; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase",
               )}
@@ -547,11 +550,12 @@ Component.template = function (v, self) {
                 >
                   <path d="M15 5l-7 7 7 7"></path>
                 </svg>
-                {v.T.k2}
+                <span className="hd-back-lbl">{v.T.k2}</span>
               </span>
             </a>
             <a
               href="/"
+              className="hd-logo"
               style={S(
                 "flex: 0 0 auto; color: #111111; text-decoration: none; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
               )}
@@ -563,11 +567,12 @@ Component.template = function (v, self) {
               />
             </a>
             <div
+              className="hd-r"
               style={S(
                 "flex: 1 1 260px; display: flex; align-items: center; justify-content: flex-end; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase",
               )}
             >
-              <span
+              <span className="hd-lang"
                 style={S("margin-right: 24px; display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}
               >
                 <button
@@ -597,22 +602,24 @@ Component.template = function (v, self) {
               <button
                 type="button"
                 onClick={v.openList}
+                className="hd-list"
+                aria-label={v.T.k14 + " (" + v.listCount + ")"}
                 style={S(
                   "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: #111111; margin-right: 28px",
                 )}
               >
-                {v.T.k14}
-                {" ("}
-                {v.listCount}
-                {")"}
+                <svg className="hd-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path></svg>
+                <span className="hd-list-lbl">{v.T.k14}{" ("}</span>
+                <span className="hd-list-n">{v.listCount}</span>
+                <span className="hd-list-lbl">{")"}</span>
               </button>
-              <a href="/" style={S("color: #111111; text-decoration: none")}>
+              <a href="/" className="hd-opt" style={S("color: #111111; text-decoration: none")}>
                 {v.T.k3}
               </a>
             </div>
           </div>
         </header>
-        <section id="content" style={S("max-width: 1440px; margin: 0 auto; padding: 40px 32px 0; text-align: center")}>
+        <section id="content" style={S("max-width: 1440px; margin: 0 auto; padding: 40px min(32px, var(--gutter)) 0; text-align: center")}>
           <h1
             style={S(
               "margin: 0 0 12px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(40px, 5vw, 64px); line-height: 1; letter-spacing: -0.04em",
@@ -629,6 +636,7 @@ Component.template = function (v, self) {
           </p>
           <nav
             aria-label="Subcategories"
+            className="scroll-tabs"
             style={S(
               "display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 40px; border-bottom: 1px solid #ECE9E4",
             )}
@@ -715,7 +723,7 @@ Component.template = function (v, self) {
                     <img
                       src={v.s.feat}
                       alt={v.s.label}
-                      style={S("display: block; width: 100%; height: 620px; object-fit: cover")}
+                      style={S("display: block; width: 100%; height: calc(620px * var(--mh)); object-fit: cover")}
                     />
                   </>
                 ) : null}
@@ -724,7 +732,7 @@ Component.template = function (v, self) {
                     <div
                       role="img"
                       aria-label={`${v.s.label} photo placeholder`}
-                      style={S("height: 620px; background: #EEEBE6")}
+                      style={S("height: calc(620px * var(--mh)); background: #EEEBE6")}
                     ></div>
                   </>
                 ) : null}
@@ -732,7 +740,7 @@ Component.template = function (v, self) {
             </>
           ) : null}
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: 160px 32px 0; text-align: center")}>
+        <section style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) min(32px, var(--gutter)) 0; text-align: center")}>
           <p
             style={S(
               "margin: 0 0 28px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(32px, 3.6vw, 52px); letter-spacing: -0.04em",
@@ -759,7 +767,7 @@ Component.template = function (v, self) {
             </a>
           </div>
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: 160px 32px 140px; text-align: center")}>
+        <section style={S("max-width: 1440px; margin: 0 auto; padding: calc(160px * var(--vs)) min(32px, var(--gutter)) calc(140px * var(--vs)); text-align: center")}>
           <h2
             style={S(
               "margin: 0 0 28px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
@@ -784,7 +792,7 @@ Component.template = function (v, self) {
         </section>
         <footer
           style={S(
-            "background: #F4F1EB; padding: 32px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 11px; color: #6B675F",
+            "background: #F4F1EB; padding: 32px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 11px; color: #6B675F",
           )}
         >
           <span>{"© 2026 Indigoff LLC"}</span>
@@ -804,7 +812,7 @@ Component.template = function (v, self) {
             >
               <div
                 style={S(
-                  "display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 40px; border-bottom: 1px solid #ECE9E4",
+                  "display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--gutter); border-bottom: 1px solid #ECE9E4",
                 )}
               >
                 <button
@@ -965,7 +973,7 @@ Component.template = function (v, self) {
               >
                 <div
                   style={S(
-                    "max-width: 1440px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px",
+                    "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px",
                   )}
                 >
                   <span style={S("flex: 1 1 0; display: flex")}>
@@ -1018,7 +1026,7 @@ Component.template = function (v, self) {
               </div>
               <div
                 style={S(
-                  "max-width: 880px; margin: 0 auto; padding: 80px 32px 120px; text-align: center; color: #111111",
+                  "max-width: 880px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); text-align: center; color: #111111",
                 )}
               >
                 <h1
@@ -1116,7 +1124,7 @@ Component.template = function (v, self) {
                 ) : null}
                 {v.sel.hasDl ? (
                   <>
-                    <section aria-label="Downloads" style={S("margin-top: 88px; text-align: left")}>
+                    <section aria-label="Downloads" style={S("margin-top: calc(88px * var(--vs)); text-align: left")}>
                       <div
                         style={S(
                           "display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding-bottom: 18px; border-bottom: 1px solid #111111",
@@ -1207,7 +1215,7 @@ Component.template = function (v, self) {
                   <>
                     <p
                       style={S(
-                        "margin: 72px 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
+                        "margin: calc(72px * var(--vs)) 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
                       )}
                     >
                       {v.T.k13}
@@ -1219,13 +1227,13 @@ Component.template = function (v, self) {
                     <img
                       src={v.sel.img2}
                       alt={`${v.sel.title} — second view`}
-                      style={S("display: block; width: 100%; margin-top: 72px; background: #F4F1EB")}
+                      style={S("display: block; width: 100%; margin-top: calc(72px * var(--vs)); background: #F4F1EB")}
                     />
                   </>
                 ) : null}
                 <div
                   style={S(
-                    "margin-top: 72px; padding-top: 24px; border-top: 1px solid #ECE9E4; display: flex; justify-content: space-between; gap: 12px",
+                    "margin-top: calc(72px * var(--vs)); padding-top: 24px; border-top: 1px solid #ECE9E4; display: flex; justify-content: space-between; gap: 12px",
                   )}
                 >
                   <button
@@ -1298,7 +1306,7 @@ Component.template = function (v, self) {
               >
                 <div
                   style={S(
-                    "max-width: 1440px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px",
+                    "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px",
                   )}
                 >
                   <span style={S("flex: 1 1 0; display: flex")}>
@@ -1338,7 +1346,7 @@ Component.template = function (v, self) {
                   <span style={S("flex: 1 1 0")}></span>
                 </div>
               </header>
-              <div style={S("max-width: 1200px; margin: 0 auto; padding: 80px 32px 120px; color: #111111")}>
+              <div style={S("max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111")}>
                 <div style={S("text-align: center")}>
                   <h1
                     style={S(

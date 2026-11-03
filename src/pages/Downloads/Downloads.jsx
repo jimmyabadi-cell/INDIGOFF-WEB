@@ -139,12 +139,14 @@ Component.template = function (v, self) {
         </a>
         <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
           <div
+            className="hd-in"
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
+              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
             )}
           >
             <nav
               aria-label="Main"
+              className="hd-l"
               style={S(
                 "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
@@ -155,6 +157,7 @@ Component.template = function (v, self) {
                 aria-haspopup="dialog"
                 aria-expanded={v.menuOnStr}
                 className="hd-menu"
+                aria-label={v.dwMenuLbl}
               >
                 <svg
                   aria-hidden="true"
@@ -171,12 +174,13 @@ Component.template = function (v, self) {
                 </svg>
                 <span>{v.dwMenuLbl}</span>
               </button>
-              <a href="/downloads" aria-current="page" style={S("border-bottom: 1px solid #111111")}>
+              <a href="/downloads" className="hd-opt" aria-current="page" style={S("border-bottom: 1px solid #111111")}>
                 {v.T.k5}
               </a>
             </nav>
             <a
               href="/"
+              className="hd-logo"
               style={S(
                 "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
               )}
@@ -188,11 +192,12 @@ Component.template = function (v, self) {
               />
             </a>
             <div
+              className="hd-r"
               style={S(
                 "flex: 1 1 380px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 20px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
               )}
             >
-              <span style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
+              <span className="hd-lang" style={S("display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}>
                 <button
                   type="button"
                   onClick={v.setEn}
@@ -217,13 +222,13 @@ Component.template = function (v, self) {
                   {"ES"}
                 </button>
               </span>
-              <a href="/find-a-rep">{v.T.k6}</a>
+              <a href="/find-a-rep" className="hd-opt">{v.T.k6}</a>
             </div>
           </div>
         </header>
         <section
           id="content"
-          style={S("max-width: 1440px; margin: 0 auto; padding: 120px 40px 64px; text-align: center")}
+          style={S("max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 64px; text-align: center")}
         >
           <h1
             style={S(
@@ -251,10 +256,10 @@ Component.template = function (v, self) {
         >
           <div
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 16px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 40px",
+              "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 40px",
             )}
           >
-            <div role="tablist" aria-label="Category" style={S("display: flex; flex-wrap: wrap; gap: 4px 28px")}>
+            <div role="tablist" aria-label="Category" className="scroll-tabs" style={S("display: flex; flex-wrap: wrap; gap: 4px 28px")}>
               {(v.cats || []).map((t, t__i) => (
                 <React.Fragment key={t__i}>
                   <button type="button" role="tab" aria-selected={t.on} onClick={t.pick} style={S(t.style)}>
@@ -290,15 +295,15 @@ Component.template = function (v, self) {
             </div>
           </div>
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: 24px 40px 160px")}>
+        <section style={S("max-width: 1440px; margin: 0 auto; padding: 24px var(--gutter) calc(160px * var(--vs))")}>
           {v.empty ? (
             <>
-              <p style={S("margin: 96px 0; text-align: center; font-size: 18px; color: #6B675F")}>{v.T.k9}</p>
+              <p style={S("margin: calc(96px * var(--vs)) 0; text-align: center; font-size: 18px; color: #6B675F")}>{v.T.k9}</p>
             </>
           ) : null}
           {(v.groups || []).map((g, g__i) => (
             <React.Fragment key={g__i}>
-              <div style={S("padding-top: 72px")}>
+              <div style={S("padding-top: calc(72px * var(--vs))")}>
                 <div
                   style={S(
                     "display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid #111111",
@@ -422,7 +427,7 @@ Component.template = function (v, self) {
               </div>
             </React.Fragment>
           ))}
-          <p style={S("margin: 96px auto 0; max-width: 520px; text-align: center; font-size: 15px; color: #5E5A53")}>
+          <p style={S("margin: calc(96px * var(--vs)) auto 0; max-width: 520px; text-align: center; font-size: 15px; color: #5E5A53")}>
             {v.T.k11}
           </p>
           <p style={S("margin: 28px 0 0; text-align: center")}>
@@ -439,7 +444,7 @@ Component.template = function (v, self) {
         <footer style={S("border-top: 1px solid #ECE9E4; background: #F4F1EB")}>
           <div
             style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 48px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
+              "max-width: 1440px; margin: 0 auto; padding: 48px var(--gutter); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
             )}
           >
             <span>{"© Indigoff"}</span>
@@ -525,6 +530,14 @@ Component.template = function (v, self) {
                   </a>
                   <a href="/onoff-studio" onClick={v.closeMenu} className="dw-big">
                     {"onoff studio"}
+                  </a>
+                </div>
+                <div className="dw-util">
+                  <a href="/downloads" onClick={v.closeMenu}>
+                    {v.T.k5}
+                  </a>
+                  <a href="/find-a-rep" onClick={v.closeMenu}>
+                    {v.T.k6}
                   </a>
                 </div>
               </div>
