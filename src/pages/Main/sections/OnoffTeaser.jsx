@@ -1,4 +1,5 @@
 import css from "./OnoffTeaser.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Presentación de onoff studio. */
 export default function OnoffTeaser({ v }) {
@@ -7,11 +8,11 @@ export default function OnoffTeaser({ v }) {
       <div className={css.box}>
         <div className={css.box2}>
           <img
-            className={css.image}
-            src="/img/dc6b194e8cfae848cc1e1424d739f8cb.jpg"
-            alt="Folded acoustic light wave over a conference table"
             loading="lazy"
             decoding="async"
+            className={css.image}
+            {...imgProps("/img/dc6b194e8cfae848cc1e1424d739f8cb.jpg", SIZES.half)}
+            alt="Folded acoustic light wave over a conference table"
           />
         </div>
         <div className={css.box3}>

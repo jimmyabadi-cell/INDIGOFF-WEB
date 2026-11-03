@@ -1,4 +1,5 @@
 import css from "./Finishes.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Acabados: colores, texturas, impresión, grabado y relieve. */
 export default function Finishes({ v }) {
@@ -18,7 +19,7 @@ export default function Finishes({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/33bf52d337f0b5866c401b1f22274d1e.jpg"
+            {...imgProps("/img/33bf52d337f0b5866c401b1f22274d1e.jpg", SIZES.half)}
             alt="Colors finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -37,7 +38,7 @@ export default function Finishes({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/59823a479ed6e68e4e9d0a9c53e86ad2.jpg"
+            {...imgProps("/img/59823a479ed6e68e4e9d0a9c53e86ad2.jpg", SIZES.half)}
             alt="Textures finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -56,7 +57,7 @@ export default function Finishes({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/01fd0ca4887bbb6af9330fa52b1fb80d.jpg"
+            {...imgProps("/img/01fd0ca4887bbb6af9330fa52b1fb80d.jpg", SIZES.half)}
             alt="Print finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -75,7 +76,7 @@ export default function Finishes({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/1cd84dadeac695b570a54542496638c0.jpg"
+            {...imgProps("/img/1cd84dadeac695b570a54542496638c0.jpg", SIZES.half)}
             alt="Engraving finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -94,7 +95,7 @@ export default function Finishes({ v }) {
             loading="lazy"
             decoding="async"
             className={css.image}
-            src="/img/83997bc339591c8c1d305c3b756d6962.jpg"
+            {...imgProps("/img/83997bc339591c8c1d305c3b756d6962.jpg", SIZES.half)}
             alt="Embossed finish samples"
           />
           <span className={"scrim " + css.label}></span>

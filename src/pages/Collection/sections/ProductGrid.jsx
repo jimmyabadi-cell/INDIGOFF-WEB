@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./ProductGrid.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Colecciones, descripción de la subcategoría y cuadrícula de productos. */
 export default function ProductGrid({ v }) {
@@ -27,7 +28,13 @@ export default function ProductGrid({ v }) {
                 >
                   {p.hasImg ? (
                     <>
-                      <img loading="lazy" decoding="async" className={css.tileImage} src={p.img} alt={p.alt} />
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        className={css.tileImage}
+                        {...imgProps(p.img, SIZES.card)}
+                        alt={p.alt}
+                      />
                     </>
                   ) : null}
                   {p.noImg ? (
@@ -47,7 +54,7 @@ export default function ProductGrid({ v }) {
           <div className={css.box2}>
             {v.s.hasFeat ? (
               <>
-                <img className={css.image} src={v.s.feat} alt={v.s.label} />
+                <img className={css.image} {...imgProps(v.s.feat, SIZES.full)} alt={v.s.label} />
               </>
             ) : null}
             {v.s.noFeat ? (

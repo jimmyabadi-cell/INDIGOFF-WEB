@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./Concepts.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Carrusel de conceptos. */
 export default function Concepts({ v }) {
@@ -18,7 +19,7 @@ export default function Concepts({ v }) {
           <button type="button" className="cf-stage" onClick={v.cf.pick} aria-label={v.cf.alt}>
             {(v.concepts || []).map((c, c__i) => (
               <React.Fragment key={c__i}>
-                <img className={c.fcls} src={c.img} alt="" loading="lazy" decoding="async" />
+                <img loading="lazy" decoding="async" className={c.fcls} {...imgProps(c.img, SIZES.half)} alt="" />
               </React.Fragment>
             ))}
           </button>
@@ -61,7 +62,7 @@ export default function Concepts({ v }) {
               aria-label={c.alt}
               aria-current={c.cur}
             >
-              <img src={c.img} alt="" loading="lazy" decoding="async" />
+              <img loading="lazy" decoding="async" {...imgProps(c.img, SIZES.thumb)} alt="" />
               <span className="cf-tc">{c.code}</span>
             </button>
           </React.Fragment>

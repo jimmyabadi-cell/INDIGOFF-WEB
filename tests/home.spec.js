@@ -100,8 +100,11 @@ test.describe("Home", () => {
 
 test.describe("Newsletter", () => {
   test("aparece a los 2.5 s y Escape lo cierra para siempre", async ({ page }) => {
-    await page.clock.install();
+    // Reloj en pausa desde antes de cargar: el tiempo solo avanza con runFor (si no, una carga lenta lo adelanta).
+    await page.clock.install({ time: new Date("2026-01-01T10:00:00") });
+    await page.clock.pauseAt(new Date("2026-01-01T10:00:01"));
     await page.goto("/");
+    await page.locator(".site-hd").waitFor();
     const nl = page.locator(".nl[role=dialog]");
     await page.clock.runFor(2000);
     await expect(nl).toHaveCount(0);
@@ -114,8 +117,11 @@ test.describe("Newsletter", () => {
   });
 
   test("valida el correo y confirma la suscripción", async ({ page }) => {
-    await page.clock.install();
+    // Reloj en pausa desde antes de cargar: el tiempo solo avanza con runFor (si no, una carga lenta lo adelanta).
+    await page.clock.install({ time: new Date("2026-01-01T10:00:00") });
+    await page.clock.pauseAt(new Date("2026-01-01T10:00:01"));
     await page.goto("/");
+    await page.locator(".site-hd").waitFor();
     await page.clock.runFor(2700);
     const nl = page.locator(".nl[role=dialog]");
     await expect(nl).toBeVisible();

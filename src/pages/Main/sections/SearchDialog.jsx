@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./SearchDialog.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Búsqueda global. */
 export default function SearchDialog({ v }) {
@@ -79,7 +80,7 @@ export default function SearchDialog({ v }) {
                             <>
                               <a href={r.href} onClick={r.go} className="sr-row">
                                 <span className="sr-img">
-                                  <img src={r.img} alt="" loading="lazy" decoding="async" />
+                                  <img loading="lazy" decoding="async" {...imgProps(r.img, SIZES.thumb)} alt="" />
                                 </span>
                                 <span className="sr-t">
                                   <span className="sr-n">{r.name}</span>
@@ -92,7 +93,7 @@ export default function SearchDialog({ v }) {
                             <>
                               <button type="button" onClick={r.go} className="sr-row">
                                 <span className="sr-img">
-                                  <img src={r.img} alt="" loading="lazy" decoding="async" />
+                                  <img loading="lazy" decoding="async" {...imgProps(r.img, SIZES.thumb)} alt="" />
                                 </span>
                                 <span className="sr-t">
                                   <span className="sr-n">{r.name}</span>

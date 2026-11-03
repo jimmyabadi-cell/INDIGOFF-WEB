@@ -1,6 +1,7 @@
 import React from "react";
 import { S } from "../../../lib/dc.js";
 import css from "./Lightbox.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Lightbox de producto, acabado, concepto o proyecto. */
 export default function Lightbox({ v }) {
@@ -41,7 +42,7 @@ export default function Lightbox({ v }) {
             <div className={css.box3}>
               {v.showHero ? (
                 <>
-                  <img className={css.image2} src={v.lbImg} alt={v.lbAlt} />
+                  <img className={css.image2} {...imgProps(v.lbImg, SIZES.half)} alt={v.lbAlt} />
                 </>
               ) : null}
             </div>
@@ -116,10 +117,10 @@ export default function Lightbox({ v }) {
                               aria-pressed={w.on}
                             >
                               <img
-                                src={w.img}
-                                alt={`${w.name} finish`}
                                 loading="lazy"
                                 decoding="async"
+                                {...imgProps(w.img, SIZES.card)}
+                                alt={`${w.name} finish`}
                                 style={S(w.style)}
                               />
                               {w.showName ? (

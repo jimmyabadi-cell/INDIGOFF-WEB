@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./ListPanel.module.css";
+import { imgProps, SIZES } from "../lib/images.js";
 
 /**
  * Panel de Mi lista (home y páginas de colección).
@@ -75,7 +76,13 @@ export default function ListPanel({ v, homeHref = "/" }) {
                     {(v.listItems || []).map((it, it__i) => (
                       <React.Fragment key={it__i}>
                         <div className={css.box7} role="listitem">
-                          <img className={css.image2} src={it.img} alt={it.name} loading="lazy" decoding="async" />
+                          <img
+                            loading="lazy"
+                            decoding="async"
+                            className={css.image2}
+                            {...imgProps(it.img, SIZES.thumb)}
+                            alt={it.name}
+                          />
                           <span className={css.label4}>{it.kind}</span>
                           <span className={css.label5}>{it.name}</span>
                           <button

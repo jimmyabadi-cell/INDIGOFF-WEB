@@ -1,4 +1,5 @@
 import css from "./NewsletterDialog.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Popup del newsletter. */
 export default function NewsletterDialog({ v }) {
@@ -24,7 +25,7 @@ export default function NewsletterDialog({ v }) {
               </svg>
             </button>
             <div className="nl-img">
-              <img src="/img/f8c0fd4c23fb59d6887e5fe8c294a39b.jpg" alt="" />
+              <img {...imgProps("/img/f8c0fd4c23fb59d6887e5fe8c294a39b.jpg", SIZES.half)} alt="" />
             </div>
             <div className="nl-body">
               {v.nlForm ? (

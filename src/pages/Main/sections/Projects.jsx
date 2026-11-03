@@ -1,6 +1,7 @@
 import React from "react";
 import BRANDS from "../../../data/brands.json";
 import css from "./Projects.module.css";
+import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Proyectos y marcas que confían en Indigoff. */
 export default function Projects({ v }) {
@@ -19,7 +20,7 @@ export default function Projects({ v }) {
           loading="lazy"
           decoding="async"
           className={css.image}
-          src="/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg"
+          {...imgProps("/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg", SIZES.full)}
           alt="Multimedios: newsroom under a sculpted linear acoustic ceiling"
         />
         <span className={"scrim " + css.label} aria-hidden="true"></span>
@@ -31,11 +32,11 @@ export default function Projects({ v }) {
             <button className={css.button2} type="button" onClick={pj.pick} aria-label={`View ${pj.name}`}>
               <span className={"proj-img " + css.label3}>
                 <img
-                  className={css.image2}
-                  src={pj.cover}
-                  alt={`${pj.name} project by Indigoff`}
                   loading="lazy"
                   decoding="async"
+                  className={css.image2}
+                  {...imgProps(pj.cover, SIZES.third)}
+                  alt={`${pj.name} project by Indigoff`}
                 />
               </span>
               <span className={css.label4}>
