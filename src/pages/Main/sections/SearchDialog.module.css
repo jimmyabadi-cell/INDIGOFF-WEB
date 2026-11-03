@@ -1,0 +1,10 @@
+/* Estilos de SearchDialog. Colores con los tokens de src/global.css. */
+
+.icon {
+  display: block;
+  flex: none;
+}
+
+.icon2 {
+  display: block;
+}

@@ -1,0 +1,69 @@
+/* Estilos de Contact. Colores con los tokens de src/global.css. */
+
+.contact {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(160px * var(--vs)) var(--gutter) calc(140px * var(--vs));
+  text-align: center;
+}
+
+.heading {
+  margin: 0 0 12px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 3vw, 44px);
+  letter-spacing: -0.03em;
+}
+
+.text {
+  margin: 0 auto 32px;
+  max-width: 420px;
+  color: var(--color-secondary);
+}
+
+.form {
+  margin: 0 auto;
+  max-width: 520px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.field {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.input {
+  min-height: 48px;
+  border: 0;
+  border-bottom: 1px solid var(--color-ink);
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--color-ink);
+}
+
+.button {
+  min-height: 48px;
+  padding: 0 36px;
+  border: 0;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-end;
+}

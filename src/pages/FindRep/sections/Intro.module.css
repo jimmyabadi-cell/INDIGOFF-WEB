@@ -1,0 +1,59 @@
+/* Estilos de Intro. Colores con los tokens de src/global.css. */
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(120px * var(--vs)) var(--gutter) 56px;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.text {
+  margin: 0 auto;
+  max-width: 560px;
+  font-size: 18px;
+  color: var(--color-dark);
+}
+
+.field {
+  margin: 48px auto 0;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 48px;
+  border: 0;
+  border-bottom: 1px solid var(--color-ink);
+  background: transparent;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-ink);
+  padding: 0 2px;
+}
+
+.text2 {
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--color-accent);
+}

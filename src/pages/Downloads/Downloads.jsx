@@ -8,6 +8,7 @@ import D from "../../data/downloads.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
 import SideMenu from "../../components/layout/SideMenu.jsx";
 import CompactFooter from "../../components/layout/CompactFooter.jsx";
+import css from "./Downloads.module.css";
 const ALL = "all";
 const CATS = [ALL, "ceilings", "walls", "lights", "dividers"];
 const FMTS = [ALL, "DWG", "SKP", "3DM", "REVIT"];
@@ -118,11 +119,7 @@ function downloadsVals({ t, cat, fmt, query, setCat, setFmt, setQuery }) {
 function template(v) {
   return (
     <>
-      <div
-        style={S(
-          "font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; color: #111111; background: #FFFFFF; font-size: 15px; line-height: 1.7",
-        )}
-      >
+      <div className={css.box}>
         <a className="skip" href="#content">
           {v.t("common.skipToContent")}
         </a>
@@ -131,44 +128,14 @@ function template(v) {
           labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }}
           current="downloads"
         />
-        <section
-          id="content"
-          style={S(
-            "max-width: 1440px; margin: 0 auto; padding: calc(120px * var(--vs)) var(--gutter) 64px; text-align: center",
-          )}
-        >
-          <h1
-            style={S(
-              "margin: 0 0 24px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(44px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em",
-            )}
-          >
-            {v.t("common.downloads")}
-          </h1>
-          <p style={S("margin: 0 auto; max-width: 560px; font-size: 18px; color: #3A3935")}>{v.t("downloads.intro")}</p>
-          <p
-            style={S(
-              "margin: 28px 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
-            )}
-          >
-            {v.totals}
-          </p>
+        <section className={css.content} id="content">
+          <h1 className={css.title}>{v.t("common.downloads")}</h1>
+          <p className={css.text}>{v.t("downloads.intro")}</p>
+          <p className={css.text2}>{v.totals}</p>
         </section>
-        <section
-          style={S(
-            "position: sticky; top: calc(var(--hd-h) - 1px); z-index: 2; background: #FFFFFF; border-top: 1px solid #ECE9E4; border-bottom: 1px solid #ECE9E4",
-          )}
-        >
-          <div
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 40px",
-            )}
-          >
-            <div
-              role="tablist"
-              aria-label={v.t("downloads.categoryLabel")}
-              className="scroll-tabs"
-              style={S("display: flex; flex-wrap: wrap; gap: 4px 28px")}
-            >
+        <section className={css.section}>
+          <div className={css.box2}>
+            <div role="tablist" aria-label={v.t("downloads.categoryLabel")} className={"scroll-tabs " + css.box3}>
               {(v.cats || []).map((t, t__i) => (
                 <React.Fragment key={t__i}>
                   <button type="button" role="tab" aria-selected={t.on} onClick={t.pick} style={S(t.style)}>
@@ -177,7 +144,7 @@ function template(v) {
                 </React.Fragment>
               ))}
             </div>
-            <div style={S("display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px")}>
+            <div className={css.box4}>
               {(v.fmts || []).map((t, t__i) => (
                 <React.Fragment key={t__i}>
                   <button type="button" aria-pressed={t.on} onClick={t.pick} style={S(t.style)}>
@@ -185,134 +152,63 @@ function template(v) {
                   </button>
                 </React.Fragment>
               ))}
-              <label
-                style={S(
-                  "display: flex; align-items: center; gap: 12px; margin-left: 12px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
-                )}
-              >
+              <label className={css.field}>
                 {v.t("downloads.search")}
                 <input
+                  className={css.input}
                   type="search"
                   placeholder={v.t("downloads.searchPlaceholder")}
                   value={v.q}
                   onChange={v.onQuery}
-                  style={S(
-                    "width: 200px; min-height: 40px; border: 0; border-bottom: 1px solid #111111; background: transparent; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 300; letter-spacing: 0; text-transform: none; color: #111111; padding: 0 2px",
-                  )}
                 />
               </label>
             </div>
           </div>
         </section>
-        <section style={S("max-width: 1440px; margin: 0 auto; padding: 24px var(--gutter) calc(160px * var(--vs))")}>
+        <section className={css.section2}>
           {v.empty ? (
             <>
-              <p style={S("margin: calc(96px * var(--vs)) 0; text-align: center; font-size: 18px; color: #6B675F")}>
-                {v.t("downloads.empty")}
-              </p>
+              <p className={css.text3}>{v.t("downloads.empty")}</p>
             </>
           ) : null}
           {(v.groups || []).map((g, g__i) => (
             <React.Fragment key={g__i}>
-              <div style={S("padding-top: calc(72px * var(--vs))")}>
-                <div
-                  style={S(
-                    "display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid #111111",
-                  )}
-                >
-                  <h2
-                    style={S(
-                      "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(30px, 3vw, 44px); line-height: 1.1; letter-spacing: -0.04em",
-                    )}
-                  >
-                    {g.name}
-                  </h2>
-                  <p
-                    style={S(
-                      "margin: 0; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
-                    )}
-                  >
-                    {g.count}
-                  </p>
+              <div className={css.box5}>
+                <div className={css.box6}>
+                  <h2 className={css.heading}>{g.name}</h2>
+                  <p className={css.text4}>{g.count}</p>
                 </div>
                 {(g.items || []).map((p, p__i) => (
                   <React.Fragment key={p__i}>
-                    <div
-                      style={S(
-                        "display: flex; flex-wrap: wrap; gap: 20px 40px; padding: 28px 0; border-bottom: 1px solid #ECE9E4",
-                      )}
-                    >
-                      <a
-                        href={p.href}
-                        style={S("flex: 1 1 300px; display: flex; gap: 20px; align-items: center; min-width: 0")}
-                      >
+                    <div className={css.box7}>
+                      <a className={css.link} href={p.href}>
                         {p.hasImg ? (
                           <>
-                            <img
-                              src={p.img}
-                              alt={p.name}
-                              loading="lazy"
-                              style={S(
-                                "flex: 0 0 72px; width: 72px; aspect-ratio: 4 / 5; height: auto; object-fit: cover; background: #F4F1EB",
-                              )}
-                            />
+                            <img className={css.image} src={p.img} alt={p.name} loading="lazy" />
                           </>
                         ) : null}
                         {p.noImg ? (
                           <>
-                            <span
-                              style={S("flex: 0 0 72px; width: 72px; aspect-ratio: 4 / 5; background: #EEEBE6")}
-                            ></span>
+                            <span className={css.label}></span>
                           </>
                         ) : null}
-                        <span style={S("display: flex; flex-direction: column; min-width: 0")}>
-                          <span
-                            style={S(
-                              "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 26px; line-height: 1.15; letter-spacing: -0.03em",
-                            )}
-                          >
-                            {p.name}
-                          </span>
-                          <span
-                            style={S(
-                              "margin-top: 6px; font-size: 11px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: #6B675F",
-                            )}
-                          >
-                            {p.sub}
-                          </span>
+                        <span className={css.label2}>
+                          <span className={css.label3}>{p.name}</span>
+                          <span className={css.label4}>{p.sub}</span>
                         </span>
                       </a>
-                      <div style={S("flex: 2 1 520px; min-width: 0")}>
+                      <div className={css.box8}>
                         {(p.files || []).map((f, f__i) => (
                           <React.Fragment key={f__i}>
-                            <a
-                              href={f.href}
-                              download
-                              style={S(
-                                "display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; min-height: 52px; padding: 10px 0; border-bottom: 1px solid #F1EEE9; color: #111111",
-                              )}
-                            >
-                              <span
-                                style={S(
-                                  "flex: 0 0 64px; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; font-size: 11px",
-                                )}
-                              >
-                                {f.fmt}
-                              </span>
-                              <span
-                                style={S("flex: 1 1 200px; min-width: 0; font-size: 15px; overflow-wrap: anywhere")}
-                              >
-                                {f.name}
-                              </span>
-                              <span style={S("flex: 0 0 auto; font-size: 13px; color: #6B675F")}>{f.size}</span>
-                              <span
-                                style={S(
-                                  "flex: 0 0 auto; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; font-size: 11px",
-                                )}
-                              >
-                                <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
+                            <a className={css.link2} href={f.href} download>
+                              <span className={css.label5}>{f.fmt}</span>
+                              <span className={css.label6}>{f.name}</span>
+                              <span className={css.label7}>{f.size}</span>
+                              <span className={css.label8}>
+                                <span className={css.label9}>
                                   {v.t("downloads.download")}
                                   <svg
+                                    className={css.icon}
                                     aria-hidden="true"
                                     width="14"
                                     height="14"
@@ -322,7 +218,6 @@ function template(v) {
                                     strokeWidth="1.4"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    style={S("display: block; flex: none")}
                                   >
                                     <path d="M12 4v13M6 11l6 6 6-6M5 20h14"></path>
                                   </svg>
@@ -338,20 +233,9 @@ function template(v) {
               </div>
             </React.Fragment>
           ))}
-          <p
-            style={S(
-              "margin: calc(96px * var(--vs)) auto 0; max-width: 520px; text-align: center; font-size: 15px; color: #5E5A53",
-            )}
-          >
-            {v.t("downloads.requestText")}
-          </p>
-          <p style={S("margin: 28px 0 0; text-align: center")}>
-            <a
-              href="/#specify"
-              style={S(
-                "display: inline-flex; align-items: center; min-height: 48px; padding: 0 36px; background: #645DC5; color: #FFFFFF; font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase",
-              )}
-            >
+          <p className={css.text5}>{v.t("downloads.requestText")}</p>
+          <p className={css.text6}>
+            <a className={css.link3} href="/#specify">
               {v.t("downloads.requestCta")}
             </a>
           </p>

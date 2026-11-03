@@ -1,0 +1,207 @@
+[
+  {
+    "name": "Google",
+    "logo": "/img/b7050ce6ee94df8c8b1b79062a578af3.png",
+    "maxHeight": 28
+  },
+  {
+    "name": "Amazon",
+    "logo": "/img/b437736fe3b6f5f77f18bf7b9acebd29.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Netflix",
+    "logo": "/img/1277d27cf6f658c8252cba3aba7e0095.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Visa",
+    "logo": "/img/3c2b439831d40822c6d102b6b5815335.png",
+    "maxHeight": 24
+  },
+  {
+    "name": "American Express",
+    "logo": "/img/864bdd5bc338357720fda18982b41028.png",
+    "maxHeight": 40
+  },
+  {
+    "name": "Adidas",
+    "logo": "/img/d0dd52a7e4e5cbae1ae20b2ee631a203.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Uber",
+    "logo": "/img/98f5961207afa2d5222f5426a6a5278d.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "TikTok",
+    "logo": "/img/4897e73b28bea6db40e2feab5fa1a64c.png",
+    "maxHeight": 28
+  },
+  {
+    "name": "Spotify",
+    "logo": "/img/bd72ccbd1ca6ada48148e1bd6ffe0cfd.png",
+    "maxHeight": 30
+  },
+  {
+    "name": "Ford",
+    "logo": "/img/797495370337985a01ebe8a1efcf3050.png",
+    "maxHeight": 30
+  },
+  {
+    "name": "Nissan",
+    "logo": "/img/601003c680dd029ea372acd49e7568a9.png",
+    "maxHeight": 36
+  },
+  {
+    "name": "GM",
+    "logo": "/img/c9716ea1e70593b3e937249e97dc8272.png",
+    "maxHeight": 36
+  },
+  {
+    "name": "SAP",
+    "logo": "/img/59c10d283222783dad624bd643121eac.png",
+    "maxHeight": 30
+  },
+  {
+    "name": "Volvo",
+    "logo": "/img/5757c67f28c418c228bf64b329c86588.png",
+    "maxHeight": 20
+  },
+  {
+    "name": "Bank of America",
+    "logo": "/img/6ab4e374ab8e0e442b9a029a2f90b7c3.png",
+    "maxHeight": 22
+  },
+  {
+    "name": "Cisco",
+    "logo": "/img/80eb913c3303ce3547a04138cca0806e.png",
+    "maxHeight": 32
+  },
+  {
+    "name": "Pokémon",
+    "logo": "/img/52a9b19d82515bfebe60188d9b854a60.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Pinterest",
+    "logo": "/img/9e01af5a931bf369942e95f4a108748c.png",
+    "maxHeight": 32
+  },
+  {
+    "name": "Nubank",
+    "logo": "/img/ad4c75f9c9866768f31eec4df17b27aa.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Nivea",
+    "logo": "/img/a6c687b514cd4d285a97e291b9cde6d3.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "BBVA",
+    "logo": "/img/d07d10df037d0d04078d4c2fd64cf01d.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "SoftBank",
+    "logo": "/img/fcb384fc2bfe509120d197944cea3c40.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Diageo",
+    "logo": "/img/6922e6fffab6380d13ba7051eeb8b153.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Maersk",
+    "logo": "/img/68c5a79540422bef3a055138a7a07fe1.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Avnet",
+    "logo": "/img/22eb894878a944d496dfa6957aa44b7c.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "BorgWarner",
+    "logo": "/img/17cd16a04d70ad040ca80cf7576c0cf8.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Pfizer",
+    "logo": "/img/c5dc92650cc2b4f01abb2473848b7f80.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "DuPont",
+    "logo": "/img/bb18f73aaaed6fb62e00d52166a3a940.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Kellogg’s",
+    "logo": "/img/19f2cea64a7f8cb94e42e4c5396d3f0d.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Bloomberg",
+    "logo": "/img/152942735d250be1dabc491d5dedea3d.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "BYD",
+    "logo": "/img/5493eead1f0a26b9a55eac182ff85ec7.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Workday",
+    "logo": "/img/8398f7534d130603fb090a1a8c2d0bf5.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Henkel",
+    "logo": "/img/64271e60d9230433f6580e16bbb6e093.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Gensler",
+    "logo": "/img/6d07d3a549e7e77001cc6cb6ac044fef.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Steelcase",
+    "logo": "/img/848a14aeed93dbc9b5c730fd65ff9fc6.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Kimberly-Clark",
+    "logo": "/img/980fe4f62855e966f68ba68fc88dd341.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Scotiabank",
+    "logo": "/img/b0d381e216ad77faa02313ca5b1155f7.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Capital One",
+    "logo": "/img/cb15ad32f5bc8816097b0a8c58ee1330.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "BNY",
+    "logo": "/img/144ae169a822c9007bc9fe2f75c1d28f.png",
+    "maxHeight": 34
+  },
+  {
+    "name": "Colgate",
+    "logo": "/img/294532a7d8033a88a84f3c19181e4784.png",
+    "maxHeight": 26
+  },
+  {
+    "name": "Mercado Libre",
+    "logo": "/img/15c7788becd692a15d24666edb6c19cc.png",
+    "maxHeight": 34
+  }
+]
