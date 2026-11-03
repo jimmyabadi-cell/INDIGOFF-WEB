@@ -34,7 +34,13 @@ export default function Lightbox({ v }) {
                   </button>
                 </span>
                 <a className={css.link} href="#top" onClick={v.closeLb} aria-label={v.t("collection.homeLabel")}>
-                  <img className={css.image} src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg" alt="indigoff" />
+                  <img
+                    className={css.image}
+                    src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
+                    width="306"
+                    height="82"
+                    alt="indigoff"
+                  />
                 </a>
                 <span className={css.label3}></span>
               </div>
@@ -102,20 +108,13 @@ export default function Lightbox({ v }) {
                         </>
                       ) : null}
                       <div
-                        role="list"
                         style={S(
                           `margin: 0 auto 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(${g.min}, 1fr)); gap: 32px 12px; text-align: left`,
                         )}
                       >
                         {(g.items || []).map((w, w__i) => (
                           <React.Fragment key={w__i}>
-                            <button
-                              className={css.button2}
-                              type="button"
-                              role="listitem"
-                              onClick={w.pick}
-                              aria-pressed={w.on}
-                            >
+                            <button className={css.button2} type="button" onClick={w.pick} aria-pressed={w.on}>
                               <img
                                 loading="lazy"
                                 decoding="async"

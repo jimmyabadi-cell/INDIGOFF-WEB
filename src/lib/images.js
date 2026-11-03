@@ -3,7 +3,7 @@ import MANIFEST from "../data/image-manifest.json";
 
 /**
  * Valores de `sizes` por uso: cuánto ancho ocupa la imagen en pantalla.
- * El navegador lo combina con la densidad del dispositivo para elegir la versión (480, 960 o 1600 px).
+ * El navegador lo combina con la densidad del dispositivo para elegir la versión (480 a 1600 px).
  */
 export const SIZES = {
   full: "100vw",

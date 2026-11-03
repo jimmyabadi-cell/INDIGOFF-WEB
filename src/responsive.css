@@ -47,8 +47,14 @@
     gap: 4px;
     min-width: 44px;
   }
+  /* Oculto a la vista pero no al lector de pantalla: el nombre del botón sigue siendo "My list (n)". */
   .hd-list .hd-list-lbl {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
   .hd-list .hd-ico {
     display: block;

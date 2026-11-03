@@ -51,17 +51,10 @@ export default function Concepts({ v }) {
           </button>
         </div>
       </div>
-      <div className="cf-th" role="list">
+      <div className="cf-th">
         {(v.concepts || []).map((c, c__i) => (
           <React.Fragment key={c__i}>
-            <button
-              type="button"
-              role="listitem"
-              className={c.tcls}
-              onClick={c.go}
-              aria-label={c.alt}
-              aria-current={c.cur}
-            >
+            <button type="button" className={c.tcls} onClick={c.go} aria-label={c.alt} aria-current={c.cur}>
               <img loading="lazy" decoding="async" {...imgProps(c.img, SIZES.thumb)} alt="" />
               <span className="cf-tc">{c.code}</span>
             </button>

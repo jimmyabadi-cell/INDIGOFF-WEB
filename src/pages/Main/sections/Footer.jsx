@@ -86,7 +86,6 @@ export default function Footer({ v }) {
             type="button"
             className={css.link + " " + css.langToggle}
             onClick={v.isEs === "true" ? v.setEn : v.setEs}
-            aria-label={v.isEs === "true" ? "Switch to English" : "Cambiar a español"}
           >
             {v.t("home.footer.region")}
           </button>
