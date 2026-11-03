@@ -92,6 +92,11 @@ export default function Lightbox({ v }) {
                   ) : null}
                   {v.lbSaveLbl}
                 </button>
+                {v.hasCta ? (
+                  <a className={css.cta} href="/contact">
+                    {v.lb.cta}
+                  </a>
+                ) : null}
               </div>
               {v.showSw ? (
                 <>

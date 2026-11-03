@@ -81,7 +81,7 @@ export default function Finishes({ v }) {
         </button>
       </div>
       <div className="cta-row">
-        <a href="/find-a-rep" className="cta-p">
+        <a href="/contact" className="cta-p">
           {v.t("common.requestSamples")}
         </a>
         <a href="/downloads" className="cta-o">

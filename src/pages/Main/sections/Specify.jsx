@@ -6,7 +6,7 @@ export default function Specify({ v }) {
     <section className={css.specify} id="specify">
       <h2 className={css.heading}>{v.t("home.specify.eyebrow")}</h2>
       <div className={"spec-row " + css.box}>
-        <a className={css.link} href="mailto:info@indigoff.com?subject=Book%20an%20appointment">
+        <a className={css.link} href="/contact">
           <span className={css.label}>{v.t("home.specify.appointment")}</span>
           <span className={css.label2}>{v.t("home.specify.appointmentText")}</span>
         </a>
