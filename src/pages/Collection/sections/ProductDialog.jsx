@@ -168,6 +168,8 @@ export default function ProductDialog({ v }) {
               {v.sel.hasImg2 ? (
                 <>
                   <img
+                    loading="lazy"
+                    decoding="async"
                     className={css.image4}
                     src={v.sel.img2}
                     alt={v.t("collection.secondView", { name: v.sel.title })}

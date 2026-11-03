@@ -12,6 +12,8 @@ export default function Material({ v }) {
           aria-label={v.t("common.enlargeImage")}
         >
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             src="/img/b45fdd3f48ffafe2e4c62af327a77568.jpg"
             alt="Reception desk in front of a terracotta acoustic shelving wall"
