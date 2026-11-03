@@ -29,6 +29,7 @@ import P from "../../data/products.json";
 import C from "../../data/collections.json";
 import GAL_DATA from "../../data/gallery.json";
 import DL_DATA from "../../data/product-downloads.json";
+import SiteHeader from "../../components/layout/SiteHeader.jsx";
 const FAM = C.fam;
 const SPECIAL = C.special;
 const COLS = C.cols;
@@ -519,143 +520,11 @@ Component.template = function (v, self) {
         <a className="skip" href="#content">
           {v.T.k1}
         </a>
-        <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
-          <div
-            className="hd-in"
-            style={S(
-              "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
-            )}
-          >
-            <a
-              href="/"
-              className="hd-l hd-back"
-              aria-label={v.T.k2}
-              style={S(
-                "flex: 1 1 260px; color: #111111; text-decoration: none; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase",
-              )}
-            >
-              <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
-                <svg
-                  aria-hidden="true"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={S("display: block; flex: none")}
-                >
-                  <path d="M15 5l-7 7 7 7"></path>
-                </svg>
-                <span className="hd-back-lbl">{v.T.k2}</span>
-              </span>
-            </a>
-            <a
-              href="/"
-              className="hd-logo"
-              style={S(
-                "flex: 0 0 auto; color: #111111; text-decoration: none; font-family: Urbanist, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.03em",
-              )}
-            >
-              <img
-                src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                alt="indigoff"
-                style={S("display: block; height: 24px; width: auto")}
-              />
-            </a>
-            <div
-              className="hd-r"
-              style={S(
-                "flex: 1 1 260px; display: flex; align-items: center; justify-content: flex-end; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase",
-              )}
-            >
-              <span
-                className="hd-lang"
-                style={S("margin-right: 24px; display: inline-flex; align-items: center; gap: 2px; color: #6B675F")}
-              >
-                <button
-                  type="button"
-                  onClick={v.setEn}
-                  aria-pressed={v.isEn}
-                  aria-label="English"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.enColor}`,
-                  )}
-                >
-                  {"EN"}
-                </button>
-                <span aria-hidden="true">{"·"}</span>
-                <button
-                  type="button"
-                  onClick={v.setEs}
-                  aria-pressed={v.isEs}
-                  aria-label="Español"
-                  style={S(
-                    `min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: ${v.esColor}`,
-                  )}
-                >
-                  {"ES"}
-                </button>
-              </span>
-              <a
-                href="/downloads"
-                className="hd-dl"
-                aria-label={v.T.k10}
-                style={S("margin-right: 28px; color: #111111; text-decoration: none")}
-              >
-                <svg
-                  className="hd-ico"
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"></path>
-                </svg>
-                <span className="hd-dl-lbl">{v.T.k10}</span>
-              </a>
-              <button
-                type="button"
-                onClick={v.openList}
-                className="hd-list"
-                aria-label={v.T.k14 + " (" + v.listCount + ")"}
-                style={S(
-                  "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: #111111; margin-right: 28px",
-                )}
-              >
-                <svg
-                  className="hd-ico"
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinejoin="round"
-                >
-                  <path d="M6 3.5h12v17l-6-4.2-6 4.2z"></path>
-                </svg>
-                <span className="hd-list-lbl">
-                  {v.T.k14}
-                  {" ("}
-                </span>
-                <span className="hd-list-n">{v.listCount}</span>
-                <span className="hd-list-lbl">{")"}</span>
-              </button>
-              <a href="mailto:info@indigoff.com" className="hd-opt" style={S("color: #111111; text-decoration: none")}>
-                {v.T.k3}
-              </a>
-            </div>
-          </div>
-        </header>
+        <SiteHeader
+          v={v}
+          variant="collection"
+          labels={{ back: v.T.k2, downloads: v.T.k10, list: v.T.k14, contact: v.T.k3 }}
+        />
         <section
           id="content"
           style={S("max-width: 1440px; margin: 0 auto; padding: 40px min(32px, var(--gutter)) 0; text-align: center")}
