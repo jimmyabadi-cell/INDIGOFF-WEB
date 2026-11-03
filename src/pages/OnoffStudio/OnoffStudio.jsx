@@ -1,63 +1,54 @@
 import React from "react";
 import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
-import { localize, usePageChrome } from "../../hooks/usePageChrome.js";
+import { usePageChrome } from "../../hooks/usePageChrome.js";
 import "./OnoffStudio.css";
-
-const I18N_EN = {
-  k1: "Skip to content",
-  k2: "Categories",
-  k3: "Concepts",
-  k4: "Projects",
-  k5: "Downloads",
-  k6: "Find a rep",
-  k7: "CAD, SketchUp, Rhino and Revit files for every Indigoff product — ready to drop into your project.",
-  k8: "Search",
-  k9: "No files match your search.",
-  k10: "Download",
-  k11: "Need a format or size that isn't listed? Our team prepares CAD and BIM files on request.",
-  k12: "Request a file",
-  k13: "Back to home",
-  k14: "Product name",
-};
 
 import D from "../../data/studio.json";
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
 import SideMenu from "../../components/layout/SideMenu.jsx";
 import CompactFooter from "../../components/layout/CompactFooter.jsx";
-const ON_TXT = D.txt;
-const ON_SV = D.sv;
-const ON_STEPS = D.steps;
 const ON_DES = D.designs;
 
 const NAV = { DW_CATS, DW_FIN, ifoSetPending };
 
-function studioVals() {
-  const on = Object.assign({}, ON_TXT);
-  on.services = ON_SV.map(function (x) {
-    return { n: x[0], t: x[1], d: x[2] };
-  });
-  on.steps = ON_STEPS.map(function (x) {
-    return { n: x[0], t: x[1], d: x[2] };
-  });
-  on.designs = ON_DES.map(function (d) {
-    var href = "/lights#p=" + d.slug;
+const pad = (i) => String(i + 1).padStart(2, "0");
+
+function studioVals(t) {
+  const on = {
+    eyebrow: t("studio.hero.eyebrow"),
+    h1: t("studio.hero.title"),
+    sub: t("studio.hero.subtitle"),
+    heroAlt: t("studio.hero.imageAlt"),
+    whatH: t("studio.what.title"),
+    whatP1: t("studio.what.p1"),
+    whatP2: t("studio.what.p2"),
+    procH: t("studio.process.title"),
+    desH: t("studio.designs.title"),
+    desP: t("studio.designs.text"),
+    ctaH: t("studio.cta.title"),
+    ctaP: t("studio.cta.text"),
+    cta1: t("studio.cta.start"),
+    cta2: t("studio.cta.rep"),
+  };
+  on.services = t("studio.services").map((x, i) => ({ n: pad(i), t: x.title, d: x.text }));
+  on.steps = t("studio.process.steps").map((x, i) => ({ n: pad(i), t: x.title, d: x.text }));
+  on.designs = ON_DES.map((d) => {
+    const href = "/lights#p=" + d.slug;
     return {
       name: d.name,
-      kind: d.kind,
+      kind: t("common.lightKinds." + d.kind),
       img: d.img,
       href: href,
-      go: function () {
-        ifoSetPending(href);
-      },
+      go: () => ifoSetPending(href),
     };
   });
   return { on: on };
 }
 
 export default function OnoffStudio() {
-  const { lang, chrome } = usePageChrome(I18N_EN, { nav: NAV });
-  return template({ ...localize(studioVals(), lang), ...chrome });
+  const { chrome } = usePageChrome({}, { nav: NAV });
+  return template({ ...studioVals(chrome.t), ...chrome });
 }
 
 function template(v) {
@@ -69,9 +60,9 @@ function template(v) {
         )}
       >
         <a className="skip" href="#content">
-          {v.T.k1}
+          {v.t("common.skipToContent")}
         </a>
-        <SiteHeader v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} />
+        <SiteHeader v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
         <section
           id="content"
           style={S(
@@ -80,7 +71,7 @@ function template(v) {
         >
           <img
             src="/img/9d3fd937d8ba1cc27ab5015f8b0f82c6.jpg"
-            alt="Acoustic leaf canopy with integrated light over a lounge"
+            alt={v.on.heroAlt}
             style={S("position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover")}
           />
           <div
@@ -99,7 +90,7 @@ function template(v) {
                 "margin: 0 0 16px; font-family: Urbanist, sans-serif; font-weight: 500; font-size: 18px; letter-spacing: 0.02em",
               )}
             >
-              {"onoff studio"}
+              {v.on.eyebrow}
             </p>
             <h1
               style={S(
@@ -277,8 +268,8 @@ function template(v) {
             </a>
           </div>
         </section>
-        <CompactFooter homeLabel={v.T.k13} />
-        <SideMenu v={v} labels={{ downloads: v.T.k5, findRep: v.T.k6 }} />
+        <CompactFooter homeLabel={v.t("common.backToHome")} />
+        <SideMenu v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { I18N_ES, i18nDeep, i18nTr } from "../lib/i18n.js";
+import { makeT } from "../i18n/index.js";
 import { useEscape } from "./useEscape.js";
 import { useLang } from "./useLang.js";
 import { useScrollLock } from "./useScrollLock.js";
@@ -13,17 +14,17 @@ export function localize(vals, lang) {
 }
 
 /**
- * Lo que comparten todas las páginas: idioma, textos `T`, selector EN/ES y menú lateral.
- * Devuelve los campos que usan las plantillas (`v.T`, `v.setEs`, `v.openMenu`, `v.dwCats`…).
+ * Lo que comparten todas las páginas: idioma, `t()`, selector EN/ES y menú lateral.
+ * Devuelve los campos que usan las plantillas (`v.t`, `v.T`, `v.setEs`, `v.openMenu`, `v.dwCats`…).
  *
- * @param {Record<string, string>} I18N_EN  Textos de la página en inglés, por clave.
+ * @param {Record<string, string>} [I18N_EN]  Textos heredados de la página (`v.T.kN`); las páginas migradas usan `v.t(clave)`.
  * @param {object} [options]
  * @param {object} [options.nav]    `{ DW_CATS, DW_FIN, ifoSetPending }` para el menú lateral; sin él no hay menú.
  * @param {boolean} [options.isMain]  La home: los acabados del menú abren su panel en lugar de navegar.
  * @param {Record<string, () => void>} [options.openFinish]  Home: abre el panel de un acabado por clave.
  * @returns {{ lang: string, chrome: object }}
  */
-export function usePageChrome(I18N_EN, { nav, isMain = false, openFinish } = {}) {
+export function usePageChrome(I18N_EN = {}, { nav, isMain = false, openFinish } = {}) {
   const [lang, setLang] = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
   useEscape(menuOpen, () => setMenuOpen(false));
@@ -36,6 +37,7 @@ export function usePageChrome(I18N_EN, { nav, isMain = false, openFinish } = {})
   for (const key in I18N_EN) T[key] = es ? I18N_ES[I18N_EN[key]] || I18N_EN[key] : I18N_EN[key];
 
   const chrome = {
+    t: makeT(lang),
     T,
     isEn: es ? "false" : "true",
     isEs: es ? "true" : "false",

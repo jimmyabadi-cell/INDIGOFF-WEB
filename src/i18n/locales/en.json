@@ -1,0 +1,64 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "downloads": "Downloads",
+    "findRep": "Find a rep",
+    "backToHome": "Back to home",
+    "lightKinds": {
+      "pendant": "Pendant Lights",
+      "wall": "Wall Lights",
+      "floor": "Floor Lights",
+      "table": "Table Lights"
+    }
+  },
+  "studio": {
+    "hero": {
+      "eyebrow": "onoff studio",
+      "title": "Acoustic and lighting design, as one.",
+      "subtitle": "onoff studio is the Indigoff design studio for spaces that need to sound as good as they look.",
+      "imageAlt": "Acoustic leaf canopy with integrated light over a lounge"
+    },
+    "what": {
+      "title": "We design how a space sounds and how it is lit — together.",
+      "p1": "Most projects treat acoustics and lighting as two separate problems. At onoff studio we solve them as one: every fixture we design absorbs sound and shapes light at the same time, so ceilings and walls stay clean and the room feels calm.",
+      "p2": "We work with architects, interior designers and end clients on offices, hospitality, education and retail — from a single statement piece to the full acoustic and lighting plan of a building."
+    },
+    "services": [
+      {
+        "title": "Acoustic design",
+        "text": "Reverberation and noise analysis of your space, with a clear recommendation of what to treat and where."
+      },
+      {
+        "title": "Lighting design",
+        "text": "Lighting plans and fixture layouts that balance mood, function and energy use."
+      },
+      {
+        "title": "Custom acoustic fixtures",
+        "text": "One-of-a-kind acoustic lights designed for your project, in any shape, size and color."
+      },
+      {
+        "title": "Coordination and installation",
+        "text": "Shop drawings, samples, production and on-site support until the space is finished."
+      }
+    ],
+    "process": {
+      "title": "How we work",
+      "steps": [
+        { "title": "Listen", "text": "We study the space, its use and its sound." },
+        { "title": "Design", "text": "We propose the acoustic and lighting concept, with renders and simulations." },
+        { "title": "Make", "text": "Indigoff produces each piece from recycled PET felt with integrated LED." },
+        { "title": "Install", "text": "We coordinate delivery and installation with your team." }
+      ]
+    },
+    "designs": {
+      "title": "onoff studio designs",
+      "text": "Acoustic lighting designed by onoff studio and made by Indigoff from recycled PET felt."
+    },
+    "cta": {
+      "title": "Let’s design your space.",
+      "text": "Tell us about your project and the onoff studio team will propose an acoustic and lighting concept.",
+      "start": "Start a project",
+      "rep": "Talk to a rep"
+    }
+  }
+}

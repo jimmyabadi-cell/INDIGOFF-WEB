@@ -1,0 +1,64 @@
+{
+  "common": {
+    "skipToContent": "Ir al contenido",
+    "downloads": "Descargas",
+    "findRep": "Encuentra un representante",
+    "backToHome": "Volver al inicio",
+    "lightKinds": {
+      "pendant": "Lámparas colgantes",
+      "wall": "Lámparas de muro",
+      "floor": "Lámparas de piso",
+      "table": "Lámparas de mesa"
+    }
+  },
+  "studio": {
+    "hero": {
+      "eyebrow": "onoff studio",
+      "title": "Diseño acústico y de iluminación, en uno.",
+      "subtitle": "onoff studio es el estudio de diseño de Indigoff para espacios que necesitan sonar tan bien como se ven.",
+      "imageAlt": "Dosel acústico de hojas con luz integrada sobre una sala de estar"
+    },
+    "what": {
+      "title": "Diseñamos cómo suena un espacio y cómo se ilumina, al mismo tiempo.",
+      "p1": "La mayoría de los proyectos tratan la acústica y la iluminación como dos problemas separados. En onoff studio los resolvemos como uno solo: cada luminaria que diseñamos absorbe el sonido y da forma a la luz a la vez, para que plafones y muros se mantengan limpios y el espacio se sienta en calma.",
+      "p2": "Trabajamos con arquitectos, diseñadores de interiores y clientes finales en oficinas, hotelería, educación y retail, desde una sola pieza protagonista hasta el plan acústico y de iluminación completo de un edificio."
+    },
+    "services": [
+      {
+        "title": "Diseño acústico",
+        "text": "Análisis de reverberación y ruido de tu espacio, con una recomendación clara de qué tratar y dónde."
+      },
+      {
+        "title": "Diseño de iluminación",
+        "text": "Planos de iluminación y distribución de luminarias que equilibran ambiente, función y consumo de energía."
+      },
+      {
+        "title": "Luminarias acústicas a medida",
+        "text": "Lámparas acústicas únicas, diseñadas para tu proyecto en cualquier forma, tamaño y color."
+      },
+      {
+        "title": "Coordinación e instalación",
+        "text": "Planos de taller, muestras, producción y acompañamiento en obra hasta terminar el espacio."
+      }
+    ],
+    "process": {
+      "title": "Cómo trabajamos",
+      "steps": [
+        { "title": "Escuchar", "text": "Estudiamos el espacio, su uso y su sonido." },
+        { "title": "Diseñar", "text": "Proponemos el concepto acústico y de iluminación, con renders y simulaciones." },
+        { "title": "Fabricar", "text": "Indigoff produce cada pieza en fieltro de PET reciclado con LED integrado." },
+        { "title": "Instalar", "text": "Coordinamos la entrega y la instalación con tu equipo." }
+      ]
+    },
+    "designs": {
+      "title": "Diseños de onoff studio",
+      "text": "Iluminación acústica diseñada por onoff studio y fabricada por Indigoff con fieltro de PET reciclado."
+    },
+    "cta": {
+      "title": "Diseñemos tu espacio.",
+      "text": "Cuéntanos de tu proyecto y el equipo de onoff studio te propondrá un concepto acústico y de iluminación.",
+      "start": "Inicia un proyecto",
+      "rep": "Habla con un representante"
+    }
+  }
+}
