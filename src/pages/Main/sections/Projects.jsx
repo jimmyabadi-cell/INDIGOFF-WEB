@@ -16,6 +16,8 @@ export default function Projects({ v }) {
         aria-label={v.t("collection.viewItem", { name: "Multimedios" })}
       >
         <img
+          loading="lazy"
+          decoding="async"
           className={css.image}
           src="/img/88df68ee3d1a2f11cdef1860ba428fb2.jpg"
           alt="Multimedios: newsroom under a sculpted linear acoustic ceiling"

@@ -27,7 +27,7 @@ export default function ProductGrid({ v }) {
                 >
                   {p.hasImg ? (
                     <>
-                      <img className={css.tileImage} src={p.img} alt={p.alt} />
+                      <img loading="lazy" decoding="async" className={css.tileImage} src={p.img} alt={p.alt} />
                     </>
                   ) : null}
                   {p.noImg ? (

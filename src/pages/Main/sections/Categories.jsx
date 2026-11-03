@@ -10,6 +10,8 @@ export default function Categories({ v }) {
       <div className={"cat-row " + css.box2}>
         <a href="/ceilings" className={"cat-panel " + css.link}>
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             src="/img/a4f6a6e61e9f23429824023cd67d2a5f.jpg"
             alt="Ceilings: Stratus mustard, gray and white baffles over a lounge"
@@ -39,6 +41,8 @@ export default function Categories({ v }) {
         </a>
         <a href="/walls" className={"cat-panel " + css.link}>
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             src="/img/50cb19dd09bf67dde7b33787030edb02.jpg"
             alt="Walls: Red faceted acoustic wall"
@@ -68,6 +72,8 @@ export default function Categories({ v }) {
         </a>
         <a href="/lights" className={"cat-panel " + css.link}>
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             src="/img/16744e6011fb31fe88309cf84f8242d3.jpg"
             alt="Lights: Acoustic pendant lamps over a dining room"
@@ -97,6 +103,8 @@ export default function Categories({ v }) {
         </a>
         <a href="/dividers" className={"cat-panel " + css.link}>
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             src="/img/e154f12501cbca329921ce90014beb4c.jpg"
             alt="Dividers: Acoustic desk dividers in an open office"
@@ -126,6 +134,8 @@ export default function Categories({ v }) {
         </a>
         <a href="/podcaster" className={"cat-panel " + css.link}>
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             src="/img/262de0d004e1e631ef993783a62dc338.jpg"
             alt="Podcaster: podcast studio with sculptural acoustic panels"
