@@ -25,8 +25,8 @@
   }
   .site-hd .hd-r { justify-content: flex-end; }
 
-  /* Collection: "Home" repite la flecha de volver y el logo; se libera espacio */
-  .site-hd .hd-r a.hd-opt[href="/"] { display: none !important; }
+  /* Collection: "Contact" no cabe junto a Downloads; el correo sigue en el footer */
+  .site-hd .hd-r a.hd-opt[href^="mailto:"] { display: none !important; }
   .site-hd .hd-r .hd-dl { margin-right: 16px !important; }
 
   /* "My list (0)" → icono + contador */
