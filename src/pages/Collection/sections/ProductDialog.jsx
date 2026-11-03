@@ -34,7 +34,13 @@ export default function ProductDialog({ v }) {
                   </button>
                 </span>
                 <a className={css.link} href="/" aria-label={v.t("collection.homeLabel")}>
-                  <img className={css.image} src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg" alt="indigoff" />
+                  <img
+                    className={css.image}
+                    src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
+                    width="306"
+                    height="82"
+                    alt="indigoff"
+                  />
                 </a>
                 <span className={css.label3}></span>
               </div>

@@ -15,6 +15,8 @@ export default function Acoustics({ v }) {
         </div>
         <button className={css.button} type="button" onClick={v.open.e_study} aria-label={v.t("common.enlargeImage")}>
           <img
+            loading="lazy"
+            decoding="async"
             className={css.image}
             {...imgProps("/img/73e73590532bd1289f3c5d2c7884612e.jpg", SIZES.half)}
             alt="Lounge with golden suspended baffles over a dark acoustic wall"

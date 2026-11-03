@@ -65,7 +65,7 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
         )}
 
         <a href={logoHref} className="hd-logo" style={S(st.logo)}>
-          <img className={css.image} src={LOGO_SRC} alt="indigoff" />
+          <img className={css.image} src={LOGO_SRC} width="306" height="82" alt="indigoff" />
         </a>
 
         <div className="hd-r" style={S(st.right)}>
@@ -134,11 +134,11 @@ function LangSwitch({ v, style }) {
     );
   return (
     <span className="hd-lang" style={S(style)}>
-      <button type="button" onClick={v.setEn} aria-pressed={v.isEn} aria-label="English" style={btn(v.enColor)}>
+      <button type="button" onClick={v.setEn} aria-pressed={v.isEn} aria-label="EN · English" style={btn(v.enColor)}>
         {"EN"}
       </button>
       <span aria-hidden="true">{"·"}</span>
-      <button type="button" onClick={v.setEs} aria-pressed={v.isEs} aria-label="Español" style={btn(v.esColor)}>
+      <button type="button" onClick={v.setEs} aria-pressed={v.isEs} aria-label="ES · Español" style={btn(v.esColor)}>
         {"ES"}
       </button>
     </span>
@@ -148,13 +148,7 @@ function LangSwitch({ v, style }) {
 /** "My list (n)" en desktop; icono + contador en tablet/mobile. */
 function ListButton({ v, label, style }) {
   return (
-    <button
-      type="button"
-      onClick={v.openList}
-      className="hd-list"
-      aria-label={label + " (" + v.listCount + ")"}
-      style={S(style)}
-    >
+    <button type="button" onClick={v.openList} className="hd-list" style={S(style)}>
       <ListIcon />
       <span className="hd-list-lbl">
         {label}

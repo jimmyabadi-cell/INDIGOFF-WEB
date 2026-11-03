@@ -27,12 +27,12 @@ test.describe("Home", () => {
 
   test("Acabados: lightbox, zoom con flechas y Escape por capas", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "View Colors" }).click();
+    await page.locator(".fin-tile").first().click();
     const lb = page.locator('[role=dialog][aria-label="Colors"]');
     await expect(lb).toBeVisible();
     expect(await bodyOverflow(page)).toBe("hidden");
 
-    await lb.getByRole("listitem").first().click();
+    await lb.getByRole("button", { name: "Red finish" }).click();
     await expect(page.locator('[role=dialog][aria-label="Red"]')).toBeVisible();
     await page.keyboard.press("ArrowRight");
     await expect(page.locator('[role=dialog][aria-label="Cherry"]')).toBeVisible();
@@ -48,7 +48,7 @@ test.describe("Home", () => {
   test("Acabados: guardar en Mi lista", async ({ page }) => {
     await page.goto("/");
     await expect(listCount(page)).toHaveText("0");
-    await page.getByRole("button", { name: "View Colors" }).click();
+    await page.locator(".fin-tile").first().click();
     const save = page.locator('[role=dialog][aria-label="Colors"] button[aria-pressed]').first();
     await save.click();
     await expect(save).toHaveAttribute("aria-pressed", "true");

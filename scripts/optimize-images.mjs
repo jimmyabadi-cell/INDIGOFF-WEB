@@ -13,7 +13,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const SRC = path.join(ROOT, "public/img");
 const OUT = path.join(SRC, "opt");
 const MANIFEST = path.join(ROOT, "src/data/image-manifest.json");
-const WIDTHS = [480, 960, 1600];
+const WIDTHS = [480, 640, 800, 960, 1600];
 const QUALITY = 78;
 
 fs.mkdirSync(OUT, { recursive: true });

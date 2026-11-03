@@ -1,4 +1,5 @@
 import css from "./Hero.module.css";
+import HERO from "../../../data/hero.json";
 import { imgProps, SIZES } from "../../../lib/images.js";
 
 /** Hero con imágenes rotativas y llamados principales. */
@@ -8,13 +9,19 @@ export default function Hero({ v }) {
       <div className="hs" aria-hidden="false">
         <img
           className="hs-i hs-1"
-          {...imgProps("/img/f8c0fd4c23fb59d6887e5fe8c294a39b.jpg", SIZES.full)}
+          // React 18 aún no conoce fetchPriority: en minúsculas pasa tal cual al HTML.
+          // eslint-disable-next-line react/no-unknown-property
+          fetchpriority="high"
+          {...imgProps(HERO.src, SIZES.full)}
           alt="Indigoff space with suspended baffles, arched walls and sculptural forms"
         />
         <img
           loading="lazy"
           decoding="async"
           className="hs-i hs-2"
+          // Aparecen hasta los 5 s del carrusel: que no compitan con la primera foto.
+          // eslint-disable-next-line react/no-unknown-property
+          fetchpriority="low"
           {...imgProps("/img/95478a5658304ca607006b326c317835.jpg", SIZES.full)}
           alt="Rainbow acoustic arches and ceiling ribbons over an open office"
         />
@@ -22,6 +29,9 @@ export default function Hero({ v }) {
           loading="lazy"
           decoding="async"
           className="hs-i hs-3"
+          // Aparecen hasta los 5 s del carrusel: que no compitan con la primera foto.
+          // eslint-disable-next-line react/no-unknown-property
+          fetchpriority="low"
           {...imgProps("/img/262de0d004e1e631ef993783a62dc338.jpg", SIZES.full)}
           alt="Colorful acoustic podcast studio with wall shapes and ceiling clouds"
         />

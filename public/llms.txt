@@ -1,0 +1,21 @@
+# Indigoff
+
+> Indigoff designs and manufactures acoustic panels, ceilings, lights and space dividers made from 100% recycled PET felt. Its design studio, onoff studio, integrates acoustic treatment and lighting design.
+
+## Products
+
+- [Ceilings](https://www.indigoff.com/ceilings): ceiling systems, baffles, clouds and ceiling lights.
+- [Walls](https://www.indigoff.com/walls): acoustic wall panels, frames, murals, canvas and wall lights.
+- [Lights](https://www.indigoff.com/lights): acoustic pendant, ceiling, floor, table and wall lights.
+- [Dividers](https://www.indigoff.com/dividers): space dividers and desk dividers.
+- [Podcaster](https://www.indigoff.com/podcaster): acoustic studio kits for podcast and recording.
+
+## Resources
+
+- [Downloads](https://www.indigoff.com/downloads): CAD, SketchUp, Rhino and Revit files for every product.
+- [Find a rep](https://www.indigoff.com/find-a-rep): sales representatives by territory in the United States, Canada and México.
+- [onoff studio](https://www.indigoff.com/onoff-studio): acoustic and lighting design services.
+
+## Contact
+
+- Email: info@indigoff.com

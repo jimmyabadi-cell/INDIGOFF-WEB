@@ -9,12 +9,7 @@ export default function Finishes({ v }) {
         <h2 className={css.heading}>{v.t("home.finishes.title")}</h2>
       </div>
       <div className={"fin-grid " + css.box2}>
-        <button
-          type="button"
-          className={"fin-tile fin-a " + css.button}
-          onClick={v.open.f_colors}
-          aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.colors") })}
-        >
+        <button type="button" className={"fin-tile fin-a " + css.button} onClick={v.open.f_colors}>
           <img
             loading="lazy"
             decoding="async"
@@ -28,17 +23,12 @@ export default function Finishes({ v }) {
             <span className={css.label4}>{v.t("home.finishes.colorsSub")}</span>
           </span>
         </button>
-        <button
-          type="button"
-          className={"fin-tile fin-b " + css.button}
-          onClick={v.open.f_textures}
-          aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.textures") })}
-        >
+        <button type="button" className={"fin-tile fin-b " + css.button} onClick={v.open.f_textures}>
           <img
             loading="lazy"
             decoding="async"
             className={css.image}
-            {...imgProps("/img/59823a479ed6e68e4e9d0a9c53e86ad2.jpg", SIZES.half)}
+            {...imgProps("/img/59823a479ed6e68e4e9d0a9c53e86ad2.jpg", SIZES.card)}
             alt="Textures finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -47,17 +37,12 @@ export default function Finishes({ v }) {
             <span className={css.label4}>{v.t("home.finishes.texturesSub")}</span>
           </span>
         </button>
-        <button
-          type="button"
-          className={"fin-tile fin-c " + css.button}
-          onClick={v.open.f_print}
-          aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.print") })}
-        >
+        <button type="button" className={"fin-tile fin-c " + css.button} onClick={v.open.f_print}>
           <img
             loading="lazy"
             decoding="async"
             className={css.image}
-            {...imgProps("/img/01fd0ca4887bbb6af9330fa52b1fb80d.jpg", SIZES.half)}
+            {...imgProps("/img/01fd0ca4887bbb6af9330fa52b1fb80d.jpg", SIZES.card)}
             alt="Print finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -66,17 +51,12 @@ export default function Finishes({ v }) {
             <span className={css.label4}>{v.t("home.finishes.printSub")}</span>
           </span>
         </button>
-        <button
-          type="button"
-          className={"fin-tile fin-d " + css.button}
-          onClick={v.open.f_engraving}
-          aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.engraving") })}
-        >
+        <button type="button" className={"fin-tile fin-d " + css.button} onClick={v.open.f_engraving}>
           <img
             loading="lazy"
             decoding="async"
             className={css.image}
-            {...imgProps("/img/1cd84dadeac695b570a54542496638c0.jpg", SIZES.half)}
+            {...imgProps("/img/1cd84dadeac695b570a54542496638c0.jpg", SIZES.card)}
             alt="Engraving finish samples"
           />
           <span className={"scrim " + css.label}></span>
@@ -85,17 +65,12 @@ export default function Finishes({ v }) {
             <span className={css.label4}>{v.t("home.finishes.engravingSub")}</span>
           </span>
         </button>
-        <button
-          type="button"
-          className={"fin-tile fin-e " + css.button}
-          onClick={v.open.f_embossed}
-          aria-label={v.t("collection.viewItem", { name: v.t("home.finishes.embossed") })}
-        >
+        <button type="button" className={"fin-tile fin-e " + css.button} onClick={v.open.f_embossed}>
           <img
             loading="lazy"
             decoding="async"
             className={css.image}
-            {...imgProps("/img/83997bc339591c8c1d305c3b756d6962.jpg", SIZES.half)}
+            {...imgProps("/img/83997bc339591c8c1d305c3b756d6962.jpg", SIZES.card)}
             alt="Embossed finish samples"
           />
           <span className={"scrim " + css.label}></span>

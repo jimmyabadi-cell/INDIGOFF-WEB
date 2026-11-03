@@ -21,7 +21,13 @@ export default function SideMenu({ v, labels }) {
             <CloseIcon />
             <span>{v.dwClose}</span>
           </button>
-          <img className={css.image} src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg" alt="indigoff" />
+          <img
+            className={css.image}
+            src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
+            width="306"
+            height="82"
+            alt="indigoff"
+          />
         </div>
         <div className="dw-body">
           <p className="dw-g">{v.dwCat}</p>
