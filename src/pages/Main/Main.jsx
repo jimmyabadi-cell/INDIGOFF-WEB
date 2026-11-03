@@ -2614,10 +2614,9 @@ Component.template = function (v, self) {
               >
                 {v.T.k63}
               </span>
-              <span>{"[Phone] · [WhatsApp]"}</span>
               <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
               <span style={S("display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 -13px")}>
-                <a href="#instagram" aria-label="Indigoff on Instagram" className="soc">
+                <a href="https://www.instagram.com/indigoff.design/" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Instagram" className="soc">
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -2625,23 +2624,7 @@ Component.template = function (v, self) {
                     ></path>
                   </svg>
                 </a>
-                <a href="#pinterest" aria-label="Indigoff on Pinterest" className="soc">
-                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
-                    <path
-                      fill="currentColor"
-                      d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"
-                    ></path>
-                  </svg>
-                </a>
-                <a href="#linkedin" aria-label="Indigoff on LinkedIn" className="soc">
-                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
-                    <path
-                      fill="currentColor"
-                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                    ></path>
-                  </svg>
-                </a>
-                <a href="#facebook" aria-label="Indigoff on Facebook" className="soc">
+                <a href="https://www.facebook.com/indigoff.design" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Facebook" className="soc">
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
@@ -2649,19 +2632,11 @@ Component.template = function (v, self) {
                     ></path>
                   </svg>
                 </a>
-                <a href="#spotify" aria-label="Indigoff on Spotify" className="soc">
+                <a href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv" target="_blank" rel="noopener noreferrer" aria-label="Indigoff on Spotify" className="soc">
                   <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
                     <path
                       fill="currentColor"
                       d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
-                    ></path>
-                  </svg>
-                </a>
-                <a href="#youtube" aria-label="Indigoff on YouTube" className="soc">
-                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
-                    <path
-                      fill="currentColor"
-                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
                     ></path>
                   </svg>
                 </a>
