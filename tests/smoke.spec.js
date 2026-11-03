@@ -204,6 +204,7 @@ test("Botones de acción llevan a /contact", async ({ page }) => {
   for (const name of [
     "Request a quote",
     "Book an appointment",
+    "Adapt this concept to your space",
     "Request an acoustic + lighting study",
     "Request samples",
   ]) {
