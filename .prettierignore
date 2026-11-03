@@ -8,3 +8,6 @@ package-lock.json
 src/data/
 # CSS de páginas minificado; se formateará cuando se migre a CSS Modules
 src/pages/**/*.css
+
+# Los CSS Modules sí se formatean
+!src/pages/**/*.module.css

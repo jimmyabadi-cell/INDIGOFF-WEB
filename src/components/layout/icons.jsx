@@ -1,4 +1,4 @@
-import { S } from "../../lib/dc.js";
+import css from "./icons.module.css";
 
 const LINE = {
   "aria-hidden": "true",
@@ -11,7 +11,7 @@ const LINE = {
 
 export function MenuIcon() {
   return (
-    <svg {...LINE} stroke="currentColor" strokeLinecap="round" style={S("display: block")}>
+    <svg className={css.icon} {...LINE} stroke="currentColor" strokeLinecap="round">
       <path d="M3 7h18M3 12h18M3 17h18"></path>
     </svg>
   );
@@ -19,7 +19,7 @@ export function MenuIcon() {
 
 export function CloseIcon() {
   return (
-    <svg {...LINE} stroke="currentColor" strokeLinecap="round" style={S("display: block")}>
+    <svg className={css.icon} {...LINE} stroke="currentColor" strokeLinecap="round">
       <path d="M5 5l14 14M19 5L5 19"></path>
     </svg>
   );
@@ -53,13 +53,13 @@ export function SearchIcon() {
 export function BackIcon() {
   return (
     <svg
+      className={css.icon2}
       {...LINE}
       width="16"
       height="16"
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={S("display: block; flex: none")}
     >
       <path d="M15 5l-7 7 7 7"></path>
     </svg>

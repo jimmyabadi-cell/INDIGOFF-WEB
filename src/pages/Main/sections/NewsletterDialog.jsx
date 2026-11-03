@@ -1,4 +1,4 @@
-import { S } from "../../../lib/dc.js";
+import css from "./NewsletterDialog.module.css";
 
 /** Popup del newsletter. */
 export default function NewsletterDialog({ v }) {
@@ -10,6 +10,7 @@ export default function NewsletterDialog({ v }) {
           <div className="nl" role="dialog" aria-modal="true" aria-label={v.nlTitle}>
             <button type="button" onClick={v.nlClose} className="nl-x" aria-label={v.nlCloseLbl}>
               <svg
+                className={css.icon}
                 aria-hidden="true"
                 width="18"
                 height="18"
@@ -18,7 +19,6 @@ export default function NewsletterDialog({ v }) {
                 stroke="currentColor"
                 strokeWidth="1.4"
                 strokeLinecap="round"
-                style={S("display: block")}
               >
                 <path d="M5 5l14 14M19 5L5 19"></path>
               </svg>

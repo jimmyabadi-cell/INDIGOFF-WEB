@@ -1,0 +1,287 @@
+/* Estilos de Downloads. Colores con los tokens de src/global.css. */
+
+.box {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--color-ink);
+  background: var(--color-white);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(120px * var(--vs)) var(--gutter) 64px;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.text {
+  margin: 0 auto;
+  max-width: 560px;
+  font-size: 18px;
+  color: var(--color-dark);
+}
+
+.text2 {
+  margin: 28px 0 0;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.section {
+  position: sticky;
+  top: calc(var(--hd-h) - 1px);
+  z-index: 2;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-surface);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.box2 {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 40px;
+}
+
+.box3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+}
+
+.box4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 20px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 12px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.input {
+  width: 200px;
+  min-height: 40px;
+  border: 0;
+  border-bottom: 1px solid var(--color-ink);
+  background: transparent;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-ink);
+  padding: 0 2px;
+}
+
+.section2 {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) calc(160px * var(--vs));
+}
+
+.text3 {
+  margin: calc(96px * var(--vs)) 0;
+  text-align: center;
+  font-size: 18px;
+  color: var(--color-muted);
+}
+
+.box5 {
+  padding-top: calc(72px * var(--vs));
+}
+
+.box6 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-ink);
+}
+
+.heading {
+  margin: 0;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.text4 {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.box7 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.link {
+  flex: 1 1 300px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  min-width: 0;
+}
+
+.image {
+  flex: 0 0 72px;
+  width: 72px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  background: var(--color-bg);
+}
+
+.label {
+  flex: 0 0 72px;
+  width: 72px;
+  aspect-ratio: 4 / 5;
+  background: var(--color-surface-2);
+}
+
+.label2 {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label3 {
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.label4 {
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.box8 {
+  flex: 2 1 520px;
+  min-width: 0;
+}
+
+.link2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 20px;
+  min-height: 52px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-surface-3);
+  color: var(--color-ink);
+}
+
+.label5 {
+  flex: 0 0 64px;
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.label6 {
+  flex: 1 1 200px;
+  min-width: 0;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.label7 {
+  flex: 0 0 auto;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.label8 {
+  flex: 0 0 auto;
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.label9 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  display: block;
+  flex: none;
+}
+
+.text5 {
+  margin: calc(96px * var(--vs)) auto 0;
+  max-width: 520px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--color-secondary);
+}
+
+.text6 {
+  margin: 28px 0 0;
+  text-align: center;
+}
+
+.link3 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 36px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}

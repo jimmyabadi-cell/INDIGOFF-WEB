@@ -1,5 +1,5 @@
 import React from "react";
-import { S } from "../../../lib/dc.js";
+import css from "./SearchDialog.module.css";
 
 /** Búsqueda global. */
 export default function SearchDialog({ v }) {
@@ -12,6 +12,7 @@ export default function SearchDialog({ v }) {
             <div className="sr-in">
               <div className="sr-bar">
                 <svg
+                  className={css.icon}
                   aria-hidden="true"
                   width="20"
                   height="20"
@@ -19,7 +20,6 @@ export default function SearchDialog({ v }) {
                   fill="none"
                   stroke="#111111"
                   strokeWidth="1.4"
-                  style={S("display: block; flex: none")}
                 >
                   <circle cx="11" cy="11" r="7"></circle>
                   <path d="M20 20l-4-4"></path>
@@ -35,6 +35,7 @@ export default function SearchDialog({ v }) {
                 />
                 <button type="button" onClick={v.closeSearch} className="sr-x" aria-label={v.srClose}>
                   <svg
+                    className={css.icon2}
                     aria-hidden="true"
                     width="18"
                     height="18"
@@ -43,7 +44,6 @@ export default function SearchDialog({ v }) {
                     stroke="currentColor"
                     strokeWidth="1.4"
                     strokeLinecap="round"
-                    style={S("display: block")}
                   >
                     <path d="M5 5l14 14M19 5L5 19"></path>
                   </svg>

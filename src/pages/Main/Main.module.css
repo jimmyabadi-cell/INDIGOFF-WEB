@@ -1,0 +1,10 @@
+/* Estilos de Main. Colores con los tokens de src/global.css. */
+
+.box {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--color-ink);
+  background: var(--color-white);
+  font-size: 15px;
+  line-height: 1.7;
+}

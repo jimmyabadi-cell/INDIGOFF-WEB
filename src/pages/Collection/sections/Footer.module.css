@@ -1,0 +1,17 @@
+/* Estilos de Footer. Colores con los tokens de src/global.css. */
+
+.footer {
+  background: var(--color-bg);
+  padding: 32px var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 32px;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.link {
+  color: var(--color-muted);
+  text-decoration: none;
+}

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { S } from "../../lib/dc.js";
 import { listVals, saveVals } from "../../lib/savedList.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { useMergeState } from "../../hooks/useMergeState.js";
@@ -20,6 +19,7 @@ import Footer from "./sections/Footer.jsx";
 import ZoomDialog from "../../components/ZoomDialog.jsx";
 import ProductDialog from "./sections/ProductDialog.jsx";
 import ListPanel from "../../components/ListPanel.jsx";
+import css from "./CollectionPage.module.css";
 // Productos con descripción propia (catalog.special) y familias con descripción (catalog.families).
 const FAM = new Set(C.fam);
 const SPECIAL = new Set(C.special);
@@ -402,11 +402,7 @@ function collectionVals(self, key, list, onKey, t) {
 function template(v) {
   return (
     <>
-      <div
-        style={S(
-          "font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; color: #111111; background: #FFFFFF; font-size: 15px; line-height: 1.7",
-        )}
-      >
+      <div className={css.box}>
         <a className="skip" href="#content">
           {v.t("common.skipToContent")}
         </a>

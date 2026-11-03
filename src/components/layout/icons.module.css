@@ -1,0 +1,10 @@
+/* Estilos de icons. Colores con los tokens de src/global.css. */
+
+.icon {
+  display: block;
+}
+
+.icon2 {
+  display: block;
+  flex: none;
+}

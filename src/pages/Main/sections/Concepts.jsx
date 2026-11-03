@@ -1,25 +1,14 @@
 import React from "react";
-import { S } from "../../../lib/dc.js";
+import css from "./Concepts.module.css";
 
 /** Carrusel de conceptos. */
 export default function Concepts({ v }) {
   return (
-    <section
-      id="concepts"
-      style={S("max-width: 1440px; margin: 0 auto; padding: calc(180px * var(--vs)) var(--gutter) 0")}
-    >
-      <div className="sec-hd" style={S("text-align: center; margin-bottom: 0")}>
-        <h2
-          style={S(
-            "margin: 0; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; letter-spacing: -0.04em",
-          )}
-        >
-          {v.t("home.concepts.title")}
-        </h2>
+    <section className={css.concepts} id="concepts">
+      <div className={"sec-hd " + css.box}>
+        <h2 className={css.heading}>{v.t("home.concepts.title")}</h2>
       </div>
-      <p style={S("margin: 0 auto 56px; max-width: 480px; text-align: center; color: #5E5A53")}>
-        {v.t("home.concepts.text")}
-      </p>
+      <p className={css.text}>{v.t("home.concepts.text")}</p>
       <div className="cf">
         <p className="cf-cap">
           <span className="cf-code">{v.cf.code}</span>

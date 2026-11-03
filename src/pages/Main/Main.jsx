@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { S } from "../../lib/dc.js";
 import { listVals, saveVals } from "../../lib/savedList.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { tx } from "../../i18n/index.js";
@@ -34,6 +33,7 @@ import Lightbox from "./sections/Lightbox.jsx";
 import ListPanel from "../../components/ListPanel.jsx";
 import SearchDialog from "./sections/SearchDialog.jsx";
 import NewsletterDialog from "./sections/NewsletterDialog.jsx";
+import css from "./Main.module.css";
 
 const NAV = { DW_CATS, DW_FIN, ifoSetPending };
 const ACCENT = "#645DC5";
@@ -334,11 +334,7 @@ function mainVals(self, saved, keys, cxReset, t) {
 function template(v) {
   return (
     <>
-      <div
-        style={S(
-          "font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; color: #111111; background: #FFFFFF; font-size: 15px; line-height: 1.7",
-        )}
-      >
+      <div className={css.box}>
         <a className="skip" href="#categories">
           {v.t("common.skipToContent")}
         </a>

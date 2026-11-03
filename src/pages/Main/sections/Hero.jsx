@@ -1,9 +1,9 @@
-import { S } from "../../../lib/dc.js";
+import css from "./Hero.module.css";
 
 /** Hero con imágenes rotativas y llamados principales. */
 export default function Hero({ v }) {
   return (
-    <section id="top" style={S("position: relative; height: var(--hero-h); overflow: hidden; background: #1A1917")}>
+    <section className={css.top} id="top">
       <div className="hs" aria-hidden="false">
         <img
           className="hs-i hs-1"
@@ -25,11 +25,7 @@ export default function Hero({ v }) {
           decoding="async"
         />
       </div>
-      <div
-        className="scrim"
-        aria-hidden="true"
-        style={S("position: absolute; top: 0; left: 0; width: 100%; height: 100%")}
-      ></div>
+      <div className={"scrim " + css.box} aria-hidden="true"></div>
       <div className="hs-copy">
         <h1 className="hs-h">
           {v.t("home.hero.line1")}

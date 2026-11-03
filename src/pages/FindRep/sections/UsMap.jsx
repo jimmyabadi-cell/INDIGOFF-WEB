@@ -1,4 +1,4 @@
-import { S } from "../../../lib/dc.js";
+import css from "./UsMap.module.css";
 
 /** Mapa de territorios de Estados Unidos. */
 export default function UsMap({ v }) {
@@ -6,12 +6,7 @@ export default function UsMap({ v }) {
     <>
       {v.mapUS ? (
         <>
-          <svg
-            viewBox="0 0 975 610"
-            role="img"
-            aria-label={v.t("findRep.mapLabels.us")}
-            style={S("display: block; width: 100%; height: auto")}
-          >
+          <svg className={css.icon} viewBox="0 0 975 610" role="img" aria-label={v.t("findRep.mapLabels.us")}>
             <defs>
               <clipPath id="clip-FL_n">
                 <rect x="658.3" y="462.9" width="167.7" height="55.8"></rect>

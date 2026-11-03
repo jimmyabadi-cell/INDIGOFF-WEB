@@ -1,7 +1,7 @@
 import React from "react";
-import { S } from "../../lib/dc.js";
 import { CloseIcon } from "./icons.jsx";
 import "./layout.css";
+import css from "./SideMenu.module.css";
 
 /**
  * Menú lateral (drawer). El estado y los textos vienen de usePageChrome (`v.menuOn`, `v.dwCats`, ...).
@@ -21,11 +21,7 @@ export default function SideMenu({ v, labels }) {
             <CloseIcon />
             <span>{v.dwClose}</span>
           </button>
-          <img
-            src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-            alt="indigoff"
-            style={S("display: block; height: 20px; width: auto")}
-          />
+          <img className={css.image} src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg" alt="indigoff" />
         </div>
         <div className="dw-body">
           <p className="dw-g">{v.dwCat}</p>

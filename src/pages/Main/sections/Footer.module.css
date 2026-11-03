@@ -1,0 +1,72 @@
+/* Estilos de Footer. Colores con los tokens de src/global.css. */
+
+.footer {
+  background: var(--color-bg);
+}
+
+.box {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(72px * var(--vs)) var(--gutter) 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.nav {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.box2 {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.label2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 6px 0 0 -13px;
+}
+
+.icon {
+  display: block;
+}
+
+.box3 {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+  border-top: 1px solid #e2ddd3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 32px;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.label3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.link {
+  color: var(--color-muted);
+}

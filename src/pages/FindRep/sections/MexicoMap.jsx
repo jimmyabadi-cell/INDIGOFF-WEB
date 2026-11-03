@@ -1,4 +1,4 @@
-import { S } from "../../../lib/dc.js";
+import css from "./MexicoMap.module.css";
 
 /** Mapa de México. */
 export default function MexicoMap({ v }) {
@@ -6,12 +6,7 @@ export default function MexicoMap({ v }) {
     <>
       {v.mapMX ? (
         <>
-          <svg
-            viewBox="0 0 975 610"
-            role="img"
-            aria-label={v.t("findRep.mapLabels.mx")}
-            style={S("display: block; width: 100%; height: auto")}
-          >
+          <svg className={css.icon} viewBox="0 0 975 610" role="img" aria-label={v.t("findRep.mapLabels.mx")}>
             <g stroke="#FFFFFF" strokeWidth="0.9" strokeLinejoin="round">
               <path
                 className="st"

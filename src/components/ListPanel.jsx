@@ -1,5 +1,5 @@
 import React from "react";
-import { S } from "../lib/dc.js";
+import css from "./ListPanel.module.css";
 
 /**
  * Panel de Mi lista (home y páginas de colección).
@@ -13,32 +13,14 @@ export default function ListPanel({ v, homeHref = "/" }) {
     <>
       {v.listOn ? (
         <>
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={v.t("list.title")}
-            style={S(
-              "position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 70; background: #FFFFFF; overflow-y: auto",
-            )}
-          >
-            <header
-              style={S("position: sticky; top: 0; z-index: 1; background: #FFFFFF; border-bottom: 1px solid #ECE9E4")}
-            >
-              <div
-                style={S(
-                  "max-width: 1440px; margin: 0 auto; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px",
-                )}
-              >
-                <span style={S("flex: 1 1 0; display: flex")}>
-                  <button
-                    type="button"
-                    onClick={v.closeList}
-                    style={S(
-                      "min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #111111",
-                    )}
-                  >
-                    <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
+          <div className={css.box} role="dialog" aria-modal="true" aria-label={v.t("list.title")}>
+            <header className={css.header}>
+              <div className={css.box2}>
+                <span className={css.label}>
+                  <button className={css.button} type="button" onClick={v.closeList}>
+                    <span className={css.label2}>
                       <svg
+                        className={css.icon}
                         aria-hidden="true"
                         width="16"
                         height="16"
@@ -48,7 +30,6 @@ export default function ListPanel({ v, homeHref = "/" }) {
                         strokeWidth="1.4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        style={S("display: block; flex: none")}
                       >
                         <path d="M15 5l-7 7 7 7"></path>
                       </svg>
@@ -57,120 +38,51 @@ export default function ListPanel({ v, homeHref = "/" }) {
                   </button>
                 </span>
                 <a
+                  className={css.link}
                   href={homeHref}
                   onClick={homeHref.startsWith("#") ? v.closeList : undefined}
                   aria-label={v.t("collection.homeLabel")}
-                  style={S("display: block")}
                 >
-                  <img
-                    src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg"
-                    alt="indigoff"
-                    style={S("display: block; height: 24px; width: auto")}
-                  />
+                  <img className={css.image} src="/img/b8490b0b60f4124ee84a155bef6bdda9.svg" alt="indigoff" />
                 </a>
-                <span style={S("flex: 1 1 0")}></span>
+                <span className={css.label3}></span>
               </div>
             </header>
-            <div
-              style={S(
-                "max-width: 1200px; margin: 0 auto; padding: calc(80px * var(--vs)) min(32px, var(--gutter)) calc(120px * var(--vs)); color: #111111",
-              )}
-            >
-              <div style={S("text-align: center")}>
-                <h1
-                  style={S(
-                    "margin: 0 0 24px; font-family: Urbanist, sans-serif; font-weight: 300; font-size: clamp(44px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em",
-                  )}
-                >
-                  {v.t("list.title")}
-                </h1>
-                <p
-                  style={S("margin: 0 auto 48px; max-width: 560px; font-size: 17px; line-height: 1.7; color: #3A3935")}
-                >
-                  {v.t("list.intro")}
-                </p>
+            <div className={css.box3}>
+              <div className={css.box4}>
+                <h1 className={css.title}>{v.t("list.title")}</h1>
+                <p className={css.text}>{v.t("list.intro")}</p>
               </div>
               {v.listEmpty ? (
                 <>
-                  <p
-                    style={S(
-                      "margin: 0 auto; padding: 64px 24px; max-width: 520px; text-align: center; background: #F4F1EB; font-size: 15px; color: #5E5A53",
-                    )}
-                  >
-                    {v.t("list.empty")}
-                  </p>
+                  <p className={css.text2}>{v.t("list.empty")}</p>
                 </>
               ) : null}
               {v.listHas ? (
                 <>
-                  <div
-                    style={S("display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 0 0 56px")}
-                  >
-                    <a
-                      href="/find-a-rep"
-                      style={S(
-                        "display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; background: #111111; color: #FFFFFF; text-decoration: none; J",
-                      )}
-                    >
+                  <div className={css.box5}>
+                    <a className={css.link2} href="/find-a-rep">
                       {v.t("list.sendToRep")}
                     </a>
-                    <a
-                      href={v.listMail}
-                      style={S(
-                        "display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border: 1px solid #111111; color: #111111; text-decoration: none; J",
-                      )}
-                    >
+                    <a className={css.link3} href={v.listMail}>
                       {v.t("list.email")}
                     </a>
-                    <button
-                      type="button"
-                      onClick={v.clearList}
-                      style={S(
-                        "min-height: 48px; padding: 0 20px; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F",
-                      )}
-                    >
+                    <button className={css.button2} type="button" onClick={v.clearList}>
                       {v.t("list.clear")}
                     </button>
                   </div>
-                  <div
-                    role="list"
-                    style={S(
-                      "display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px 16px",
-                    )}
-                  >
+                  <div className={css.box6} role="list">
                     {(v.listItems || []).map((it, it__i) => (
                       <React.Fragment key={it__i}>
-                        <div role="listitem" style={S("display: flex; flex-direction: column; gap: 10px")}>
-                          <img
-                            src={it.img}
-                            alt={it.name}
-                            loading="lazy"
-                            decoding="async"
-                            style={S(
-                              "display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; background: #EEEBE6",
-                            )}
-                          />
-                          <span
-                            style={S(
-                              "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
-                            )}
-                          >
-                            {it.kind}
-                          </span>
-                          <span
-                            style={S(
-                              "font-family: Urbanist, sans-serif; font-weight: 300; font-size: 20px; line-height: 1.2; letter-spacing: -0.02em",
-                            )}
-                          >
-                            {it.name}
-                          </span>
+                        <div className={css.box7} role="listitem">
+                          <img className={css.image2} src={it.img} alt={it.name} loading="lazy" decoding="async" />
+                          <span className={css.label4}>{it.kind}</span>
+                          <span className={css.label5}>{it.name}</span>
                           <button
+                            className={css.button3}
                             type="button"
                             onClick={it.remove}
                             aria-label={v.t("list.removeItem", { name: it.name })}
-                            style={S(
-                              "align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F; text-decoration: underline; text-underline-offset: 4px",
-                            )}
                           >
                             {v.t("list.remove")}
                           </button>

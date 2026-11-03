@@ -1,0 +1,326 @@
+/* Estilos de OnoffStudio. Colores con los tokens de src/global.css. */
+
+.box {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--color-ink);
+  background: var(--color-white);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.content {
+  position: relative;
+  height: min(78vh, 760px);
+  min-height: 520px;
+  overflow: hidden;
+  background: #1a1714;
+  color: var(--color-white);
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box2 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 15, 12, 0.15) 0%, rgba(17, 15, 12, 0.55) 100%);
+}
+
+.box3 {
+  position: relative;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) calc(72px * var(--vs));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+.text {
+  margin: 0 0 16px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  margin: 0 0 18px;
+  max-width: 900px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.text2 {
+  margin: 0;
+  max-width: 560px;
+  font-size: 17px;
+  color: #ede8e0;
+}
+
+.section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(120px * var(--vs)) var(--gutter) 0;
+}
+
+.box4 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px 80px;
+  align-items: flex-start;
+}
+
+.heading {
+  flex: 1 1 380px;
+  margin: 0;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.box5 {
+  flex: 1 1 460px;
+  min-width: 0;
+}
+
+.text3 {
+  margin: 0 0 18px;
+  font-size: 17px;
+  color: var(--color-dark);
+}
+
+.text4 {
+  margin: 0;
+  font-size: 17px;
+  color: var(--color-dark);
+}
+
+.section2 {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(96px * var(--vs)) var(--gutter) 0;
+}
+
+.box6 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  border-top: 1px solid var(--color-surface);
+}
+
+.box7 {
+  padding: 36px 28px 40px 0;
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.label {
+  display: block;
+  margin: 0 0 18px;
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+}
+
+.subheading {
+  margin: 0 0 10px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.text5 {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-secondary);
+}
+
+.section3 {
+  margin: calc(120px * var(--vs)) 0 0;
+  background: var(--color-bg);
+}
+
+.box8 {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(96px * var(--vs)) var(--gutter);
+}
+
+.heading2 {
+  margin: 0 0 56px;
+  text-align: center;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 3.2vw, 46px);
+  letter-spacing: -0.035em;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 40px 32px;
+}
+
+.item {
+  text-align: center;
+}
+
+.label2 {
+  display: block;
+  margin: 0 0 14px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.subheading2 {
+  margin: 0 0 8px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.text6 {
+  margin: 0 auto;
+  max-width: 280px;
+  font-size: 15px;
+  color: var(--color-secondary);
+}
+
+.box9 {
+  text-align: center;
+  margin: 0 auto 48px;
+  max-width: 640px;
+}
+
+.heading3 {
+  margin: 0 0 12px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 3.2vw, 46px);
+  letter-spacing: -0.035em;
+}
+
+.text7 {
+  margin: 0;
+  color: var(--color-secondary);
+}
+
+.box10 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 40px 8px;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--color-ink);
+}
+
+.image2 {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  background: var(--color-surface-2);
+}
+
+.label3 {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.label4 {
+  display: block;
+  margin-top: -8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.section4 {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(140px * var(--vs)) var(--gutter) calc(160px * var(--vs));
+  text-align: center;
+}
+
+.heading4 {
+  margin: 0 auto 16px;
+  max-width: 720px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(32px, 3.6vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.text8 {
+  margin: 0 auto 36px;
+  max-width: 520px;
+  color: var(--color-secondary);
+}
+
+.box11 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.link2 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 min(32px, var(--gutter));
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.link3 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 min(32px, var(--gutter));
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}

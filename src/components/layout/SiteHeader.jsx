@@ -1,6 +1,7 @@
 import { S } from "../../lib/dc.js";
 import { BackIcon, DownloadIcon, ListIcon, MenuIcon, SearchIcon } from "./icons.jsx";
 import "./layout.css";
+import css from "./SiteHeader.module.css";
 
 const LOGO_SRC = "/img/b8490b0b60f4124ee84a155bef6bdda9.svg";
 const CURRENT_STYLE = "border-bottom: 1px solid #111111";
@@ -42,23 +43,12 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
   const isCollection = variant === "collection";
 
   return (
-    <header className="site-hd" style={S("border-bottom: 1px solid #ECE9E4; background: #FFFFFF")}>
-      <div
-        className="hd-in"
-        style={S(
-          "max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px",
-        )}
-      >
+    <header className={"site-hd " + css.header}>
+      <div className={"hd-in " + css.box}>
         {isCollection ? (
           <BackLink label={labels.back} />
         ) : (
-          <nav
-            aria-label="Main"
-            className="hd-l"
-            style={S(
-              "flex: 1 1 380px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 28px; font-family: Urbanist, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase",
-            )}
-          >
+          <nav aria-label="Main" className={"hd-l " + css.nav}>
             <button
               type="button"
               onClick={v.openMenu}
@@ -75,7 +65,7 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
         )}
 
         <a href={logoHref} className="hd-logo" style={S(st.logo)}>
-          <img src={LOGO_SRC} alt="indigoff" style={S("display: block; height: 24px; width: auto")} />
+          <img className={css.image} src={LOGO_SRC} alt="indigoff" />
         </a>
 
         <div className="hd-r" style={S(st.right)}>
@@ -95,19 +85,12 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
           ) : null}
           {labels.list ? <ListButton v={v} label={labels.list} style={st.list} /> : null}
           {labels.contact ? (
-            <a href="mailto:info@indigoff.com" className="hd-opt" style={S("color: #111111; text-decoration: none")}>
+            <a href="mailto:info@indigoff.com" className={"hd-opt " + css.link}>
               {labels.contact}
             </a>
           ) : null}
           {search ? (
-            <button
-              type="button"
-              aria-label={v.t("home.search.label")}
-              onClick={v.openSearch}
-              style={S(
-                "width: 44px; height: 44px; border: 0; background: transparent; padding: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center",
-              )}
-            >
+            <button className={css.button} type="button" aria-label={v.t("home.search.label")} onClick={v.openSearch}>
               <SearchIcon />
             </button>
           ) : null}
@@ -119,15 +102,8 @@ export default function SiteHeader({ v, labels, variant = "default", current, lo
 
 function BackLink({ label }) {
   return (
-    <a
-      href="/"
-      className="hd-l hd-back"
-      aria-label={label}
-      style={S(
-        "flex: 1 1 260px; color: #111111; text-decoration: none; font-family: Urbanist, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase",
-      )}
-    >
-      <span style={S("display: inline-flex; align-items: center; gap: 8px")}>
+    <a href="/" className={"hd-l hd-back " + css.link2} aria-label={label}>
+      <span className={css.label}>
         <BackIcon />
         <span className="hd-back-lbl">{label}</span>
       </span>

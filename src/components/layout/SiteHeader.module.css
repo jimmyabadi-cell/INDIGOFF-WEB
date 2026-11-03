@@ -1,0 +1,70 @@
+/* Estilos de SiteHeader. Colores con los tokens de src/global.css. */
+
+.header {
+  border-bottom: 1px solid var(--color-surface);
+  background: var(--color-white);
+}
+
+.box {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 22px var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+
+.nav {
+  flex: 1 1 380px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+  font-family: Urbanist, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.image {
+  display: block;
+  height: 24px;
+  width: auto;
+}
+
+.link {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link2 {
+  flex: 1 1 260px;
+  color: var(--color-ink);
+  text-decoration: none;
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

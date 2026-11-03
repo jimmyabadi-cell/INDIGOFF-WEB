@@ -1,0 +1,16 @@
+/* Estilos de Hero. Colores con los tokens de src/global.css. */
+
+.top {
+  position: relative;
+  height: var(--hero-h);
+  overflow: hidden;
+  background: #1a1917;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

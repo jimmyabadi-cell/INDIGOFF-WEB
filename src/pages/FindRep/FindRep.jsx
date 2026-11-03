@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { S } from "../../lib/dc.js";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { useMergeState } from "../../hooks/useMergeState.js";
@@ -17,6 +16,7 @@ import MexicoMap from "./sections/MexicoMap.jsx";
 import MapLegend from "./sections/MapLegend.jsx";
 import ResultPanel from "./sections/ResultPanel.jsx";
 import AllReps from "./sections/AllReps.jsx";
+import css from "./FindRep.module.css";
 const DEFAULT_REP = {
   name: "Indigoff",
   contactKey: "findRep.directTeam",
@@ -259,11 +259,7 @@ function mapVals(st, setSt, mt, t) {
 function template(v) {
   return (
     <>
-      <div
-        style={S(
-          "font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; color: #111111; background: #FFFFFF; font-size: 15px; line-height: 1.7",
-        )}
-      >
+      <div className={css.box}>
         <a className="skip" href="#content">
           {v.t("common.skipToContent")}
         </a>
@@ -273,12 +269,8 @@ function template(v) {
           current="find-a-rep"
         />
         <Intro v={v} />
-        <section
-          style={S(
-            "max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter) calc(120px * var(--vs)); display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 64px",
-          )}
-        >
-          <div style={S("flex: 2 1 640px; min-width: 0")}>
+        <section className={css.section}>
+          <div className={css.box2}>
             <div className="mt-tabs" role="tablist" aria-label={v.t("findRep.countryLabel")}>
               {(v.mapTabs || []).map((t, t__i) => (
                 <React.Fragment key={t__i}>

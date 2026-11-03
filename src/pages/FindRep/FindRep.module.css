@@ -1,0 +1,25 @@
+/* Estilos de FindRep. Colores con los tokens de src/global.css. */
+
+.box {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--color-ink);
+  background: var(--color-white);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) calc(120px * var(--vs));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 48px 64px;
+}
+
+.box2 {
+  flex: 2 1 640px;
+  min-width: 0;
+}
