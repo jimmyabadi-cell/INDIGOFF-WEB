@@ -6,10 +6,10 @@ export default function BringToSpace({ v }) {
     <section className={css.section}>
       <p className={css.text}>{v.t("collection.bringTitle")}</p>
       <div className={css.box}>
-        <a className={css.link} href="/find-a-rep">
+        <a className={css.link} href="/contact">
           {v.t("common.requestSamples")}
         </a>
-        <a className={css.link2} href="/#acoustics">
+        <a className={css.link2} href="/contact">
           {v.t("collection.requestStudy")}
         </a>
       </div>

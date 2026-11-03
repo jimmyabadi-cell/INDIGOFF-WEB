@@ -9,7 +9,7 @@ export default function Acoustics({ v }) {
         <div className={css.box2}>
           <h2 className={css.heading}>{v.t("home.acoustics.title")}</h2>
           <p className={css.text}>{v.t("home.acoustics.text")}</p>
-          <a className={css.link} href="#contact">
+          <a className={css.link} href="/contact">
             {v.t("home.acoustics.cta")}
           </a>
         </div>

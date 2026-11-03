@@ -197,3 +197,18 @@ test("Contacto: si la API falla, abre la app de correo", async ({ page }) => {
   await page.getByRole("button", { name: "Send" }).click();
   await expect(page.getByRole("status")).toContainText("Your message is ready");
 });
+
+test("Botones de acción llevan a /contact", async ({ page }) => {
+  await page.goto("/");
+  const toContact = (name) => page.locator(`a[href="/contact"]`, { hasText: name }).first();
+  for (const name of [
+    "Request a quote",
+    "Book an appointment",
+    "Request an acoustic + lighting study",
+    "Request samples",
+  ]) {
+    await expect(toContact(name)).toHaveCount(1);
+  }
+  await page.goto("/ceilings");
+  await expect(page.locator('a[href="/contact"]')).not.toHaveCount(0);
+});

@@ -78,7 +78,7 @@ export default function Projects({ v }) {
         </div>
       </div>
       <div className="cta-row">
-        <a href="/find-a-rep" className="cta-p">
+        <a href="/contact" className="cta-p">
           {v.t("home.cta.start")}
         </a>
         <a href="/find-a-rep" className="cta-o">
