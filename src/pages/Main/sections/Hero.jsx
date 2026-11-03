@@ -1,9 +1,43 @@
+import { useEffect, useState } from "react";
 import css from "./Hero.module.css";
 import HERO from "../../../data/hero.json";
 import { imgProps, SIZES } from "../../../lib/images.js";
 
+const SLIDES = [
+  {
+    cls: "hs-2",
+    src: "/img/95478a5658304ca607006b326c317835.jpg",
+    alt: "Rainbow acoustic arches and ceiling ribbons over an open office",
+  },
+  {
+    cls: "hs-3",
+    src: "/img/262de0d004e1e631ef993783a62dc338.jpg",
+    alt: "Colorful acoustic podcast studio with wall shapes and ceiling clouds",
+  },
+];
+
+/**
+ * Las diapositivas 2 y 3 aparecen hasta los 5.5 s del carrusel: se piden un momento después de que la página
+ * termina de cargar, para no quitarle ancho de banda a la primera foto (LCP).
+ */
+function useLoadedLater(delay = 1000) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let timer;
+    const go = () => (timer = setTimeout(() => setReady(true), delay));
+    if (document.readyState === "complete") go();
+    else window.addEventListener("load", go, { once: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("load", go);
+    };
+  }, [delay]);
+  return ready;
+}
+
 /** Hero con imágenes rotativas y llamados principales. */
 export default function Hero({ v }) {
+  const later = useLoadedLater();
   return (
     <section className={css.top} id="top">
       <div className="hs" aria-hidden="false">
@@ -15,26 +49,17 @@ export default function Hero({ v }) {
           {...imgProps(HERO.src, SIZES.full)}
           alt="Indigoff space with suspended baffles, arched walls and sculptural forms"
         />
-        <img
-          loading="lazy"
-          decoding="async"
-          className="hs-i hs-2"
-          // Aparecen hasta los 5 s del carrusel: que no compitan con la primera foto.
-          // eslint-disable-next-line react/no-unknown-property
-          fetchpriority="low"
-          {...imgProps("/img/95478a5658304ca607006b326c317835.jpg", SIZES.full)}
-          alt="Rainbow acoustic arches and ceiling ribbons over an open office"
-        />
-        <img
-          loading="lazy"
-          decoding="async"
-          className="hs-i hs-3"
-          // Aparecen hasta los 5 s del carrusel: que no compitan con la primera foto.
-          // eslint-disable-next-line react/no-unknown-property
-          fetchpriority="low"
-          {...imgProps("/img/262de0d004e1e631ef993783a62dc338.jpg", SIZES.full)}
-          alt="Colorful acoustic podcast studio with wall shapes and ceiling clouds"
-        />
+        {SLIDES.map((sl) => (
+          // El <img> existe desde el inicio (su animación va sincronizada con la primera foto);
+          // sin src ni alt hasta `later`, así no se pide ni muestra nada.
+          <img
+            key={sl.cls}
+            decoding="async"
+            className={"hs-i " + sl.cls}
+            {...(later ? imgProps(sl.src, SIZES.full) : {})}
+            alt={later ? sl.alt : ""}
+          />
+        ))}
       </div>
       <div className={"scrim " + css.box} aria-hidden="true"></div>
       <div className="hs-copy">
