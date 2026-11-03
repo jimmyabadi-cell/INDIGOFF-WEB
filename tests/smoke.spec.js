@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const ROUTES = ["/", "/ceilings", "/downloads", "/find-a-rep", "/onoff-studio"];
+const ROUTES = ["/", "/ceilings", "/downloads", "/find-a-rep", "/onoff-studio", "/contact"];
 
 // Alto máximo del header sticky por proyecto (ver --hd-h en src/global.css).
 const MAX_HEADER = { mobile: 64, tablet: 76, desktop: 96 };
@@ -151,4 +151,26 @@ test("Footer: correo de contacto y redes sociales", async ({ page }) => {
     "https://www.facebook.com/indigoff.design",
     "https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv",
   ]);
+});
+
+test("Contacto: valida campos obligatorios y prepara el correo", async ({ page }) => {
+  await page.goto("/contact");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Contact Indigoff");
+  const form = page.locator("main form");
+
+  await form.getByRole("button", { name: "Send" }).click();
+  await expect(form.getByText("This field is required.")).toHaveCount(3);
+  await expect(form.getByLabel("Name", { exact: true })).toBeFocused();
+
+  await form.getByLabel("Name", { exact: true }).fill("Ana");
+  await form.getByLabel("Last Name").fill("López");
+  await form.getByLabel("Email").fill("ana@");
+  await form.getByLabel("Message").fill("Necesito paneles para una oficina.");
+  await form.getByRole("button", { name: "Send" }).click();
+  await expect(form.getByText("Enter a valid email address.")).toBeVisible();
+
+  // El envío abre la app de correo con un mailto: (el navegador de pruebas lo ignora).
+  await form.getByLabel("Email").fill("ana@example.com");
+  await form.getByRole("button", { name: "Send" }).click();
+  await expect(page.getByRole("status")).toContainText("Your message is ready");
 });

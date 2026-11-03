@@ -24,7 +24,8 @@
     "viewMore": "View more",
     "viewLess": "View less",
     "enlargeImage": "Enlarge image",
-    "onNetwork": "{name} on {network}"
+    "onNetwork": "{name} on {network}",
+    "contact": "Contact"
   },
   "studio": {
     "hero": {
@@ -509,6 +510,30 @@
       "R2019": "Terracotta dots",
       "R2020": "Color spectrum",
       "R2021": "Walnut study"
+    }
+  },
+  "contact": {
+    "title": "Contact Indigoff",
+    "text": "Tell us about your project and our team will help you find the right acoustic solution. Contact INDIGOFF for quotes, specification support, product information, samples, or representative assistance.",
+    "emailUs": "Email",
+    "repTitle": "Representatives",
+    "fields": {
+      "name": "Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "email": "Email",
+      "message": "Message"
+    },
+    "send": "Send",
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address."
+    },
+    "mailSubject": "Project inquiry — {name}",
+    "sent": {
+      "title": "Your message is ready",
+      "text": "We opened your email app with your message. Send it and our team will reply soon. If it didn’t open, write to us at {email}.",
+      "back": "Write another message"
     }
   }
 }

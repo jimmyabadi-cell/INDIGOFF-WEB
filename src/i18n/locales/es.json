@@ -24,7 +24,8 @@
     "viewMore": "Ver más",
     "viewLess": "Ver menos",
     "enlargeImage": "Ampliar imagen",
-    "onNetwork": "{name} en {network}"
+    "onNetwork": "{name} en {network}",
+    "contact": "Contacto"
   },
   "studio": {
     "hero": {
@@ -509,6 +510,30 @@
       "R2019": "Puntos terracota",
       "R2020": "Espectro de color",
       "R2021": "Estudio en nogal"
+    }
+  },
+  "contact": {
+    "title": "Contacta a Indigoff",
+    "text": "Cuéntanos sobre tu proyecto y nuestro equipo te ayudará a encontrar la solución acústica adecuada. Contacta a INDIGOFF para cotizaciones, apoyo en especificación, información de productos, muestras o atención de un representante.",
+    "emailUs": "Correo",
+    "repTitle": "Representantes",
+    "fields": {
+      "name": "Nombre",
+      "lastName": "Apellido",
+      "phone": "Teléfono",
+      "email": "Correo",
+      "message": "Mensaje"
+    },
+    "send": "Enviar",
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "email": "Escribe un correo válido."
+    },
+    "mailSubject": "Consulta de proyecto — {name}",
+    "sent": {
+      "title": "Tu mensaje está listo",
+      "text": "Abrimos tu app de correo con tu mensaje. Envíalo y nuestro equipo te responderá pronto. Si no se abrió, escríbenos a {email}.",
+      "back": "Escribir otro mensaje"
     }
   }
 }

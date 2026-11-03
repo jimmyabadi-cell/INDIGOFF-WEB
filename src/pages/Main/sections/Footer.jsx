@@ -9,7 +9,7 @@ export default function Footer({ v }) {
       <div className={css.box}>
         <nav className={css.nav} aria-label={v.t("home.footer.clientService")}>
           <span className={css.label}>{v.t("home.footer.clientService")}</span>
-          <a href="mailto:info@indigoff.com">{v.t("home.footer.contactUs")}</a>
+          <a href="/contact">{v.t("home.footer.contactUs")}</a>
           <a href="mailto:info@indigoff.com?subject=Book%20an%20appointment">{v.t("home.specify.appointment")}</a>
           <a href="/find-a-rep">{v.t("common.findRep")}</a>
           <a href="/onoff-studio">{v.t("home.footer.installation")}</a>
