@@ -1,0 +1,504 @@
+{
+  "colors": [
+    {
+      "group": "",
+      "items": [
+        {
+          "name": "Red",
+          "img": "/img/317c9d69c7d662c7f393b6d0362f5157.jpg"
+        },
+        {
+          "name": "Cherry",
+          "img": "/img/cf2c49bc5a22a1ff1e2d467795314dcf.jpg"
+        },
+        {
+          "name": "Orange",
+          "img": "/img/823c76c03d19f2c21d5c32004141582c.jpg"
+        },
+        {
+          "name": "Citrus",
+          "img": "/img/f05065876b114d4b736c890ca37b141d.jpg"
+        },
+        {
+          "name": "Green",
+          "img": "/img/c816cc21e273f8b3025503fd2408db72.jpg"
+        },
+        {
+          "name": "Forest Green",
+          "img": "/img/2fb75fba98f29dc9a4155d3c62350613.jpg"
+        },
+        {
+          "name": "Moka",
+          "img": "/img/beda9b651cf7ebadd03b0b26bb16ce37.jpg"
+        },
+        {
+          "name": "Ivory",
+          "img": "/img/e4a4b8e5d840ab6a5205cea867a0bf09.jpg"
+        },
+        {
+          "name": "White",
+          "img": "/img/fb0ae4a8fcbabdbc1d5cdf62f9aff65e.jpg"
+        },
+        {
+          "name": "Peach",
+          "img": "/img/951f42dadcfb0c4bc8ba9f7af9d046f5.jpg"
+        },
+        {
+          "name": "Violet",
+          "img": "/img/6d3bc9ea7272ded0b78fa9bacac83174.jpg"
+        },
+        {
+          "name": "Navy Blue",
+          "img": "/img/2160e1a55cf69fd44c80f31ad38ccf8e.jpg"
+        },
+        {
+          "name": "Blue",
+          "img": "/img/fd71959565bc2fbbac7555e697bcbeb3.jpg"
+        },
+        {
+          "name": "Teal",
+          "img": "/img/074a4b3ab8eb2cb45e75012bd2da0643.jpg"
+        },
+        {
+          "name": "Deep Blue",
+          "img": "/img/c2cbd6364af7373ef98344fcc7846816.jpg"
+        },
+        {
+          "name": "Black",
+          "img": "/img/819ad2bd36a76b4bdc27011adbe3bc2a.jpg"
+        },
+        {
+          "name": "Oxford",
+          "img": "/img/d886b6e268cd79d76f53f19d59d69ca5.jpg"
+        },
+        {
+          "name": "Soft Gray",
+          "img": "/img/b96490798d8450ebaa23efbea4b3e3f2.jpg"
+        }
+      ],
+      "ratio": "1 / 1",
+      "min": "150px",
+      "names": true
+    }
+  ],
+  "textures": [
+    {
+      "group": "@home.finishes.groups.wood",
+      "items": [
+        {
+          "name": "Sand Oak",
+          "img": "/img/c48702a0cda370a77be613af9045b5dd.jpg"
+        },
+        {
+          "name": "Sandwood Ash",
+          "img": "/img/b0d28dcf4fac08fd70400fa30c83d09a.jpg"
+        },
+        {
+          "name": "Pale Oak",
+          "img": "/img/e8d4b5bebfc0dc50a8d307a309adcd64.jpg"
+        },
+        {
+          "name": "Maple Oak",
+          "img": "/img/2fae660acee1130abe9ed29ff7913cdc.jpg"
+        },
+        {
+          "name": "Amber Oak",
+          "img": "/img/ee28d69ddcbc4ad62afbbfce2872fe48.jpg"
+        },
+        {
+          "name": "Terra Walnut",
+          "img": "/img/fac0c4b8a80905b8c32b545df304cc46.jpg"
+        },
+        {
+          "name": "Crimson Walnut",
+          "img": "/img/bf2c49751d14ab74f963cac7b28c8ed7.jpg"
+        },
+        {
+          "name": "Terra Walnut Blue",
+          "img": "/img/ed7980842562751188635d551750707f.jpg"
+        },
+        {
+          "name": "Verdant Walnut",
+          "img": "/img/e7a19192516aabcaeee243548c51a4d6.jpg"
+        },
+        {
+          "name": "Frost Ash",
+          "img": "/img/4eb3b065833fd8cd93af824d4434fd37.jpg"
+        },
+        {
+          "name": "Smoke Ash",
+          "img": "/img/1d9e300bef54ba3dd580353bc6db3321.jpg"
+        },
+        {
+          "name": "Charcoal Ash",
+          "img": "/img/ce5b730e4db05c386f424d01a54d76fb.jpg"
+        }
+      ],
+      "ratio": "1 / 1",
+      "min": "150px",
+      "names": true
+    },
+    {
+      "group": "@home.finishes.groups.stone",
+      "items": [
+        {
+          "name": "Alba",
+          "img": "/img/a0c3422a39f02ecf00ca10718e710122.jpg"
+        },
+        {
+          "name": "Auric",
+          "img": "/img/e38afe24e1db33d0ef0a653d9c2cc48f.jpg"
+        },
+        {
+          "name": "Opaline",
+          "img": "/img/71d0bbd9e731468300f7bd69a01a56b5.jpg"
+        },
+        {
+          "name": "Strata",
+          "img": "/img/6c2bb19a24d10cc2c0aa86720b003b78.jpg"
+        },
+        {
+          "name": "Graphite",
+          "img": "/img/b3a4589de0ed1dc914923926fd4c3745.jpg"
+        },
+        {
+          "name": "Arctic",
+          "img": "/img/f54bc9adbe586c09ad80ed91f7641fb3.jpg"
+        },
+        {
+          "name": "Frost",
+          "img": "/img/2c9f5be056cf272aedaa4cfa8a957e7e.jpg"
+        },
+        {
+          "name": "Nocturne",
+          "img": "/img/9c2dd7aa169dc8d0c6daf7fc34e41606.jpg"
+        },
+        {
+          "name": "Obsidian",
+          "img": "/img/58861ca40984a75c6853b1b14e4aeada.jpg"
+        },
+        {
+          "name": "Limestone",
+          "img": "/img/bafb29c40ef1dc305d3acac9a620d734.jpg"
+        },
+        {
+          "name": "Basalt",
+          "img": "/img/89ef3925dce24bbf667283d0c8e1451e.jpg"
+        },
+        {
+          "name": "Alchemy",
+          "img": "/img/9312933232009f2457c9da6e431068ce.jpg"
+        },
+        {
+          "name": "Verdant",
+          "img": "/img/7dc30e2502b6fa51810f13a16491bfcf.jpg"
+        },
+        {
+          "name": "Tide",
+          "img": "/img/a72430cec6492e1ca2d402e20625b726.jpg"
+        }
+      ],
+      "ratio": "1 / 1",
+      "min": "150px",
+      "names": true
+    }
+  ],
+  "print": [
+    {
+      "group": "",
+      "ratio": "16 / 9",
+      "min": "320px",
+      "names": false,
+      "items": [
+        {
+          "name": {
+            "k": "home.finishes.items.print",
+            "vars": {
+              "n": "01"
+            }
+          },
+          "img": "/img/34a02b4660e492a1b630744acb0e04ab.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.print",
+            "vars": {
+              "n": "02"
+            }
+          },
+          "img": "/img/bb82485fb6f852b03d1715391e4b1401.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.print",
+            "vars": {
+              "n": "03"
+            }
+          },
+          "img": "/img/6e6c42398633643a85ab007830987298.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.print",
+            "vars": {
+              "n": "04"
+            }
+          },
+          "img": "/img/6e84086d74d9bf4e4be85c3d856abf21.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.print",
+            "vars": {
+              "n": "05"
+            }
+          },
+          "img": "/img/5e7c034e32b536043b96a7d33a737ed8.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.print",
+            "vars": {
+              "n": "06"
+            }
+          },
+          "img": "/img/c1d10cefed304c36c550f6c9b2421716.jpg"
+        }
+      ]
+    }
+  ],
+  "engraving": [
+    {
+      "group": "",
+      "ratio": "4 / 5",
+      "min": "200px",
+      "names": false,
+      "items": [
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "01"
+            }
+          },
+          "img": "/img/331ed34c72c6eb78c7b7cff146ae6652.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "02"
+            }
+          },
+          "img": "/img/71587e528f45cffca9733efd6afa42ad.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "03"
+            }
+          },
+          "img": "/img/28c8304ebf72cec9b38581e6d9e6f0fa.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "04"
+            }
+          },
+          "img": "/img/7f39bf8b43b670473b068b12cdaff1b9.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "05"
+            }
+          },
+          "img": "/img/df3d6b5a1f252d58ea570a6864499afc.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "06"
+            }
+          },
+          "img": "/img/67026b7ad40180160a59c8a32190263e.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "07"
+            }
+          },
+          "img": "/img/e97be6d024099f3e2f2a66554ae26c37.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "08"
+            }
+          },
+          "img": "/img/1b1600e6aaa234fae2946864cdc01f2a.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "09"
+            }
+          },
+          "img": "/img/0cfbe1f191404e917cff2d1b38f87f1f.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "10"
+            }
+          },
+          "img": "/img/b70418a13b8c7b6d6997e9ad54eb8ab8.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "11"
+            }
+          },
+          "img": "/img/f085da6c2310693e870cc1c3896f0c44.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "12"
+            }
+          },
+          "img": "/img/16200b0ed525795910ec44a20f953009.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.engraving",
+            "vars": {
+              "n": "13"
+            }
+          },
+          "img": "/img/24254d9b73f7eb1831717b58eb19d0a7.jpg"
+        }
+      ]
+    }
+  ],
+  "embossed": [
+    {
+      "group": {
+        "k": "home.finishes.modelGroup",
+        "vars": {
+          "name": "Prism",
+          "n": 1
+        }
+      },
+      "ratio": "1 / 1",
+      "min": "220px",
+      "names": true,
+      "items": [
+        {
+          "name": {
+            "k": "home.finishes.items.texture",
+            "vars": {
+              "name": "Prism"
+            }
+          },
+          "img": "/img/6c9048232a88d183e8acfba79694fb30.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.panel",
+            "vars": {
+              "name": "Prism"
+            }
+          },
+          "img": "/img/5e4b09ceafa340fcbff87a8870112332.jpg"
+        }
+      ]
+    },
+    {
+      "group": {
+        "k": "home.finishes.modelGroup",
+        "vars": {
+          "name": "Wave",
+          "n": 2
+        }
+      },
+      "ratio": "1 / 1",
+      "min": "220px",
+      "names": true,
+      "items": [
+        {
+          "name": {
+            "k": "home.finishes.items.texture",
+            "vars": {
+              "name": "Wave"
+            }
+          },
+          "img": "/img/9ac0da76cb16110fed512f9c8a36ccc3.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.panel",
+            "vars": {
+              "name": "Wave"
+            }
+          },
+          "img": "/img/4ffdfc25a7d7e0bb04aaa1bfc7a6f94b.jpg"
+        }
+      ]
+    },
+    {
+      "group": {
+        "k": "home.finishes.modelGroup",
+        "vars": {
+          "name": "Diamond",
+          "n": 3
+        }
+      },
+      "ratio": "1 / 1",
+      "min": "220px",
+      "names": true,
+      "items": [
+        {
+          "name": {
+            "k": "home.finishes.items.texture",
+            "vars": {
+              "name": "Diamond"
+            }
+          },
+          "img": "/img/19fad91390ac57747dd3a4392536429e.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.panel",
+            "vars": {
+              "name": "Diamond"
+            }
+          },
+          "img": "/img/ff1f4e5d7bffa0d558953503809cf19d.jpg"
+        },
+        {
+          "name": {
+            "k": "home.finishes.items.inSpace",
+            "vars": {
+              "name": "Diamond"
+            }
+          },
+          "img": "/img/442961bbeccb92f0d9f97cb1d0abc9e4.jpg"
+        }
+      ]
+    }
+  ]
+}

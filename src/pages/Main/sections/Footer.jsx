@@ -1,0 +1,138 @@
+import { S } from "../../../lib/dc.js";
+
+/** Footer de la home. */
+export default function Footer({ v }) {
+  return (
+    <footer style={S("background: #F4F1EB")}>
+      <div
+        style={S(
+          "max-width: 1440px; margin: 0 auto; padding: calc(72px * var(--vs)) var(--gutter) 40px; display: flex; flex-wrap: wrap; gap: 40px",
+        )}
+      >
+        <nav
+          aria-label={v.t("home.footer.clientService")}
+          style={S("flex: 1 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}
+        >
+          <span
+            style={S(
+              "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
+            )}
+          >
+            {v.t("home.footer.clientService")}
+          </span>
+          <a href="mailto:info@indigoff.com">{v.t("home.footer.contactUs")}</a>
+          <a href="#appointment">{v.t("home.specify.appointment")}</a>
+          <a href="/find-a-rep">{v.t("common.findRep")}</a>
+          <a href="#install">{v.t("home.footer.installation")}</a>
+        </nav>
+        <nav
+          aria-label={v.t("home.footer.specify")}
+          style={S("flex: 1 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}
+        >
+          <span
+            style={S(
+              "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
+            )}
+          >
+            {v.t("home.footer.specify")}
+          </span>
+          <a href="/downloads">{v.t("common.downloads")}</a>
+          <a href="/downloads">{v.t("home.footer.bimCad")}</a>
+          <a href="#samples">{v.t("home.specify.samples")}</a>
+          <a href="#sustainability">{v.t("home.footer.sustainability")}</a>
+        </nav>
+        <nav
+          aria-label="Indigoff"
+          style={S("flex: 1 1 200px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}
+        >
+          <span
+            style={S(
+              "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
+            )}
+          >
+            {"Indigoff"}
+          </span>
+          <a href="#about">{v.t("home.footer.about")}</a>
+          <a href="#journal">{v.t("home.footer.journal")}</a>
+          <a href="#projects">{v.t("home.footer.projects")}</a>
+          <a href="#careers">{v.t("home.footer.careers")}</a>
+        </nav>
+        <div style={S("flex: 1 1 220px; display: flex; flex-direction: column; gap: 10px; font-size: 13px")}>
+          <span
+            style={S(
+              "font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #6B675F",
+            )}
+          >
+            {v.t("home.footer.contact")}
+          </span>
+          <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
+          <span style={S("display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 -13px")}>
+            <a
+              href="https://www.instagram.com/indigoff.design/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={v.t("common.onNetwork", { name: "Indigoff", network: "Instagram" })}
+              className="soc"
+            >
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
+                <path
+                  fill="currentColor"
+                  d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/indigoff.design"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={v.t("common.onNetwork", { name: "Indigoff", network: "Facebook" })}
+              className="soc"
+            >
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
+                <path
+                  fill="currentColor"
+                  d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://open.spotify.com/artist/4b8Uf8sWQLkKSq1sGczqsv"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={v.t("common.onNetwork", { name: "Indigoff", network: "Spotify" })}
+              className="soc"
+            >
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={S("display: block")}>
+                <path
+                  fill="currentColor"
+                  d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                ></path>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div
+        style={S(
+          "max-width: 1440px; margin: 0 auto; padding: 24px var(--gutter) 40px; border-top: 1px solid #E2DDD3; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 11px; color: #6B675F",
+        )}
+      >
+        <span>{"© 2026 Indigoff LLC"}</span>
+        <span style={S("display: flex; flex-wrap: wrap; gap: 8px 24px")}>
+          <a href="#lang" style={S("color: #6B675F")}>
+            {v.t("home.footer.region")}
+          </a>
+          <a href="#privacy" style={S("color: #6B675F")}>
+            {v.t("home.footer.privacy")}
+          </a>
+          <a href="#terms" style={S("color: #6B675F")}>
+            {v.t("home.footer.terms")}
+          </a>
+          <a href="#accessibility" style={S("color: #6B675F")}>
+            {v.t("home.footer.accessibility")}
+          </a>
+        </span>
+      </div>
+    </footer>
+  );
+}
