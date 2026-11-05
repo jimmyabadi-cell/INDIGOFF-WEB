@@ -42,6 +42,17 @@ test("API contacto: envía el correo con Resend", async () => {
   expect(sent[0].body.text).toContain("Language: Español");
 });
 
+test("API contacto: escapa los datos del visitante en el correo HTML", async () => {
+  const email = `a"onmouseover="x'@example.com`;
+  const res = await call({ ...VALID, name: "<b>Ana</b>", email });
+  expect(res.code).toBe(200);
+  const { html, reply_to } = sent[0].body;
+  expect(html).toContain('href="mailto:a&quot;onmouseover=&quot;x&#39;@example.com"');
+  expect(html).not.toContain('onmouseover="x');
+  expect(html).toContain("&lt;b&gt;Ana&lt;/b&gt;");
+  expect(reply_to).toBe(email);
+});
+
 test("API contacto: rechaza datos inválidos y otros métodos", async () => {
   const bad = await call({ ...VALID, name: " ", email: "nope" });
   expect(bad.code).toBe(400);
