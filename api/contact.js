@@ -44,7 +44,14 @@ export default async function handler(req, res) {
 
   const fullName = [data.name, data.lastName].filter(Boolean).join(" ");
   const lang = body.lang === "es" ? "Español" : "English";
-  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // También las comillas: el correo del visitante va dentro de atributos href.
+  const esc = (s) =>
+    String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
 
   const text = [
     `Name: ${fullName}`,
