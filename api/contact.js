@@ -113,7 +113,7 @@ export default async function handler(req, res) {
         <!-- CTA -->
         <tr>
           <td style="padding:0 40px 40px;">
-            <a href="mailto:${esc(data.email)}" style="display:inline-block;background:#645dc5;color:#ffffff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 28px;border-radius:2px;">Reply to ${esc(data.name)}</a>
+            <a href="mailto:${esc(data.email)}" style="display:inline-block;background:#645dc5;color:#ffffff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 28px;border-radius:2px;">Reply to ${esc(fullName)}</a>
           </td>
         </tr>
 
