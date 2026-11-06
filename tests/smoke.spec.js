@@ -213,3 +213,18 @@ test("Botones de acción llevan a /contact", async ({ page }) => {
   await page.goto("/ceilings");
   await expect(page.locator('a[href="/contact"]')).not.toHaveCount(0);
 });
+
+test("Cada página tiene su título", async ({ page }) => {
+  const TITLES = {
+    "/": "Indigoff",
+    "/ceilings": "Ceilings — Indigoff",
+    "/downloads": "Downloads — Indigoff",
+    "/find-a-rep": "Find a rep — Indigoff",
+    "/onoff-studio": "onoff studio — Indigoff",
+    "/contact": "Contact — Indigoff",
+  };
+  for (const [route, title] of Object.entries(TITLES)) {
+    await page.goto(route);
+    await expect(page).toHaveTitle(title);
+  }
+});
