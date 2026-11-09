@@ -23,7 +23,7 @@ export default function AllReps({ v }) {
         </div>
         <p className={css.text}>{v.t("findRep.outside")}</p>
         <p className={css.text2}>
-          <a className={css.link} href="mailto:info@indigoff.com">
+          <a className={css.link} href="/contact">
             {"info@indigoff.com"}
           </a>
         </p>

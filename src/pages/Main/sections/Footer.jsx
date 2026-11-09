@@ -32,7 +32,7 @@ export default function Footer({ v }) {
         </nav>
         <div className={css.box2}>
           <span className={css.label}>{v.t("home.footer.contact")}</span>
-          <a href="mailto:info@indigoff.com">{"info@indigoff.com"}</a>
+          <a href="/contact">{"info@indigoff.com"}</a>
           <span className={css.label2}>
             <a
               href="https://www.instagram.com/indigoff.design/"

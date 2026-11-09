@@ -5,7 +5,7 @@ export default function Footer({ v }) {
   return (
     <footer className={css.footer}>
       <span>{"© 2026 Indigoff LLC"}</span>
-      <a className={css.link} href="mailto:info@indigoff.com">
+      <a className={css.link} href="/contact">
         {"info@indigoff.com"}
       </a>
       <a className={css.link} href="/">

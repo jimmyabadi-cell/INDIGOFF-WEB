@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
+import { listSet } from "../../lib/savedList.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import "../OnoffStudio/OnoffStudio.css";
 
@@ -72,6 +73,7 @@ export default function Contact() {
   const { lang, chrome: v } = usePageChrome({ nav: NAV });
   const location = useLocation();
   const listItems = location.state?.listItems || [];
+  const isRepRequest = location.state?.intent === "rep";
   const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   // "idle" · "sending" · "sent" (llegó por la API) · "mail" (se abrió la app de correo)
@@ -95,7 +97,7 @@ export default function Contact() {
       return;
     }
     setStatus("sending");
-    const result = await sendContact({ ...form, company: el.company.value, listItems }, lang);
+    const result = await sendContact({ ...form, company: el.company.value, listItems, isRepRequest }, lang);
     if (Array.isArray(result)) {
       setErrors(Object.fromEntries(result.map((k) => [k, k === "email" ? "email" : "required"])));
       setStatus("idle");
@@ -103,6 +105,7 @@ export default function Contact() {
       return;
     }
     if (result === "mail") openMail(form, v.t);
+    if (result === "sent" && listItems.length > 0) listSet([]);
     setStatus(result);
   };
 

@@ -69,14 +69,21 @@ export default function ListPanel({ v, homeHref = "/" }) {
               {v.listHas ? (
                 <>
                   <div className={css.box5}>
-                    <a className={css.link2} href="mailto:info@indigoff.com">
+                    <Link
+                      className={css.link2}
+                      to="/contact"
+                      state={{
+                        intent: "rep",
+                        listItems: (v.listItems || []).map(({ name, kind, img, href }) => ({ name, kind, img, href })),
+                      }}
+                      onClick={v.closeList}
+                    >
                       {v.t("list.sendToRep")}
-                    </a>
+                    </Link>
                     <Link
                       className={css.link3}
                       to="/contact"
                       state={{
-                        message: v.listMailMessage,
                         listItems: (v.listItems || []).map(({ name, kind, img, href }) => ({ name, kind, img, href })),
                       }}
                       onClick={v.closeList}

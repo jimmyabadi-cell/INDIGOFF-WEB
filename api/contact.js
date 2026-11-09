@@ -44,6 +44,7 @@ export default async function handler(req, res) {
 
   const fullName = [data.name, data.lastName].filter(Boolean).join(" ");
   const lang = body.lang === "es" ? "Español" : "English";
+  const isRepRequest = !!body.isRepRequest;
   const listItems = Array.isArray(body.listItems)
     ? body.listItems.slice(0, 20).map((x) => ({
         name: String(x.name || "").slice(0, 100),
@@ -82,7 +83,7 @@ export default async function handler(req, res) {
         <tr>
           <td style="background:#1e125c;padding:32px 40px;">
             <p style="margin:0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b5b7dd;">INDIGOFF</p>
-            <p style="margin:8px 0 0;font-size:22px;font-weight:600;color:#ffffff;">New contact message</p>
+            <p style="margin:8px 0 0;font-size:22px;font-weight:600;color:#ffffff;">${isRepRequest ? "Rep request — product list" : "New contact message"}</p>
           </td>
         </tr>
 
@@ -175,7 +176,7 @@ export default async function handler(req, res) {
       from: process.env.CONTACT_FROM || "Indigoff Web <web@indigoff.com>",
       to: (process.env.CONTACT_TO || "info@indigoff.com").split(",").map(s => s.trim()),
       reply_to: data.email,
-      subject: `Contact form — ${fullName}`,
+      subject: isRepRequest ? `Rep request — ${fullName}` : `Contact form — ${fullName}`,
       text,
       html,
     }),

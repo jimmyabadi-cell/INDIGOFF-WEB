@@ -41,16 +41,11 @@ function itemHref(item) {
 
 export function listVals(list, ui) {
   const a = list.items;
-  const body =
-    "My%20Indigoff%20list%3A%0D%0A%0D%0A" +
-    a.map((x) => encodeURIComponent("- " + x.name + (x.kind ? " (" + x.kind + ")" : ""))).join("%0D%0A");
   return {
     listCount: a.length,
     listOn: ui.open,
     listEmpty: a.length === 0,
     listHas: a.length > 0,
-    listMail: "mailto:info@indigoff.com?subject=" + encodeURIComponent("My Indigoff list") + "&body=" + body,
-    listMailMessage: "My Indigoff list:\n\n" + a.map((x) => "- " + x.name + (x.kind ? " (" + x.kind + ")" : "")).join("\n"),
     openList: ui.openList,
     closeList: ui.closeList,
     clearList: list.clear,
