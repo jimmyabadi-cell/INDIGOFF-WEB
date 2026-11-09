@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import css from "./ListPanel.module.css";
 import { imgProps, SIZES } from "../lib/images.js";
 
@@ -71,9 +72,14 @@ export default function ListPanel({ v, homeHref = "/" }) {
                     <a className={css.link2} href="mailto:info@indigoff.com">
                       {v.t("list.sendToRep")}
                     </a>
-                    <a className={css.link3} href={v.listMail}>
+                    <Link
+                      className={css.link3}
+                      to="/contact"
+                      state={{ message: v.listMailMessage }}
+                      onClick={v.closeList}
+                    >
                       {v.t("list.email")}
-                    </a>
+                    </Link>
                     <button className={css.button2} type="button" onClick={v.clearList}>
                       {v.t("list.clear")}
                     </button>

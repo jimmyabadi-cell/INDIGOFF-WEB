@@ -44,6 +44,7 @@ export function listVals(list, ui) {
     listEmpty: a.length === 0,
     listHas: a.length > 0,
     listMail: "mailto:info@indigoff.com?subject=" + encodeURIComponent("My Indigoff list") + "&body=" + body,
+    listMailMessage: "My Indigoff list:\n\n" + a.map((x) => "- " + x.name + (x.kind ? " (" + x.kind + ")" : "")).join("\n"),
     openList: ui.openList,
     closeList: ui.closeList,
     clearList: list.clear,

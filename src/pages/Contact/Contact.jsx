@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import "../OnoffStudio/OnoffStudio.css";
@@ -69,7 +70,8 @@ async function sendContact(f, lang) {
 
 export default function Contact() {
   const { lang, chrome: v } = usePageChrome({ nav: NAV });
-  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: "" });
+  const location = useLocation();
+  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: location.state?.message || "" });
   const [errors, setErrors] = useState({});
   // "idle" · "sending" · "sent" (llegó por la API) · "mail" (se abrió la app de correo)
   const [status, setStatus] = useState("idle");
