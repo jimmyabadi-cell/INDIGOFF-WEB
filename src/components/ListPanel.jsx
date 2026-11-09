@@ -71,9 +71,8 @@ export default function ListPanel({ v, homeHref = "/" }) {
                   <div className={css.box5}>
                     <Link
                       className={css.link2}
-                      to="/contact"
+                      to="/find-a-rep"
                       state={{
-                        intent: "rep",
                         listItems: (v.listItems || []).map(({ name, kind, img, href }) => ({ name, kind, img, href })),
                       }}
                       onClick={v.closeList}

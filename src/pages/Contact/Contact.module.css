@@ -194,6 +194,37 @@
   opacity: 0;
 }
 
+/* Card del rep seleccionado (viene de /find-a-rep) */
+.repCard {
+  padding: 20px;
+  border: 1px solid var(--color-surface);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.repName {
+  margin: 8px 0 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-ink);
+}
+
+.repDetail {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.repTerritory {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
 /* Preview de productos seleccionados (viene de "Email my list") */
 .selection {
   display: flex;

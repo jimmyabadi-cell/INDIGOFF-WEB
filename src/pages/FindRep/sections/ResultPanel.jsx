@@ -18,9 +18,9 @@ export default function ResultPanel({ v }) {
             ) : null}
             <p className={css.text4}>{r.territory}</p>
             <div className={css.box2}>
-              <a className={css.link} href={r.mail}>
+              <button type="button" className={css.link} onClick={r.sendToRep}>
                 {v.t("findRep.email")}
-              </a>
+              </button>
               {r.hasPhone ? (
                 <>
                   <a className={css.link2} href={r.tel}>

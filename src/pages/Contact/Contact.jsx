@@ -72,6 +72,7 @@ export default function Contact() {
   const { lang, chrome: v } = usePageChrome({ nav: NAV });
   const location = useLocation();
   const listItems = location.state?.listItems || [];
+  const repInfo = location.state?.repInfo || null;
   const isRepRequest = location.state?.intent === "rep";
   const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
@@ -96,7 +97,7 @@ export default function Contact() {
       return;
     }
     setStatus("sending");
-    const result = await sendContact({ ...form, company: el.company.value, listItems, isRepRequest }, lang);
+    const result = await sendContact({ ...form, company: el.company.value, listItems, repInfo, isRepRequest }, lang);
     if (Array.isArray(result)) {
       setErrors(Object.fromEntries(result.map((k) => [k, k === "email" ? "email" : "required"])));
       setStatus("idle");
@@ -179,6 +180,14 @@ export default function Contact() {
                   {...p}
                 />
               )),
+            )}
+            {repInfo && (
+              <div className={css.repCard}>
+                <p className={css.selectionTitle}>Your representative</p>
+                <p className={css.repName}>{repInfo.name}</p>
+                {repInfo.contact && <p className={css.repDetail}>{repInfo.contact}</p>}
+                {repInfo.territory && <p className={css.repTerritory}>{repInfo.territory}</p>}
+              </div>
             )}
             {listItems.length > 0 && (
               <div className={css.selection}>

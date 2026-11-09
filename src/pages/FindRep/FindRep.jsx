@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
 import { useMergeState } from "../../hooks/useMergeState.js";
@@ -57,7 +58,14 @@ function territory(r, t) {
 function contactOf(r, t) {
   return r.contactKey ? t(r.contactKey) : r.contact;
 }
-function card(r, t) {
+function card(r, t, navigate, listItems) {
+  const repInfo = {
+    name: r.name,
+    contact: contactOf(r, t),
+    territory: territory(r, t),
+    email: r.email,
+    phone: r.phone,
+  };
   return {
     name: r.name,
     contact: contactOf(r, t),
@@ -68,6 +76,9 @@ function card(r, t) {
     hasPhone: !!r.phone,
     tel: "tel:" + (/^\s*\+/.test(r.phone) ? "+" : "+1") + r.phone.replace(/[^0-9]/g, ""),
     territory: territory(r, t),
+    sendToRep: function () {
+      navigate("/contact", { state: { intent: "rep", repInfo, listItems } });
+    },
   };
 }
 function keysForState(abbr) {
@@ -87,11 +98,14 @@ export default function FindRep() {
   // Pestaña del mapa: se deriva de la selección, pero el usuario también puede elegirla.
   const mapTab = useRef({ tab: "us", last: undefined });
   const { chrome } = usePageChrome({ nav: NAV });
-  const v = { ...repVals(st, setSt, chrome.t), ...mapVals(st, setSt, mapTab.current, chrome.t), ...chrome };
+  const navigate = useNavigate();
+  const location = useLocation();
+  const listItems = location.state?.listItems || [];
+  const v = { ...repVals(st, setSt, chrome.t, navigate, listItems), ...mapVals(st, setSt, mapTab.current, chrome.t), ...chrome };
   return template(v);
 }
 
-function repVals(st, setSt, t) {
+function repVals(st, setSt, t, navigate, listItems) {
   const sel = st.sel || [];
   const repSel = st.rep;
   let reps = [];
@@ -142,7 +156,7 @@ function repVals(st, setSt, t) {
           : keyName(sel[0]);
   }
   const results = reps.map(function (i) {
-    return card(i >= 0 ? REPS[i] : DEFAULT_REP, t);
+    return card(i >= 0 ? REPS[i] : DEFAULT_REP, t, navigate, listItems);
   });
   const all = REPS.map(function (r, i) {
     return { i: i, r: r };
