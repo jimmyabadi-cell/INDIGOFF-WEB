@@ -22,7 +22,6 @@ export function parseContact(body) {
   const fields = [];
   if (!data.name) fields.push("name");
   if (!EMAIL_RE.test(data.email)) fields.push("email");
-  if (!data.message) fields.push("message");
   return { data, fields };
 }
 

@@ -27,7 +27,6 @@ function validate(f) {
   if (!f.name.trim()) err.name = "required";
   if (!f.email.trim()) err.email = "required";
   else if (!EMAIL_RE.test(f.email.trim())) err.email = "email";
-  if (!f.message.trim()) err.message = "required";
   return err;
 }
 
@@ -198,7 +197,7 @@ export default function Contact() {
               </div>
             )}
             {field("message", (p) => (
-              <textarea className={css.input + " " + css.textarea} rows={5} aria-required="true" {...p} />
+              <textarea className={css.input + " " + css.textarea} rows={5} {...p} />
             ))}
             {/* Campo trampa para bots (ver api/contact.js): oculto y fuera del orden de tabulación. */}
             <input
