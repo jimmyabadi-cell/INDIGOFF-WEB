@@ -19,6 +19,7 @@ const FIELDS = [
   { name: "lastName", type: "text", autoComplete: "family-name" },
   { name: "phone", type: "tel", autoComplete: "tel" },
   { name: "email", type: "email", autoComplete: "email", required: true },
+  { name: "company", type: "text", autoComplete: "organization" },
 ];
 
 /** Errores por campo (claves de contact.errors), vacío si todo está bien. */
@@ -74,7 +75,7 @@ export default function Contact() {
   const listItems = location.state?.listItems || [];
   const repInfo = location.state?.repInfo || null;
   const isRepRequest = location.state?.intent === "rep";
-  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", company: "", message: "" });
   const [errors, setErrors] = useState({});
   // "idle" · "sending" · "sent" (llegó por la API) · "mail" (se abrió la app de correo)
   const [status, setStatus] = useState("idle");
@@ -97,7 +98,7 @@ export default function Contact() {
       return;
     }
     setStatus("sending");
-    const result = await sendContact({ ...form, company: el.company.value, listItems, repInfo, isRepRequest }, lang);
+    const result = await sendContact({ ...form, _hp: el._hp.value, listItems, repInfo, isRepRequest }, lang);
     if (Array.isArray(result)) {
       setErrors(Object.fromEntries(result.map((k) => [k, k === "email" ? "email" : "required"])));
       setStatus("idle");
@@ -212,7 +213,7 @@ export default function Contact() {
             <input
               className={css.trap}
               type="text"
-              name="company"
+              name="_hp"
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"

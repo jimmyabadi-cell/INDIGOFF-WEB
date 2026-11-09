@@ -8,7 +8,7 @@
 // Respuestas: 200 { ok: true } · 400 { error: "invalid", fields } · 405 · 500 { error: "not_configured" | "send_failed" }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const MAX = { name: 100, lastName: 100, phone: 40, email: 200, message: 5000 };
+const MAX = { name: 100, lastName: 100, phone: 40, email: 200, company: 100, message: 5000 };
 
 const clean = (v, max) =>
   String(v ?? "")
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
 
   // Campo trampa: invisible para personas, los bots lo llenan. Se responde ok para no darles pistas.
-  if (body.company) return res.status(200).json({ ok: true });
+  if (body._hp) return res.status(200).json({ ok: true });
 
   const { data, fields } = parseContact(body);
   if (fields.length) return res.status(400).json({ error: "invalid", fields });
@@ -72,12 +72,13 @@ export default async function handler(req, res) {
 
   const text = [
     `Name: ${fullName}`,
+    data.company ? `Company: ${data.company}` : null,
     `Phone: ${data.phone || "—"}`,
     `Email: ${data.email}`,
     `Language: ${lang}`,
     "",
     data.message,
-  ].join("\n");
+  ].filter(Boolean).join("\n");
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -111,6 +112,12 @@ export default async function handler(req, res) {
                   <p style="margin:0;font-size:16px;"><a href="mailto:${esc(data.email)}" style="color:#645dc5;text-decoration:none;">${esc(data.email)}</a></p>
                 </td>
               </tr>
+              ${data.company ? `<tr>
+                <td style="padding-bottom:20px;vertical-align:top;">
+                  <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Company</p>
+                  <p style="margin:0;font-size:16px;color:#111111;">${esc(data.company)}</p>
+                </td>
+              </tr>` : ""}
               <tr>
                 <td style="padding-bottom:20px;vertical-align:top;">
                   <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Phone</p>

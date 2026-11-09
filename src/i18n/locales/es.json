@@ -521,6 +521,7 @@
       "lastName": "Apellido",
       "phone": "Teléfono",
       "email": "Correo",
+      "company": "Empresa",
       "message": "Mensaje"
     },
     "send": "Enviar",
