@@ -51,8 +51,8 @@ export default function NewsletterDialog({ v }) {
                       </p>
                     </>
                   ) : null}
-                  <button type="button" onClick={v.nlSubmit} className="nl-btn">
-                    {v.nlCta}
+                  <button type="button" onClick={v.nlSubmit} className="nl-btn" disabled={v.nlLoading}>
+                    {v.nlLoading ? "…" : v.nlCta}
                   </button>
                   <button type="button" onClick={v.nlClose} className="nl-no">
                     {v.nlNo}

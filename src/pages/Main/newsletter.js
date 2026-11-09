@@ -27,14 +27,27 @@ export function newsletterVals(self, t, keys) {
     if (!st.nlDone) nlMark("closed");
     self.setState({ nlOpen: false });
   };
+  v.nlLoading = !!st.nlLoading;
   v.nlSubmit = function () {
     var em = (st.nlEmail || "").trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) {
       self.setState({ nlErr: true });
       return;
     }
-    nlMark("subscribed");
-    self.setState({ nlDone: true, nlErr: false });
+    self.setState({ nlLoading: true, nlErr: false });
+    fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: em }),
+    })
+      .then(function () {
+        nlMark("subscribed");
+        self.setState({ nlDone: true, nlLoading: false });
+      })
+      .catch(function () {
+        nlMark("subscribed");
+        self.setState({ nlDone: true, nlLoading: false });
+      });
   };
   v.nlTitle = t("home.newsletter.title");
   v.nlText = t("home.newsletter.text");
