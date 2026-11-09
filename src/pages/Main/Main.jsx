@@ -72,18 +72,23 @@ export default function Main() {
     return () => clearInterval(id);
   }, [cxEpoch, setSt]);
 
-  // Newsletter: aparece a los 2.5 s si nunca se cerró, y si no hay otra capa abierta.
+  // Newsletter: aparece cuando el usuario scrollea el 60% de la página.
   useEffect(() => {
     let seen = false;
     try {
       seen = !!window.localStorage.getItem("indigoff_nl");
     } catch (e) {}
     if (seen) return undefined;
-    const id = setTimeout(() => {
+    const onScroll = () => {
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      if (scrolled / total < 0.6) return;
+      window.removeEventListener("scroll", onScroll);
       const { st: s, menuOn } = live.current;
       if (!s.lb && !menuOn && !s.searchOpen) setSt({ nlOpen: true });
-    }, 2500);
-    return () => clearTimeout(id);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [setSt]);
 
   // Un solo listener de teclado; cada capa decide qué hacer con la tecla.
