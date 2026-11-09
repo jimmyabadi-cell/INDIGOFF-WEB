@@ -75,24 +75,48 @@ export default async function handler(req, res) {
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1eb;padding:40px 16px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:4px;overflow:hidden;">
+
+        <!-- Header -->
         <tr>
           <td style="background:#1e125c;padding:32px 40px;">
             <p style="margin:0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b5b7dd;">INDIGOFF</p>
             <p style="margin:8px 0 0;font-size:22px;font-weight:600;color:#ffffff;">You're on the list.</p>
           </td>
         </tr>
+
+        <!-- Email field -->
         <tr>
-          <td style="padding:32px 40px;">
-            <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#3a3935;">Thank you for subscribing. You'll be the first to know about new collections, concepts and projects from Indigoff.</p>
-            <p style="margin:0 0 32px;font-size:16px;line-height:1.7;color:#3a3935;">In the meantime, explore our work at <a href="https://indigoff.com" style="color:#645dc5;text-decoration:none;">indigoff.com</a>.</p>
+          <td style="padding:32px 40px 0;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding-bottom:20px;vertical-align:top;">
+                  <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Email</p>
+                  <p style="margin:0;font-size:16px;"><a href="mailto:${esc(email)}" style="color:#645dc5;text-decoration:none;">${esc(email)}</a></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr><td style="padding:0 40px;"><hr style="border:none;border-top:1px solid #c9c4ba;margin:0;"></td></tr>
+
+        <!-- Message -->
+        <tr>
+          <td style="padding:28px 40px 40px;">
+            <p style="margin:0 0 12px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Message</p>
+            <p style="margin:0 0 28px;font-size:15px;line-height:1.7;color:#3a3935;">Thank you for subscribing. You'll be the first to know about new collections, concepts and projects from Indigoff.</p>
             <a href="https://indigoff.com" style="display:inline-block;background:#645dc5;color:#ffffff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 28px;border-radius:2px;">Explore Indigoff</a>
           </td>
         </tr>
+
+        <!-- Footer -->
         <tr>
           <td style="background:#ece9e4;padding:20px 40px;">
             <p style="margin:0;font-size:12px;color:#6b675f;">You subscribed at <a href="https://indigoff.com" style="color:#645dc5;text-decoration:none;">indigoff.com</a>. If this wasn't you, ignore this email.</p>
           </td>
         </tr>
+
       </table>
     </td></tr>
   </table>
