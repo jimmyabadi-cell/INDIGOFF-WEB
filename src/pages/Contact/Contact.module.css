@@ -193,3 +193,55 @@
   height: 1px;
   opacity: 0;
 }
+
+/* Preview de productos seleccionados (viene de "Email my list") */
+.selection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.selectionTitle {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.selectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 10px;
+}
+
+.selectionItem {
+  text-decoration: none;
+  color: inherit;
+}
+
+.selectionThumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 6px;
+  background: var(--color-surface);
+}
+
+.selectionName {
+  display: block;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.selectionKind {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 2px;
+}

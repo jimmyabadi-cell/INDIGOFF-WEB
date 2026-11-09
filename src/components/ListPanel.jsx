@@ -75,7 +75,10 @@ export default function ListPanel({ v, homeHref = "/" }) {
                     <Link
                       className={css.link3}
                       to="/contact"
-                      state={{ message: v.listMailMessage }}
+                      state={{
+                        message: v.listMailMessage,
+                        listItems: (v.listItems || []).map(({ name, kind, img, href }) => ({ name, kind, img, href })),
+                      }}
                       onClick={v.closeList}
                     >
                       {v.t("list.email")}

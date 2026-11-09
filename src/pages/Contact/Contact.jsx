@@ -71,7 +71,8 @@ async function sendContact(f, lang) {
 export default function Contact() {
   const { lang, chrome: v } = usePageChrome({ nav: NAV });
   const location = useLocation();
-  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: location.state?.message || "" });
+  const listItems = location.state?.listItems || [];
+  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   // "idle" · "sending" · "sent" (llegó por la API) · "mail" (se abrió la app de correo)
   const [status, setStatus] = useState("idle");
@@ -94,7 +95,7 @@ export default function Contact() {
       return;
     }
     setStatus("sending");
-    const result = await sendContact({ ...form, company: el.company.value }, lang);
+    const result = await sendContact({ ...form, company: el.company.value, listItems }, lang);
     if (Array.isArray(result)) {
       setErrors(Object.fromEntries(result.map((k) => [k, k === "email" ? "email" : "required"])));
       setStatus("idle");
@@ -176,6 +177,22 @@ export default function Contact() {
                   {...p}
                 />
               )),
+            )}
+            {listItems.length > 0 && (
+              <div className={css.selection}>
+                <p className={css.selectionTitle}>Your selection</p>
+                <div className={css.selectionGrid}>
+                  {listItems.map((item, i) => (
+                    <a key={i} className={css.selectionItem} href={item.href} target="_blank" rel="noopener noreferrer">
+                      {item.img && (
+                        <img className={css.selectionThumb} src={item.img} alt={item.name} loading="lazy" />
+                      )}
+                      <span className={css.selectionName}>{item.name}</span>
+                      {item.kind && <span className={css.selectionKind}>{item.kind}</span>}
+                    </a>
+                  ))}
+                </div>
+              </div>
             )}
             {field("message", (p) => (
               <textarea className={css.input + " " + css.textarea} rows={5} aria-required="true" {...p} />

@@ -33,6 +33,12 @@ export function listToggle(item) {
  * @param {ReturnType<import("../hooks/useSavedList.js").useSavedList>} list
  * @param {{ open: boolean, openList: () => void, closeList: () => void }} ui
  */
+function itemHref(item) {
+  const parts = (item.id || "").split(":");
+  if (parts[0] === "lb" && parts[1]) return "/" + parts[1].toLowerCase();
+  return "/";
+}
+
 export function listVals(list, ui) {
   const a = list.items;
   const body =
@@ -52,6 +58,7 @@ export function listVals(list, ui) {
       name: x.name,
       kind: x.kind || "",
       img: x.img || "",
+      href: itemHref(x),
       remove: () => list.toggle(x),
     })),
   };

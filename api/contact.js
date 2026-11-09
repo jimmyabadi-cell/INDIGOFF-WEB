@@ -44,6 +44,14 @@ export default async function handler(req, res) {
 
   const fullName = [data.name, data.lastName].filter(Boolean).join(" ");
   const lang = body.lang === "es" ? "Español" : "English";
+  const listItems = Array.isArray(body.listItems)
+    ? body.listItems.slice(0, 20).map((x) => ({
+        name: String(x.name || "").slice(0, 100),
+        kind: String(x.kind || "").slice(0, 60),
+        img: String(x.img || "").slice(0, 300),
+        href: String(x.href || "/").slice(0, 100),
+      }))
+    : [];
   // También las comillas: el correo del visitante va dentro de atributos href.
   const esc = (s) =>
     String(s)
@@ -116,6 +124,29 @@ export default async function handler(req, res) {
             <p style="margin:0;font-size:15px;line-height:1.7;color:#3a3935;white-space:pre-wrap;">${esc(data.message)}</p>
           </td>
         </tr>
+
+        ${listItems.length > 0 ? `
+        <!-- Divider -->
+        <tr><td style="padding:0 40px;"><hr style="border:none;border-top:1px solid #c9c4ba;margin:0;"></td></tr>
+
+        <!-- Selected products -->
+        <tr>
+          <td style="padding:28px 40px 32px;">
+            <p style="margin:0 0 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Selected products</p>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                ${listItems.map((item) => `
+                <td width="${Math.floor(100 / Math.min(listItems.length, 4))}%" style="padding:0 8px 0 0;vertical-align:top;">
+                  <a href="https://indigoff.com${esc(item.href)}" style="text-decoration:none;color:inherit;">
+                    ${item.img ? `<img src="https://indigoff.com${esc(item.img)}" width="120" style="display:block;width:100%;max-width:120px;aspect-ratio:4/3;object-fit:cover;border-radius:2px;margin-bottom:6px;" alt="${esc(item.name)}">` : ""}
+                    <p style="margin:0;font-size:13px;font-weight:500;color:#111111;line-height:1.3;">${esc(item.name)}</p>
+                    ${item.kind ? `<p style="margin:2px 0 0;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#6b675f;">${esc(item.kind)}</p>` : ""}
+                  </a>
+                </td>`).join("")}
+              </tr>
+            </table>
+          </td>
+        </tr>` : ""}
 
         <!-- CTA -->
         <tr>
