@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import FloatingActions from "./components/FloatingActions.jsx";
+// import FloatingActions from "./components/FloatingActions.jsx";
 
 const Main = lazy(() => import("./pages/Main/Main.jsx"));
 const CollectionPage = lazy(() => import("./pages/Collection/CollectionPage.jsx"));
@@ -38,7 +38,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <PageTitle />
-      <FloatingActions />
+      {/* <FloatingActions /> */}
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Main />} />
