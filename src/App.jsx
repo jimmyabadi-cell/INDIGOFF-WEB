@@ -1,5 +1,5 @@
-import { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Suspense, lazy, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 const Main = lazy(() => import("./pages/Main/Main.jsx"));
 const CollectionPage = lazy(() => import("./pages/Collection/CollectionPage.jsx"));
@@ -9,10 +9,34 @@ const FindRep = lazy(() => import("./pages/FindRep/FindRep.jsx"));
 const Contact = lazy(() => import("./pages/Contact/Contact.jsx"));
 
 const COLLECTIONS = ["ceilings", "walls", "lights", "dividers", "podcaster"];
+const TITLES = {
+  "/": "Indigoff",
+  "/downloads": "Downloads — Indigoff",
+  "/find-a-rep": "Find a rep — Indigoff",
+  "/onoff-studio": "onoff studio — Indigoff",
+  "/contact": "Contact — Indigoff",
+};
+
+function titleFor(pathname) {
+  const path = (pathname.replace(/\/+$/, "") || "/").toLowerCase();
+  const slug = path.slice(1);
+  if (COLLECTIONS.includes(slug)) return slug.charAt(0).toUpperCase() + slug.slice(1) + " — Indigoff";
+  return TITLES[path] || "Indigoff";
+}
+
+/** Título de la pestaña según la ruta. */
+function PageTitle() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = titleFor(pathname);
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   return (
     <BrowserRouter>
+      <PageTitle />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Main />} />
