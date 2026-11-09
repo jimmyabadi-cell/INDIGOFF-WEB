@@ -68,7 +68,7 @@ export default function ListPanel({ v, homeHref = "/" }) {
               {v.listHas ? (
                 <>
                   <div className={css.box5}>
-                    <a className={css.link2} href="/find-a-rep">
+                    <a className={css.link2} href="mailto:info@indigoff.com">
                       {v.t("list.sendToRep")}
                     </a>
                     <a className={css.link3} href={v.listMail}>
