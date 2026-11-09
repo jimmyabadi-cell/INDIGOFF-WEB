@@ -91,21 +91,25 @@ export default async function handler(req, res) {
           <td style="padding:32px 40px 0;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="50%" style="padding-bottom:20px;vertical-align:top;">
+                <td style="padding-bottom:20px;vertical-align:top;">
                   <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Name</p>
                   <p style="margin:0;font-size:16px;color:#111111;font-weight:500;">${esc(fullName)}</p>
                 </td>
-                <td width="50%" style="padding-bottom:20px;vertical-align:top;">
+              </tr>
+              <tr>
+                <td style="padding-bottom:20px;vertical-align:top;">
                   <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Email</p>
                   <p style="margin:0;font-size:16px;"><a href="mailto:${esc(data.email)}" style="color:#645dc5;text-decoration:none;">${esc(data.email)}</a></p>
                 </td>
               </tr>
               <tr>
-                <td width="50%" style="padding-bottom:20px;vertical-align:top;">
+                <td style="padding-bottom:20px;vertical-align:top;">
                   <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Phone</p>
                   <p style="margin:0;font-size:16px;color:#111111;">${esc(data.phone || "—")}</p>
                 </td>
-                <td width="50%" style="padding-bottom:20px;vertical-align:top;">
+              </tr>
+              <tr>
+                <td style="padding-bottom:20px;vertical-align:top;">
                   <p style="margin:0 0 4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Language</p>
                   <p style="margin:0;font-size:16px;color:#111111;">${esc(lang)}</p>
                 </td>
