@@ -1,6 +1,8 @@
 import { useState } from "react";
 import css from "./Contact.module.css";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 /** Suscripción al newsletter. */
 export default function Contact({ v }) {
   const [email, setEmail] = useState("");
@@ -9,6 +11,7 @@ export default function Contact({ v }) {
   async function handleSubmit(e) {
     e.preventDefault();
     if (status === "loading" || status === "done") return;
+    if (!EMAIL_RE.test(email.trim())) { setStatus("invalid"); return; }
     setStatus("loading");
     try {
       const r = await fetch("/api/newsletter", {
