@@ -135,16 +135,17 @@ test("Títulos de sección sticky quedan pegados al header", async ({ page }) =>
 
 test("Cambio de idioma EN → ES", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByText("Request a quote").first()).toBeVisible();
+  await expect(page.getByText("Contact us").first()).toBeVisible();
   await page.locator(".site-hd").getByRole("button", { name: "Español" }).click();
-  await expect(page.getByText("Solicita una cotización").first()).toBeVisible();
+  await expect(page.getByText("Contáctanos").first()).toBeVisible();
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
 });
 
 test("Footer: correo de contacto y redes sociales", async ({ page }) => {
   await page.goto("/");
   const footer = page.locator("footer");
-  await expect(footer.locator('a[href="mailto:info@indigoff.com"]').first()).toBeVisible();
+  // El correo del footer lleva al formulario de contacto.
+  await expect(footer.locator('a[href="/contact"]', { hasText: "info@indigoff.com" })).toBeVisible();
   const socials = await footer.locator("a.soc").evaluateAll((links) => links.map((a) => a.href));
   expect(socials).toEqual([
     "https://www.instagram.com/indigoff.design/",
@@ -166,8 +167,9 @@ test("Contacto: valida campos obligatorios", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Contact Indigoff");
   const form = page.locator("main form");
 
+  // Obligatorios: nombre y correo (el mensaje y la empresa son opcionales).
   await form.getByRole("button", { name: "Send" }).click();
-  await expect(form.getByText("This field is required.")).toHaveCount(3);
+  await expect(form.getByText("This field is required.")).toHaveCount(2);
   await expect(form.getByLabel("Name", { exact: true })).toBeFocused();
 
   await fillContact(form);
@@ -187,7 +189,7 @@ test("Contacto: envía el mensaje a /api/contact", async ({ page }) => {
   await page.getByRole("button", { name: "Send" }).click();
   await expect(page.getByRole("status")).toContainText("Message sent");
   await expect(page.getByRole("status")).toContainText("ana@example.com");
-  expect(payload).toMatchObject({ name: "Ana", lastName: "López", email: "ana@example.com", lang: "en", company: "" });
+  expect(payload).toMatchObject({ name: "Ana", lastName: "López", email: "ana@example.com", lang: "en", _hp: "" });
 });
 
 test("Contacto: si la API falla, abre la app de correo", async ({ page }) => {
@@ -202,9 +204,9 @@ test("Botones de acción llevan a /contact", async ({ page }) => {
   await page.goto("/");
   const toContact = (name) => page.locator(`a[href="/contact"]`, { hasText: name }).first();
   for (const name of [
-    "Request a quote",
+    "Contact us",
     "Book an appointment",
-    "Adapt this concept to your space",
+    "Make your own",
     "Request an acoustic + lighting study",
     "Request samples",
   ]) {
