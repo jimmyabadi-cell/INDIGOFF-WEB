@@ -62,7 +62,7 @@ test("API contacto: rechaza datos inválidos y otros métodos", async () => {
 });
 
 test("API contacto: ignora bots (campo trampa) y avisa si falta la clave", async () => {
-  expect((await call({ ...VALID, company: "Spam Inc" })).code).toBe(200);
+  expect((await call({ ...VALID, _hp: "Spam Inc" })).code).toBe(200);
   expect(sent).toHaveLength(0);
   delete process.env.RESEND_API_KEY;
   const res = await call(VALID);

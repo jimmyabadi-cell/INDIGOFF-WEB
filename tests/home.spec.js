@@ -99,16 +99,23 @@ test.describe("Home", () => {
 });
 
 test.describe("Newsletter", () => {
-  test("aparece a los 2.5 s y Escape lo cierra para siempre", async ({ page }) => {
-    // Reloj en pausa desde antes de cargar: el tiempo solo avanza con runFor (si no, una carga lenta lo adelanta).
-    await page.clock.install({ time: new Date("2026-01-01T10:00:00") });
-    await page.clock.pauseAt(new Date("2026-01-01T10:00:01"));
+  /** Baja hasta el porcentaje dado de la página (el popup aparece al 60%). */
+  async function scrollTo(page, ratio) {
+    await page.evaluate((r) => {
+      document.documentElement.style.scrollBehavior = "auto";
+      const max = document.documentElement.scrollHeight;
+      window.scrollTo(0, max * r - window.innerHeight);
+    }, ratio);
+  }
+
+  test("aparece al 60% del scroll y Escape lo cierra para siempre", async ({ page }) => {
     await page.goto("/");
     await page.locator(".site-hd").waitFor();
     const nl = page.locator(".nl[role=dialog]");
-    await page.clock.runFor(2000);
+    await scrollTo(page, 0.5);
+    await page.waitForTimeout(300);
     await expect(nl).toHaveCount(0);
-    await page.clock.runFor(700);
+    await scrollTo(page, 0.65);
     await expect(nl).toBeVisible();
     expect(await bodyOverflow(page)).toBe("hidden");
     await page.keyboard.press("Escape");
@@ -116,13 +123,15 @@ test.describe("Newsletter", () => {
     expect(await page.evaluate(() => window.localStorage.getItem("indigoff_nl"))).toBe("closed");
   });
 
-  test("valida el correo y confirma la suscripción", async ({ page }) => {
-    // Reloj en pausa desde antes de cargar: el tiempo solo avanza con runFor (si no, una carga lenta lo adelanta).
-    await page.clock.install({ time: new Date("2026-01-01T10:00:00") });
-    await page.clock.pauseAt(new Date("2026-01-01T10:00:01"));
+  test("valida el correo y envía la suscripción a /api/newsletter", async ({ page }) => {
+    let payload;
+    await page.route("/api/newsletter", async (route) => {
+      payload = route.request().postDataJSON();
+      await route.fulfill({ json: { ok: true } });
+    });
     await page.goto("/");
     await page.locator(".site-hd").waitFor();
-    await page.clock.runFor(2700);
+    await scrollTo(page, 0.65);
     const nl = page.locator(".nl[role=dialog]");
     await expect(nl).toBeVisible();
     await nl.locator("input").fill("no-es-correo");
@@ -131,6 +140,7 @@ test.describe("Newsletter", () => {
     await nl.locator("input").fill("hola@indigoff.com");
     await nl.getByRole("button", { name: "Subscribe" }).click();
     await expect(nl).toContainText("Thank you");
+    expect(payload).toEqual({ email: "hola@indigoff.com" });
     expect(await page.evaluate(() => window.localStorage.getItem("indigoff_nl"))).toBe("subscribed");
   });
 });
