@@ -1,12 +1,16 @@
 // Suscripción al newsletter: Vercel lo publica como función en POST /api/newsletter.
-// Envía dos correos vía Resend:
-//   1. Notificación a los admins (NEWSLETTER_TO o fallback hardcodeado)
-//   2. Bienvenida al suscriptor
+// Con Resend:
+//   1. Guarda al suscriptor en una Audience (lista de contactos), si RESEND_AUDIENCE_ID está configurada
+//   2. Notificación a los admins (NEWSLETTER_TO o fallback hardcodeado)
+//   3. Bienvenida al suscriptor
+// La suscripción cuenta como hecha si quedó registrada (en la Audience o en el aviso a los admins); si solo falla
+// la bienvenida se registra en el log y se responde ok, para que el visitante no reintente y duplique avisos.
 //
 // Variables de entorno:
-//   RESEND_API_KEY   (obligatoria)
-//   CONTACT_FROM     remitente. Por defecto "Indigoff Web <web@indigoff.com>".
-//   NEWSLETTER_TO    admins separados por coma. Por defecto los dos hardcodeados abajo.
+//   RESEND_API_KEY      (obligatoria)
+//   RESEND_AUDIENCE_ID  ID de la Audience de Resend donde se guardan los suscriptores (opcional, recomendada).
+//   CONTACT_FROM        remitente. Por defecto "Indigoff Web <web@indigoff.com>".
+//   NEWSLETTER_TO       admins separados por coma. Por defecto los dos hardcodeados abajo.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const ADMIN_TO = ["jashua.pena@wrks.com.mx", "info@indigoff.com"];
@@ -22,18 +26,25 @@ export default async function handler(req, res) {
   // Honeypot
   if (body.company) return res.status(200).json({ ok: true });
 
-  const email = String(body.email ?? "").trim().slice(0, 200);
+  const email = String(body.email ?? "")
+    .trim()
+    .slice(0, 200);
   if (!EMAIL_RE.test(email)) return res.status(400).json({ error: "invalid" });
 
   const key = process.env.RESEND_API_KEY;
   if (!key) return res.status(500).json({ error: "not_configured" });
 
   const from = process.env.CONTACT_FROM || "Indigoff Web <web@indigoff.com>";
-  const adminTo = process.env.NEWSLETTER_TO
-    ? process.env.NEWSLETTER_TO.split(",").map((s) => s.trim())
-    : ADMIN_TO;
+  const adminTo = process.env.NEWSLETTER_TO ? process.env.NEWSLETTER_TO.split(",").map((s) => s.trim()) : ADMIN_TO;
 
-  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // También las comillas: el correo del suscriptor va dentro de atributos href.
+  const esc = (s) =>
+    String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
 
   // 1 — Notificación a admins
   const adminHtml = `<!DOCTYPE html>
@@ -123,35 +134,40 @@ export default async function handler(req, res) {
 </body>
 </html>`;
 
-  const [r1, r2] = await Promise.all([
-    fetch("https://api.resend.com/emails", {
+  const resend = (path, payload) =>
+    fetch("https://api.resend.com" + path, {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from,
-        to: adminTo,
-        reply_to: email,
-        subject: `Newsletter — ${email}`,
-        text: `New subscriber: ${email}`,
-        html: adminHtml,
-      }),
+      body: JSON.stringify(payload),
+    }).catch((err) => ({ ok: false, status: 0, text: async () => String(err) }));
+
+  const audience = process.env.RESEND_AUDIENCE_ID;
+  const [saved, admin, welcome] = await Promise.all([
+    audience ? resend(`/audiences/${audience}/contacts`, { email, unsubscribed: false }) : null,
+    resend("/emails", {
+      from,
+      to: adminTo,
+      reply_to: email,
+      subject: `Newsletter — ${email}`,
+      text: `New subscriber: ${email}`,
+      html: adminHtml,
     }),
-    fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from,
-        to: [email],
-        subject: "You're on the list — Indigoff",
-        text: "Thank you for subscribing. You'll be the first to know about new collections, concepts and projects from Indigoff.\n\nhttps://indigoff.com",
-        html: welcomeHtml,
-      }),
+    resend("/emails", {
+      from,
+      to: [email],
+      subject: "You're on the list — Indigoff",
+      text: "Thank you for subscribing. You'll be the first to know about new collections, concepts and projects from Indigoff.\n\nhttps://indigoff.com",
+      html: welcomeHtml,
     }),
   ]);
 
-  if (!r1.ok || !r2.ok) {
-    console.error("[newsletter] Resend", r1.status, r2.status);
-    return res.status(500).json({ error: "send_failed" });
+  for (const [name, r] of [
+    ["audience", saved],
+    ["admin", admin],
+    ["welcome", welcome],
+  ]) {
+    if (r && !r.ok) console.error(`[newsletter] Resend ${name}`, r.status, await r.text());
   }
+  if (!saved?.ok && !admin.ok) return res.status(500).json({ error: "send_failed" });
   return res.status(200).json({ ok: true });
 }
