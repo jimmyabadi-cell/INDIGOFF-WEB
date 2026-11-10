@@ -4,7 +4,7 @@ import css from "./Contact.module.css";
 /** Suscripción al newsletter. */
 export default function Contact({ v }) {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | loading | done | error
+  const [status, setStatus] = useState("idle"); // idle | loading | done | invalid | failed
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -16,9 +16,9 @@ export default function Contact({ v }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      setStatus(r.ok ? "done" : "error");
+      setStatus(r.ok ? "done" : r.status === 400 ? "invalid" : "failed");
     } catch {
-      setStatus("error");
+      setStatus("failed");
     }
   }
 
@@ -46,11 +46,11 @@ export default function Contact({ v }) {
           <button className={css.button} type="submit" disabled={status === "loading"}>
             {status === "loading" ? "…" : v.t("home.contact.signUp")}
           </button>
-          {status === "error" && (
+          {status === "invalid" || status === "failed" ? (
             <p className={css.text} role="alert" style={{ color: "#c0392b" }}>
-              {v.t("home.newsletter.invalid")}
+              {v.t(status === "failed" ? "home.newsletter.failed" : "home.newsletter.invalid")}
             </p>
-          )}
+          ) : null}
         </form>
       )}
     </section>

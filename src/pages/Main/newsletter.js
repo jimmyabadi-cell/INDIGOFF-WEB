@@ -35,19 +35,24 @@ export function newsletterVals(self, t, keys) {
       return;
     }
     self.setState({ nlLoading: true, nlErr: false });
+    // Solo se confirma si el servidor aceptó la suscripción; si falla, el popup sigue abierto con el error.
+    var fail = function () {
+      self.setState({ nlErr: "failed", nlLoading: false });
+    };
     fetch("/api/newsletter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: em }),
     })
-      .then(function () {
-        nlMark("subscribed");
-        self.setState({ nlDone: true, nlLoading: false });
+      .then(function (r) {
+        if (r.ok) {
+          nlMark("subscribed");
+          self.setState({ nlDone: true, nlLoading: false });
+        } else if (r.status === 400) {
+          self.setState({ nlErr: true, nlLoading: false });
+        } else fail();
       })
-      .catch(function () {
-        nlMark("subscribed");
-        self.setState({ nlDone: true, nlLoading: false });
-      });
+      .catch(fail);
   };
   v.nlTitle = t("home.newsletter.title");
   v.nlText = t("home.newsletter.text");
@@ -55,7 +60,7 @@ export function newsletterVals(self, t, keys) {
   v.nlCta = t("home.newsletter.subscribe");
   v.nlNo = t("home.newsletter.noThanks");
   v.nlCloseLbl = t("common.menu.close");
-  v.nlErrText = t("home.newsletter.invalid");
+  v.nlErrText = t(st.nlErr === "failed" ? "home.newsletter.failed" : "home.newsletter.invalid");
   v.nlThanks = t("home.newsletter.thanks");
   v.nlThanksText = t("home.newsletter.thanksText");
   v.nlContinue = t("home.newsletter.continue");

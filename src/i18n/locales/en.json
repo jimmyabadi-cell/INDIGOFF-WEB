@@ -487,7 +487,8 @@
       "invalid": "Enter a valid email address.",
       "thanks": "Thank you",
       "thanksText": "You are on the list. We will be in touch soon.",
-      "continue": "Continue"
+      "continue": "Continue",
+      "failed": "We couldn’t subscribe you right now. Please try again or write to info@indigoff.com."
     },
     "conceptNames": {
       "R2001": "Organic flow",
