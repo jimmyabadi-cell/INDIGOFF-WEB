@@ -192,6 +192,22 @@ test("Contacto: envía el mensaje a /api/contact", async ({ page }) => {
   expect(payload).toMatchObject({ name: "Ana", lastName: "López", email: "ana@example.com", lang: "en", _hp: "" });
 });
 
+test("Contacto: escribir otro mensaje limpia todos los campos sin errores", async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.route("/api/contact", (route) => route.fulfill({ json: { ok: true } }));
+  await page.goto("/contact");
+  const form = page.locator("main form");
+  await fillContact(form);
+  await form.getByLabel("Company").fill("Acme");
+  await form.getByRole("button", { name: "Send" }).click();
+  await page.getByRole("button", { name: "Write another message" }).click();
+  for (const label of ["Name", "Company", "Email"])
+    await expect(form.getByLabel(label, { exact: true })).toHaveValue("");
+  await form.getByLabel("Company").fill("Otra");
+  await expect(form.getByLabel("Company")).toHaveValue("Otra");
+  expect(errors.filter((e) => /controlled|uncontrolled/i.test(e))).toEqual([]);
+});
+
 test("Contacto: si la API falla, abre la app de correo", async ({ page }) => {
   await page.route("/api/contact", (route) => route.fulfill({ status: 500, json: { error: "send_failed" } }));
   await page.goto("/contact");

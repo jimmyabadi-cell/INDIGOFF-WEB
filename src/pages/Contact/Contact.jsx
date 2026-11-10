@@ -13,6 +13,8 @@ import css from "./Contact.module.css";
 const NAV = { DW_CATS, DW_FIN, ifoSetPending };
 const EMAIL = "info@indigoff.com";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// Valores iniciales del formulario (también al escribir otro mensaje): todos los campos, para que sigan controlados.
+const EMPTY_FORM = { name: "", lastName: "", phone: "", email: "", company: "", message: "" };
 
 const FIELDS = [
   { name: "name", type: "text", autoComplete: "given-name", required: true },
@@ -75,7 +77,7 @@ export default function Contact() {
   const listItems = location.state?.listItems || [];
   const repInfo = location.state?.repInfo || null;
   const isRepRequest = location.state?.intent === "rep";
-  const [form, setForm] = useState({ name: "", lastName: "", phone: "", email: "", company: "", message: "" });
+  const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
   // "idle" · "sending" · "sent" (llegó por la API) · "mail" (se abrió la app de correo)
   const [status, setStatus] = useState("idle");
@@ -111,7 +113,7 @@ export default function Contact() {
   };
 
   const reset = () => {
-    if (status === "sent") setForm({ name: "", lastName: "", phone: "", email: "", message: "" });
+    if (status === "sent") setForm(EMPTY_FORM);
     setStatus("idle");
   };
 
@@ -196,9 +198,7 @@ export default function Contact() {
                 <div className={css.selectionGrid}>
                   {listItems.map((item, i) => (
                     <a key={i} className={css.selectionItem} href={item.href} target="_blank" rel="noopener noreferrer">
-                      {item.img && (
-                        <img className={css.selectionThumb} src={item.img} alt={item.name} loading="lazy" />
-                      )}
+                      {item.img && <img className={css.selectionThumb} src={item.img} alt={item.name} loading="lazy" />}
                       <span className={css.selectionName}>{item.name}</span>
                       {item.kind && <span className={css.selectionKind}>{item.kind}</span>}
                     </a>
@@ -210,14 +210,7 @@ export default function Contact() {
               <textarea className={css.input + " " + css.textarea} rows={5} {...p} />
             ))}
             {/* Campo trampa para bots (ver api/contact.js): oculto y fuera del orden de tabulación. */}
-            <input
-              className={css.trap}
-              type="text"
-              name="_hp"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-            />
+            <input className={css.trap} type="text" name="_hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <button className={css.button} type="submit" disabled={status === "sending"}>
               {status === "sending" ? v.t("contact.sending") : v.t("contact.send")}
             </button>

@@ -487,7 +487,8 @@
       "invalid": "Escribe un correo válido.",
       "thanks": "Gracias",
       "thanksText": "Ya estás en la lista. Pronto te escribimos.",
-      "continue": "Continuar"
+      "continue": "Continuar",
+      "failed": "No pudimos suscribirte en este momento. Intenta de nuevo o escríbenos a info@indigoff.com."
     },
     "conceptNames": {
       "R2001": "Flujo orgánico",

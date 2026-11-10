@@ -143,4 +143,36 @@ test.describe("Newsletter", () => {
     expect(payload).toEqual({ email: "hola@indigoff.com" });
     expect(await page.evaluate(() => window.localStorage.getItem("indigoff_nl"))).toBe("subscribed");
   });
+
+  test("si la API falla, avisa y no marca la suscripción", async ({ page }) => {
+    await page.route("/api/newsletter", (route) => route.fulfill({ status: 500, json: { error: "send_failed" } }));
+    await page.goto("/");
+    await page.locator(".site-hd").waitFor();
+    await scrollTo(page, 0.65);
+    const nl = page.locator(".nl[role=dialog]");
+    await expect(nl).toBeVisible();
+    await nl.locator("input").fill("hola@indigoff.com");
+    await nl.getByRole("button", { name: "Subscribe" }).click();
+    await expect(nl).toContainText("We couldn’t subscribe you right now");
+    await expect(nl).not.toContainText("Thank you");
+    expect(await page.evaluate(() => window.localStorage.getItem("indigoff_nl"))).toBeNull();
+  });
+
+  test("sección de la home: distingue correo inválido de error del servidor", async ({ page }) => {
+    let status = 400;
+    await page.route("/api/newsletter", (route) => route.fulfill({ status, json: {} }));
+    // La sección está al final: sin esto, al bajar aparece el popup y tapa el botón.
+    await page.addInitScript(() => window.localStorage.setItem("indigoff_nl", "closed"));
+    await page.goto("/");
+    const section = page.locator("#contact");
+    await section.locator("input[type=email]").fill("hola@indigoff.com");
+    await section.getByRole("button", { name: "Sign up" }).click();
+    await expect(section.getByRole("alert")).toHaveText("Enter a valid email address.");
+    status = 500;
+    await section.getByRole("button", { name: "Sign up" }).click();
+    await expect(section.getByRole("alert")).toContainText("We couldn’t subscribe you right now");
+    status = 200;
+    await section.getByRole("button", { name: "Sign up" }).click();
+    await expect(section).toContainText("Thank you");
+  });
 });
