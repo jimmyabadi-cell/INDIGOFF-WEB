@@ -58,13 +58,12 @@ function territory(r, t) {
 function contactOf(r, t) {
   return r.contactKey ? t(r.contactKey) : r.contact;
 }
-function card(r, t, navigate, listItems) {
+function card(r, t, navigate, listItems, selectedPlace) {
   const repInfo = {
     name: r.name,
-    contact: contactOf(r, t),
-    territory: territory(r, t),
     email: r.email,
     phone: r.phone,
+    selectedPlace: selectedPlace || "",
   };
   return {
     name: r.name,
@@ -155,8 +154,20 @@ function repVals(st, setSt, t, navigate, listItems) {
           ? t("findRep.countries.ca")
           : keyName(sel[0]);
   }
+  var selectedPlace = "";
+  if (sel.length) {
+    if (sel.length > 1) {
+      selectedPlace = /^MX[A-Z]{3}$/.test(sel[0])
+        ? t("findRep.countries.mx")
+        : NAMES[sel[0].split("_")[0]];
+    } else if (sel[0] === "CAN") {
+      selectedPlace = t("findRep.countries.ca");
+    } else {
+      selectedPlace = keyName(sel[0]);
+    }
+  }
   const results = reps.map(function (i) {
-    return card(i >= 0 ? REPS[i] : DEFAULT_REP, t, navigate, listItems);
+    return card(i >= 0 ? REPS[i] : DEFAULT_REP, t, navigate, listItems, selectedPlace);
   });
   const all = REPS.map(function (r, i) {
     return { i: i, r: r };

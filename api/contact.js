@@ -47,8 +47,7 @@ export default async function handler(req, res) {
   const repInfo = body.repInfo && typeof body.repInfo === "object"
     ? {
         name: String(body.repInfo.name || "").slice(0, 100),
-        contact: String(body.repInfo.contact || "").slice(0, 100),
-        territory: String(body.repInfo.territory || "").slice(0, 200),
+        selectedPlace: String(body.repInfo.selectedPlace || "").slice(0, 200),
         email: String(body.repInfo.email || "").slice(0, 200),
         phone: String(body.repInfo.phone || "").slice(0, 40),
       }
@@ -154,8 +153,7 @@ export default async function handler(req, res) {
           <td style="padding:28px 40px 32px;">
             <p style="margin:0 0 12px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6b675f;">Selected representative</p>
             <p style="margin:0 0 4px;font-size:17px;font-weight:500;color:#111111;">${esc(repInfo.name)}</p>
-            ${repInfo.contact ? `<p style="margin:0 0 4px;font-size:14px;color:#3a3935;">${esc(repInfo.contact)}</p>` : ""}
-            ${repInfo.territory ? `<p style="margin:0 0 8px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#6b675f;">${esc(repInfo.territory)}</p>` : ""}
+            ${repInfo.selectedPlace ? `<p style="margin:0 0 8px;font-size:14px;color:#3a3935;">${esc(repInfo.selectedPlace)}</p>` : ""}
             ${repInfo.email ? `<p style="margin:0;font-size:14px;"><a href="mailto:${esc(repInfo.email)}" style="color:#645dc5;text-decoration:none;">${esc(repInfo.email)}</a></p>` : ""}
           </td>
         </tr>` : ""}

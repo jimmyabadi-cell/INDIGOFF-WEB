@@ -188,8 +188,12 @@ export default function Contact() {
               <div className={css.repCard}>
                 <p className={css.selectionTitle}>Your representative</p>
                 <p className={css.repName}>{repInfo.name}</p>
-                {repInfo.contact && <p className={css.repDetail}>{repInfo.contact}</p>}
-                {repInfo.territory && <p className={css.repTerritory}>{repInfo.territory}</p>}
+                {repInfo.selectedPlace && <p className={css.repDetail}>{repInfo.selectedPlace}</p>}
+                {repInfo.email && (
+                  <a className={css.repEmail} href={"mailto:" + repInfo.email}>
+                    {repInfo.email}
+                  </a>
+                )}
               </div>
             )}
             {listItems.length > 0 && (

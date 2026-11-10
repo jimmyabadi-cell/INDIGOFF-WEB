@@ -217,6 +217,17 @@
   color: var(--color-secondary);
 }
 
+.repEmail {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.repEmail:hover {
+  text-decoration: underline;
+}
+
 .repTerritory {
   margin: 0;
   font-size: 11px;
