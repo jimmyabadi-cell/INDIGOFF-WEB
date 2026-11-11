@@ -28,13 +28,15 @@ export function newsletterVals(self, t, keys) {
     self.setState({ nlOpen: false });
   };
   v.nlLoading = !!st.nlLoading;
-  v.nlSubmit = function () {
+  /** @param {() => Promise<string>} [getToken]  Ficha de Turnstile (la pasa NewsletterDialog). */
+  v.nlSubmit = async function (getToken) {
     var em = (st.nlEmail || "").trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) {
       self.setState({ nlErr: true });
       return;
     }
     self.setState({ nlLoading: true, nlErr: false });
+    var cf = typeof getToken === "function" ? await getToken() : "";
     // Solo se confirma si el servidor aceptó la suscripción; si falla, el popup sigue abierto con el error.
     var fail = function () {
       self.setState({ nlErr: "failed", nlLoading: false });
@@ -42,7 +44,8 @@ export function newsletterVals(self, t, keys) {
     fetch("/api/newsletter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: em }),
+      // _t: ms desde que cargó la página; el servidor descarta los envíos demasiado rápidos (bots, ver api/_spam.js).
+      body: JSON.stringify({ email: em, _t: Math.round(performance.now()), _cf: cf }),
     })
       .then(function (r) {
         if (r.ok) {

@@ -3,6 +3,13 @@ import { test, expect } from "@playwright/test";
 const bodyOverflow = (page) => page.evaluate(() => document.body.style.overflow);
 const listCount = (page) => page.locator(".site-hd .hd-list-n");
 
+// Script de Cloudflare Turnstile vacío: las pruebas no dependen de internet (los formularios siguen sin ficha).
+test.beforeEach(async ({ page }) => {
+  await page.route("https://challenges.cloudflare.com/**", (route) =>
+    route.fulfill({ contentType: "text/javascript", body: "" }),
+  );
+});
+
 test.describe("Home", () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {
@@ -140,7 +147,7 @@ test.describe("Newsletter", () => {
     await nl.locator("input").fill("hola@indigoff.com");
     await nl.getByRole("button", { name: "Subscribe" }).click();
     await expect(nl).toContainText("Thank you");
-    expect(payload).toEqual({ email: "hola@indigoff.com" });
+    expect(payload).toEqual({ email: "hola@indigoff.com", _t: expect.any(Number), _cf: "" });
     expect(await page.evaluate(() => window.localStorage.getItem("indigoff_nl"))).toBe("subscribed");
   });
 

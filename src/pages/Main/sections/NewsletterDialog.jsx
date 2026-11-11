@@ -1,8 +1,15 @@
 import css from "./NewsletterDialog.module.css";
 import { imgProps, SIZES } from "../../../lib/images.js";
+import { useTurnstile } from "../../../lib/turnstile.js";
 
 /** Popup del newsletter. */
 export default function NewsletterDialog({ v }) {
+  // Turnstile se carga solo cuando el popup está abierto con el formulario.
+  const turnstile = useTurnstile(!!(v.nlOn && v.nlForm));
+  const submit = async () => {
+    await v.nlSubmit(turnstile.getToken);
+    turnstile.reset();
+  };
   return (
     <>
       {v.nlOn ? (
@@ -51,7 +58,8 @@ export default function NewsletterDialog({ v }) {
                       </p>
                     </>
                   ) : null}
-                  <button type="button" onClick={v.nlSubmit} className="nl-btn" disabled={v.nlLoading}>
+                  <div ref={turnstile.ref} className="nl-ts" />
+                  <button type="button" onClick={submit} className="nl-btn" disabled={v.nlLoading}>
                     {v.nlLoading ? "…" : v.nlCta}
                   </button>
                   <button type="button" onClick={v.nlClose} className="nl-no">

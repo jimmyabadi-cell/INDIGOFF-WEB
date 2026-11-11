@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import handler from "../api/newsletter.js";
+import { resetSpamState } from "../api/_spam.js";
 
 // Prueba la función de Vercel directamente (sin navegador): Resend se simula reemplazando fetch.
 test.describe.configure({ mode: "serial" });
@@ -9,11 +10,13 @@ function call(body, method = "POST") {
   res.status = (c) => ((res.code = c), res);
   res.json = (j) => ((res.body = j), res);
   res.setHeader = (k, v) => (res.headers[k] = v);
-  return handler({ method, body }, res).then(() => res);
+  // _t: 5 s desde que cargó la página, como una persona (ver api/_spam.js).
+  return handler({ method, body: { _t: 5000, ...body } }, res).then(() => res);
 }
 
 const realFetch = globalThis.fetch;
 const realError = console.error;
+const realWarn = console.warn;
 let sent;
 let fail; // rutas de Resend que responden con error, p. ej. { welcome: true }
 
@@ -26,9 +29,11 @@ test.beforeEach(({}, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "No depende del tamaño de pantalla");
   sent = [];
   fail = {};
+  resetSpamState();
   process.env.RESEND_API_KEY = "test-key";
   process.env.RESEND_AUDIENCE_ID = "aud_123";
   console.error = () => {};
+  console.warn = () => {};
   globalThis.fetch = async (url, init) => {
     const body = JSON.parse(init.body);
     const k = kind(url, body);
@@ -39,6 +44,7 @@ test.beforeEach(({}, testInfo) => {
 test.afterEach(() => {
   globalThis.fetch = realFetch;
   console.error = realError;
+  console.warn = realWarn;
   delete process.env.RESEND_API_KEY;
   delete process.env.RESEND_AUDIENCE_ID;
 });
@@ -84,4 +90,11 @@ test("API newsletter: rechaza correos inválidos, otros métodos y bots", async 
   expect((await call({}, "GET")).code).toBe(405);
   expect((await call({ email: "ana@example.com", company: "Spam" })).code).toBe(200);
   expect(sent).toHaveLength(0);
+});
+
+test("API newsletter: descarta envíos demasiado rápidos y limita por IP", async () => {
+  expect((await call({ email: "ana@example.com", _t: 500 })).code).toBe(200);
+  expect(sent).toHaveLength(0);
+  for (let i = 0; i < 3; i++) expect((await call({ email: "ana@example.com" })).code).toBe(200);
+  expect((await call({ email: "ana@example.com" })).code).toBe(429);
 });
