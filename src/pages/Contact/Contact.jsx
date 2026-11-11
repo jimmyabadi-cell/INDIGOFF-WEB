@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { DW_CATS, DW_FIN, ifoSetPending } from "../../lib/nav.js";
 import { listSet } from "../../lib/savedList.js";
 import { usePageChrome } from "../../hooks/usePageChrome.js";
+import { useTurnstile } from "../../lib/turnstile.js";
 import "../OnoffStudio/OnoffStudio.css";
 
 import SiteHeader from "../../components/layout/SiteHeader.jsx";
@@ -60,7 +61,8 @@ async function sendContact(f, lang) {
     const r = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...f, lang }),
+      // _t: ms desde que cargó la página; el servidor descarta los envíos demasiado rápidos (bots, ver api/_spam.js).
+      body: JSON.stringify({ ...f, lang, _t: Math.round(performance.now()) }),
     });
     if (r.ok) return "sent";
     if (r.status === 400) {
@@ -73,6 +75,7 @@ async function sendContact(f, lang) {
 
 export default function Contact() {
   const { lang, chrome: v } = usePageChrome({ nav: NAV });
+  const turnstile = useTurnstile();
   const location = useLocation();
   const listItems = location.state?.listItems || [];
   const repInfo = location.state?.repInfo || null;
@@ -100,7 +103,9 @@ export default function Contact() {
       return;
     }
     setStatus("sending");
-    const result = await sendContact({ ...form, _hp: el._hp.value, listItems, repInfo, isRepRequest }, lang);
+    const _cf = await turnstile.getToken();
+    const result = await sendContact({ ...form, _hp: el._hp.value, _cf, listItems, repInfo, isRepRequest }, lang);
+    turnstile.reset();
     if (Array.isArray(result)) {
       setErrors(Object.fromEntries(result.map((k) => [k, k === "email" ? "email" : "required"])));
       setStatus("idle");
@@ -215,6 +220,8 @@ export default function Contact() {
             ))}
             {/* Campo trampa para bots (ver api/contact.js): oculto y fuera del orden de tabulación. */}
             <input className={css.trap} type="text" name="_hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+            {/* Verificación de Cloudflare: invisible salvo que pida confirmar (ver src/lib/turnstile.js). */}
+            <div ref={turnstile.ref} className={css.turnstile} />
             <button className={css.button} type="submit" disabled={status === "sending"}>
               {status === "sending" ? v.t("contact.sending") : v.t("contact.send")}
             </button>

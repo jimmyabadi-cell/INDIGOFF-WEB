@@ -67,3 +67,14 @@
   cursor: pointer;
   align-self: flex-end;
 }
+
+/* Contenedor de Turnstile: vacío casi siempre; si Cloudflare pide confirmar, aparece la casilla. */
+.turnstile {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.turnstile:empty {
+  display: none;
+}

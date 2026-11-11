@@ -34,3 +34,6 @@ footer a.soc{width:44px;height:44px;min-height:44px;justify-content:center;color
 
 /* Mobile: proporción 4:3, como las tarjetas de proyecto. */
 @media (max-width:767px){.cf-stage{height:auto;aspect-ratio:4/3}}
+
+/* Popup del newsletter: contenedor de Turnstile (vacío salvo que Cloudflare pida confirmar). */
+.nl-ts{margin:0 0 12px}.nl-ts:empty{display:none}

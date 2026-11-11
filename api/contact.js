@@ -7,6 +7,8 @@
 //
 // Respuestas: 200 { ok: true } · 400 { error: "invalid", fields } · 405 · 500 { error: "not_configured" | "send_failed" }
 
+import { rateLimited, spamReason, turnstileOk } from "./_spam.js";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX = { name: 100, lastName: 100, phone: 40, email: 200, company: 100, message: 5000 };
 
@@ -37,6 +39,16 @@ export default async function handler(req, res) {
 
   const { data, fields } = parseContact(body);
   if (fields.length) return res.status(400).json({ error: "invalid", fields });
+
+  // Bots (ver _spam.js): se responde ok sin enviar nada, para no darles pistas.
+  const spam = spamReason(body, { names: [data.name, data.lastName, data.company], message: data.message });
+  if (spam) {
+    console.warn("[spam] contact:", spam);
+    return res.status(200).json({ ok: true });
+  }
+  // Cloudflare Turnstile: 403 (no 200) para que una persona con el widget bloqueado vea un aviso o use el correo.
+  if (!(await turnstileOk(req, body._cf))) return res.status(403).json({ error: "verification_failed" });
+  if (rateLimited(req, "contact", 5)) return res.status(429).json({ error: "rate_limited" });
 
   const key = process.env.RESEND_API_KEY;
   if (!key) return res.status(500).json({ error: "not_configured" });

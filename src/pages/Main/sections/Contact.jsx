@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTurnstile } from "../../../lib/turnstile.js";
 import css from "./Contact.module.css";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -7,17 +8,24 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export default function Contact({ v }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | done | invalid | failed
+  // Turnstile se carga cuando alguien usa el campo de correo, no al abrir la home.
+  const [engaged, setEngaged] = useState(false);
+  const turnstile = useTurnstile(engaged);
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (status === "loading" || status === "done") return;
     if (!EMAIL_RE.test(email.trim())) { setStatus("invalid"); return; }
     setStatus("loading");
+    setEngaged(true);
+    const _cf = await turnstile.getToken();
+    turnstile.reset();
     try {
       const r = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        // _t: ms desde que cargó la página (ver api/_spam.js).
+        body: JSON.stringify({ email, _t: Math.round(performance.now()), _cf }),
       });
       setStatus(r.ok ? "done" : r.status === 400 ? "invalid" : "failed");
     } catch {
@@ -42,6 +50,7 @@ export default function Contact({ v }) {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onFocus={() => setEngaged(true)}
               disabled={status === "loading"}
               required
             />
@@ -56,6 +65,8 @@ export default function Contact({ v }) {
           ) : null}
         </form>
       )}
+      {/* Verificación de Cloudflare: invisible salvo que pida confirmar (ver src/lib/turnstile.js). */}
+      <div ref={turnstile.ref} className={css.turnstile} />
     </section>
   );
 }

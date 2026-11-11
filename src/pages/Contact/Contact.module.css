@@ -287,3 +287,8 @@
   color: var(--color-muted);
   margin-top: 2px;
 }
+
+/* Contenedor de Turnstile: vacío casi siempre; si Cloudflare pide confirmar, aparece la casilla. */
+.turnstile:empty {
+  display: none;
+}

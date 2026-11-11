@@ -6,6 +6,10 @@ const ROUTES = ["/", "/ceilings", "/downloads", "/find-a-rep", "/onoff-studio", 
 const MAX_HEADER = { mobile: 64, tablet: 76, desktop: 96 };
 
 test.beforeEach(async ({ page }) => {
+  // Script de Cloudflare Turnstile vacío: las pruebas no dependen de internet (los formularios siguen sin ficha).
+  await page.route("https://challenges.cloudflare.com/**", (route) =>
+    route.fulfill({ contentType: "text/javascript", body: "" }),
+  );
   // Evita que el popup del newsletter tape la página durante las pruebas.
   await page.addInitScript(() => {
     try {
@@ -278,4 +282,28 @@ test("Al cambiar de página dentro del sitio, el scroll empieza arriba", async (
   await expect(page).toHaveURL(/\/contact$/);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+});
+
+test("Contacto: manda la ficha de Cloudflare Turnstile", async ({ page }) => {
+  // Turnstile simulado: entrega una ficha fija en cuanto se dibuja el widget.
+  await page.unroute("https://challenges.cloudflare.com/**");
+  await page.route("https://challenges.cloudflare.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/javascript",
+      body: `window.turnstile = {
+        render: (el, opts) => { setTimeout(() => opts.callback("token-de-prueba"), 50); return "w1"; },
+        reset: () => {}, remove: () => {},
+      };`,
+    }),
+  );
+  let payload;
+  await page.route("/api/contact", async (route) => {
+    payload = route.request().postDataJSON();
+    await route.fulfill({ json: { ok: true } });
+  });
+  await page.goto("/contact");
+  await fillContact(page.locator("main form"));
+  await page.getByRole("button", { name: "Send" }).click();
+  await expect(page.getByRole("status")).toContainText("Message sent");
+  expect(payload._cf).toBe("token-de-prueba");
 });

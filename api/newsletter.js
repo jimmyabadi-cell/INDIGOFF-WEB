@@ -12,6 +12,8 @@
 //   CONTACT_FROM        remitente. Por defecto "Indigoff Web <web@indigoff.com>".
 //   NEWSLETTER_TO       admins separados por coma. Por defecto los dos hardcodeados abajo.
 
+import { rateLimited, spamReason, turnstileOk } from "./_spam.js";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const ADMIN_TO = ["jashua.pena@wrks.com.mx", "info@indigoff.com"];
 
@@ -30,6 +32,16 @@ export default async function handler(req, res) {
     .trim()
     .slice(0, 200);
   if (!EMAIL_RE.test(email)) return res.status(400).json({ error: "invalid" });
+
+  // Bots (ver _spam.js): se responde ok sin enviar nada, para no darles pistas.
+  const spam = spamReason(body);
+  if (spam) {
+    console.warn("[spam] newsletter:", spam);
+    return res.status(200).json({ ok: true });
+  }
+  // Cloudflare Turnstile: 403 (no 200) para que una persona con el widget bloqueado vea un aviso o use el correo.
+  if (!(await turnstileOk(req, body._cf))) return res.status(403).json({ error: "verification_failed" });
+  if (rateLimited(req, "newsletter", 3)) return res.status(429).json({ error: "rate_limited" });
 
   const key = process.env.RESEND_API_KEY;
   if (!key) return res.status(500).json({ error: "not_configured" });
