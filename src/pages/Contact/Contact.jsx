@@ -221,7 +221,10 @@ export default function Contact() {
           </form>
         )}
       </main>
-      <CompactFooter homeLabel={v.t("common.backToHome")} />
+      <CompactFooter
+        homeLabel={v.t("common.backToHome")}
+        legal={{ privacy: v.t("common.privacy"), terms: v.t("common.terms") }}
+      />
       <SideMenu v={v} labels={labels} />
     </div>
   );

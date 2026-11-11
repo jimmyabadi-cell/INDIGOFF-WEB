@@ -20,3 +20,8 @@
 
 - [Contact form](https://www.indigoff.com/contact): quotes, specifications, product information and samples.
 - Email: info@indigoff.com
+
+## Legal
+
+- [Privacy Policy](https://www.indigoff.com/privacy-policy): how Indigoff collects, uses and protects personal data (United States and Mexico).
+- [Terms and Conditions](https://www.indigoff.com/terms-and-conditions): quotations, custom fabrication, shipping, warranty and use of the site.

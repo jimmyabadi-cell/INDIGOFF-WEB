@@ -1,0 +1,315 @@
+/* Estilos de las páginas legales. Colores con los tokens de src/global.css. */
+
+.page {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--color-ink);
+  background: var(--color-white);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: calc(100px * var(--vs)) var(--gutter) calc(140px * var(--vs));
+}
+
+.head {
+  max-width: 760px;
+  margin: 0 0 calc(72px * var(--vs));
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  font-family: Urbanist, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.title {
+  margin: 0 0 16px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.updated {
+  margin: 0;
+  color: var(--color-secondary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 3fr) minmax(0, 8fr);
+  gap: 56px clamp(40px, 6vw, 112px);
+  align-items: start;
+}
+
+/* Índice: fijo al costado en desktop, plegable arriba en mobile y tablet. */
+.toc {
+  position: sticky;
+  top: calc(var(--hd-h) + 32px);
+  max-height: calc(100vh - var(--hd-h) - 64px);
+  overflow: auto;
+}
+
+.tocMobile {
+  display: none;
+}
+
+.tocList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tocList a {
+  display: block;
+  padding: 6px 0;
+  color: var(--color-secondary);
+}
+
+.tocList a:hover {
+  color: var(--color-accent);
+}
+
+.body {
+  max-width: 760px;
+  min-width: 0;
+}
+
+.section {
+  /* Al saltar desde el índice, el título queda debajo del header fijo. */
+  scroll-margin-top: calc(var(--hd-h) + 24px);
+  padding: 0 0 calc(56px * var(--vs));
+}
+
+.h2 {
+  margin: 0 0 20px;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--color-border);
+  font-family: Urbanist, sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: var(--color-dark);
+}
+
+.p strong,
+.list strong,
+.address strong {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-light);
+  overflow-wrap: anywhere;
+}
+
+.note {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.caps {
+  margin: 0 0 16px;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--color-secondary);
+}
+
+.list {
+  margin: 0 0 20px;
+  padding: 0 0 0 1.4em;
+  font-size: 16px;
+  color: var(--color-dark);
+}
+
+.list li {
+  margin: 0 0 10px;
+  padding-left: 4px;
+}
+
+.tableWrap {
+  margin: 8px 0 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  border: 1px solid var(--color-surface);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table thead th {
+  background: var(--color-bg);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.table tbody th {
+  width: 24%;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.table td {
+  color: var(--color-dark);
+}
+
+.callout {
+  margin: 0 0 20px;
+  padding: 24px 28px 8px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface-3);
+}
+
+.address {
+  display: grid;
+  gap: 2px;
+  margin: 0 0 20px;
+  font-style: normal;
+  font-size: 16px;
+  color: var(--color-dark);
+}
+
+/* Tablet y mobile: una columna; el índice pasa a ser un desplegable. */
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .tocDesktop {
+    display: none;
+  }
+
+  .tocMobile {
+    display: block;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tocMobile summary {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: Urbanist, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .tocMobile summary {
+    list-style: none;
+  }
+
+  .tocMobile summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .tocMobile summary::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+
+  .tocMobile[open] summary::after {
+    content: "−";
+  }
+
+  .tocMobile .tocList {
+    padding: 0 0 16px;
+  }
+}
+
+/* Mobile: las tablas se leen como fichas (cada fila con sus etiquetas). */
+@media (max-width: 767px) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+    width: auto;
+  }
+
+  .table tr {
+    margin: 0 0 12px;
+    border: 1px solid var(--color-surface);
+  }
+
+  .table th,
+  .table td {
+    border: 0;
+  }
+
+  .table tbody th {
+    width: auto;
+    background: var(--color-bg);
+  }
+
+  .table td {
+    padding-top: 0;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    display: block;
+    padding: 12px 0 4px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+}
