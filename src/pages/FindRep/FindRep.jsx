@@ -313,7 +313,11 @@ function template(v) {
           <ResultPanel v={v} />
         </section>
         <AllReps v={v} />
-        <CompactFooter homeLabel={v.t("common.backToHome")} background="#FFFFFF" />
+        <CompactFooter
+          homeLabel={v.t("common.backToHome")}
+          legal={{ privacy: v.t("common.privacy"), terms: v.t("common.terms") }}
+          background="#FFFFFF"
+        />
         <SideMenu v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
       </div>
     </>

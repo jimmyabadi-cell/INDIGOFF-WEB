@@ -246,3 +246,36 @@ test("Cada página tiene su título", async ({ page }) => {
     await expect(page).toHaveTitle(title);
   }
 });
+
+test("Páginas legales: contenido, índice y links del footer", async ({ page }) => {
+  await page.goto("/privacy-policy");
+  await expect(page).toHaveTitle("Privacy Policy — Indigoff");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Privacy Policy");
+  await expect(page.locator("article h2")).toHaveCount(12);
+  await expect(page.locator('article a[href="mailto:info@indigoff.com"]').first()).toBeVisible();
+
+  await page.goto("/terms-and-conditions");
+  await expect(page).toHaveTitle("Terms and Conditions — Indigoff");
+  await expect(page.locator("article h2")).toHaveCount(17);
+  await expect(page.locator('article a[href="/privacy-policy"]')).toHaveCount(1);
+
+  for (const route of ["/", "/contact", "/ceilings"]) {
+    await page.goto(route);
+    const footer = page.locator("footer");
+    await expect(footer.locator('a[href="/privacy-policy"]')).toHaveCount(1);
+    await expect(footer.locator('a[href="/terms-and-conditions"]')).toHaveCount(1);
+  }
+});
+
+test("Al cambiar de página dentro del sitio, el scroll empieza arriba", async ({ page }) => {
+  await page.goto("/find-a-rep");
+  await page.getByPlaceholder(/type a state/i).fill("Texas");
+  const send = page.locator("#rep-result").getByRole("button").first();
+  await send.scrollIntoViewIfNeeded();
+  await page.evaluate(() => window.scrollBy(0, 200));
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  await send.click();
+  await expect(page).toHaveURL(/\/contact$/);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+});

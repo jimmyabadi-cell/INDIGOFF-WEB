@@ -8,6 +8,12 @@ export default function Footer({ v }) {
       <a className={css.link} href="/contact">
         {"info@indigoff.com"}
       </a>
+      <a className={css.link} href="/privacy-policy">
+        {v.t("common.privacy")}
+      </a>
+      <a className={css.link} href="/terms-and-conditions">
+        {v.t("common.terms")}
+      </a>
       <a className={css.link} href="/">
         {v.t("common.backToHome")}
       </a>

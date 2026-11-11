@@ -98,6 +98,12 @@ export default function Footer({ v }) {
           <a className={css.link} href="/onoff-studio">
             {"onoff studio"}
           </a>
+          <a className={css.link} href="/privacy-policy">
+            {v.t("common.privacy")}
+          </a>
+          <a className={css.link} href="/terms-and-conditions">
+            {v.t("common.terms")}
+          </a>
         </span>
       </div>
     </footer>

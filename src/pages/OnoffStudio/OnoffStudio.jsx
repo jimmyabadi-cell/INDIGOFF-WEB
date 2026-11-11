@@ -146,7 +146,10 @@ function template(v) {
             </a>
           </div>
         </section>
-        <CompactFooter homeLabel={v.t("common.backToHome")} />
+        <CompactFooter
+          homeLabel={v.t("common.backToHome")}
+          legal={{ privacy: v.t("common.privacy"), terms: v.t("common.terms") }}
+        />
         <SideMenu v={v} labels={{ downloads: v.t("common.downloads"), findRep: v.t("common.findRep") }} />
       </div>
     </>

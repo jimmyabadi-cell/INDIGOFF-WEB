@@ -25,7 +25,9 @@
     "viewLess": "Ver menos",
     "enlargeImage": "Ampliar imagen",
     "onNetwork": "{name} en {network}",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "privacy": "Aviso de privacidad",
+    "terms": "Términos y condiciones"
   },
   "studio": {
     "hero": {
