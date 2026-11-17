@@ -22,7 +22,7 @@ const DEFAULT_REP = {
   name: "Indigoff",
   contactKey: "findRep.directTeam",
   email: "info@indigoff.com",
-  phone: "848-8844-1258",
+  phone: "848-844-1258",
   areas: [],
 };
 // Claves de territorio del mapa (estado, mitad de estado o estado de México), nombres y abreviaturas.
