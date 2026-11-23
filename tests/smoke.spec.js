@@ -307,3 +307,20 @@ test("Contacto: manda la ficha de Cloudflare Turnstile", async ({ page }) => {
   await expect(page.getByRole("status")).toContainText("Message sent");
   expect(payload._cf).toBe("token-de-prueba");
 });
+
+test("Downloads: fichas técnicas en PDF existen y se descargan", async ({ page, request }) => {
+  await page.goto("/downloads");
+  await page.getByRole("button", { name: "PDF", exact: true }).click();
+  const links = await page
+    .locator('a[href^="/fichas-tecnicas/"]')
+    .evaluateAll((as) => as.map((a) => a.getAttribute("href")));
+  expect(links.length).toBeGreaterThanOrEqual(50);
+  for (const href of links.slice(0, 5)) {
+    const r = await request.get(href);
+    expect(r.status()).toBe(200);
+    expect(r.headers()["content-type"]).toContain("pdf");
+  }
+  // También dentro de la ventana del producto.
+  await page.goto("/lights#p=glowwarm");
+  await expect(page.locator('[role=dialog] a[href="/fichas-tecnicas/warm.pdf"]')).toHaveCount(1);
+});

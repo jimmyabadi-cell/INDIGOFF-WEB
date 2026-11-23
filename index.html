@@ -14,62 +14,62 @@
     <link rel="preload" href="/fonts/urbanist-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <!--
-      Google tag (gtag.js). Manda page_view al cargar.
-      Las rutas que React Router cambia sin recargar (Link, navigate) usan el History API.
-      Este measurement ID tiene enhanced measurement con page_view en esos cambios de historial,
-      así que no hace falta un segundo page_view manual: se contarían dos veces.
+      Analítica: Google Analytics 4, Microsoft Clarity y Meta Pixel.
+      - Solo en el dominio real: localhost, los deploys de prueba de Vercel y las pruebas automáticas no cuentan visitas.
+      - Las colas (gtag, clarity, fbq) existen desde el inicio, así que nada se pierde; los scripts se piden cuando la
+        página ya cargó y el navegador está libre, para no competir con el primer render.
+      - Cambios de página sin recargar (Link, navigate): GA4 (enhanced measurement) y Meta Pixel escuchan el History API
+        y Clarity sigue la SPA por su cuenta. No hace falta un page_view/PageView manual: se contarían dos veces.
     -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KE5TSZB8R"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-4KE5TSZB8R");
-    </script>
-    <!--
-      Microsoft Clarity. El tag oficial sigue solo los cambios de historial de la SPA.
-    -->
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
+      if (/(^|\.)indigoff\.com$/.test(location.hostname)) {
+        (function (w, d) {
+          // Google Analytics 4
+          w.dataLayer = w.dataLayer || [];
+          w.gtag = function () {
+            w.dataLayer.push(arguments);
           };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "zdscazkqc4");
-    </script>
-    <!--
-      Meta Pixel. PageView al cargar.
-      El código base escucha el History API y manda PageView en pushState
-      (Link, navigate). No hace falta otro fbq("track", "PageView"): se contarían dos veces.
-      El <noscript> va en <body>: en <head> un img no es HTML válido.
-    -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      fbq("init", "1102587752576814");
-      fbq("track", "PageView");
+          w.gtag("js", new Date());
+          w.gtag("config", "G-4KE5TSZB8R");
+          // Microsoft Clarity
+          w.clarity =
+            w.clarity ||
+            function () {
+              (w.clarity.q = w.clarity.q || []).push(arguments);
+            };
+          // Meta Pixel (código base oficial, sin pedir el script todavía)
+          if (!w.fbq) {
+            var n = (w.fbq = function () {
+              n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+            });
+            if (!w._fbq) w._fbq = n;
+            n.push = n;
+            n.loaded = true;
+            n.version = "2.0";
+            n.queue = [];
+          }
+          w.fbq("init", "1102587752576814");
+          w.fbq("track", "PageView");
+
+          function add(src) {
+            var s = d.createElement("script");
+            s.async = true;
+            s.src = src;
+            d.head.appendChild(s);
+          }
+          function load() {
+            add("https://www.googletagmanager.com/gtag/js?id=G-4KE5TSZB8R");
+            add("https://www.clarity.ms/tag/zdscazkqc4");
+            add("https://connect.facebook.net/en_US/fbevents.js");
+          }
+          function idle() {
+            if (w.requestIdleCallback) w.requestIdleCallback(load, { timeout: 3000 });
+            else setTimeout(load, 1000);
+          }
+          if (d.readyState === "complete") idle();
+          else w.addEventListener("load", idle, { once: true });
+        })(window, document);
+      }
     </script>
   </head>
   <body>

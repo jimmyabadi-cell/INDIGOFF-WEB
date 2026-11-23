@@ -12,8 +12,9 @@ import CompactFooter from "../../components/layout/CompactFooter.jsx";
 import css from "./Downloads.module.css";
 const ALL = "all";
 const CATS = [ALL, "ceilings", "walls", "lights", "dividers"];
-const FMTS = [ALL, "DWG", "SKP", "3DM", "REVIT"];
-const FMT_LABEL = { DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
+const FMTS = [ALL, "PDF", "DWG", "SKP", "3DM", "REVIT"];
+// PDF = ficha técnica (public/fichas-tecnicas).
+const FMT_LABEL = { PDF: "PDF", DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
 function tabStyle(on) {
   return (
     "min-height: 44px; padding: 0 0 4px; border: 0; border-bottom: 2px solid " +
