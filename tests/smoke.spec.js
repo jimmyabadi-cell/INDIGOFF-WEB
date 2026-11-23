@@ -324,3 +324,23 @@ test("Downloads: fichas técnicas en PDF existen y se descargan", async ({ page,
   await page.goto("/lights#p=glowwarm");
   await expect(page.locator('[role=dialog] a[href="/fichas-tecnicas/warm.pdf"]')).toHaveCount(1);
 });
+
+test("Downloads: los archivos CAD (ZIP) existen y el filtro incluye los paquetes con varios formatos", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/downloads");
+  await page.locator('a[href^="/cad/"]').first().waitFor();
+  const zips = await page
+    .locator('a[href^="/cad/"]')
+    .evaluateAll((as) => [...new Set(as.map((a) => a.getAttribute("href")))]);
+  expect(zips.length).toBeGreaterThanOrEqual(150);
+  for (const href of zips.slice(0, 5)) {
+    const r = await request.head(href);
+    expect(r.status()).toBe(200);
+    expect(r.headers()["content-type"]).toContain("zip");
+  }
+  // Revit solo viene dentro de los paquetes (DWG · 3DM · Revit).
+  await page.getByRole("button", { name: "Revit", exact: true }).click();
+  await expect(page.locator('a[href="/cad/Plafon_Aries.zip"]')).toHaveCount(1);
+});

@@ -1,332 +1,31 @@
 {
   "fckofffckoff03": [
     [
-      "SKP",
-      "Fuckoff3.skp",
-      "0.1 MB",
-      "/downloads/fckofffckoff03/Fuckoff3.skp"
-    ]
-  ],
-  "onhelixbraidacousticceiling": [
-    [
       "DWG",
-      "Helix Braid.dwg",
-      "0.4 MB",
-      "/downloads/onhelixbraidacousticceiling/Helix Braid.dwg"
-    ]
-  ],
-  "onfoldedwaveacousticchandelier": [
-    [
-      "DWG",
-      "Folded Wave Acoustic Chandelier.dwg",
-      "65 KB",
-      "/downloads/onfoldedwaveacousticchandelier/Folded Wave Acoustic Chandelier.dwg"
-    ]
-  ],
-  "onechoplaneceiling": [
-    [
-      "SKP",
-      "Echo Plane Ceiling 1800.skp",
-      "7 KB",
-      "/downloads/onechoplaneceiling/Echo Plane Ceiling 1800.skp"
+      "Fckoff 03 — DWG.zip",
+      "24 KB",
+      "/cad/DWG-Fckof-03.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Echo Plane Ceiling 1200.skp",
-      "7 KB",
-      "/downloads/onechoplaneceiling/Echo Plane Ceiling 1200.skp"
+      "Fckoff 03 — SKP.zip",
+      "32 KB",
+      "/cad/SKP-Fckof-03.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Echo Plane Ceiling 2400.3dm",
-      "47 KB",
-      "/downloads/onechoplaneceiling/Echo Plane Ceiling 2400.3dm"
-    ],
-    [
-      "REVIT",
-      "Echo Plane Ceiling 1200.rvt",
-      "38.5 MB",
-      "/downloads/onechoplaneceiling/Echo Plane Ceiling 1200.rvt"
-    ],
-    [
-      "REVIT",
-      "Echo Plane Ceiling 1800.rvt",
-      "38.5 MB",
-      "/downloads/onechoplaneceiling/Echo Plane Ceiling 1800.rvt"
-    ]
-  ],
-  "onvortex": [
-    [
-      "DWG",
-      "Vortex.dwg",
-      "0.2 MB",
-      "/downloads/onvortex/Vortex.dwg"
-    ],
-    [
-      "SKP",
-      "Vortex.skp",
-      "45 KB",
-      "/downloads/onvortex/Vortex.skp"
-    ],
-    [
-      "REVIT",
-      "Vortex.rvt",
-      "38.5 MB",
-      "/downloads/onvortex/Vortex.rvt"
-    ]
-  ],
-  "onnestdomependant": [
-    [
-      "DWG",
-      "Nest Dome 1000.dwg",
-      "1.4 MB",
-      "/downloads/onnestdomependant/Nest Dome 1000.dwg"
-    ],
-    [
-      "SKP",
-      "Nest Dome 600.skp",
-      "2.3 MB",
-      "/downloads/onnestdomependant/Nest Dome 600.skp"
-    ],
-    [
-      "3DM",
-      "Nest Dome 600.3dm",
-      "4.1 MB",
-      "/downloads/onnestdomependant/Nest Dome 600.3dm"
-    ]
-  ],
-  "celinglightsarchitecturalbeamline": [
-    [
-      "SKP",
-      "Beam Line 220.skp",
-      "7 KB",
-      "/downloads/celinglightsarchitecturalbeamline/Beam Line 220.skp"
-    ],
-    [
-      "3DM",
-      "Beam Line 220.3dm",
-      "0.1 MB",
-      "/downloads/celinglightsarchitecturalbeamline/Beam Line 220.3dm"
-    ],
-    [
-      "3DM",
-      "Beam Line 110.3dm",
-      "0.1 MB",
-      "/downloads/celinglightsarchitecturalbeamline/Beam Line 110.3dm"
-    ],
-    [
-      "REVIT",
-      "BEAM LINE_220.rvt",
-      "38.5 MB",
-      "/downloads/celinglightsarchitecturalbeamline/BEAM LINE_220.rvt"
-    ]
-  ],
-  "onlumenringsarray": [
-    [
-      "DWG",
-      "Lumen rings array.dwg",
-      "0.5 MB",
-      "/downloads/onlumenringsarray/Lumen rings array.dwg"
-    ],
-    [
-      "SKP",
-      "Lumen rings array.skp",
-      "0.1 MB",
-      "/downloads/onlumenringsarray/Lumen rings array.skp"
-    ]
-  ],
-  "celinglightsripplearcacousticceiling": [
-    [
-      "SKP",
-      "Ripple Arc Acoustic Ceiling .skp",
-      "0.1 MB",
-      "/downloads/celinglightsripplearcacousticceiling/Ripple Arc Acoustic Ceiling .skp"
-    ]
-  ],
-  "onacousticbeamarch": [
-    [
-      "SKP",
-      "Beam Arch 2400 x 600.skp",
-      "23 KB",
-      "/downloads/onacousticbeamarch/Beam Arch 2400 x 600.skp"
-    ],
-    [
-      "3DM",
-      "Beam Arch 1200 x 600.3dm",
-      "78 KB",
-      "/downloads/onacousticbeamarch/Beam Arch 1200 x 600.3dm"
-    ],
-    [
-      "3DM",
-      "Beam Arch 2400 x 600.3dm",
-      "74 KB",
-      "/downloads/onacousticbeamarch/Beam Arch 2400 x 600.3dm"
-    ],
-    [
-      "REVIT",
-      "Beam_Arch_1200x600.rvt",
-      "38.5 MB",
-      "/downloads/onacousticbeamarch/Beam_Arch_1200x600.rvt"
-    ]
-  ],
-  "oncontourhalopendant": [
-    [
-      "DWG",
-      "Halo Pendant 550.dwg",
-      "0.3 MB",
-      "/downloads/oncontourhalopendant/Halo Pendant 550.dwg"
-    ],
-    [
-      "DWG",
-      "Halo Pendant 750.dwg",
-      "0.3 MB",
-      "/downloads/oncontourhalopendant/Halo Pendant 750.dwg"
-    ],
-    [
-      "SKP",
-      "Halo Pendant 950.skp",
-      "0.6 MB",
-      "/downloads/oncontourhalopendant/Halo Pendant 950.skp"
-    ],
-    [
-      "SKP",
-      "Halo Pendant 750.skp",
-      "0.5 MB",
-      "/downloads/oncontourhalopendant/Halo Pendant 750.skp"
-    ],
-    [
-      "REVIT",
-      "Halo_Pendant_750.rvt",
-      "38.6 MB",
-      "/downloads/oncontourhalopendant/Halo_Pendant_750.rvt"
-    ],
-    [
-      "REVIT",
-      "Halo_Pendant_950.rvt",
-      "38.6 MB",
-      "/downloads/oncontourhalopendant/Halo_Pendant_950.rvt"
-    ]
-  ],
-  "onacousticwallveil": [
-    [
-      "DWG",
-      "Acoustic Wall Veil.dwg",
-      "0.1 MB",
-      "/downloads/onacousticwallveil/Acoustic Wall Veil.dwg"
-    ],
-    [
-      "3DM",
-      "Acoustic Wall Veil.3dm",
-      "0.9 MB",
-      "/downloads/onacousticwallveil/Acoustic Wall Veil.3dm"
-    ],
-    [
-      "REVIT",
-      "Acoustic_Wall_Veil.rvt",
-      "38.6 MB",
-      "/downloads/onacousticwallveil/Acoustic_Wall_Veil.rvt"
-    ]
-  ],
-  "celinglightsluminousmatrix": [
-    [
-      "DWG",
-      "Luminous Matrix.dwg",
-      "57 KB",
-      "/downloads/celinglightsluminousmatrix/Luminous Matrix.dwg"
-    ]
-  ],
-  "onaerofinlight": [
-    [
-      "3DM",
-      "Aereo Fin Light 1.3dm",
-      "0.2 MB",
-      "/downloads/onaerofinlight/Aereo Fin Light 1.3dm"
-    ]
-  ],
-  "onacoustichalotower": [
-    [
-      "SKP",
-      "Acoustic halo tower.skp",
-      "1.3 MB",
-      "/downloads/onacoustichalotower/Acoustic halo tower.skp"
-    ],
-    [
-      "3DM",
-      "Acoustic halo tower.3dm",
-      "0.3 MB",
-      "/downloads/onacoustichalotower/Acoustic halo tower.3dm"
-    ]
-  ],
-  "celinglightshexaglowacousticceiling": [
-    [
-      "DWG",
-      "Hexa Glow 600.dwg",
-      "0.1 MB",
-      "/downloads/celinglightshexaglowacousticceiling/Hexa Glow 600.dwg"
-    ],
-    [
-      "REVIT",
-      "HEXA_GLOW_1200.rvt",
-      "38.5 MB",
-      "/downloads/celinglightshexaglowacousticceiling/HEXA_GLOW_1200.rvt"
-    ],
-    [
-      "REVIT",
-      "HEXA_GLOW_600.rvt",
-      "38.5 MB",
-      "/downloads/celinglightshexaglowacousticceiling/HEXA_GLOW_600.rvt"
-    ]
-  ],
-  "onacousticeclipsedisc": [
-    [
-      "DWG",
-      "ECLIPSE DISC 600.dwg",
-      "0.1 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 600.dwg"
-    ],
-    [
-      "DWG",
-      "ECLIPSE DISC 1200.dwg",
-      "0.1 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 1200.dwg"
-    ],
-    [
-      "SKP",
-      "ECLIPSE DISC 600.skp",
-      "0.2 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 600.skp"
-    ],
-    [
-      "3DM",
-      "ECLIPSE DISC 1200.3dm",
-      "0.2 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 1200.3dm"
-    ],
-    [
-      "3DM",
-      "ECLIPSE DISC 600.3dm",
-      "0.2 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 600.3dm"
-    ],
-    [
-      "3DM",
-      "ECLIPSE DISC 900.3dm",
-      "0.2 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 900.3dm"
-    ],
-    [
-      "REVIT",
-      "ECLIPSE DISC 1200",
-      "38.6 MB",
-      "/downloads/onacousticeclipsedisc/ECLIPSE DISC 1200"
-    ]
-  ],
-  "ondriftwallpanellight": [
-    [
-      "SKP",
-      "Drift wall panel 600.skp",
-      "0.6 MB",
-      "/downloads/ondriftwallpanellight/Drift wall panel 600.skp"
+      "Fckoff 03 — 3DM.zip",
+      "22 KB",
+      "/cad/3DM-Fckof-03.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowspatha": [
@@ -338,59 +37,30 @@
     ],
     [
       "DWG",
-      "Spatha 1000x1000.dwg",
-      "0.8 MB",
-      "/downloads/glowspatha/Spatha 1000x1000.dwg"
+      "Spatha — DWG.zip",
+      "1.6 MB",
+      "/cad/DWG-spatha.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Spatha 1000x1000.skp",
-      "2.6 MB",
-      "/downloads/glowspatha/Spatha 1000x1000.skp"
-    ],
-    [
-      "SKP",
-      "Spatha 700x700.skp",
+      "Spatha — SKP.zip",
       "2.2 MB",
-      "/downloads/glowspatha/Spatha 700x700.skp"
+      "/cad/SKP-spatha.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Spatha 700x700.3dm",
-      "2.9 MB",
-      "/downloads/glowspatha/Spatha 700x700.3dm"
-    ],
-    [
-      "3DM",
-      "Spatha 400x400.3dm",
-      "2.7 MB",
-      "/downloads/glowspatha/Spatha 400x400.3dm"
-    ],
-    [
-      "REVIT",
-      "Spatha_700.rvt",
-      "38.9 MB",
-      "/downloads/glowspatha/Spatha_700.rvt"
-    ],
-    [
-      "REVIT",
-      "Spatha_1000.rvt",
-      "38.9 MB",
-      "/downloads/glowspatha/Spatha_1000.rvt"
-    ]
-  ],
-  "woolskindatum": [
-    [
-      "SKP",
-      "Datum.skp",
-      "17 KB",
-      "/downloads/woolskindatum/Datum.skp"
-    ],
-    [
-      "REVIT",
-      "Datum.rvt",
-      "38.5 MB",
-      "/downloads/woolskindatum/Datum.rvt"
+      "Spatha — 3DM.zip",
+      "2.2 MB",
+      "/cad/3DM-spatha.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowdragon": [
@@ -401,74 +71,89 @@
       "/fichas-tecnicas/dragon.pdf"
     ],
     [
+      "DWG",
+      "Dragon — DWG.zip",
+      "155 KB",
+      "/cad/DWG-dragon.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Dragon.skp",
-      "0.1 MB",
-      "/downloads/glowdragon/Dragon.skp"
+      "Dragon — SKP.zip",
+      "122 KB",
+      "/cad/SKP-dragon.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Dragon — 3DM.zip",
+      "124 KB",
+      "/cad/3DM-dragon.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowrise": [
     [
-      "SKP",
-      "Rise 800x800.skp",
+      "DWG",
+      "Rise — DWG.zip",
       "1.0 MB",
-      "/downloads/glowrise/Rise 800x800.skp"
+      "/cad/DWG-rise.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Rise 1000x1000.skp",
-      "1.1 MB",
-      "/downloads/glowrise/Rise 1000x1000.skp"
+      "Rise — SKP.zip",
+      "1.0 MB",
+      "/cad/SKP-rise.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Rise 500x500.3dm",
-      "2.4 MB",
-      "/downloads/glowrise/Rise 500x500.3dm"
-    ],
-    [
-      "REVIT",
-      "Rise_500.rvt",
-      "38.7 MB",
-      "/downloads/glowrise/Rise_500.rvt"
-    ],
-    [
-      "REVIT",
-      "Rise_800.rvt",
-      "38.7 MB",
-      "/downloads/glowrise/Rise_800.rvt"
+      "Rise — 3DM.zip",
+      "1.6 MB",
+      "/cad/3DM-rise.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowreso": [
     [
       "DWG",
-      "Reso 1400.dwg",
-      "0.1 MB",
-      "/downloads/glowreso/Reso 1400.dwg"
+      "Reso — DWG.zip",
+      "266 KB",
+      "/cad/DWG-reso.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Reso 1400.skp",
-      "72 KB",
-      "/downloads/glowreso/Reso 1400.skp"
-    ],
-    [
-      "SKP",
-      "Reso 1200.skp",
-      "73 KB",
-      "/downloads/glowreso/Reso 1200.skp"
+      "Reso — SKP.zip",
+      "201 KB",
+      "/cad/SKP-reso.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Reso 1800.3dm",
-      "0.1 MB",
-      "/downloads/glowreso/Reso 1800.3dm"
-    ],
-    [
-      "3DM",
-      "Reso 1400.3dm",
-      "0.1 MB",
-      "/downloads/glowreso/Reso 1400.3dm"
+      "Reso — 3DM.zip",
+      "192 KB",
+      "/cad/3DM-reso.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "gloweve02": [
@@ -479,70 +164,118 @@
       "/fichas-tecnicas/eve-02.pdf"
     ],
     [
+      "DWG",
+      "Eve 02 — DWG.zip",
+      "37 KB",
+      "/cad/DWG-eve-02.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Eve 02 — SKP.zip",
+      "122 KB",
+      "/cad/SKP-eve-02.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
       "3DM",
-      "Eve 02.3dm",
-      "0.4 MB",
-      "/downloads/gloweve02/Eve 02.3dm"
+      "Eve 02 — 3DM.zip",
+      "86 KB",
+      "/cad/3DM-eve-02.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowray": [
     [
       "DWG",
-      "RAY 1000.dwg",
-      "0.3 MB",
-      "/downloads/glowray/RAY 1000.dwg"
+      "Ray — DWG.zip",
+      "606 KB",
+      "/cad/DWG-ray.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Ray — SKP.zip",
+      "388 KB",
+      "/cad/SKP-ray.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "RAY 1200.3dm",
-      "0.3 MB",
-      "/downloads/glowray/RAY 1200.3dm"
+      "Ray — 3DM.zip",
+      "377 KB",
+      "/cad/3DM-ray.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowring": [
     [
       "DWG",
-      "Ring 700x700.dwg",
-      "0.5 MB",
-      "/downloads/glowring/Ring 700x700.dwg"
-    ],
-    [
-      "DWG",
-      "Ring 950x950.dwg",
-      "0.5 MB",
-      "/downloads/glowring/Ring 950x950.dwg"
+      "Ring — DWG.zip",
+      "1.1 MB",
+      "/cad/DWG-ring.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Ring 1200x1200.skp",
+      "Ring — SKP.zip",
       "1.2 MB",
-      "/downloads/glowring/Ring 1200x1200.skp"
+      "/cad/SKP-ring.zip",
+      [
+        "SKP"
+      ]
     ],
     [
-      "REVIT",
-      "Ring_700.rvt",
-      "38.7 MB",
-      "/downloads/glowring/Ring_700.rvt"
-    ],
-    [
-      "REVIT",
-      "Ring_1200.rvt",
-      "38.8 MB",
-      "/downloads/glowring/Ring_1200.rvt"
+      "3DM",
+      "Ring — 3DM.zip",
+      "1.5 MB",
+      "/cad/3DM-ring.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowaura": [
     [
-      "SKP",
-      "AURA 550.skp",
-      "0.2 MB",
-      "/downloads/glowaura/AURA 550.skp"
+      "DWG",
+      "Aura — DWG.zip",
+      "359 KB",
+      "/cad/DWG-aura.zip",
+      [
+        "DWG"
+      ]
     ],
     [
-      "REVIT",
-      "AURA_550.rvt",
-      "38.6 MB",
-      "/downloads/glowaura/AURA_550.rvt"
+      "SKP",
+      "Aura — SKP.zip",
+      "442 KB",
+      "/cad/SKP-aura.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Aura — 3DM.zip",
+      "295 KB",
+      "/cad/3DM-aura.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowwarm": [
@@ -554,33 +287,30 @@
     ],
     [
       "DWG",
-      "Warm 1000x1000.dwg",
-      "1.6 MB",
-      "/downloads/glowwarm/Warm 1000x1000.dwg"
-    ],
-    [
-      "DWG",
-      "Warm 700x700.dwg",
-      "1.4 MB",
-      "/downloads/glowwarm/Warm 700x700.dwg"
+      "Warm — DWG.zip",
+      "3.2 MB",
+      "/cad/DWG-warm.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Warm 1000x1000.skp",
-      "3.1 MB",
-      "/downloads/glowwarm/Warm 1000x1000.skp"
-    ],
-    [
-      "SKP",
-      "Warm 700x700.skp",
-      "2.7 MB",
-      "/downloads/glowwarm/Warm 700x700.skp"
+      "Warm — SKP.zip",
+      "2.5 MB",
+      "/cad/SKP-warm.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Warm 1000x1000.3dm",
-      "4.3 MB",
-      "/downloads/glowwarm/Warm 1000x1000.3dm"
+      "Warm — 3DM.zip",
+      "2.9 MB",
+      "/cad/3DM-warm.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowboxlight": [
@@ -591,60 +321,60 @@
       "/fichas-tecnicas/box-light.pdf"
     ],
     [
+      "DWG",
+      "Box Light — DWG.zip",
+      "85 KB",
+      "/cad/DWG-box-light.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Box light 900.skp",
-      "8 KB",
-      "/downloads/glowboxlight/Box light 900.skp"
+      "Box Light — SKP.zip",
+      "20 KB",
+      "/cad/SKP-box-light.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Box Light 1500.3dm",
-      "0.1 MB",
-      "/downloads/glowboxlight/Box Light 1500.3dm"
-    ],
-    [
-      "3DM",
-      "Box Light 900.3dm",
-      "0.1 MB",
-      "/downloads/glowboxlight/Box Light 900.3dm"
-    ],
-    [
-      "REVIT",
-      "Box light 1200.rvt",
-      "38.5 MB",
-      "/downloads/glowboxlight/Box light 1200.rvt"
+      "Box Light — 3DM.zip",
+      "64 KB",
+      "/cad/3DM-box-light.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowfaint": [
     [
       "DWG",
-      "Faint 700x700.dwg",
-      "0.3 MB",
-      "/downloads/glowfaint/Faint 700x700.dwg"
+      "Faint — DWG.zip",
+      "763 KB",
+      "/cad/DWG-faint.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Faint 1100x1100.skp",
-      "1.6 MB",
-      "/downloads/glowfaint/Faint 1100x1100.skp"
+      "Faint — SKP.zip",
+      "1.4 MB",
+      "/cad/SKP-faint.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Faint 700x700.3dm",
-      "2.0 MB",
-      "/downloads/glowfaint/Faint 700x700.3dm"
-    ],
-    [
-      "3DM",
-      "Faint 900x900.3dm",
-      "2.1 MB",
-      "/downloads/glowfaint/Faint 900x900.3dm"
-    ],
-    [
-      "REVIT",
-      "Faint1100x1100.rvt",
-      "40.5 MB",
-      "/downloads/glowfaint/Faint1100x1100.rvt"
+      "Faint — 3DM.zip",
+      "1.7 MB",
+      "/cad/3DM-faint.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowvibe": [
@@ -655,42 +385,60 @@
       "/fichas-tecnicas/vibe.pdf"
     ],
     [
-      "SKP",
-      "Vibe 725.skp",
-      "0.4 MB",
-      "/downloads/glowvibe/Vibe 725.skp"
+      "DWG",
+      "Vibe — DWG.zip",
+      "576 KB",
+      "/cad/DWG-vibe.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Vibe 578.skp",
-      "0.4 MB",
-      "/downloads/glowvibe/Vibe 578.skp"
+      "Vibe — SKP.zip",
+      "1016 KB",
+      "/cad/SKP-vibe.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Vibe 725.3dm",
-      "1.1 MB",
-      "/downloads/glowvibe/Vibe 725.3dm"
-    ],
-    [
-      "3DM",
-      "Vibe 578.3dm",
-      "1.1 MB",
-      "/downloads/glowvibe/Vibe 578.3dm"
-    ],
-    [
-      "REVIT",
-      "Vibe_1000.rvt",
-      "38.6 MB",
-      "/downloads/glowvibe/Vibe_1000.rvt"
+      "Vibe — 3DM.zip",
+      "855 KB",
+      "/cad/3DM-vibe.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowzen": [
     [
-      "REVIT",
-      "ZEN.rvt",
-      "38.6 MB",
-      "/downloads/glowzen/ZEN.rvt"
+      "DWG",
+      "Zen — DWG.zip",
+      "99 KB",
+      "/cad/DWG-zen.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Zen — SKP.zip",
+      "191 KB",
+      "/cad/SKP-zen.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Zen — 3DM.zip",
+      "113 KB",
+      "/cad/3DM-zen.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowhangingspark": [
@@ -701,34 +449,31 @@
       "/fichas-tecnicas/hanging-spark.pdf"
     ],
     [
-      "SKP",
-      "Hanging Spark 600.skp",
-      "0.1 MB",
-      "/downloads/glowhangingspark/Hanging Spark 600.skp"
+      "DWG",
+      "Hanging Spark — DWG.zip",
+      "492 KB",
+      "/cad/DWG-Hanging-Spark.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Hanging Spark 400.skp",
-      "0.2 MB",
-      "/downloads/glowhangingspark/Hanging Spark 400.skp"
+      "Hanging Spark — SKP.zip",
+      "293 KB",
+      "/cad/SKP-Hanging-Spark.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Hanging Spark 600.3dm",
-      "4.6 MB",
-      "/downloads/glowhangingspark/Hanging Spark 600.3dm"
-    ],
-    [
-      "3DM",
-      "Hanging Spark 400.3dm",
-      "1.3 MB",
-      "/downloads/glowhangingspark/Hanging Spark 400.3dm"
-    ],
-    [
-      "REVIT",
-      "Hanging Spark 600.rvt",
-      "38.6 MB",
-      "/downloads/glowhangingspark/Hanging Spark 600.rvt"
+      "Hanging Spark — 3DM.zip",
+      "445 KB",
+      "/cad/3DM-Hanging-Spark.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowradiant02": [
@@ -739,22 +484,31 @@
       "/fichas-tecnicas/radiant-02.pdf"
     ],
     [
+      "DWG",
+      "Radiant 02 — DWG.zip",
+      "843 KB",
+      "/cad/DWG-radiant-02.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Radiant 02 750x750.skp",
-      "1.1 MB",
-      "/downloads/glowradiant02/Radiant 02 750x750.skp"
+      "Radiant 02 — SKP.zip",
+      "1.3 MB",
+      "/cad/SKP-radiant-02.zip",
+      [
+        "SKP"
+      ]
     ],
     [
-      "REVIT",
-      "Radiant_02_500.rvt",
-      "38.6 MB",
-      "/downloads/glowradiant02/Radiant_02_500.rvt"
-    ],
-    [
-      "REVIT",
-      "Radiant_02_1100.rvt",
-      "38.6 MB",
-      "/downloads/glowradiant02/Radiant_02_1100.rvt"
+      "3DM",
+      "Radiant 02 — 3DM.zip",
+      "1.7 MB",
+      "/cad/3DM-radiant-02.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowradiant": [
@@ -766,27 +520,30 @@
     ],
     [
       "DWG",
-      "Radiant 720.dwg",
-      "0.3 MB",
-      "/downloads/glowradiant/Radiant 720.dwg"
+      "Radiant — DWG.zip",
+      "800 KB",
+      "/cad/DWG-radiant.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Radiant — SKP.zip",
+      "3.9 MB",
+      "/cad/SKP-radiant.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Radiant 720.3dm",
-      "1.6 MB",
-      "/downloads/glowradiant/Radiant 720.3dm"
-    ],
-    [
-      "3DM",
-      "Radiant 1000.3dm",
-      "2.4 MB",
-      "/downloads/glowradiant/Radiant 1000.3dm"
-    ],
-    [
-      "REVIT",
-      "RADIANT_1000.rvt",
-      "38.6 MB",
-      "/downloads/glowradiant/RADIANT_1000.rvt"
+      "Radiant — 3DM.zip",
+      "1.3 MB",
+      "/cad/3DM-radiant.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "gloworbit": [
@@ -798,27 +555,30 @@
     ],
     [
       "DWG",
-      "Orbit 900.dwg",
-      "0.4 MB",
-      "/downloads/gloworbit/Orbit 900.dwg"
+      "Orbit — DWG.zip",
+      "992 KB",
+      "/cad/DWG-orbit.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Orbit 1200.skp",
-      "0.5 MB",
-      "/downloads/gloworbit/Orbit 1200.skp"
+      "Orbit — SKP.zip",
+      "1.1 MB",
+      "/cad/SKP-orbit.zip",
+      [
+        "SKP"
+      ]
     ],
     [
-      "REVIT",
-      "ORBIT_600.rvt",
-      "38.6 MB",
-      "/downloads/gloworbit/ORBIT_600.rvt"
-    ],
-    [
-      "REVIT",
-      "ORBIT_900.rvt",
-      "38.6 MB",
-      "/downloads/gloworbit/ORBIT_900.rvt"
+      "3DM",
+      "Orbit — 3DM.zip",
+      "1.1 MB",
+      "/cad/3DM-orbit.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "glowtablespark": [
@@ -829,22 +589,31 @@
       "/fichas-tecnicas/table-spark.pdf"
     ],
     [
+      "DWG",
+      "Table Spark — DWG.zip",
+      "872 KB",
+      "/cad/DWG-table-spark.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Table Spark 250x550.skp",
-      "0.7 MB",
-      "/downloads/glowtablespark/Table Spark 250x550.skp"
+      "Table Spark — SKP.zip",
+      "776 KB",
+      "/cad/SKP-table-spark.zip",
+      [
+        "SKP"
+      ]
     ],
     [
-      "REVIT",
-      "Table_Spark_250_350.rvt",
-      "38.7 MB",
-      "/downloads/glowtablespark/Table_Spark_250_350.rvt"
-    ],
-    [
-      "REVIT",
-      "Table_Spark_250_550.rvt",
-      "38.7 MB",
-      "/downloads/glowtablespark/Table_Spark_250_550.rvt"
+      "3DM",
+      "Table Spark — 3DM.zip",
+      "539 KB",
+      "/cad/3DM-table-spark.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "gloweve": [
@@ -855,60 +624,57 @@
       "/fichas-tecnicas/eve-01.pdf"
     ],
     [
-      "3DM",
-      "EVE01.3dm",
-      "6.6 MB",
-      "/downloads/gloweve/EVE01.3dm"
+      "DWG",
+      "Eve — DWG.zip",
+      "1.6 MB",
+      "/cad/DWG-eve-01.zip",
+      [
+        "DWG"
+      ]
     ],
     [
-      "REVIT",
-      "EVE 01",
-      "39.5 MB",
-      "/downloads/gloweve/EVE 01"
+      "SKP",
+      "Eve — SKP.zip",
+      "1.6 MB",
+      "/cad/SKP-eve-01.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Eve — 3DM.zip",
+      "1.7 MB",
+      "/cad/3DM-eve-01.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "skincissus": [
     [
-      "SKP",
-      "Clemantis.skp",
-      "0.3 MB",
-      "/downloads/skincissus/Clemantis.skp"
-    ],
-    [
-      "3DM",
-      "Clemantis.3dm",
-      "2.5 MB",
-      "/downloads/skincissus/Clemantis.3dm"
+      "CAD",
+      "Cissus — DWG · 3DM · Revit.zip",
+      "13.4 MB",
+      "/cad/Wall_Cissu.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "skinlonicera": [
     [
-      "DWG",
-      "Ionicera.dwg",
-      "0.2 MB",
-      "/downloads/skinlonicera/Ionicera.dwg"
-    ]
-  ],
-  "skinpeak": [
-    [
-      "3DM",
-      "Peak.3dm",
-      "0.6 MB",
-      "/downloads/skinpeak/Peak.3dm"
-    ]
-  ],
-  "skinleaf": [
-    [
-      "DWG",
-      "Leaf.dwg",
-      "0.1 MB",
-      "/downloads/skinleaf/Leaf.dwg"
-    ],
-    [
-      "REVIT",
-      "Leaf.rvt",
-      "38.6 MB",
-      "/downloads/skinleaf/Leaf.rvt"
+      "CAD",
+      "Lonicera — DWG · 3DM · Revit.zip",
+      "12.5 MB",
+      "/cad/Wall_Lonicera.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "airaries": [
@@ -920,29 +686,41 @@
     ],
     [
       "DWG",
-      "Aries.dwg",
-      "29 KB",
-      "/downloads/airaries/Aries.dwg"
+      "Aries — DWG.zip",
+      "17 KB",
+      "/cad/DWG-aries.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Aries.skp",
-      "7 KB",
-      "/downloads/airaries/Aries.skp"
+      "Aries — SKP.zip",
+      "2 KB",
+      "/cad/SKP-aries.zip",
+      [
+        "SKP"
+      ]
     ],
     [
-      "REVIT",
-      "Aries.rvt",
-      "38.5 MB",
-      "/downloads/airaries/Aries.rvt"
-    ]
-  ],
-  "skinfrench": [
-    [
       "3DM",
-      "French.3dm",
-      "1.1 MB",
-      "/downloads/skinfrench/French.3dm"
+      "Aries — 3DM.zip",
+      "11 KB",
+      "/cad/3DM-aries.zip",
+      [
+        "3DM"
+      ]
+    ],
+    [
+      "CAD",
+      "Aries — DWG · 3DM · Revit.zip",
+      "4.9 MB",
+      "/cad/Plafon_Aries.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "airplenum": [
@@ -953,10 +731,31 @@
       "/fichas-tecnicas/Plenum_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Plenum — DWG.zip",
+      "18 KB",
+      "/cad/DWG-plenum.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Plenum — SKP.zip",
+      "2 KB",
+      "/cad/SKP-plenum.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
       "3DM",
-      "Plenum.3dm",
-      "52 KB",
-      "/downloads/airplenum/Plenum.3dm"
+      "Plenum — 3DM.zip",
+      "11 KB",
+      "/cad/3DM-plenum.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airhydra": [
@@ -968,23 +767,54 @@
     ],
     [
       "DWG",
-      "Hydra.dwg",
-      "57 KB",
-      "/downloads/airhydra/Hydra.dwg"
+      "Hydra — DWG.zip",
+      "43 KB",
+      "/cad/DWG-hydra.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Hydra.skp",
-      "35 KB",
-      "/downloads/airhydra/Hydra.skp"
+      "Hydra — SKP.zip",
+      "7 KB",
+      "/cad/SKP-hydra.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Hydra — 3DM.zip",
+      "53 KB",
+      "/cad/3DM-hydra.zip",
+      [
+        "3DM"
+      ]
+    ],
+    [
+      "CAD",
+      "Hydra — DWG · 3DM · Revit.zip",
+      "4.4 MB",
+      "/cad/Plafon_Hydra.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "skinwisteria": [
     [
-      "3DM",
-      "Wisteria.3dm",
-      "0.6 MB",
-      "/downloads/skinwisteria/Wisteria.3dm"
+      "CAD",
+      "Wisteria — DWG · 3DM · Revit.zip",
+      "14.8 MB",
+      "/cad/Wall_Wisteria.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "airframset": [
@@ -996,41 +826,43 @@
     ],
     [
       "DWG",
-      "Framset.dwg",
-      "32 KB",
-      "/downloads/airframset/Framset.dwg"
+      "Framset — DWG.zip",
+      "20 KB",
+      "/cad/DWG-framset.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Framset — SKP.zip",
+      "3 KB",
+      "/cad/SKP-framset.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Framset.3dm",
-      "0.1 MB",
-      "/downloads/airframset/Framset.3dm"
-    ],
-    [
-      "REVIT",
-      "Framset.rvt",
-      "38.5 MB",
-      "/downloads/airframset/Framset.rvt"
+      "Framset — 3DM.zip",
+      "19 KB",
+      "/cad/3DM-framset.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "skincascade": [
     [
-      "SKP",
-      "Cascade.skp",
-      "22 KB",
-      "/downloads/skincascade/Cascade.skp"
-    ],
-    [
-      "3DM",
-      "Cascade.3dm",
-      "0.3 MB",
-      "/downloads/skincascade/Cascade.3dm"
-    ],
-    [
-      "REVIT",
-      "Cascade.rvt",
-      "38.5 MB",
-      "/downloads/skincascade/Cascade.rvt"
+      "CAD",
+      "Cascade — DWG · 3DM · Revit.zip",
+      "6.8 MB",
+      "/cad/Frame_Cascade.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "airstratus": [
@@ -1041,24 +873,55 @@
       "/fichas-tecnicas/Baffle_Stratus_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Stratus — DWG.zip",
+      "87 KB",
+      "/cad/DWG-stratus.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Baffle Stratus.skp",
-      "0.1 MB",
-      "/downloads/airstratus/Baffle Stratus.skp"
+      "Stratus — SKP.zip",
+      "27 KB",
+      "/cad/SKP-stratus.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Stratus — 3DM.zip",
+      "87 KB",
+      "/cad/3DM-stratus.zip",
+      [
+        "3DM"
+      ]
+    ],
+    [
+      "CAD",
+      "Stratus — DWG · 3DM · Revit.zip",
+      "6.5 MB",
+      "/cad/Baffle_Stratus.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "skinplunge": [
     [
-      "3DM",
-      "Plunge.3dm",
-      "0.6 MB",
-      "/downloads/skinplunge/Plunge.3dm"
-    ],
-    [
-      "REVIT",
-      "Plunge.rvt",
-      "38.5 MB",
-      "/downloads/skinplunge/Plunge.rvt"
+      "CAD",
+      "Plunge — DWG · 3DM · Revit.zip",
+      "6.1 MB",
+      "/cad/Frames_Plungle.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "airnimbus": [
@@ -1070,15 +933,30 @@
     ],
     [
       "DWG",
-      "Baffle Mist.dwg",
-      "85 KB",
-      "/downloads/airnimbus/Baffle Mist.dwg"
+      "Nimbus — DWG.zip",
+      "70 KB",
+      "/cad/DWG-nimbus.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Nimbus — SKP.zip",
+      "226 KB",
+      "/cad/SKP-nimbus.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Baffle Mist.3dm",
-      "1.3 MB",
-      "/downloads/airnimbus/Baffle Mist.3dm"
+      "Nimbus — 3DM.zip",
+      "151 KB",
+      "/cad/3DM-nimbus.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airmist": [
@@ -1089,10 +967,40 @@
       "/fichas-tecnicas/Baffle_Mist_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Mist — DWG.zip",
+      "480 KB",
+      "/cad/Baffle_Mist.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "DWG",
+      "Mist — DWG.zip",
+      "70 KB",
+      "/cad/DWG-mist.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Mist — SKP.zip",
+      "226 KB",
+      "/cad/SKP-mist.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
       "3DM",
-      "Baffle Mist.3dm",
-      "1.3 MB",
-      "/downloads/airmist/Baffle Mist.3dm"
+      "Mist — 3DM.zip",
+      "151 KB",
+      "/cad/3DM-mist.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airslat": [
@@ -1104,29 +1012,30 @@
     ],
     [
       "DWG",
-      "Baffle Slat.dwg",
-      "88 KB",
-      "/downloads/airslat/Baffle Slat.dwg"
+      "Slat — DWG.zip",
+      "70 KB",
+      "/cad/DWG-slat.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Slat — SKP.zip",
+      "19 KB",
+      "/cad/SKP-slat.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Baffle Slat.3dm",
-      "1.4 MB",
-      "/downloads/airslat/Baffle Slat.3dm"
-    ]
-  ],
-  "skinorb": [
-    [
-      "SKP",
-      "Orb.skp",
-      "0.9 MB",
-      "/downloads/skinorb/Orb.skp"
-    ],
-    [
-      "REVIT",
-      "Orb.rvt",
-      "38.5 MB",
-      "/downloads/skinorb/Orb.rvt"
+      "Slat — 3DM.zip",
+      "61 KB",
+      "/cad/3DM-slat.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airaerialfield": [
@@ -1138,15 +1047,30 @@
     ],
     [
       "DWG",
-      "Aerial Field.dwg",
-      "34 KB",
-      "/downloads/airaerialfield/Aerial Field.dwg"
+      "Aerial Field — DWG.zip",
+      "23 KB",
+      "/cad/DWG-aerial-field.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Aerial Field.skp",
-      "0.3 MB",
-      "/downloads/airaerialfield/Aerial Field.skp"
+      "Aerial Field — SKP.zip",
+      "62 KB",
+      "/cad/SKP-aerial-field.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Aerial Field — 3DM.zip",
+      "18 KB",
+      "/cad/3DM-aerial-field.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airspatialcore": [
@@ -1157,10 +1081,31 @@
       "/fichas-tecnicas/Spatial_Core_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Spatial Core — DWG.zip",
+      "29 KB",
+      "/cad/DWG-spatial-core.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Spatial Core.skp",
-      "0.1 MB",
-      "/downloads/airspatialcore/Spatial Core.skp"
+      "Spatial Core — SKP.zip",
+      "34 KB",
+      "/cad/SKP-spatial-core.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Spatial Core — 3DM.zip",
+      "62 KB",
+      "/cad/3DM-spatial-core.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airacousticdot": [
@@ -1171,10 +1116,31 @@
       "/fichas-tecnicas/Acoustic_Dot_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Acoustic Dot — DWG.zip",
+      "17 KB",
+      "/cad/DWG-acoustic-dot.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Acoustic Dot — SKP.zip",
+      "9 KB",
+      "/cad/SKP-acoustic-dot.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
       "3DM",
-      "Acoustic Dot.3dm",
-      "30 KB",
-      "/downloads/airacousticdot/Acoustic Dot.3dm"
+      "Acoustic Dot — 3DM.zip",
+      "11 KB",
+      "/cad/3DM-acoustic-dot.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airbloom": [
@@ -1186,15 +1152,30 @@
     ],
     [
       "DWG",
-      "Bloom.dwg",
-      "42 KB",
-      "/downloads/airbloom/Bloom.dwg"
+      "Bloom — DWG.zip",
+      "31 KB",
+      "/cad/DWG-bloom.zip",
+      [
+        "DWG"
+      ]
     ],
     [
-      "REVIT",
-      "Bloom.rvt",
-      "38.5 MB",
-      "/downloads/airbloom/Bloom.rvt"
+      "SKP",
+      "Bloom — SKP.zip",
+      "63 KB",
+      "/cad/SKP-bloom.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Bloom — 3DM.zip",
+      "25 KB",
+      "/cad/3DM-bloom.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airechocloud": [
@@ -1205,10 +1186,31 @@
       "/fichas-tecnicas/Echo_Cloud_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Echo Cloud — DWG.zip",
+      "43 KB",
+      "/cad/DWG-echo-cloud.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Echo Cloud — SKP.zip",
+      "10 KB",
+      "/cad/SKP-echo-cloud.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
       "3DM",
-      "Echo Cloud.3dm",
-      "0.6 MB",
-      "/downloads/airechocloud/Echo Cloud.3dm"
+      "Echo Cloud — 3DM.zip",
+      "51 KB",
+      "/cad/3DM-echo-cloud.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airhorizon": [
@@ -1220,15 +1222,30 @@
     ],
     [
       "DWG",
-      "Horizon.dwg",
-      "33 KB",
-      "/downloads/airhorizon/Horizon.dwg"
+      "Horizon — DWG.zip",
+      "21 KB",
+      "/cad/DWG-horizon.zip",
+      [
+        "DWG"
+      ]
     ],
     [
-      "REVIT",
-      "Horizon.3d.rvt",
-      "38.5 MB",
-      "/downloads/airhorizon/Horizon.3d.rvt"
+      "SKP",
+      "Horizon — SKP.zip",
+      "3 KB",
+      "/cad/SKP-horizon.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Horizon — 3DM.zip",
+      "12 KB",
+      "/cad/3DM-horizon.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airarray": [
@@ -1240,15 +1257,30 @@
     ],
     [
       "DWG",
-      "Array.dwg",
-      "45 KB",
-      "/downloads/airarray/Array.dwg"
+      "Array — DWG.zip",
+      "32 KB",
+      "/cad/DWG-array.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Array.skp",
-      "32 KB",
-      "/downloads/airarray/Array.skp"
+      "Array — SKP.zip",
+      "7 KB",
+      "/cad/SKP-array.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Array — 3DM.zip",
+      "63 KB",
+      "/cad/3DM-array.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airluma": [
@@ -1259,10 +1291,31 @@
       "/fichas-tecnicas/Luma_Technical_Sheet.pdf"
     ],
     [
+      "DWG",
+      "Luma — DWG.zip",
+      "204 KB",
+      "/cad/DWG-luma.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
       "SKP",
-      "Luma.skp",
-      "7.9 MB",
-      "/downloads/airluma/Luma.skp"
+      "Luma — SKP.zip",
+      "1.9 MB",
+      "/cad/SKP-luma.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Luma — 3DM.zip",
+      "505 KB",
+      "/cad/3DM-luma.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airhive": [
@@ -1274,15 +1327,30 @@
     ],
     [
       "DWG",
-      "Hive.dwg",
-      "30 KB",
-      "/downloads/airhive/Hive.dwg"
+      "Hive — DWG.zip",
+      "19 KB",
+      "/cad/DWG-hive.zip",
+      [
+        "DWG"
+      ]
     ],
     [
-      "REVIT",
-      "Hive.rvt",
-      "38.5 MB",
-      "/downloads/airhive/Hive.rvt"
+      "SKP",
+      "Hive — SKP.zip",
+      "65 KB",
+      "/cad/SKP-hive.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Hive — 3DM.zip",
+      "9 KB",
+      "/cad/3DM-hive.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airplane": [
@@ -1293,24 +1361,31 @@
       "/fichas-tecnicas/Plane_Technical_Sheet.pdf"
     ],
     [
-      "SKP",
-      "Plane.skp",
-      "0.2 MB",
-      "/downloads/airplane/Plane.skp"
+      "DWG",
+      "Plane — DWG.zip",
+      "35 KB",
+      "/cad/DWG-plane.zip",
+      [
+        "DWG"
+      ]
     ],
     [
-      "REVIT",
-      "Plane.rvt",
-      "38.5 MB",
-      "/downloads/airplane/Plane.rvt"
-    ]
-  ],
-  "skinpulse": [
+      "SKP",
+      "Plane — SKP.zip",
+      "54 KB",
+      "/cad/SKP-plane.zip",
+      [
+        "SKP"
+      ]
+    ],
     [
-      "REVIT",
-      "Pulse.rvt",
-      "38.5 MB",
-      "/downloads/skinpulse/Pulse.rvt"
+      "3DM",
+      "Plane — 3DM.zip",
+      "47 KB",
+      "/cad/3DM-plane.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airslate": [
@@ -1321,132 +1396,44 @@
       "/fichas-tecnicas/Slate_Technical_Sheet.pdf"
     ],
     [
-      "SKP",
-      "Slate.skp",
-      "0.4 MB",
-      "/downloads/airslate/Slate.skp"
-    ],
-    [
-      "3DM",
-      "Slate.3dm",
-      "0.5 MB",
-      "/downloads/airslate/Slate.3dm"
-    ],
-    [
-      "REVIT",
-      "Slate.rvt",
-      "38.5 MB",
-      "/downloads/airslate/Slate.rvt"
-    ]
-  ],
-  "woolskincadence": [
-    [
       "DWG",
-      "Cadence.dwg",
-      "44 KB",
-      "/downloads/woolskincadence/Cadence.dwg"
-    ],
-    [
-      "3DM",
-      "Cadence.3dm",
-      "0.3 MB",
-      "/downloads/woolskincadence/Cadence.3dm"
-    ]
-  ],
-  "woolskinparcel": [
-    [
-      "DWG",
-      "Parcel.dwg",
-      "35 KB",
-      "/downloads/woolskinparcel/Parcel.dwg"
+      "Slate — DWG.zip",
+      "38 KB",
+      "/cad/DWG-slate.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Parcel.skp",
-      "17 KB",
-      "/downloads/woolskinparcel/Parcel.skp"
-    ]
-  ],
-  "woolskinoffset": [
-    [
-      "SKP",
-      "Offset.skp",
-      "23 KB",
-      "/downloads/woolskinoffset/Offset.skp"
+      "Slate — SKP.zip",
+      "139 KB",
+      "/cad/SKP-slate.zip",
+      [
+        "SKP"
+      ]
     ],
     [
       "3DM",
-      "Offset.3dm",
-      "0.3 MB",
-      "/downloads/woolskinoffset/Offset.3dm"
-    ]
-  ],
-  "woolskinslope": [
-    [
-      "DWG",
-      "Slope.dwg",
-      "36 KB",
-      "/downloads/woolskinslope/Slope.dwg"
-    ]
-  ],
-  "woolskinsoftline": [
-    [
-      "3DM",
-      "Softline.3dm",
-      "0.5 MB",
-      "/downloads/woolskinsoftline/Softline.3dm"
-    ],
-    [
-      "REVIT",
-      "Softline.rvt",
-      "38.5 MB",
-      "/downloads/woolskinsoftline/Softline.rvt"
-    ]
-  ],
-  "woolskinvertex": [
-    [
-      "DWG",
-      "Vertex.dwg",
-      "62 KB",
-      "/downloads/woolskinvertex/Vertex.dwg"
+      "Slate — 3DM.zip",
+      "55 KB",
+      "/cad/3DM-slate.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "skincataract": [
     [
-      "REVIT",
-      "Cataract.rvt",
-      "38.5 MB",
-      "/downloads/skincataract/Cataract.rvt"
-    ]
-  ],
-  "woolskinstride": [
-    [
-      "DWG",
-      "Stride.dwg",
-      "34 KB",
-      "/downloads/woolskinstride/Stride.dwg"
-    ]
-  ],
-  "woolskinnexus": [
-    [
-      "SKP",
-      "Nexus.skp",
-      "71 KB",
-      "/downloads/woolskinnexus/Nexus.skp"
-    ]
-  ],
-  "woolskinessential": [
-    [
-      "3DM",
-      "Essential.3dm",
-      "0.1 MB",
-      "/downloads/woolskinessential/Essential.3dm"
-    ],
-    [
-      "REVIT",
-      "Essential.rvt",
-      "38.5 MB",
-      "/downloads/woolskinessential/Essential.rvt"
+      "CAD",
+      "Cataract — DWG · 3DM · Revit.zip",
+      "7.8 MB",
+      "/cad/Frames_Cataract.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "airvessel": [
@@ -1457,10 +1444,31 @@
       "/fichas-tecnicas/Vessel_Technical_Sheet.pdf"
     ],
     [
-      "REVIT",
-      "Vessel.rvt",
-      "38.6 MB",
-      "/downloads/airvessel/Vessel.rvt"
+      "DWG",
+      "Vessel — DWG.zip",
+      "141 KB",
+      "/cad/DWG-vessel.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Vessel — SKP.zip",
+      "216 KB",
+      "/cad/SKP-vessel.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Vessel — 3DM.zip",
+      "638 KB",
+      "/cad/3DM-vessel.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airfold": [
@@ -1471,30 +1479,31 @@
       "/fichas-tecnicas/Fold_Technical_Sheet.pdf"
     ],
     [
-      "REVIT",
-      "Fold.rvt",
-      "38.5 MB",
-      "/downloads/airfold/Fold.rvt"
-    ]
-  ],
-  "wallaries": [
-    [
       "DWG",
-      "Aries.dwg",
-      "29 KB",
-      "/downloads/airaries/Aries.dwg"
+      "Fold — DWG.zip",
+      "28 KB",
+      "/cad/DWG-fold.zip",
+      [
+        "DWG"
+      ]
     ],
     [
       "SKP",
-      "Aries.skp",
-      "7 KB",
-      "/downloads/airaries/Aries.skp"
+      "Fold — SKP.zip",
+      "9 KB",
+      "/cad/SKP-fold.zip",
+      [
+        "SKP"
+      ]
     ],
     [
-      "REVIT",
-      "Aries.rvt",
-      "38.5 MB",
-      "/downloads/airaries/Aries.rvt"
+      "3DM",
+      "Fold — 3DM.zip",
+      "28 KB",
+      "/cad/3DM-fold.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airangular": [
@@ -1503,6 +1512,33 @@
       "Angular — Technical Sheet.pdf",
       "1.4 MB",
       "/fichas-tecnicas/Angular_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Angular — DWG.zip",
+      "57 KB",
+      "/cad/DWG-angular.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Angular — SKP.zip",
+      "87 KB",
+      "/cad/SKP-angular.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Angular — 3DM.zip",
+      "75 KB",
+      "/cad/3DM-angular.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airatrium": [
@@ -1511,6 +1547,33 @@
       "Atrium — Technical Sheet.pdf",
       "1.8 MB",
       "/fichas-tecnicas/Atrium_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Atrium — DWG.zip",
+      "141 KB",
+      "/cad/DWG-atrium.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Atrium — SKP.zip",
+      "216 KB",
+      "/cad/SKP-atrium.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Atrium — 3DM.zip",
+      "638 KB",
+      "/cad/3DM-atrium.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "aircenterline": [
@@ -1519,6 +1582,33 @@
       "Centerline — Technical Sheet.pdf",
       "1.2 MB",
       "/fichas-tecnicas/Centerline_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Centerline — DWG.zip",
+      "42 KB",
+      "/cad/DWG-centerline.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Centerline — SKP.zip",
+      "55 KB",
+      "/cad/SKP-centerline.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Centerline — 3DM.zip",
+      "92 KB",
+      "/cad/3DM-cernterline.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "aircontinuum": [
@@ -1527,6 +1617,33 @@
       "Continuum — Technical Sheet.pdf",
       "1.5 MB",
       "/fichas-tecnicas/Continuum_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Continuum — DWG.zip",
+      "40 KB",
+      "/cad/DWG-Continuum.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Continuum — SKP.zip",
+      "294 KB",
+      "/cad/SKP-Continuum.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Continuum — 3DM.zip",
+      "133 KB",
+      "/cad/3DM-Continuum.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airbaygrid": [
@@ -1535,6 +1652,33 @@
       "Baygrid — Technical Sheet.pdf",
       "1.4 MB",
       "/fichas-tecnicas/Baygrid_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Baygrid — DWG.zip",
+      "26 KB",
+      "/cad/DWG-baygrid.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Baygrid — SKP.zip",
+      "5 KB",
+      "/cad/SKP-baygrid.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Baygrid — 3DM.zip",
+      "27 KB",
+      "/cad/3DM-baygrid.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "airlattice": [
@@ -1543,6 +1687,33 @@
       "Lattice — Technical Sheet.pdf",
       "1.4 MB",
       "/fichas-tecnicas/Lattice_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Lattice — DWG.zip",
+      "46 KB",
+      "/cad/DWG-lattice.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Lattice — SKP.zip",
+      "10 KB",
+      "/cad/SKP-lattice.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Lattice — 3DM.zip",
+      "29 KB",
+      "/cad/3DM-lattice.zip",
+      [
+        "3DM"
+      ]
     ]
   ],
   "aircirrus": [
@@ -1551,6 +1722,44 @@
       "Cirrus — Technical Sheet.pdf",
       "1.6 MB",
       "/fichas-tecnicas/Baffle_Cirrus_Technical_Sheet.pdf"
+    ],
+    [
+      "DWG",
+      "Cirrus — DWG.zip",
+      "44 KB",
+      "/cad/DWG-cirrus.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Cirrus — SKP.zip",
+      "137 KB",
+      "/cad/SKP-cirrus.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Cirrus — 3DM.zip",
+      "56 KB",
+      "/cad/3DM-cirrus.zip",
+      [
+        "3DM"
+      ]
+    ],
+    [
+      "CAD",
+      "Cirrus — DWG · 3DM · Revit.zip",
+      "8.0 MB",
+      "/cad/Ceilings_Cirrus.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ],
   "glowbeam": [
@@ -1655,6 +1864,119 @@
       "Velin — Technical Sheet.pdf",
       "715 KB",
       "/fichas-tecnicas/velin.pdf"
+    ]
+  ],
+  "fckofffckoff01": [
+    [
+      "DWG",
+      "Fckoff 01 — DWG.zip",
+      "18 KB",
+      "/cad/DWG-Fckof-01.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Fckoff 01 — SKP.zip",
+      "14 KB",
+      "/cad/SKP-Fckof-01.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Fckoff 01 — 3DM.zip",
+      "22 KB",
+      "/cad/3DM-Fckof-01.zip",
+      [
+        "3DM"
+      ]
+    ]
+  ],
+  "fckofffckoff02": [
+    [
+      "DWG",
+      "Fckoff 02 — DWG.zip",
+      "23 KB",
+      "/cad/DWG-Fckof-02.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Fckoff 02 — SKP.zip",
+      "30 KB",
+      "/cad/SKP-Fckof-02.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Fckoff 02 — 3DM.zip",
+      "40 KB",
+      "/cad/3DM-Fckof-02.zip",
+      [
+        "3DM"
+      ]
+    ]
+  ],
+  "glowsil": [
+    [
+      "DWG",
+      "Sil — DWG.zip",
+      "99 KB",
+      "/cad/DWG-sil.zip",
+      [
+        "DWG"
+      ]
+    ],
+    [
+      "SKP",
+      "Sil — SKP.zip",
+      "108 KB",
+      "/cad/SKP-sil.zip",
+      [
+        "SKP"
+      ]
+    ],
+    [
+      "3DM",
+      "Sil — 3DM.zip",
+      "93 KB",
+      "/cad/3DM-sil.zip",
+      [
+        "3DM"
+      ]
+    ]
+  ],
+  "skinakebia": [
+    [
+      "CAD",
+      "Akebia — DWG · 3DM · Revit.zip",
+      "10.0 MB",
+      "/cad/Wall_Akebia.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
+    ]
+  ],
+  "skinclematis": [
+    [
+      "CAD",
+      "Clematis — DWG · 3DM · Revit.zip",
+      "6.4 MB",
+      "/cad/Wall_Clematis.zip",
+      [
+        "DWG",
+        "3DM",
+        "REVIT"
+      ]
     ]
   ]
 }

@@ -13,7 +13,8 @@ import css from "./Downloads.module.css";
 const ALL = "all";
 const CATS = [ALL, "ceilings", "walls", "lights", "dividers"];
 const FMTS = [ALL, "PDF", "DWG", "SKP", "3DM", "REVIT"];
-// PDF = ficha técnica (public/fichas-tecnicas).
+// PDF = ficha técnica (public/fichas-tecnicas); los demás son ZIPs en public/cad. Un ZIP con varios formatos
+// ("CAD", p. ej. DWG · 3DM · Revit) trae la lista en f[4] y aparece al filtrar por cualquiera de ellos.
 const FMT_LABEL = { PDF: "PDF", DWG: "DWG", SKP: "SKP", "3DM": "3DM", REVIT: "Revit" };
 function tabStyle(on) {
   return (
@@ -60,7 +61,7 @@ function downloadsVals({ t, cat, fmt, query, setCat, setFmt, setQuery }) {
       if (p.c !== c) return;
       if (q && p.n.toLowerCase().indexOf(q) < 0 && subLabel(p).toLowerCase().indexOf(q) < 0) return;
       const fl = p.f.filter(function (f) {
-        return st.fmt === ALL || f[0] === st.fmt;
+        return st.fmt === ALL || f[0] === st.fmt || (f[4] || []).includes(st.fmt);
       });
       if (!fl.length) return;
       files += fl.length;
