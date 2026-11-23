@@ -331,6 +331,12 @@
   ],
   "glowspatha": [
     [
+      "PDF",
+      "Spatha — Technical Sheet.pdf",
+      "552 KB",
+      "/fichas-tecnicas/spatha.pdf"
+    ],
+    [
       "DWG",
       "Spatha 1000x1000.dwg",
       "0.8 MB",
@@ -388,6 +394,12 @@
     ]
   ],
   "glowdragon": [
+    [
+      "PDF",
+      "Dragon — Technical Sheet.pdf",
+      "601 KB",
+      "/fichas-tecnicas/dragon.pdf"
+    ],
     [
       "SKP",
       "Dragon.skp",
@@ -461,6 +473,12 @@
   ],
   "gloweve02": [
     [
+      "PDF",
+      "Eve 02 — Technical Sheet.pdf",
+      "555 KB",
+      "/fichas-tecnicas/eve-02.pdf"
+    ],
+    [
       "3DM",
       "Eve 02.3dm",
       "0.4 MB",
@@ -529,6 +547,12 @@
   ],
   "glowwarm": [
     [
+      "PDF",
+      "Warm — Technical Sheet.pdf",
+      "688 KB",
+      "/fichas-tecnicas/warm.pdf"
+    ],
+    [
       "DWG",
       "Warm 1000x1000.dwg",
       "1.6 MB",
@@ -560,6 +584,12 @@
     ]
   ],
   "glowboxlight": [
+    [
+      "PDF",
+      "Box Light — Technical Sheet.pdf",
+      "778 KB",
+      "/fichas-tecnicas/box-light.pdf"
+    ],
     [
       "SKP",
       "Box light 900.skp",
@@ -619,6 +649,12 @@
   ],
   "glowvibe": [
     [
+      "PDF",
+      "Vibe — Technical Sheet.pdf",
+      "684 KB",
+      "/fichas-tecnicas/vibe.pdf"
+    ],
+    [
       "SKP",
       "Vibe 725.skp",
       "0.4 MB",
@@ -659,6 +695,12 @@
   ],
   "glowhangingspark": [
     [
+      "PDF",
+      "Hanging Spark — Technical Sheet.pdf",
+      "801 KB",
+      "/fichas-tecnicas/hanging-spark.pdf"
+    ],
+    [
       "SKP",
       "Hanging Spark 600.skp",
       "0.1 MB",
@@ -691,6 +733,12 @@
   ],
   "glowradiant02": [
     [
+      "PDF",
+      "Radiant 02 — Technical Sheet.pdf",
+      "616 KB",
+      "/fichas-tecnicas/radiant-02.pdf"
+    ],
+    [
       "SKP",
       "Radiant 02 750x750.skp",
       "1.1 MB",
@@ -710,6 +758,12 @@
     ]
   ],
   "glowradiant": [
+    [
+      "PDF",
+      "Radiant — Technical Sheet.pdf",
+      "720 KB",
+      "/fichas-tecnicas/radiant-01.pdf"
+    ],
     [
       "DWG",
       "Radiant 720.dwg",
@@ -737,6 +791,12 @@
   ],
   "gloworbit": [
     [
+      "PDF",
+      "Orbit — Technical Sheet.pdf",
+      "592 KB",
+      "/fichas-tecnicas/orbit.pdf"
+    ],
+    [
       "DWG",
       "Orbit 900.dwg",
       "0.4 MB",
@@ -763,6 +823,12 @@
   ],
   "glowtablespark": [
     [
+      "PDF",
+      "Table Spark — Technical Sheet.pdf",
+      "384 KB",
+      "/fichas-tecnicas/table-spark.pdf"
+    ],
+    [
       "SKP",
       "Table Spark 250x550.skp",
       "0.7 MB",
@@ -782,6 +848,12 @@
     ]
   ],
   "gloweve": [
+    [
+      "PDF",
+      "Eve — Technical Sheet.pdf",
+      "885 KB",
+      "/fichas-tecnicas/eve-01.pdf"
+    ],
     [
       "3DM",
       "EVE01.3dm",
@@ -841,6 +913,12 @@
   ],
   "airaries": [
     [
+      "PDF",
+      "Aries — Technical Sheet.pdf",
+      "1.7 MB",
+      "/fichas-tecnicas/Aries_Technical_Sheet.pdf"
+    ],
+    [
       "DWG",
       "Aries.dwg",
       "29 KB",
@@ -869,6 +947,12 @@
   ],
   "airplenum": [
     [
+      "PDF",
+      "Plenum — Technical Sheet.pdf",
+      "1.3 MB",
+      "/fichas-tecnicas/Plenum_Technical_Sheet.pdf"
+    ],
+    [
       "3DM",
       "Plenum.3dm",
       "52 KB",
@@ -876,6 +960,12 @@
     ]
   ],
   "airhydra": [
+    [
+      "PDF",
+      "Hydra — Technical Sheet.pdf",
+      "1.6 MB",
+      "/fichas-tecnicas/Hydra_Technical_Sheet.pdf"
+    ],
     [
       "DWG",
       "Hydra.dwg",
@@ -898,6 +988,12 @@
     ]
   ],
   "airframset": [
+    [
+      "PDF",
+      "Framset — Technical Sheet.pdf",
+      "1.5 MB",
+      "/fichas-tecnicas/Framset_Technical_Sheet.pdf"
+    ],
     [
       "DWG",
       "Framset.dwg",
@@ -939,6 +1035,12 @@
   ],
   "airstratus": [
     [
+      "PDF",
+      "Stratus — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Baffle_Stratus_Technical_Sheet.pdf"
+    ],
+    [
       "SKP",
       "Baffle Stratus.skp",
       "0.1 MB",
@@ -961,6 +1063,12 @@
   ],
   "airnimbus": [
     [
+      "PDF",
+      "Nimbus — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Baffle_Nimbus_Technical_Sheet.pdf"
+    ],
+    [
       "DWG",
       "Baffle Mist.dwg",
       "85 KB",
@@ -975,6 +1083,12 @@
   ],
   "airmist": [
     [
+      "PDF",
+      "Mist — Technical Sheet.pdf",
+      "1.7 MB",
+      "/fichas-tecnicas/Baffle_Mist_Technical_Sheet.pdf"
+    ],
+    [
       "3DM",
       "Baffle Mist.3dm",
       "1.3 MB",
@@ -982,6 +1096,12 @@
     ]
   ],
   "airslat": [
+    [
+      "PDF",
+      "Slat — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Baffle_Slat_Technical_Sheet.pdf"
+    ],
     [
       "DWG",
       "Baffle Slat.dwg",
@@ -1011,6 +1131,12 @@
   ],
   "airaerialfield": [
     [
+      "PDF",
+      "Aerial Field — Technical Sheet.pdf",
+      "1.6 MB",
+      "/fichas-tecnicas/Aerial_Field_Technical_Sheet.pdf"
+    ],
+    [
       "DWG",
       "Aerial Field.dwg",
       "34 KB",
@@ -1025,6 +1151,12 @@
   ],
   "airspatialcore": [
     [
+      "PDF",
+      "Spatial Core — Technical Sheet.pdf",
+      "1.3 MB",
+      "/fichas-tecnicas/Spatial_Core_Technical_Sheet.pdf"
+    ],
+    [
       "SKP",
       "Spatial Core.skp",
       "0.1 MB",
@@ -1033,6 +1165,12 @@
   ],
   "airacousticdot": [
     [
+      "PDF",
+      "Acoustic Dot — Technical Sheet.pdf",
+      "1.3 MB",
+      "/fichas-tecnicas/Acoustic_Dot_Technical_Sheet.pdf"
+    ],
+    [
       "3DM",
       "Acoustic Dot.3dm",
       "30 KB",
@@ -1040,6 +1178,12 @@
     ]
   ],
   "airbloom": [
+    [
+      "PDF",
+      "Bloom — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Bloom_Technical_Sheet.pdf"
+    ],
     [
       "DWG",
       "Bloom.dwg",
@@ -1055,6 +1199,12 @@
   ],
   "airechocloud": [
     [
+      "PDF",
+      "Echo Cloud — Technical Sheet.pdf",
+      "1.3 MB",
+      "/fichas-tecnicas/Echo_Cloud_Technical_Sheet.pdf"
+    ],
+    [
       "3DM",
       "Echo Cloud.3dm",
       "0.6 MB",
@@ -1062,6 +1212,12 @@
     ]
   ],
   "airhorizon": [
+    [
+      "PDF",
+      "Horizon — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Horizon_Technical_Sheet.pdf"
+    ],
     [
       "DWG",
       "Horizon.dwg",
@@ -1077,6 +1233,12 @@
   ],
   "airarray": [
     [
+      "PDF",
+      "Array — Technical Sheet.pdf",
+      "1.5 MB",
+      "/fichas-tecnicas/Array_Technical_Sheet.pdf"
+    ],
+    [
       "DWG",
       "Array.dwg",
       "45 KB",
@@ -1091,6 +1253,12 @@
   ],
   "airluma": [
     [
+      "PDF",
+      "Luma — Technical Sheet.pdf",
+      "1.9 MB",
+      "/fichas-tecnicas/Luma_Technical_Sheet.pdf"
+    ],
+    [
       "SKP",
       "Luma.skp",
       "7.9 MB",
@@ -1098,6 +1266,12 @@
     ]
   ],
   "airhive": [
+    [
+      "PDF",
+      "Hive — Technical Sheet.pdf",
+      "1.3 MB",
+      "/fichas-tecnicas/Hive_Technical_Sheet.pdf"
+    ],
     [
       "DWG",
       "Hive.dwg",
@@ -1112,6 +1286,12 @@
     ]
   ],
   "airplane": [
+    [
+      "PDF",
+      "Plane — Technical Sheet.pdf",
+      "1.3 MB",
+      "/fichas-tecnicas/Plane_Technical_Sheet.pdf"
+    ],
     [
       "SKP",
       "Plane.skp",
@@ -1134,6 +1314,12 @@
     ]
   ],
   "airslate": [
+    [
+      "PDF",
+      "Slate — Technical Sheet.pdf",
+      "1.5 MB",
+      "/fichas-tecnicas/Slate_Technical_Sheet.pdf"
+    ],
     [
       "SKP",
       "Slate.skp",
@@ -1265,6 +1451,12 @@
   ],
   "airvessel": [
     [
+      "PDF",
+      "Vessel — Technical Sheet.pdf",
+      "2.0 MB",
+      "/fichas-tecnicas/Vessel_Technical_Sheet.pdf"
+    ],
+    [
       "REVIT",
       "Vessel.rvt",
       "38.6 MB",
@@ -1272,6 +1464,12 @@
     ]
   ],
   "airfold": [
+    [
+      "PDF",
+      "Fold — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Fold_Technical_Sheet.pdf"
+    ],
     [
       "REVIT",
       "Fold.rvt",
@@ -1297,6 +1495,166 @@
       "Aries.rvt",
       "38.5 MB",
       "/downloads/airaries/Aries.rvt"
+    ]
+  ],
+  "airangular": [
+    [
+      "PDF",
+      "Angular — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Angular_Technical_Sheet.pdf"
+    ]
+  ],
+  "airatrium": [
+    [
+      "PDF",
+      "Atrium — Technical Sheet.pdf",
+      "1.8 MB",
+      "/fichas-tecnicas/Atrium_Technical_Sheet.pdf"
+    ]
+  ],
+  "aircenterline": [
+    [
+      "PDF",
+      "Centerline — Technical Sheet.pdf",
+      "1.2 MB",
+      "/fichas-tecnicas/Centerline_Technical_Sheet.pdf"
+    ]
+  ],
+  "aircontinuum": [
+    [
+      "PDF",
+      "Continuum — Technical Sheet.pdf",
+      "1.5 MB",
+      "/fichas-tecnicas/Continuum_Technical_Sheet.pdf"
+    ]
+  ],
+  "airbaygrid": [
+    [
+      "PDF",
+      "Baygrid — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Baygrid_Technical_Sheet.pdf"
+    ]
+  ],
+  "airlattice": [
+    [
+      "PDF",
+      "Lattice — Technical Sheet.pdf",
+      "1.4 MB",
+      "/fichas-tecnicas/Lattice_Technical_Sheet.pdf"
+    ]
+  ],
+  "aircirrus": [
+    [
+      "PDF",
+      "Cirrus — Technical Sheet.pdf",
+      "1.6 MB",
+      "/fichas-tecnicas/Baffle_Cirrus_Technical_Sheet.pdf"
+    ]
+  ],
+  "glowbeam": [
+    [
+      "PDF",
+      "Beam — Technical Sheet.pdf",
+      "853 KB",
+      "/fichas-tecnicas/beam.pdf"
+    ]
+  ],
+  "glowcirrus": [
+    [
+      "PDF",
+      "Cirrus — Technical Sheet.pdf",
+      "608 KB",
+      "/fichas-tecnicas/cirrus.pdf"
+    ]
+  ],
+  "glowelune": [
+    [
+      "PDF",
+      "Elune — Technical Sheet.pdf",
+      "327 KB",
+      "/fichas-tecnicas/elune.pdf"
+    ]
+  ],
+  "gloweye": [
+    [
+      "PDF",
+      "Eye — Technical Sheet.pdf",
+      "587 KB",
+      "/fichas-tecnicas/eye.pdf"
+    ]
+  ],
+  "glowflare": [
+    [
+      "PDF",
+      "Flare — Technical Sheet.pdf",
+      "670 KB",
+      "/fichas-tecnicas/flare.pdf"
+    ]
+  ],
+  "glowhangingbell": [
+    [
+      "PDF",
+      "Hanging Bell — Technical Sheet.pdf",
+      "519 KB",
+      "/fichas-tecnicas/hanging-bell.pdf"
+    ]
+  ],
+  "glowmir": [
+    [
+      "PDF",
+      "Mir — Technical Sheet.pdf",
+      "656 KB",
+      "/fichas-tecnicas/mir.pdf"
+    ]
+  ],
+  "glowpebble": [
+    [
+      "PDF",
+      "Pebble — Technical Sheet.pdf",
+      "625 KB",
+      "/fichas-tecnicas/pebble.pdf"
+    ]
+  ],
+  "glowpedestalspark": [
+    [
+      "PDF",
+      "Pedestal Spark — Technical Sheet.pdf",
+      "458 KB",
+      "/fichas-tecnicas/pedestal-spark.pdf"
+    ]
+  ],
+  "glowshine": [
+    [
+      "PDF",
+      "Shine — Technical Sheet.pdf",
+      "642 KB",
+      "/fichas-tecnicas/shine.pdf"
+    ]
+  ],
+  "glowtone": [
+    [
+      "PDF",
+      "Tone — Technical Sheet.pdf",
+      "906 KB",
+      "/fichas-tecnicas/tone.pdf"
+    ]
+  ],
+  "glowvael": [
+    [
+      "PDF",
+      "Vael — Technical Sheet.pdf",
+      "643 KB",
+      "/fichas-tecnicas/vael.pdf"
+    ]
+  ],
+  "glowvelin": [
+    [
+      "PDF",
+      "Velin — Technical Sheet.pdf",
+      "715 KB",
+      "/fichas-tecnicas/velin.pdf"
     ]
   ]
 }

@@ -227,7 +227,7 @@
     }
   },
   "downloads": {
-    "intro": "CAD, SketchUp, Rhino and Revit files for every Indigoff product — ready to drop into your project.",
+    "intro": "Technical sheets (PDF) plus CAD, SketchUp, Rhino and Revit files for Indigoff products — ready to drop into your project.",
     "productCount": {
       "one": "{count} product",
       "other": "{count} products"

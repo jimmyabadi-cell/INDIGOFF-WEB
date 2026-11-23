@@ -7,6 +7,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Mist — Technical Sheet.pdf",
+        "1.7 MB",
+        "/fichas-tecnicas/Baffle_Mist_Technical_Sheet.pdf"
+      ],
+      [
         "3DM",
         "Baffle Mist.3dm",
         "1.3 MB",
@@ -21,6 +27,12 @@
     "img": "/img/00caa49a841293eb3532d1ecdf713dbf.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Nimbus — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Baffle_Nimbus_Technical_Sheet.pdf"
+      ],
       [
         "DWG",
         "Baffle Mist.dwg",
@@ -43,6 +55,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Slat — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Baffle_Slat_Technical_Sheet.pdf"
+      ],
+      [
         "DWG",
         "Baffle Slat.dwg",
         "88 KB",
@@ -64,10 +82,31 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Stratus — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Baffle_Stratus_Technical_Sheet.pdf"
+      ],
+      [
         "SKP",
         "Baffle Stratus.skp",
         "0.1 MB",
         "/downloads/airstratus/Baffle Stratus.skp"
+      ]
+    ]
+  },
+  {
+    "n": "Cirrus",
+    "c": "ceilings",
+    "s": "baffles",
+    "img": "/img/7b0aa566228bcd0aac7e15a2f0ae15fa.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Cirrus — Technical Sheet.pdf",
+        "1.6 MB",
+        "/fichas-tecnicas/Baffle_Cirrus_Technical_Sheet.pdf"
       ]
     ]
   },
@@ -78,6 +117,12 @@
     "img": "/img/862f8ec91c8db9b196df4b06bbd444cc.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Acoustic Dot — Technical Sheet.pdf",
+        "1.3 MB",
+        "/fichas-tecnicas/Acoustic_Dot_Technical_Sheet.pdf"
+      ],
       [
         "3DM",
         "Acoustic Dot.3dm",
@@ -93,6 +138,12 @@
     "img": "/img/90607153f0e72f39cc8a8318df96a44d.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Aerial Field — Technical Sheet.pdf",
+        "1.6 MB",
+        "/fichas-tecnicas/Aerial_Field_Technical_Sheet.pdf"
+      ],
       [
         "DWG",
         "Aerial Field.dwg",
@@ -115,6 +166,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Array — Technical Sheet.pdf",
+        "1.5 MB",
+        "/fichas-tecnicas/Array_Technical_Sheet.pdf"
+      ],
+      [
         "DWG",
         "Array.dwg",
         "45 KB",
@@ -135,6 +192,12 @@
     "img": "/img/81bfdef8e084bbc8f891fb199527a5be.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Bloom — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Bloom_Technical_Sheet.pdf"
+      ],
       [
         "DWG",
         "Bloom.dwg",
@@ -157,6 +220,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Echo Cloud — Technical Sheet.pdf",
+        "1.3 MB",
+        "/fichas-tecnicas/Echo_Cloud_Technical_Sheet.pdf"
+      ],
+      [
         "3DM",
         "Echo Cloud.3dm",
         "0.6 MB",
@@ -172,6 +241,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Fold — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Fold_Technical_Sheet.pdf"
+      ],
+      [
         "REVIT",
         "Fold.rvt",
         "38.5 MB",
@@ -186,6 +261,12 @@
     "img": "/img/1c616ac56bf4d001fdd01204caef6e55.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Hive — Technical Sheet.pdf",
+        "1.3 MB",
+        "/fichas-tecnicas/Hive_Technical_Sheet.pdf"
+      ],
       [
         "DWG",
         "Hive.dwg",
@@ -208,6 +289,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Horizon — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Horizon_Technical_Sheet.pdf"
+      ],
+      [
         "DWG",
         "Horizon.dwg",
         "33 KB",
@@ -229,6 +316,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Luma — Technical Sheet.pdf",
+        "1.9 MB",
+        "/fichas-tecnicas/Luma_Technical_Sheet.pdf"
+      ],
+      [
         "SKP",
         "Luma.skp",
         "7.9 MB",
@@ -243,6 +336,12 @@
     "img": "/img/19c05df5e8631e8b95e88a42ef838881.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Plane — Technical Sheet.pdf",
+        "1.3 MB",
+        "/fichas-tecnicas/Plane_Technical_Sheet.pdf"
+      ],
       [
         "SKP",
         "Plane.skp",
@@ -264,6 +363,12 @@
     "img": "/img/9905b2e52be5a7402210c792b132b14c.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Slate — Technical Sheet.pdf",
+        "1.5 MB",
+        "/fichas-tecnicas/Slate_Technical_Sheet.pdf"
+      ],
       [
         "SKP",
         "Slate.skp",
@@ -292,6 +397,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Spatial Core — Technical Sheet.pdf",
+        "1.3 MB",
+        "/fichas-tecnicas/Spatial_Core_Technical_Sheet.pdf"
+      ],
+      [
         "SKP",
         "Spatial Core.skp",
         "0.1 MB",
@@ -307,10 +418,76 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Vessel — Technical Sheet.pdf",
+        "2.0 MB",
+        "/fichas-tecnicas/Vessel_Technical_Sheet.pdf"
+      ],
+      [
         "REVIT",
         "Vessel.rvt",
         "38.6 MB",
         "/downloads/airvessel/Vessel.rvt"
+      ]
+    ]
+  },
+  {
+    "n": "Angular",
+    "c": "ceilings",
+    "s": "clouds",
+    "img": "/img/a058bc10e8a821e24a13fd4c18fec18e.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Angular — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Angular_Technical_Sheet.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Atrium",
+    "c": "ceilings",
+    "s": "clouds",
+    "img": "/img/28d2d09ea7d9098ec1120f9b29535574.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Atrium — Technical Sheet.pdf",
+        "1.8 MB",
+        "/fichas-tecnicas/Atrium_Technical_Sheet.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Centerline",
+    "c": "ceilings",
+    "s": "clouds",
+    "img": "/img/e1691a053ed4aa12950510202404426b.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Centerline — Technical Sheet.pdf",
+        "1.2 MB",
+        "/fichas-tecnicas/Centerline_Technical_Sheet.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Continuum",
+    "c": "ceilings",
+    "s": "clouds",
+    "img": "/img/dd647266fda75b4729aff19dd3fdb492.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Continuum — Technical Sheet.pdf",
+        "1.5 MB",
+        "/fichas-tecnicas/Continuum_Technical_Sheet.pdf"
       ]
     ]
   },
@@ -321,6 +498,12 @@
     "img": "/img/6360f709fe94e6bae13284f55c61476c.jpg",
     "href": "/ceilings",
     "f": [
+      [
+        "PDF",
+        "Aries — Technical Sheet.pdf",
+        "1.7 MB",
+        "/fichas-tecnicas/Aries_Technical_Sheet.pdf"
+      ],
       [
         "DWG",
         "Aries.dwg",
@@ -349,6 +532,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Framset — Technical Sheet.pdf",
+        "1.5 MB",
+        "/fichas-tecnicas/Framset_Technical_Sheet.pdf"
+      ],
+      [
         "DWG",
         "Framset.dwg",
         "32 KB",
@@ -376,6 +565,12 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Hydra — Technical Sheet.pdf",
+        "1.6 MB",
+        "/fichas-tecnicas/Hydra_Technical_Sheet.pdf"
+      ],
+      [
         "DWG",
         "Hydra.dwg",
         "57 KB",
@@ -397,10 +592,46 @@
     "href": "/ceilings",
     "f": [
       [
+        "PDF",
+        "Plenum — Technical Sheet.pdf",
+        "1.3 MB",
+        "/fichas-tecnicas/Plenum_Technical_Sheet.pdf"
+      ],
+      [
         "3DM",
         "Plenum.3dm",
         "52 KB",
         "/downloads/airplenum/Plenum.3dm"
+      ]
+    ]
+  },
+  {
+    "n": "Baygrid",
+    "c": "ceilings",
+    "s": "ceilings",
+    "img": "/img/10497587a06260bbc03680d95345f13d.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Baygrid — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Baygrid_Technical_Sheet.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Lattice",
+    "c": "ceilings",
+    "s": "ceilings",
+    "img": "/img/5a326585a04891c1c2b29d35aaf10dcd.jpg",
+    "href": "/ceilings",
+    "f": [
+      [
+        "PDF",
+        "Lattice — Technical Sheet.pdf",
+        "1.4 MB",
+        "/fichas-tecnicas/Lattice_Technical_Sheet.pdf"
       ]
     ]
   },
@@ -964,6 +1195,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Box Light — Technical Sheet.pdf",
+        "778 KB",
+        "/fichas-tecnicas/box-light.pdf"
+      ],
+      [
         "SKP",
         "Box light 900.skp",
         "8 KB",
@@ -997,6 +1234,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Dragon — Technical Sheet.pdf",
+        "601 KB",
+        "/fichas-tecnicas/dragon.pdf"
+      ],
+      [
         "SKP",
         "Dragon.skp",
         "0.1 MB",
@@ -1011,6 +1254,12 @@
     "img": "/img/9d54d40e504a50fd1fff39c901189241.jpg",
     "href": "/lights",
     "f": [
+      [
+        "PDF",
+        "Eve — Technical Sheet.pdf",
+        "885 KB",
+        "/fichas-tecnicas/eve-01.pdf"
+      ],
       [
         "3DM",
         "EVE01.3dm",
@@ -1032,6 +1281,12 @@
     "img": "/img/07d063940dc84ed237a6af4bbaf23cd8.jpg",
     "href": "/lights",
     "f": [
+      [
+        "PDF",
+        "Eve 02 — Technical Sheet.pdf",
+        "555 KB",
+        "/fichas-tecnicas/eve-02.pdf"
+      ],
       [
         "3DM",
         "Eve 02.3dm",
@@ -1087,6 +1342,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Hanging Spark — Technical Sheet.pdf",
+        "801 KB",
+        "/fichas-tecnicas/hanging-spark.pdf"
+      ],
+      [
         "SKP",
         "Hanging Spark 600.skp",
         "0.1 MB",
@@ -1126,6 +1387,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Orbit — Technical Sheet.pdf",
+        "592 KB",
+        "/fichas-tecnicas/orbit.pdf"
+      ],
+      [
         "DWG",
         "Orbit 900.dwg",
         "0.4 MB",
@@ -1159,6 +1426,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Radiant — Technical Sheet.pdf",
+        "720 KB",
+        "/fichas-tecnicas/radiant-01.pdf"
+      ],
+      [
         "DWG",
         "Radiant 720.dwg",
         "0.3 MB",
@@ -1191,6 +1464,12 @@
     "img": "/img/5bdec333da8c6160d3129d6d5f1d1343.jpg",
     "href": "/lights",
     "f": [
+      [
+        "PDF",
+        "Radiant 02 — Technical Sheet.pdf",
+        "616 KB",
+        "/fichas-tecnicas/radiant-02.pdf"
+      ],
       [
         "SKP",
         "Radiant 02 750x750.skp",
@@ -1357,6 +1636,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Spatha — Technical Sheet.pdf",
+        "552 KB",
+        "/fichas-tecnicas/spatha.pdf"
+      ],
+      [
         "DWG",
         "Spatha 1000x1000.dwg",
         "0.8 MB",
@@ -1408,6 +1693,12 @@
     "href": "/lights",
     "f": [
       [
+        "PDF",
+        "Vibe — Technical Sheet.pdf",
+        "684 KB",
+        "/fichas-tecnicas/vibe.pdf"
+      ],
+      [
         "SKP",
         "Vibe 725.skp",
         "0.4 MB",
@@ -1446,6 +1737,12 @@
     "img": "/img/2a30a930d833497de66d9707432837e5.jpg",
     "href": "/lights",
     "f": [
+      [
+        "PDF",
+        "Warm — Technical Sheet.pdf",
+        "688 KB",
+        "/fichas-tecnicas/warm.pdf"
+      ],
       [
         "DWG",
         "Warm 1000x1000.dwg",
@@ -1704,12 +2001,168 @@
     ]
   },
   {
+    "n": "Beam",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/61b853b04ed7501b9c4a655de714f644.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Beam — Technical Sheet.pdf",
+        "853 KB",
+        "/fichas-tecnicas/beam.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Cirrus",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/2ef6636e67b6d04dcd4c0236e016c279.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Cirrus — Technical Sheet.pdf",
+        "608 KB",
+        "/fichas-tecnicas/cirrus.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Elune",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/d91af400721affcb93d97a866be610bc.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Elune — Technical Sheet.pdf",
+        "327 KB",
+        "/fichas-tecnicas/elune.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Eye",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/7c3cf7336f76b48d1f503b900709f158.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Eye — Technical Sheet.pdf",
+        "587 KB",
+        "/fichas-tecnicas/eye.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Flare",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/c2ccfdfd755d51d0ffdc62cdde387faf.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Flare — Technical Sheet.pdf",
+        "670 KB",
+        "/fichas-tecnicas/flare.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Hanging Bell",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/e9776350d8d3a3b40cb84485b072f096.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Hanging Bell — Technical Sheet.pdf",
+        "519 KB",
+        "/fichas-tecnicas/hanging-bell.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Mir",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/1c9b4d544b05d6a9bea22015b5f206c0.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Mir — Technical Sheet.pdf",
+        "656 KB",
+        "/fichas-tecnicas/mir.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Tone",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/006fb4e9caef96b203dce45329aa4294.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Tone — Technical Sheet.pdf",
+        "906 KB",
+        "/fichas-tecnicas/tone.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Vael",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/d80f1ab0403677543090e90164c588ee.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Vael — Technical Sheet.pdf",
+        "643 KB",
+        "/fichas-tecnicas/vael.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Velin",
+    "c": "lights",
+    "s": "pendantlights",
+    "img": "/img/dd95cc202dc0571bb4cdac2ebc207838.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Velin — Technical Sheet.pdf",
+        "715 KB",
+        "/fichas-tecnicas/velin.pdf"
+      ]
+    ]
+  },
+  {
     "n": "Table Spark",
     "c": "lights",
     "s": "tablelights",
     "img": "/img/cd5c0ec3dd4ebd3506720b8a132f2aa1.jpg",
     "href": "/lights",
     "f": [
+      [
+        "PDF",
+        "Table Spark — Technical Sheet.pdf",
+        "384 KB",
+        "/fichas-tecnicas/table-spark.pdf"
+      ],
       [
         "SKP",
         "Table Spark 250x550.skp",
@@ -1727,6 +2180,51 @@
         "Table_Spark_250_550.rvt",
         "38.7 MB",
         "/downloads/glowtablespark/Table_Spark_250_550.rvt"
+      ]
+    ]
+  },
+  {
+    "n": "Shine",
+    "c": "lights",
+    "s": "tablelights",
+    "img": "/img/799088d005b214657a3f4e9c1211da26.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Shine — Technical Sheet.pdf",
+        "642 KB",
+        "/fichas-tecnicas/shine.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Pebble",
+    "c": "lights",
+    "s": "floorlights",
+    "img": "/img/2cadda55518bec67a4173fdc68c4e9b8.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Pebble — Technical Sheet.pdf",
+        "625 KB",
+        "/fichas-tecnicas/pebble.pdf"
+      ]
+    ]
+  },
+  {
+    "n": "Pedestal Spark",
+    "c": "lights",
+    "s": "floorlights",
+    "img": "/img/e18ebf73b8a731e127bea748931574bc.jpg",
+    "href": "/lights",
+    "f": [
+      [
+        "PDF",
+        "Pedestal Spark — Technical Sheet.pdf",
+        "458 KB",
+        "/fichas-tecnicas/pedestal-spark.pdf"
       ]
     ]
   },
